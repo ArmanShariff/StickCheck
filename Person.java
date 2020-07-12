@@ -18,9 +18,6 @@ public class Person{
         age = pAge;
         playerNumber = pPlayerNumber;
         contract = pContract;
-
-        Player player = new Player();
-
     }
 
 }
