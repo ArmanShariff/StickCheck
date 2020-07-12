@@ -12,7 +12,7 @@ public class Player extends Person{
     int defensiveAwareness;
     
     // constructor
-    public Player(int stamina, int faceoff, int shooting, String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber, int pContract) {
+    public Player(int faceoff, int shooting, int stamina, int skating, int strength, int offensiveAwareness, int defensiveAwareness, String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber, int pContract) {
 
         super(pFirstName, pLastName, pPosition, pCountry, pAge, pPlayerNumber, pContract);
 
