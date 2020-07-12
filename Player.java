@@ -1,5 +1,12 @@
-package Players;
 
-public class player {
+
+public class Player extends Person{
     
+    // fields
+    
+    
+    // constructor
+    public Player() {
+
+    }
 }
