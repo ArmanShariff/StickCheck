@@ -27,6 +27,25 @@ public class Goalie extends Person {
 
     // methods
 
+    public int getReflexes() {
+        return this.reflexes;
+    }
+
+    public int getAgility() {
+        return this.agility;
+    }
+
+    public int getFlexibility() {
+        return flexibility;
+    }
+
+    public int getReboundControl() {
+        return reboundControl;
+    }
     
+    public int getPuckControl() {
+        return puckControl;
+    }
+
 
 }
