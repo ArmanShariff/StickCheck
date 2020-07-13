@@ -1,5 +1,7 @@
 
-public class Person{
+public class Person {
+
+    // fields
 
     String firstName;
     String lastName;
@@ -8,6 +10,8 @@ public class Person{
     int age;
     int playerNumber;
     int contract;
+    
+    // constructor
     
     public Person(String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber, int pContract) {
         
@@ -19,5 +23,7 @@ public class Person{
         playerNumber = pPlayerNumber;
         contract = pContract;
     }
+
+    // methods
 
 }
