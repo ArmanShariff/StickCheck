@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-public class Goalie extends Person{
-    
-    // fields
-    
-    
-    // constructor
-    public Goalie(int stamina, int faceoff, int shooting, String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber, int pContract) {
-
-        super(pFirstName, pLastName, pPosition, pCountry, pAge, pPlayerNumber, pContract);
-
-        
-
-    }
-=======
 
 
 public class Goalie extends Person {
@@ -39,5 +24,4 @@ public class Goalie extends Person {
     }
 
 
->>>>>>> a971f095ce191a8682b5b819bc3c1817239b6ee7
 }
