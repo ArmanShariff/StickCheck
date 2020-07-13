@@ -10,11 +10,7 @@ public class Coach extends Person {
 
     //constructor
 
-<<<<<<< HEAD
-    public Coach(String aptitude, String specialty, int rating, String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pContract) {
-=======
     public Coach(String position, String specialty, int rating, String pFirstName, String pLastName, String pPosition, String pCountry, int pAge) {
->>>>>>> bad51be25feb414826ac9199130a6c0477ca06a9
 
         super(pFirstName, pLastName, pPosition, pCountry, pAge);
 
@@ -26,7 +22,6 @@ public class Coach extends Person {
 
     //methods
 
-<<<<<<< HEAD
     public String getAptitude() {
         return aptitude;
     }
@@ -39,6 +34,4 @@ public class Coach extends Person {
         return rating;
     }
     
-=======
->>>>>>> bad51be25feb414826ac9199130a6c0477ca06a9
 }
