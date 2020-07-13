@@ -9,11 +9,10 @@ public class Person {
     String country;
     int age;
     int playerNumber;
-    int contract;
     
     // constructor
 
-    public Person(String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber, int pContract) {
+    public Person(String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber) {
         
         firstName = pFirstName;
         lastName = pLastName;
@@ -21,10 +20,10 @@ public class Person {
         country = pCountry;
         age = pAge;
         playerNumber = pPlayerNumber;
-        contract = pContract;
+        
     }
 
-    public Person(String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pContract) {
+    public Person(String pFirstName, String pLastName, String pPosition, String pCountry, int pAge) {
         
         firstName = pFirstName;
         lastName = pLastName;

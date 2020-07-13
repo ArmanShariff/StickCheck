@@ -12,9 +12,9 @@ public class Goalie extends Person {
 
     //constructor
 
-    public Goalie (int reflexes, int agility, int flexibility, int reboundControl, int puckControl, String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber, int pContract) {
+    public Goalie (int reflexes, int agility, int flexibility, int reboundControl, int puckControl, String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber) {
 
-        super(pFirstName, pLastName, pPosition, pCountry, pAge, pPlayerNumber, pContract);
+        super(pFirstName, pLastName, pPosition, pCountry, pAge, pPlayerNumber);
         
         this.reflexes = reflexes;
         this.agility = agility;
