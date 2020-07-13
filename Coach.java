@@ -5,7 +5,7 @@ public class Coach extends Person {
     //fields
 
     String position;
-    String specialty:
+    String specialty;
     int rating;
 
     //constructor
