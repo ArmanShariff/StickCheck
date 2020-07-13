@@ -14,4 +14,6 @@ public class Roster {
         this.filename = filename;
     }
 
+    // methods
+
 }

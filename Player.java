@@ -1,8 +1,9 @@
 
 
-public class Player extends Person{
+public class Player extends Person {
     
     // fields
+
     int faceoff;
     int shooting;
     int stamina;
@@ -12,6 +13,7 @@ public class Player extends Person{
     int defensiveAwareness;
     
     // constructor
+
     public Player(int faceoff, int shooting, int stamina, int skating, int strength, int offensiveAwareness, int defensiveAwareness, String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber, int pContract) {
 
         super(pFirstName, pLastName, pPosition, pCountry, pAge, pPlayerNumber, pContract);
@@ -24,5 +26,31 @@ public class Player extends Person{
         this.offensiveAwareness = offensiveAwareness;
         this.defensiveAwareness = defensiveAwareness;
 
+    }
+
+    // get methods
+
+    public int getFaceoff() {
+        return this.faceoff;
+    }
+
+    public int getShooting() {
+        return this.shooting;
+    }
+
+    public int getStamina() {
+        return this.stamina;
+    }
+
+    public int getSkating() {
+        return this.skating;
+    }
+
+    public int getOffensiveAwareness() {
+        return this.strength;
+    }
+
+    public int getDefensiveAwareness() {
+        return this.strength;
     }
 }
