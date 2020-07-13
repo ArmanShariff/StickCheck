@@ -4,6 +4,7 @@ public class Roster {
     
     // fields
 
+    ArrayList<String[]> temp = new ArrayList<String[]>();
     ArrayList<Player> players = new ArrayList<Player>();
     ArrayList<Goalie> goalies = new ArrayList<Goalie>();
     ArrayList<Coach> coaches = new ArrayList<Coach>();
@@ -52,6 +53,51 @@ public class Roster {
               }
 
 
+
+    }
+
+    public static void assignPerson(ArrayList<String[]> temp, ArrayList<Player> players, ArrayList<Goalie> goalies, ArrayList<Coach> coaches) {
+
+        String[][]temp2 = new String[temp.size()][23];
+        temp.toArray(temp2);
+
+        for (int x = 2, i < 80, x++) {
+
+            if (temp2[x][3].equals("Player")) {
+
+                players.add(temp2[x][3]);
+                int faceoff = Integer.parseInt(temp2[x][9]);
+                int shooting = Integer.parseInt(temp2[x][10]);
+                int stamina = Integer.parseInt(temp2[x][11]);
+                int skating = Integer.parseInt(temp2[x][12]);
+                int strength = Integer.parseInt(temp2[x][13]);
+                int offensiveAwareness = Integer.parseInt(temp2[x][14]);
+                int defensiveAwareness = Integer.parseInt(temp2[x][15]);
+                Player player = new Player(firstName, lastName, faceoff, shooting, stamina, skating, strength, offensiveAwareness, defensiveeAwareness);
+                players.add(Player); 
+
+            } else if (temp2[x][3].equals("Goalie")) {
+
+                goalies.add(temp2[x][3]);
+                int reflexes = Integer.parseInt(temp2[x][16]);
+                int agility = Integer.parseInt(temp2[x][17]);
+                int flexibility = Integer.parseInt(temp2[x][18]);
+                int reboundControl = Integer.parseInt(temp2[x][19]);
+                int puckControl = Integer.parseInt(temp2[x][20]);
+                Goalie goalie = new Goalie(firstName, lastName, reflexes, agility, flexibility, reboundControl, puckControl);
+                goalies.add(Goalie);
+                
+            } else {
+
+                Coach.add(temp2[x][3]);
+                int rating = Integer.parseInt(temp2[x][24]);
+                Coach coach = new Coach(firstName, lastName, aptitude, specialty, rating);
+                coaches.add(Coach);
+                
+            }
+       
+
+        } 
 
     }
 
