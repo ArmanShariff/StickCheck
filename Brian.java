@@ -1,16 +1,11 @@
-package Rosters;
-
 import java.util.ArrayList;
 
-import Goalies.Goalie;
-import Players.Player;
-
-public class Roster {
+public class Brian {
     private ArrayList<Player> playerRoster = new ArrayList<Player>();
     private ArrayList<Goalie> goalieRoster = new ArrayList<Goalie>();
     private boolean userRoster;
 
-    public Roster(boolean userRoster) {
+    public Brian(boolean userRoster) {
         this.userRoster = userRoster;
     }
     
@@ -33,12 +28,12 @@ public class Roster {
     public String toString() {
         String printStatement = "Player Roster: \n";
         for(int i = 0; i < playerRoster.size(); i++) {
-            printStatement += playerRoster.get(i).getName() + ", ";
+            printStatement += playerRoster.get(i) + ", ";
         }
         
         printStatement += "\nGoalie Roster: \n";
         for(int j = 0; j < goalieRoster.size(); j++) {
-            printStatement += goalieRoster.get(j).getName() + ", ";
+            printStatement += goalieRoster.get(j) + ", ";
         }
 
         return printStatement;

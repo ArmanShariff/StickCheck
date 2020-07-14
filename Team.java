@@ -1,9 +1,3 @@
-package Teams;
-
-import Players.Player;
-import Rosters.Roster;
-import Goalies.Goalie;
-
 public class Team {
 
     public Player sRW;
@@ -20,9 +14,6 @@ public class Team {
     public Goalie bG;
 
     public Team(Roster roster) {
-        sRW = roster.getPlayerRoster().get(0);
-        sLW = roster.getPlayerRoster().get(1);
-        sG = roster.getGoalieRoster().get(0);
     }
 
 }
