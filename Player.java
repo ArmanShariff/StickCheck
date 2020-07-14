@@ -53,4 +53,13 @@ public class Player extends Person {
     public int getDefensiveAwareness() {
         return this.strength;
     }
+
+    // toString() method
+
+    public String toString(){
+
+        return super.getFirstName();
+
+    }
+
 }

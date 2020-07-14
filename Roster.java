@@ -4,7 +4,7 @@ import java.util.*;
 public class Roster {
     
     // fields
-    
+
     ArrayList<Player> players = new ArrayList<Player>();
     ArrayList<Goalie> goalies = new ArrayList<Goalie>();
     ArrayList<Coach> coaches = new ArrayList<Coach>();
@@ -21,7 +21,8 @@ public class Roster {
 
     // methods
 
-    public static void readFile(String fileName, ArrayList<Player> players, ArrayList<Goalie> goalies,ArrayList<Coach> coaches) throws FileNotFoundException{
+    public static void readFile(String fileName, ArrayList<Player> players, ArrayList<Goalie> goalies,ArrayList<Coach> coaches)
+            throws FileNotFoundException {
 
         ArrayList<String[]> temp = new ArrayList<String[]>();
 
