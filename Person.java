@@ -73,4 +73,9 @@ public class Person {
         return age;
     }
 
+    public String getCurrentTeam()
+    {
+        return currentTeam;
+    }
+
 }
