@@ -66,7 +66,7 @@ public class Roster {
         String[][]temp2 = new String[temp.size()][23];
         temp.toArray(temp2);
 
-        for (int x = 1; x < 80; x++) {
+        for (int x = 1; x < 78; x++) {
 
             if (temp2[x][3].equals("Player")) {
 
