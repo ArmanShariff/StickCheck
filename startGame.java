@@ -3,9 +3,12 @@ import java.util.ArrayList;
 
 public class startGame {
     public static void main(String[] args) throws FileNotFoundException {
-
+        //Initiailize roster through csv file
+        //Initialize the 6 rosters
+        //Initialize the list of players, goalies and coaches
         
         Roster roster = new Roster("roster.csv");
+
         Team toronto = new Team(true);
         Team detroit = new Team(false);
         Team chicago = new Team(false);
@@ -36,6 +39,8 @@ public class startGame {
         System.out.println("\nBoston: \n" + boston);
     }
 
+    //Method that sorts the players, goalies and coaches into their respected teams 
+    //and sets the position of the player/goalie as a starter/bench player
     public static void sortTeam(String teamName,Team team, ArrayList<Player> playerRoster, ArrayList<Goalie> goalieRoster, ArrayList<Coach> coachRoster) {
         for(int i = 0; i < playerRoster.size(); i++){
             if(playerRoster.get(i).getCurrentTeam().equals(teamName)) {

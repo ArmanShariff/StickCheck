@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 public class Team {
+
+    //Initialize the 13 positions 
     private Player sRW;
     private Player sC;
     private Player sLW;
@@ -15,8 +17,10 @@ public class Team {
     private Goalie bG;
     private Coach coach;
 
+    //Boolean to declare which team the user chose
     private boolean userTeam;
 
+    //Arraylists of the rosters
     private ArrayList<Player> playerRoster = new ArrayList<Player>();
     private ArrayList<Goalie> goalieRoster = new ArrayList<Goalie>();
     private ArrayList<Coach> coachRoster = new ArrayList<Coach>();
@@ -25,6 +29,7 @@ public class Team {
         this.userTeam = userTeam;
     }
 
+    //Adds player to the team
     public void addPlayer(Player player) {
         playerRoster.add(player);
     }
@@ -33,6 +38,7 @@ public class Team {
     // return playerRoster;
     // }
 
+    //Adds goalie to the team
     public void addGoalie(Goalie goalie) {
         goalieRoster.add(goalie);
     }
@@ -41,10 +47,14 @@ public class Team {
     // return goalieRoster;
     // }
 
+    //Adds coach to the team
     public void addCoach(Coach coach) {
         coachRoster.add(coach);
     }
 
+    //Method checks whether the player is a center, wing or defense
+    //Sets the corresponding players into the starting lineup/bench
+    //TO DO: If bench player has a higher overall than the starter, switch them
     public void setPlayerPosition(Player player) {
         if (player.getPosition().equals("Center")) {
             if (sC == null) {
@@ -83,6 +93,7 @@ public class Team {
         }
     }
 
+    //Sets the goalie into the starting lineup/bench
     public void setGoaliePosition(Goalie goalie) {
         if(goalie.getPosition().equals("Goaltender")) {
             if (sG == null) {
@@ -93,6 +104,7 @@ public class Team {
         }
     }
 
+    //Sets the coach onto the team
     public void setCoach(Coach coach) {
         if(coach.getPosition().equals("Coach")) {
             this.coach = coach;
@@ -116,22 +128,6 @@ public class Team {
         printStatement += "Bench Goalie: " + bG + "\n";
         printStatement += "\nCoach Roster: \n";
         printStatement += "Coach: " + coach;
-
-
-        // String printStatement = "Player Roster: \n";
-        // for (int i = 0; i < playerRoster.size(); i++) {
-        //     printStatement += playerRoster.get(i) + "\n";
-        // }
-
-        // printStatement += "\nGoalie Roster: \n";
-        // for (int i = 0; i < goalieRoster.size(); i++) {
-        //     printStatement += goalieRoster.get(i) + "\n";
-        // }
-
-        // printStatement += "\nCoach Roster: \n";
-        // for (int i = 0; i < coachRoster.size(); i++) {
-        //     printStatement += coachRoster.get(i) + "\n";
-        // }
 
         return printStatement;
     }
