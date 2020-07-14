@@ -4,8 +4,7 @@ import java.util.*;
 public class Roster {
     
     // fields
-
-    ArrayList<String[]> temp = new ArrayList<String[]>();
+    
     ArrayList<Player> players = new ArrayList<Player>();
     ArrayList<Goalie> goalies = new ArrayList<Goalie>();
     ArrayList<Coach> coaches = new ArrayList<Coach>();
@@ -126,6 +125,18 @@ public class Roster {
 
         } 
 
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public ArrayList<Goalie> getGoalies() {
+        return goalies;
+    }
+
+    public ArrayList<Coach> getCoaches() {
+        return coaches;
     }
 
 }
