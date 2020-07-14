@@ -33,5 +33,13 @@ public class Coach extends Person {
     public int getRating() {
         return rating;
     }
+
+    // toString() method
+
+    public String toString(){
+
+        return super.getFirstName();
+
+    }
     
 }

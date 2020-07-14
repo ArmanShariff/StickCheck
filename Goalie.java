@@ -47,5 +47,12 @@ public class Goalie extends Person {
         return puckControl;
     }
 
+    // toString() method
+
+    public String toString(){
+
+        return super.getFirstName();
+
+    }
 
 }

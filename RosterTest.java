@@ -1,8 +1,9 @@
+import java.io.FileNotFoundException;
 import java.util.*;
 
-class rostertestMain {
+class RosterTest {
 
-    public static void main (String args[]) {
+    public static void main(String args[]) throws FileNotFoundException {
 
         ArrayList<Player> playersMain = new ArrayList<Player>();
         ArrayList<Goalie> goaliesMain = new ArrayList<Goalie>();
@@ -15,7 +16,6 @@ class rostertestMain {
         for (int i = 0; i < playersMain.size(); i++) {   
             System.out.print(playersMain.get(i));
         }
-
 
     }
 
