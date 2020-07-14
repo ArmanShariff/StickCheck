@@ -10,9 +10,9 @@ public class Coach extends Person {
 
     //constructor
 
-    public Coach(String position, String specialty, int rating, String pFirstName, String pLastName, String pPosition, String pCountry, int pAge) {
+    public Coach(String aptitude, String specialty, int rating, String firstName, String lastName, String position, String country, int age, String currentTeam, String playerType) {
 
-        super(pFirstName, pLastName, pPosition, pCountry, pAge);
+        super(firstName, lastName, position, country, age, currentTeam, playerType);
 
         this.aptitude = aptitude;
         this.specialty = specialty;

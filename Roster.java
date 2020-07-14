@@ -52,7 +52,7 @@ public class Roster {
                 temp.add(line.split(","));
             }
 
-            assignPerson(ArrayList<String[]> temp, ArrayList<Player> players, ArrayList<Goalie> goalies,ArrayList<Coach> coaches);
+            assignPerson(temp, players, goalies, coaches);
 
             // close the Scanner object attached to the file
             inFile.close();
@@ -85,7 +85,7 @@ public class Roster {
                 int strength = Integer.parseInt(temp2[x][12]);
                 int offensiveAwareness = Integer.parseInt(temp2[x][13]);
                 int defensiveAwareness = Integer.parseInt(temp2[x][14]);
-                Player player = new Player(faceoff, shooting, stamina, skating, strength, offensiveAwareness, defensiveAwareness, firstName, lastName, currentTeam, playerType, position, number, age, country);
+                Player player = new Player(faceoff, shooting, stamina, skating, strength, offensiveAwareness, defensiveAwareness, firstName, lastName, position, country, age, number, currentTeam, playerType);
                 players.add(player); 
 
             } else if (temp2[x][3].equals("Goalie")) {
@@ -103,7 +103,7 @@ public class Roster {
                 int flexibility = Integer.parseInt(temp2[x][17]);
                 int reboundControl = Integer.parseInt(temp2[x][18]);
                 int puckControl = Integer.parseInt(temp2[x][19]);
-                Goalie goalie = new Goalie(reflexes, agility, flexibility, reboundControl, puckControl, firstName, lastName, currentTeam, playerType, position, number, age, country, );
+                Goalie goalie = new Goalie(reflexes, agility, flexibility, reboundControl, puckControl, firstName, lastName, position, country, age, number, currentTeam, playerType);
                 goalies.add(goalie);
                 
             } else {
@@ -113,13 +113,12 @@ public class Roster {
                 String currentTeam = temp2[x][2];
                 String playerType = temp2[x][3];
                 String position = temp2[x][4];
-                int number = Integer.parseInt(temp2[x][5]);
                 int age = Integer.parseInt(temp2[x][6]);
                 String country = temp2[x][7];
                 String aptitude = temp2[x][21];
                 String specialty = temp2[x][22];
                 int rating = Integer.parseInt(temp2[x][23]);
-                Coach coach = new Coach(aptitude, specialty, rating, firstName, lastName, currentTeam, playerType, position, number, age, country, );
+                Coach coach = new Coach(aptitude, specialty, rating, firstName, lastName, position, country, age, currentTeam, playerType);
                 coaches.add(coach);
                 
             }

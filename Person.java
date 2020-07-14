@@ -7,12 +7,14 @@ public class Person {
     String lastName;
     String position;
     String country;
+    String currentTeam;
+    String playerType;
     int age;
     int playerNumber;
     
     // constructor
 
-    public Person(String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber) {
+    public Person(String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber, String pCurrentTeam, String pPlayerType) {
         
         firstName = pFirstName;
         lastName = pLastName;
@@ -20,6 +22,22 @@ public class Person {
         country = pCountry;
         age = pAge;
         playerNumber = pPlayerNumber;
+        currentTeam = pCurrentTeam;
+        playerType = pPlayerType;
+        
+    }
+
+    // counstructer without player number (for coaches)
+
+    public Person(String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, String pCurrentTeam, String pPlayerType) {
+        
+        firstName = pFirstName;
+        lastName = pLastName;
+        position = pPosition;
+        country = pCountry;
+        age = pAge;
+        currentTeam = pCurrentTeam;
+        playerType = pPlayerType;
         
     }
 

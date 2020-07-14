@@ -14,9 +14,9 @@ public class Player extends Person {
     
     // constructor
 
-    public Player(int faceoff, int shooting, int stamina, int skating, int strength, int offensiveAwareness, int defensiveAwareness, String pFirstName, String pLastName, String pPosition, String pCountry, int pAge, int pPlayerNumber) {
+    public Player(int faceoff, int shooting, int stamina, int skating, int strength, int offensiveAwareness, int defensiveAwareness, String firstName, String lastName, String position, String country, int age, int playerNumber, String currentTeam, String playerType) {
 
-        super(pFirstName, pLastName, pPosition, pCountry, pAge, pPlayerNumber);
+        super(firstName, lastName, position, country, age, playerNumber, currentTeam, playerType);
 
         this.faceoff = faceoff;
         this.shooting = shooting;
