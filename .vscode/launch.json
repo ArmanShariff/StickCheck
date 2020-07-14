@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-rosterMain<StickCheck_cd10fa0b>",
+            "request": "launch",
+            "mainClass": "Rosters.rosterMain",
+            "projectName": "StickCheck_cd10fa0b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-teamMain<StickCheck_cd10fa0b>",
+            "request": "launch",
+            "mainClass": "Teams.teamMain",
+            "projectName": "StickCheck_cd10fa0b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-blackJackMain",
+            "request": "launch",
+            "mainClass": "blackJackMain"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-toyMain",
+            "request": "launch",
+            "mainClass": "toyMain"
+        }
+    ]
+}
