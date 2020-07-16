@@ -42,7 +42,7 @@ class Simulation {
 
     }
 
-    public static boolean matchupCalculationOne(int time, offensiveTeam, defensiveTeam) {
+    public static boolean matchupCalculationOne(int time, Team offensiveTeam, Team defensiveTeam) {
 
         if (time > 1200) {
             return false;
@@ -76,7 +76,7 @@ class Simulation {
             int strengthDLW = defensiveTeam.getsLW().getStrength();
             int strengthDRD = defensiveTeam.getsRD().getStrength();
             int strnegthDLD = defensiveTeam.getsLD().getStrength();
-            int defensiveAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness());
+            int defensiveAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness();
             int defAwarenessDRW = defensiveTeam.getsRW().getDefensiveAwareness();
             int defAwarenessDLW = defensiveTeam.getsLW().getDefensiveAwareness();
             int defAwarenessDRD = defensiveTeam.getsRD().getDefensiveAwareness();
@@ -138,7 +138,7 @@ class Simulation {
             int strengthDLW = defensiveTeam.getsLW().getStrength();
             int strengthDRD = defensiveTeam.getsRD().getStrength();
             int strnegthDLD = defensiveTeam.getsLD().getStrength();
-            int defAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness());
+            int defAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness();
             int defAwarenessDRW = defensiveTeam.getsRW().getDefensiveAwareness();
             int defAwarenessDLW = defensiveTeam.getsLW().getDefensiveAwareness();
             int defAwarenessDRD = defensiveTeam.getsRD().getDefensiveAwareness();
