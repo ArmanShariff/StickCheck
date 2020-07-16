@@ -16,7 +16,21 @@ class Simulation {
 
         for (int i = 0; i < 3; i++) {
 
-            faceoffCalculation(0, teamA, teamB);
+            period(0, teamA, teamB);
+
+        }
+
+    }
+    public static boolean period(int time, Team teamA, Team teamB) {
+
+        if (time > 1200) {
+
+            return false;
+
+        }
+        else {
+
+            return faceoffCalculation(time, teamA, teamB);
 
         }
 
