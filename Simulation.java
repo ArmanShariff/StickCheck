@@ -58,12 +58,12 @@ class Simulation {
             int strengthORW = offensiveTeam.getsRW().getStrength();
             int strengthOLW = offensiveTeam.getsLW().getStrength();
             int strengthORD = offensiveTeam.getsRD().getStrength();
-            int strnegthOLD = offensiveTeam.getsLD().getStrength();
-            int offensiveAwarenessOC = offensiveTeam.getsC().getOffensiveAwareness();
-            int offensiveAwarenessORW = offensiveTeam.getsRW().getOffensiveAwareness();
-            int offensiveAwarenessOLW = offensiveTeam.getsLW().getOffensiveAwareness();
-            int offensiveAwarenessORD = offensiveTeam.getsRD().getOffensiveAwareness();
-            int offensiveAwarenessOLD = offensiveTeam.getsLD().getOffensiveAwareness();
+            int strengthOLD = offensiveTeam.getsLD().getStrength();
+            int offAwarenessOC = offensiveTeam.getsC().getOffensiveAwareness();
+            int offAwarenessORW = offensiveTeam.getsRW().getOffensiveAwareness();
+            int offAwarenessOLW = offensiveTeam.getsLW().getOffensiveAwareness();
+            int offAwarenessORD = offensiveTeam.getsRD().getOffensiveAwareness();
+            int offAwarenessOLD = offensiveTeam.getsLD().getOffensiveAwareness();
 
             //defensive team values
             int skatingDC = defensiveTeam.getsC().getSkating();
@@ -77,15 +77,15 @@ class Simulation {
             int strengthDRD = defensiveTeam.getsRD().getStrength();
             int strnegthDLD = defensiveTeam.getsLD().getStrength();
             int defensiveAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness());
-            int defensiveAwarenessDRW = defensiveTeam.getsRW().getDefensiveAwareness();
-            int defensiveAwarenessDLW = defensiveTeam.getsLW().getDefensiveAwareness();
-            int defensiveAwarenessDRD = defensiveTeam.getsRD().getDefensiveAwareness();
-            int defensiveAwarenessDLD = defensiveTeam.getsLD().getDefensiveAwareness();
+            int defAwarenessDRW = defensiveTeam.getsRW().getDefensiveAwareness();
+            int defAwarenessDLW = defensiveTeam.getsLW().getDefensiveAwareness();
+            int defAwarenessDRD = defensiveTeam.getsRD().getDefensiveAwareness();
+            int defAwarenessDLD = defensiveTeam.getsLD().getDefensiveAwareness();
 
             //matchup calculations for offensive team
             int skatingOverallO = (skatingOC-skatingDC)*1.7 + (skatingORW-skatingDLD)*1.7 + (skatingOLW-skatingDRD)*1.7 + (skatingORD-skatingDLW)*1.7  + (skatingOLD-skatingDRW)*1.7;
             int strengthOverallO = (strengthOC-strengthDC) + (strengthORW-strengthDLD) + (strengthOLW-strengthDRD) + (strengthORD-strengthDLW) + (strengthOLD-strengthDRW);
-            int awarenessOverallO = (offensiveAwarenessOC-defensiveAwarenessDC)*1.5 + (offensiveAwarenessORW-defensiveAwarenessDLD)*1.5 + (offensiveAwarenessOLW-defensiveAwarenessDRD)*1.5 + (offensiveAwarenessORD-defensiveAwarenessDLW)*1.5 + (offensiveAwarenessOLD-defensiveAwarenessDRW)*1.5;
+            int awarenessOverallO = (offAwarenessOC-defAwarenessDC)*1.5 + (offAwarenessORW-defAwarenessDLD)*1.5 + (offAwarenessOLW-defAwarenessDRD)*1.5 + (offAwarenessORD-defAwarenessDLW)*1.5 + (offAwarenessOLD-defAwarenessDRW)*1.5;
 
             //changing overall int values into doubles
             double skatingOverall = Double.parseDouble(skatingOverallO);
@@ -106,6 +106,92 @@ class Simulation {
 
     public static boolean matchupCalculationTwo(int time, offensiveTeam, defensiveTeam) {
 
+        if (time > 1200) {
+            return false;
+        } else {
+
+            //offensive team values
+            int skatingOC = offensiveTeam.getsC().getSkating();
+            int skatingORW = offensiveTeam.getsRW().getSkating();
+            int skatingOLW = offensiveTeam.getsLW().getSkating();
+            int skatingORD = offensiveTeam.getsRD().getSkating();
+            int skatingOLD = offensiveTeam.getsLD().getSkating();
+            int strengthOC = offensiveTeam.getsC().getStrength();
+            int strengthORW = offensiveTeam.getsRW().getStrength();
+            int strengthOLW = offensiveTeam.getsLW().getStrength();
+            int strengthORD = offensiveTeam.getsRD().getStrength();
+            int strnegthOLD = offensiveTeam.getsLD().getStrength();
+            int offAwarenessOC = offensiveTeam.getsC().getOffensiveAwareness();
+            int offAwarenessORW = offensiveTeam.getsRW().getOffensiveAwareness();
+            int offAwarenessOLW = offensiveTeam.getsLW().getOffensiveAwareness();
+            int offAwarenessORD = offensiveTeam.getsRD().getOffensiveAwareness();
+            int offAwarenessOLD = offensiveTeam.getsLD().getOffensiveAwareness();
+
+            //defensive team values
+            int skatingDC = defensiveTeam.getsC().getSkating();
+            int skatingDRW = defensiveTeam.getsRW().getSkating();
+            int skatingDLW = defensiveTeam.getsLW().getSkating();
+            int skatingDRD = defensiveTeam.getsRD().getSkating();
+            int skatingDLD = defensiveTeam.getsLD().getSkating();
+            int strengthDC = defensiveTeam.getsC().getStrength();
+            int strengthDRW = defensiveTeam.getsRW().getStrength();
+            int strengthDLW = defensiveTeam.getsLW().getStrength();
+            int strengthDRD = defensiveTeam.getsRD().getStrength();
+            int strnegthDLD = defensiveTeam.getsLD().getStrength();
+            int defAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness());
+            int defAwarenessDRW = defensiveTeam.getsRW().getDefensiveAwareness();
+            int defAwarenessDLW = defensiveTeam.getsLW().getDefensiveAwareness();
+            int defAwarenessDRD = defensiveTeam.getsRD().getDefensiveAwareness();
+            int defAwarenessDLD = defensiveTeam.getsLD().getDefensiveAwareness();
+
+            //individual matchup result calculations
+            int[] matchupResults = new int[4];
+
+            int skatingMatchup1 = (skatingOC-skatingDC);
+            int strengthMatchup1 = (strengthOC-strengthDC)*1.7;
+            int awarenessMatchup1 = (offAwarenessOC-defAwarenessDC)*1.2;
+            matchupResults[0] = skatingMatchup1 + strengthMatchup1 + awarenessMatchup1;
+
+            int skatingMatchup2 = (skatingORW-skatingDLD);
+            int strengthMatchup2 = (strengthORW-strengthDLD)*1.7;
+            int awarenessMatchup2 = (offAwarenessORW-defAwarenessDLD)*1.2;
+            matchupResults[1] = skatingMatchup2 + strengthMatchup2 + awarenessMatchup2;
+
+            int skatingMatchup3 = (skatingOLW-skatingDRD);
+            int strengthMatchup3 = (strengthOLW-strengthDRD)*1.7;
+            int awarenessMatchup3 = (offAwarenessOLW-defAwarenessDRD)*1.2;
+            matchupResults[2] = skatingMatchup3 + strengthMatchup3 + awarenessMatchup3;
+
+            int skatingMatchup4 = (skatingORD-skatingDLW);
+            int strengthMatchup4 = (strengthORD-strengthDLW)*1.7;
+            int awarenessMatchup4 = (offAwarenessORD-defAwarenessDLW)*1.2;
+            matchupResults[3] = skatingMatchup4 + strengthMatchup4 + awarenessMatchup4;
+
+            int skatingMatchup5 = (skatingOLD-skatingDRW);
+            int strengthMatchup5 = (strengthOLD-strengthDRW)*1.7;
+            int awarenessMatchup5 = (offAwarenessOLD-defAwarenessDRW)*1.2;
+            matchupResults[4] = skatingMatchup5 + strengthMatchup5 + awarenessMatchup5
+
+            //determining overall team results
+            int offTeamScore;
+            int defTeamScore;
+            
+            for (int i = 0, i < 5, i++) {
+                if matchupResults[i] > 1 {
+                    offTeamScore++;
+                } else if matchupResults[i] < 1 {
+                    defTeamScore++;
+                }
+            }
+
+            //determining outcome of the calculation
+            if offTeamScore > defTeamScore {
+                //goes to the shot method
+            } else {
+                //goes to the matchupCalculationOne method
+            }
+
+        }
         
     }
 
