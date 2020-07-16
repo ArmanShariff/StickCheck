@@ -29,7 +29,33 @@ public class Team {
         this.userTeam = userTeam;
     }
 
-    //Adds player to the team
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // get methods
+
+    public Player getsC() {
+        return sC;
+    }
+
+    public Player getsLW() {
+        return sLW;
+    }
+
+    public Player getsRW() {
+        return sRW;
+    }
+
+    public Player getsLD() {
+        return sLD;
+    }
+    public Player getsRD() {
+        return sRD;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // class methods
+
     public void addPlayer(Player player) {
         playerRoster.add(player);
     }

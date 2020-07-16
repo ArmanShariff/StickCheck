@@ -11,6 +11,7 @@ public class Player extends Person {
     int strength;
     int offensiveAwareness;
     int defensiveAwareness;
+    int overall;
     
     // constructor
 
@@ -25,7 +26,7 @@ public class Player extends Person {
         this.strength = strength;
         this.offensiveAwareness = offensiveAwareness;
         this.defensiveAwareness = defensiveAwareness;
-
+        overall = faceoff + shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness;
     }
 
     // get methods
@@ -47,11 +48,19 @@ public class Player extends Person {
     }
 
     public int getOffensiveAwareness() {
-        return this.strength;
+        return this.offensiveAwareness;
     }
 
     public int getDefensiveAwareness() {
+        return this.defensiveAwareness;
+    }
+
+    public int getStrength() {
         return this.strength;
+    }
+
+    public int getOverall() { 
+        return this.overall;
     }
 
     // toString() method
