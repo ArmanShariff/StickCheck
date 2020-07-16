@@ -170,22 +170,22 @@ class Simulation {
             int skatingMatchup5 = (skatingOLD-skatingDRW);
             int strengthMatchup5 = (strengthOLD-strengthDRW)*1.7;
             int awarenessMatchup5 = (offAwarenessOLD-defAwarenessDRW)*1.2;
-            matchupResults[4] = skatingMatchup5 + strengthMatchup5 + awarenessMatchup5
+            matchupResults[4] = skatingMatchup5 + strengthMatchup5 + awarenessMatchup5;
 
             //determining overall team results
             int offTeamScore;
             int defTeamScore;
             
-            for (int i = 0, i < 5, i++) {
-                if matchupResults[i] > 1 {
+            for (int i = 0; i < 5; i++) {
+                if (matchupResults[i] > 1) {
                     offTeamScore++;
-                } else if matchupResults[i] < 1 {
+                } else if (matchupResults[i] < 1) {
                     defTeamScore++;
                 }
             }
 
             //determining outcome of the calculation
-            if offTeamScore > defTeamScore {
+            if(offTeamScore > defTeamScore) {
                 //goes to the shot method
             } else {
                 //goes to the matchupCalculationOne method
