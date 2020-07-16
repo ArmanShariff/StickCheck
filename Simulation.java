@@ -75,7 +75,7 @@ class Simulation {
             int strengthDRW = defensiveTeam.getsRW().getStrength();
             int strengthDLW = defensiveTeam.getsLW().getStrength();
             int strengthDRD = defensiveTeam.getsRD().getStrength();
-            int strnegthDLD = defensiveTeam.getsLD().getStrength();
+            int strengthDLD = defensiveTeam.getsLD().getStrength();
             int defensiveAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness();
             int defAwarenessDRW = defensiveTeam.getsRW().getDefensiveAwareness();
             int defAwarenessDLW = defensiveTeam.getsLW().getDefensiveAwareness();
@@ -120,7 +120,7 @@ class Simulation {
             int strengthORW = offensiveTeam.getsRW().getStrength();
             int strengthOLW = offensiveTeam.getsLW().getStrength();
             int strengthORD = offensiveTeam.getsRD().getStrength();
-            int strnegthOLD = offensiveTeam.getsLD().getStrength();
+            int strengthOLD = offensiveTeam.getsLD().getStrength();
             int offAwarenessOC = offensiveTeam.getsC().getOffensiveAwareness();
             int offAwarenessORW = offensiveTeam.getsRW().getOffensiveAwareness();
             int offAwarenessOLW = offensiveTeam.getsLW().getOffensiveAwareness();
@@ -137,7 +137,7 @@ class Simulation {
             int strengthDRW = defensiveTeam.getsRW().getStrength();
             int strengthDLW = defensiveTeam.getsLW().getStrength();
             int strengthDRD = defensiveTeam.getsRD().getStrength();
-            int strnegthDLD = defensiveTeam.getsLD().getStrength();
+            int strengthDLD = defensiveTeam.getsLD().getStrength();
             int defAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness();
             int defAwarenessDRW = defensiveTeam.getsRW().getDefensiveAwareness();
             int defAwarenessDLW = defensiveTeam.getsLW().getDefensiveAwareness();
