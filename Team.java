@@ -25,6 +25,10 @@ public class Team {
     private ArrayList<Goalie> goalieRoster = new ArrayList<Goalie>();
     private ArrayList<Coach> coachRoster = new ArrayList<Coach>();
 
+    //Array of players on the team
+    // >Easier to loop through for future
+    private Player[] arrPlayers = new Player[10]; 
+
     public Team(boolean userTeam) {
         this.userTeam = userTeam;
     }
@@ -81,40 +85,50 @@ public class Team {
     //Method checks whether the player is a center, wing or defense
     //Sets the corresponding players into the starting lineup/bench
     //TO DO: If bench player has a higher overall than the starter, switch them
-    public void setPlayerPosition(Player player) {
+    public void setPlayerPosition(Player player, Player[] arrPlayers) {
         if (player.getPosition().equals("Center")) {
             if (sC == null) {
                 sC = player;
+                arrPlayers[0] = sC;
             } else {
                 bC = player;
+                arrPlayers[5] = bC;
             }
         }
         else if (player.getPosition().equals("Left Wing")) {
             if (sLW == null) {
                 sLW = player;
+                arrPlayers[1] = sLW;
             } else {
                 bLW = player;
+                arrPlayers[6] = bLW;
             }
         }
         else if (player.getPosition().equals("Right Wing")) {
             if (sRW == null) {
                 sRW = player;
+                arrPlayers[2] = sRW;
             } else {
                 bRW = player;
+                arrPlayers[7] = bRW;
             }
         }
         else if (player.getPosition().equals("Right Defence")) {
             if (sRD == null) {
                 sRD = player;
+                arrPlayers[3] = sRD;
             } else {
                 bRD = player;
+                arrPlayers[8] = bRD;
             }
         }
         else if (player.getPosition().equals("Left Defence")) {
             if (sLD == null) {
                 sLD = player;
+                arrPlayers[4] = sLD;
             } else {
                 bLD = player;
+                arrPlayers[9] = bLD;
             }
         }
     }

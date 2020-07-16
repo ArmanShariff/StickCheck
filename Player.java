@@ -26,7 +26,7 @@ public class Player extends Person {
         this.strength = strength;
         this.offensiveAwareness = offensiveAwareness;
         this.defensiveAwareness = defensiveAwareness;
-        overall = faceoff + shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness;
+        overall = (shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness)/6;
     }
 
     // get methods
