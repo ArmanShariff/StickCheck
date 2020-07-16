@@ -75,8 +75,8 @@ class Simulation {
             int strengthDRW = defensiveTeam.getsRW().getStrength();
             int strengthDLW = defensiveTeam.getsLW().getStrength();
             int strengthDRD = defensiveTeam.getsRD().getStrength();
-            int strnegthDLD = defensiveTeam.getsLD().getStrength();
-            int defensiveAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness();
+            int strengthDLD = defensiveTeam.getsLD().getStrength();
+            int defAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness();
             int defAwarenessDRW = defensiveTeam.getsRW().getDefensiveAwareness();
             int defAwarenessDLW = defensiveTeam.getsLW().getDefensiveAwareness();
             int defAwarenessDRD = defensiveTeam.getsRD().getDefensiveAwareness();
@@ -88,9 +88,9 @@ class Simulation {
             int awarenessOverallO = (offAwarenessOC-defAwarenessDC) + (offAwarenessORW-defAwarenessDLD) + (offAwarenessOLW-defAwarenessDRD) + (offAwarenessORD-defAwarenessDLW) + (offAwarenessOLD-defAwarenessDRW);
 
             //changing overall int values into doubles
-            double skatingOverall = Double.parseDouble(skatingOverallO);
-            double strengthOverall = Double.parseDouble(strengthOverallO);
-            double awarenessOverallO = Double.parseDouble(awarenessOverallO);
+            double skatingOverall = Double.valueOf(skatingOverallO);
+            double strengthOverall = Double.valueOf(strengthOverallO);
+            double awarenessOverall = Double.valueOf(awarenessOverallO);
             
             //generate random multiplier for probability of retaining possession
             double max = 1.3;
@@ -98,13 +98,13 @@ class Simulation {
             double randomMultiplier = Math.random() * (max - min + 0.1) + min;
 
             //probability of offensive team retaining possession of the puck
-            int chanceRetainPossession = (skatingOverall*1.7 + strengthOverall + awarenessOverall*1.5)*(randomMultiplier);
+            double chanceRetainPossession = (skatingOverall*2 + strengthOverall + awarenessOverall*1.5)*(randomMultiplier);
 
         }
 
     }
 
-    public static boolean matchupCalculationTwo(int time, offensiveTeam, defensiveTeam) {
+    public static boolean matchupCalculationTwo(int time, Team offensiveTeam, Team defensiveTeam) {
 
         if (time > 1200) {
             return false;
@@ -120,7 +120,7 @@ class Simulation {
             int strengthORW = offensiveTeam.getsRW().getStrength();
             int strengthOLW = offensiveTeam.getsLW().getStrength();
             int strengthORD = offensiveTeam.getsRD().getStrength();
-            int strnegthOLD = offensiveTeam.getsLD().getStrength();
+            int strengthOLD = offensiveTeam.getsLD().getStrength();
             int offAwarenessOC = offensiveTeam.getsC().getOffensiveAwareness();
             int offAwarenessORW = offensiveTeam.getsRW().getOffensiveAwareness();
             int offAwarenessOLW = offensiveTeam.getsLW().getOffensiveAwareness();
@@ -137,7 +137,7 @@ class Simulation {
             int strengthDRW = defensiveTeam.getsRW().getStrength();
             int strengthDLW = defensiveTeam.getsLW().getStrength();
             int strengthDRD = defensiveTeam.getsRD().getStrength();
-            int strnegthDLD = defensiveTeam.getsLD().getStrength();
+            int strengthDLD = defensiveTeam.getsLD().getStrength();
             int defAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness();
             int defAwarenessDRW = defensiveTeam.getsRW().getDefensiveAwareness();
             int defAwarenessDLW = defensiveTeam.getsLW().getDefensiveAwareness();
