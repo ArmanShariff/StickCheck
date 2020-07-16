@@ -38,11 +38,11 @@ class Simulation {
 
         
 
-        return matchupA();
+        return matchupCalculationOne();
 
     }
 
-    public static boolean matchupA(int time, offensiveTeam, defensiveTeam) {
+    public static boolean matchupCalculationOne(int time, offensiveTeam, defensiveTeam) {
 
         if (time > 1200) {
             return false;
@@ -99,12 +99,14 @@ class Simulation {
 
             //probability of offensive team retaining possession of the puck
             int chanceRetainPossession = (skatingOverall+strengthOverall+awarenessOverall)*(randomMultiplier);
-            
-
 
         }
 
+    }
 
+    public static boolean matchupCalculationTwo(int time, offensiveTeam, defensiveTeam) {
+
+        
     }
 
 
