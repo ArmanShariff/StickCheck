@@ -90,7 +90,7 @@ class Simulation {
             //changing overall int values into doubles
             double skatingOverall = Double.parseDouble(skatingOverallO);
             double strengthOverall = Double.parseDouble(strengthOverallO);
-            double awarenessOverallO = Double.parseDouble(awarenessOverallO);
+            double awarenessOverall = Double.parseDouble(awarenessOverallO);
             
             //generate random multiplier for probability of retaining possession
             double max = 1.3;
