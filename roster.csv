@@ -33,7 +33,7 @@ Brad,Marchand,Boston,Player,Left Wing,63,32,Canada,80,92,89,91,90,94,81,0,0,0,0,
 Patrice,Bergeron,Boston,Player,Center,37,34,Canada,98,87,92,88,89,93,89,0,0,0,0,0,90,0,0,0
 David,Pastrnak,Boston,Player,Right Wing,88,24,Czech Republic,79,95,88,93,87,95,80,0,0,0,0,0,90,0,0,0
 David,Krejci ,Boston,Player,Center,46,34,Czech Republic,92,88,88,85,86,90,80,0,0,0,0,0,86,0,0,0
-Jake,DeBrusk,Boston,Player,Right Wing,74,23,Canada,69,89,84,87,83,88,78,0,0,0,0,0,85,0,0,0
+Jake,DeBrusk,Boston,Player,Left Wing,74,23,Canada,69,89,84,87,83,88,78,0,0,0,0,0,85,0,0,0
 Ondrej,Kase,Boston,Player,Right Wing,28,24,Czech Republic,62,85,77,84,78,80,72,0,0,0,0,0,79,0,0,0
 Morgan,Rielly,Toronto,Player,Left Defence,44,26,Canada,42,86,90,91,88,88,88,0,0,0,0,0,89,0,0,0
 Tyson,Barrie,Toronto,Player,Right Defence,94,28,Canada,39,85,89,85,86,90,83,0,0,0,0,0,86,0,0,0
@@ -46,14 +46,14 @@ Victor,Mete,Montreal,Player,Left Defence,53,22,Canada,34,76,84,82,76,72,79,0,0,0
 Duncan,Keith,Chicago,Player,Left Defence,2,36,Canada,37,80,87,83,88,80,87,0,0,0,0,0,84,0,0,0
 Adam,Boqvist,Chicago,Player,Right Defence,27,19,Sweden,31,76,84,80,77,73,84,0,0,0,0,0,79,0,0,0
 Calvin,De Haan,Chicago,Player,Left Defence,44,29,Canada,32,78,83,82,84,70,84,0,0,0,0,0,80,0,0,0
-Olli,Maata,Chicago,Player,Left Defence,6,25,Finland,34,81,80,81,74,82,77,0,0,0,0,0,79,0,0,0
+Olli,Maata,Chicago,Player,Right Defence,6,25,Finland,34,81,80,81,74,82,77,0,0,0,0,0,79,0,0,0
 Jacob,Trouba,New York,Player,Right Defence,8,26,United States,35,85,88,84,82,82,87,0,0,0,0,0,85,0,0,0
 Brendan,Smith,New York,Player,Left Defence,42,31,Canada,33,78,86,80,80,79,82,0,0,0,0,0,81,0,0,0
 Marc,Staal,New York,Player,Left Defence,18,33,Canada,34,77,86,78,79,78,85,0,0,0,0,0,81,0,0,0
 Adam,Fox,New York,Player,Right Defence,23,22,United States,30,75,85,79,81,77,84,0,0,0,0,0,80,0,0,0
 Trevor,Daley,Detroit,Player,Left Defence,83,36,Canada,31,82,83,81,76,80,80,0,0,0,0,0,80,0,0,0
 Filip,Hronek,Detroit,Player,Right Defence,17,22,Czech Republic,28,75,82,79,78,74,81,0,0,0,0,0,78,0,0,0
-Madison,Bowey,Detroit,Player,Left Defence,74,25,Canada,29,72,83,78,80,75,81,0,0,0,0,0,78,0,0,0
+Madison,Bowey,Detroit,Player,Right Defence,74,25,Canada,29,72,83,78,80,75,81,0,0,0,0,0,78,0,0,0
 Jonathan,Ericsson,Detroit,Player,Left Defence,52,36,Sweden,25,74,85,78,79,77,78,0,0,0,0,0,79,0,0,0
 Torey,Krug,Boston,Player,Right Defence,47,29,United States,40,90,89,87,83,88,85,0,0,0,0,0,87,0,0,0
 Zdeno,Chara,Boston,Player,Left Defence,33,43,Slovakia,37,82,81,76,94,78,87,0,0,0,0,0,83,0,0,0
