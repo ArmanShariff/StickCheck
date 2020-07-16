@@ -24,10 +24,10 @@ public class Team {
     private ArrayList<Player> playerRoster = new ArrayList<Player>();
     private ArrayList<Goalie> goalieRoster = new ArrayList<Goalie>();
     private ArrayList<Coach> coachRoster = new ArrayList<Coach>();
-
-    //Array of players on the team
-    // >Easier to loop through for future
-    private Player[] arrPlayers = new Player[10]; 
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    //Constructor
 
     public Team(boolean userTeam) {
         this.userTeam = userTeam;

@@ -173,8 +173,8 @@ class Simulation {
             matchupResults[4] = skatingMatchup5 + strengthMatchup5 + awarenessMatchup5;
 
             //determining overall team results
-            int offTeamScore;
-            int defTeamScore;
+            int offTeamScore = 0;
+            int defTeamScore = 0;
             
             for (int i = 0; i < 5; i++) {
                 if (matchupResults[i] > 1) {
