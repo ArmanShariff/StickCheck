@@ -42,8 +42,9 @@ class Simulation {
 
     public static int getRandom(int min, int max) {
 
+        int random_int = (int)(Math.random() * (max - min + 1) + min);
 
-        return 
+        return random_int;
     }
 
 
