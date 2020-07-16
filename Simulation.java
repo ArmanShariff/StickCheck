@@ -16,7 +16,9 @@ class Simulation {
 
     }
 
-    public static Boolean faceoffCalculation(int time, Team teamA, Team teamB) {
+    public static boolean faceoffCalculation(int time, Team teamA, Team teamB) {
+
+        // check if period is over
 
         if (time > 1200) {
 
@@ -26,19 +28,41 @@ class Simulation {
 
         else {
 
+            // get each teams centers faceoff stats
             int faceoffA = teamA.getsC().getFaceoff();
             int faceoffB = teamB.getsC().getFaceoff();
 
             // chance of team A winning the faceoff:
             int chance = 50 + (faceoffA - faceoffB);
+            int random = getRandom(1,100);
 
-            getRandom(1,100);
+            if (random <= chance) {
+
+                // team A is on offence
+                return matchupCalculationOne(time + 2, teamA, teamB);
+
+            }
+            else {
+
+                // team B is on offence
+                return matchupCalculationOne(time + 2, teamB, teamA);
+
+            }
 
         }
 
-        
+    }
 
-        return matchupCalculationOne();
+    public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
+        // this is still a WIP
+    }
+
+    public static boolean rebound(int time, Team offensiveTeam, Team defensiveTeam) {
+        
+        int Oteam = 0;
+        int Dteam = 0;
+
+        return matchupCalculationOne(time, offensiveTeam, defensiveTeam);
 
     }
 
@@ -192,6 +216,39 @@ class Simulation {
             }
 
         }
+        
+    }
+
+    public static int reboundCalculation (int Oteam, int Dteam, Player oPlayer, Player dPlayer) {
+        
+        if (oPlayer.getStrength() > dPlayer.getStrength()) {
+            Oteam = Oteam + 1;
+        }
+        else {
+            Dteam = Dteam + 1;
+        }
+
+        if (oPlayer.getSkating() > dPlayer.getSkating()) {
+            Oteam = Oteam + 1;
+        }
+        else {
+            Dteam = Dteam + 1;
+        }
+
+        if (oPlayer.getOffensiveAwareness() > dPlayer.getOffensiveAwareness()) {
+            Oteam = Oteam + 1;
+        }
+        else {
+            Dteam = Dteam + 1;
+        }
+
+        if (oPlayer.getDefensiveAwareness() > dPlayer.getDefensiveAwareness()) {
+            Oteam = Oteam + 1;
+        }
+        else {
+            Dteam = Dteam + 1;
+        }
+
         
     }
 
