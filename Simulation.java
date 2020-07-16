@@ -83,9 +83,9 @@ class Simulation {
             int defAwarenessDLD = defensiveTeam.getsLD().getDefensiveAwareness();
 
             //matchup calculations for offensive team
-            int skatingOverallO = (skatingOC-skatingDC)*1.7 + (skatingORW-skatingDLD)*1.7 + (skatingOLW-skatingDRD)*1.7 + (skatingORD-skatingDLW)*1.7  + (skatingOLD-skatingDRW)*1.7;
+            int skatingOverallO = (skatingOC-skatingDC) + (skatingORW-skatingDLD) + (skatingOLW-skatingDRD) + (skatingORD-skatingDLW) + (skatingOLD-skatingDRW);
             int strengthOverallO = (strengthOC-strengthDC) + (strengthORW-strengthDLD) + (strengthOLW-strengthDRD) + (strengthORD-strengthDLW) + (strengthOLD-strengthDRW);
-            int awarenessOverallO = (offAwarenessOC-defAwarenessDC)*1.5 + (offAwarenessORW-defAwarenessDLD)*1.5 + (offAwarenessOLW-defAwarenessDRD)*1.5 + (offAwarenessORD-defAwarenessDLW)*1.5 + (offAwarenessOLD-defAwarenessDRW)*1.5;
+            int awarenessOverallO = (offAwarenessOC-defAwarenessDC) + (offAwarenessORW-defAwarenessDLD) + (offAwarenessOLW-defAwarenessDRD) + (offAwarenessORD-defAwarenessDLW) + (offAwarenessOLD-defAwarenessDRW);
 
             //changing overall int values into doubles
             double skatingOverall = Double.parseDouble(skatingOverallO);
@@ -98,7 +98,7 @@ class Simulation {
             double randomMultiplier = Math.random() * (max - min + 0.1) + min;
 
             //probability of offensive team retaining possession of the puck
-            int chanceRetainPossession = (skatingOverall+strengthOverall+awarenessOverall)*(randomMultiplier);
+            int chanceRetainPossession = (skatingOverall*1.7 + strengthOverall + awarenessOverall*1.5)*(randomMultiplier);
 
         }
 
@@ -148,28 +148,28 @@ class Simulation {
             int[] matchupResults = new int[4];
 
             int skatingMatchup1 = (skatingOC-skatingDC);
-            int strengthMatchup1 = (strengthOC-strengthDC)*1.7;
-            int awarenessMatchup1 = (offAwarenessOC-defAwarenessDC)*1.2;
+            int strengthMatchup1 = (strengthOC-strengthDC)*2;
+            int awarenessMatchup1 = (offAwarenessOC-defAwarenessDC);
             matchupResults[0] = skatingMatchup1 + strengthMatchup1 + awarenessMatchup1;
 
             int skatingMatchup2 = (skatingORW-skatingDLD);
-            int strengthMatchup2 = (strengthORW-strengthDLD)*1.7;
-            int awarenessMatchup2 = (offAwarenessORW-defAwarenessDLD)*1.2;
+            int strengthMatchup2 = (strengthORW-strengthDLD)*2;
+            int awarenessMatchup2 = (offAwarenessORW-defAwarenessDLD);
             matchupResults[1] = skatingMatchup2 + strengthMatchup2 + awarenessMatchup2;
 
             int skatingMatchup3 = (skatingOLW-skatingDRD);
-            int strengthMatchup3 = (strengthOLW-strengthDRD)*1.7;
-            int awarenessMatchup3 = (offAwarenessOLW-defAwarenessDRD)*1.2;
+            int strengthMatchup3 = (strengthOLW-strengthDRD)*2;
+            int awarenessMatchup3 = (offAwarenessOLW-defAwarenessDRD);
             matchupResults[2] = skatingMatchup3 + strengthMatchup3 + awarenessMatchup3;
 
             int skatingMatchup4 = (skatingORD-skatingDLW);
-            int strengthMatchup4 = (strengthORD-strengthDLW)*1.7;
-            int awarenessMatchup4 = (offAwarenessORD-defAwarenessDLW)*1.2;
+            int strengthMatchup4 = (strengthORD-strengthDLW)*2;
+            int awarenessMatchup4 = (offAwarenessORD-defAwarenessDLW);
             matchupResults[3] = skatingMatchup4 + strengthMatchup4 + awarenessMatchup4;
 
             int skatingMatchup5 = (skatingOLD-skatingDRW);
-            int strengthMatchup5 = (strengthOLD-strengthDRW)*1.7;
-            int awarenessMatchup5 = (offAwarenessOLD-defAwarenessDRW)*1.2;
+            int strengthMatchup5 = (strengthOLD-strengthDRW)*2;
+            int awarenessMatchup5 = (offAwarenessOLD-defAwarenessDRW);
             matchupResults[4] = skatingMatchup5 + strengthMatchup5 + awarenessMatchup5;
 
             //determining overall team results
