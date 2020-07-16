@@ -14,6 +14,12 @@ class Simulation {
         this.teamA = teamA;
         this.teamB = teamB;
 
+        for (int i = 0; i < 3; i++) {
+
+            faceoffCalculation(0, teamA, teamB);
+
+        }
+
     }
 
     public static boolean faceoffCalculation(int time, Team teamA, Team teamB) {
@@ -50,19 +56,6 @@ class Simulation {
             }
 
         }
-
-    }
-
-    public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
-        // this is still a WIP
-    }
-
-    public static boolean rebound(int time, Team offensiveTeam, Team defensiveTeam) {
-        
-        int Oteam = 0;
-        int Dteam = 0;
-
-        return matchupCalculationOne(time, offensiveTeam, defensiveTeam);
 
     }
 
@@ -126,6 +119,10 @@ class Simulation {
 
         }
 
+    }
+
+    public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
+        // this is still a WIP
     }
 
     public static boolean matchupCalculationTwo(int time, Team offensiveTeam, Team defensiveTeam) {
@@ -219,6 +216,15 @@ class Simulation {
         
     }
 
+    public static boolean rebound(int time, Team offensiveTeam, Team defensiveTeam) {
+        
+        int Oteam = 0;
+        int Dteam = 0;
+
+        return matchupCalculationOne(time, offensiveTeam, defensiveTeam);
+
+    }
+
     public static int reboundCalculation (int Oteam, int Dteam, Player oPlayer, Player dPlayer) {
         
         if (oPlayer.getStrength() > dPlayer.getStrength()) {
@@ -251,7 +257,6 @@ class Simulation {
 
         
     }
-
 
     public static int getRandom(int min, int max) {
 
