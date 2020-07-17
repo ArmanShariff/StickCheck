@@ -43,14 +43,11 @@ class Simulation {
 
         // check if period is over
         if (time > 1200) {
-
             System.out.println("-- Period is over --");
             return false;
-
         }
 
         else {
-
             // get each teams centers faceoff stats
             int faceoffA = teamA.getsC().getFaceoff();
             int faceoffB = teamB.getsC().getFaceoff();
@@ -60,18 +57,15 @@ class Simulation {
             int random = getRandom(1,100);
 
             if (random <= chance) {
-
                 // team A is on offence
                 System.out.println(teamA.getsC().getFirstName() + " " + teamA.getsC().getLastName() + " won the faceoff!");
                 return matchupCalculationOne(time + 2, teamA, teamB);
-
             }
+            
             else {
-
                 // team B is on offence
                 System.out.println(teamB.getsC().getFirstName() + " " + teamB.getsC().getLastName() + " won the faceoff!");
                 return matchupCalculationOne(time + 2, teamB, teamA);
-
             }
 
         }
@@ -145,8 +139,71 @@ class Simulation {
     }
 
     public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
-        // this is still a WIP
+        
+        Player shooter = shooterCalculation(offensiveTeam);
+
+        // calculation to determine if its a goal
+
+        
+
+        boolean isGoal = false;
+
+        if (isGoal == true) {
+            
+            return true;
+
+        }
+
+        else {
+
+            // calculation to see if rebound or stopage in play
+            boolean isRebound = false;
+
+            if (isRebound == false) {
+                return faceoffCalculation(time, offensiveTeam, defensiveTeam);
+            }
+            else {
+                return matchupCalculationTwo(time, offensiveTeam, defensiveTeam);
+            }
+
+        }
+
     }
+
+    public static Player shooterCalculation(Team offensiveTeam) {
+        // calculation to determine shooter
+
+        // sum of all offensive awarness stats
+        int sum;
+        for (int i = 0; i < 5; i++) {
+            sum = team.getOnIce(i).getOffensiveAwareness;    // method needs to be writen
+        }
+
+        // calculates the chance that a player will take the shot
+        // stores the chance in the array 'chance'
+        double[] chance = new double[4];
+        double percent = 100/sum;
+        for (int i = 0; i < 5; i++) {
+            chance[i] = percent * team.getOnIce(i).getOffensiveAwareness;
+        }
+
+        Player shooter;                                     // stores the player taking the shot
+        double random = getRandomDouble(1.0,100.0);         // gets a random number
+        double temp;
+
+        for (int i = 0; i < 5; i++) {
+            temp = temp + chance[i];
+
+            if (random <= temp) {
+                shooter = team.getOnIce(i);
+                break;
+            }
+        }
+
+        return shooter;
+    }
+
+
 
     public static boolean matchupCalculationTwo(int time, Team offensiveTeam, Team defensiveTeam) {
 
@@ -243,59 +300,18 @@ class Simulation {
         
     }
 
-    public static boolean rebound(int time, Team offensiveTeam, Team defensiveTeam) {
-        
-        // check if period is over
-        if (time > 1200) {
-
-            System.out.println("-- Period is over --");
-            return false;
-
-        }
-        else {
-
-        }
-
-    }
-
-    public static int reboundCalculation (int Oteam, int Dteam, Player oPlayer, Player dPlayer) {
-
-        if (oPlayer.getStrength() > dPlayer.getStrength()) {
-            Oteam = Oteam + 1;
-        }
-        else {
-            Dteam = Dteam + 1;
-        }
-
-        if (oPlayer.getSkating() > dPlayer.getSkating()) {
-            Oteam = Oteam + 1;
-        }
-        else {
-            Dteam = Dteam + 1;
-        }
-
-        if (oPlayer.getOffensiveAwareness() > dPlayer.getOffensiveAwareness()) {
-            Oteam = Oteam + 1;
-        }
-        else {
-            Dteam = Dteam + 1;
-        }
-
-        if (oPlayer.getDefensiveAwareness() > dPlayer.getDefensiveAwareness()) {
-            Oteam = Oteam + 1;
-        }
-        else {
-            Dteam = Dteam + 1;
-        }
-
-        
-    }
-
     public static int getRandom(int min, int max) {
 
         int random_int = (int)(Math.random() * (max - min + 1) + min);
 
         return random_int;
+    }
+
+    public static double getRandomDouble(double min, double max) {
+
+        double random_double = (Math.random() * ((max - min) +1)) + min;
+
+        return random_double;
     }
 
 }
