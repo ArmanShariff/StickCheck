@@ -14,14 +14,37 @@ class Simulation {
         this.teamA = teamA;
         this.teamB = teamB;
 
+        for (int i = 0; i < 3; i++) {
+
+            period(0, teamA, teamB);
+
+        }
+
+    }
+    public static boolean period(int time, Team teamA, Team teamB) {
+
+        // check if period is over
+        if (time > 1200) {
+
+            System.out.println("-- Period is over --");
+            return false;
+
+        }
+        // otherwise move on to faceoff.
+        else {
+
+            return faceoffCalculation(time, teamA, teamB);
+
+        }
+
     }
 
     public static boolean faceoffCalculation(int time, Team teamA, Team teamB) {
 
         // check if period is over
-
         if (time > 1200) {
 
+            System.out.println("-- Period is over --");
             return false;
 
         }
@@ -39,12 +62,14 @@ class Simulation {
             if (random <= chance) {
 
                 // team A is on offence
+                System.out.println(teamA.getsC().getFirstName() + " " + teamA.getsC().getLastName() + " won the faceoff!");
                 return matchupCalculationOne(time + 2, teamA, teamB);
 
             }
             else {
 
                 // team B is on offence
+                System.out.println(teamB.getsC().getFirstName() + " " + teamB.getsC().getLastName() + " won the faceoff!");
                 return matchupCalculationOne(time + 2, teamB, teamA);
 
             }
@@ -53,23 +78,14 @@ class Simulation {
 
     }
 
-    public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
-        // this is still a WIP
-    }
-
-    public static boolean rebound(int time, Team offensiveTeam, Team defensiveTeam) {
-        
-        int Oteam = 0;
-        int Dteam = 0;
-
-        return matchupCalculationOne(time, offensiveTeam, defensiveTeam);
-
-    }
-
     public static boolean matchupCalculationOne(int time, Team offensiveTeam, Team defensiveTeam) {
 
+        // check if period is over
         if (time > 1200) {
+
+            System.out.println("-- Period is over --");
             return false;
+
         } else {
 
             //offensive team values
@@ -128,10 +144,18 @@ class Simulation {
 
     }
 
+    public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
+        // this is still a WIP
+    }
+
     public static boolean matchupCalculationTwo(int time, Team offensiveTeam, Team defensiveTeam) {
 
+        // check if period is over
         if (time > 1200) {
+
+            System.out.println("-- Period is over --");
             return false;
+
         } else {
 
             //offensive team values
@@ -219,8 +243,23 @@ class Simulation {
         
     }
 
-    public static int reboundCalculation (int Oteam, int Dteam, Player oPlayer, Player dPlayer) {
+    public static boolean rebound(int time, Team offensiveTeam, Team defensiveTeam) {
         
+        // check if period is over
+        if (time > 1200) {
+
+            System.out.println("-- Period is over --");
+            return false;
+
+        }
+        else {
+
+        }
+
+    }
+
+    public static int reboundCalculation (int Oteam, int Dteam, Player oPlayer, Player dPlayer) {
+
         if (oPlayer.getStrength() > dPlayer.getStrength()) {
             Oteam = Oteam + 1;
         }
@@ -252,17 +291,11 @@ class Simulation {
         
     }
 
-
     public static int getRandom(int min, int max) {
 
         int random_int = (int)(Math.random() * (max - min + 1) + min);
 
         return random_int;
     }
-
-
-
-
-
 
 }
