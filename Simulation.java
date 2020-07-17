@@ -140,37 +140,33 @@ class Simulation {
 
     public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
         
-        Player shooter = shooterCalculation(offensiveTeam);
+        Player shooter = determineShooter(offensiveTeam);
+        Goalie goalie = defensiveTeam.getsG();
 
         // calculation to determine if its a goal
-
-        
-
-        boolean isGoal = false;
+        boolean isGoal = isGoal(shooter, goalie);
 
         if (isGoal == true) {
-            
             return true;
-
         }
-
         else {
-
             // calculation to see if rebound or stopage in play
-            boolean isRebound = false;
+            boolean isRebound = isRebound(goalie);
 
             if (isRebound == false) {
-                return faceoffCalculation(time, offensiveTeam, defensiveTeam);
+                System.out.println("What a save!");
+                return faceoffCalculation(time + 2, offensiveTeam, defensiveTeam);
             }
             else {
-                return matchupCalculationTwo(time, offensiveTeam, defensiveTeam);
+                System.out.println("Rebound opportunity,");
+                return matchupCalculationTwo(time + 2, offensiveTeam, defensiveTeam);
             }
 
         }
 
     }
 
-    public static Player shooterCalculation(Team offensiveTeam) {
+    public static Player determineShooter(Team offensiveTeam) {
         // calculation to determine shooter
 
         // sum of all offensive awarness stats
@@ -201,6 +197,47 @@ class Simulation {
         }
 
         return shooter;
+    }
+
+    public static boolean isGoal(Player shooter, Goalie goalie) {
+
+        // % chance of a goal = 15 + (Shooting - (Reflexes + Agility)/2)
+        int chance = 10 + (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
+        int random_int = getRandom(1, 100);
+
+        if (chance <= 0) {
+            // no chance of a goal
+            return false;
+        }
+        else if (random_int <= chance) {
+            System.out.println(shooter.getLastName() + "shoots!.. He scores!");
+            return true;
+        }
+        else {
+            // no goal
+            System.out.println(shooter.getLastName() + "shoots!");
+            return false;
+        }
+
+    }
+
+    public static boolean isRebound(Goalie goalie) {
+
+        // %chance of rebound = 120-(Flexibility+Rebound control)/2
+
+        int chance = 120 - (goalie.getFlexibility() + goalie.getReboundControl())/2;
+        int random_int = getRandom(1, 100);
+
+        if (chance <= random_int) {
+            // it is a rebound
+            return true;
+        }
+        else {
+            // no rebound
+            return false;
+        }
+
+
     }
 
 
