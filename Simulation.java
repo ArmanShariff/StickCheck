@@ -172,7 +172,7 @@ class Simulation {
         // sum of all offensive awarness stats
         int sum;
         for (int i = 0; i < 5; i++) {
-            sum = team.getOnIce(i).getOffensiveAwareness;    // method needs to be writen
+            sum = offensiveTeam.getOnIce(i).getOffensiveAwareness;    // method needs to be writen
         }
 
         // calculates the chance that a player will take the shot
@@ -180,7 +180,7 @@ class Simulation {
         double[] chance = new double[4];
         double percent = 100/sum;
         for (int i = 0; i < 5; i++) {
-            chance[i] = percent * team.getOnIce(i).getOffensiveAwareness;
+            chance[i] = percent * offensiveTeam.getOnIce(i).getOffensiveAwareness;
         }
 
         Player shooter;                                     // stores the player taking the shot
@@ -191,7 +191,7 @@ class Simulation {
             temp = temp + chance[i];
 
             if (random <= temp) {
-                shooter = team.getOnIce(i);
+                shooter = offensiveTeam.getOnIce(i);
                 break;
             }
         }
@@ -239,8 +239,6 @@ class Simulation {
 
 
     }
-
-
 
     public static boolean matchupCalculationTwo(int time, Team offensiveTeam, Team defensiveTeam) {
 

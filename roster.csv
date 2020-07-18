@@ -1,79 +1,79 @@
-First Name,Last Name,Current Team,Player Type,Position,Number,Age,Country,Faceoff,Shooting,Stamina,Skating,Strength,Off. Awareness,Def. Awareness,Reflexes,Agility,Flexibility,Reb. Control,Puck Control,Overall,Aptitude,Specialty,Rating
-Auston,Matthews,Toronto,Player,Center,34,22,United States,90,95,88,92,86,96,80,0,0,0,0,0,90,0,0,0
-Mitch,Marner,Toronto,Player,Right Wing,16,23,Canada,78,92,86,93,84,93,78,0,0,0,0,0,88,0,0,0
-William,Nylander,Toronto,Player,Left Wing,88,24,Sweden,80,90,87,89,84,90,77,0,0,0,0,0,86,0,0,0
-John,Tavares,Toronto,Player,Center,91,29,Canada,93,92,91,90,90,93,81,0,0,0,0,0,90,0,0,0
-Zach,Hyman,Toronto,Player,Left Wing,11,28,Canada,75,82,81,85,94,79,78,0,0,0,0,0,83,0,0,0
-Kasperi,Kapanen,Toronto,Player,Right Wing,24,23,Finland,72,84,80,95,81,83,73,0,0,0,0,0,83,0,0,0
-Max,Domi,Montreal,Player,Center,13,25,Canada,88,91,85,91,90,92,79,0,0,0,0,0,88,0,0,0
-Jonathan,Drouin,Montreal,Player,Left Wing,92,25,Canada,84,85,84,89,85,85,77,0,0,0,0,0,84,0,0,0
-Brendan,Gallagher,Montreal,Player,Right Wing,11,28,Canada,73,92,86,89,87,91,76,0,0,0,0,0,87,0,0,0
-Tomas,Tatar,Montreal,Player,Left Wing,90,29,Slovakia,76,92,84,86,83,92,77,0,0,0,0,0,86,0,0,0
-Nick,Suzuki,Montreal,Player,Center,14,20,Canada,82,82,80,82,75,79,74,0,0,0,0,0,79,0,0,0
-Arturri,Lehkonen,Montreal,Player,Right Wing,62,25,Finland,71,83,81,82,80,84,77,0,0,0,0,0,81,0,0,0
-Jonathan,Toews,Chicago,Player,Center,19,32,Canada,93,90,85,90,86,91,86,0,0,0,0,0,88,0,0,0
-Patrick,Kane,Chicago,Player,Right Wing,88,31,United States,80,95,89,92,86,95,80,0,0,0,0,0,90,0,0,0
-Brandon,Saad,Chicago,Player,Left Wing,20,27,United States,75,85,81,85,81,85,77,0,0,0,0,0,82,0,0,0
-Alex,DeBrincat,Chicago,Player,Right Wing,12,22,United States,78,89,84,87,88,90,78,0,0,0,0,0,86,0,0,0
-Dominik,Kubalik,Chicago,Player,Left Wing,8,24,Czech Republic,75,86,83,85,86,86,72,0,0,0,0,0,83,0,0,0
-Dylan,Strome,Chicago,Player,Center,17,23,Canada,84,86,80,88,81,89,79,0,0,0,0,0,84,0,0,0
-Artemi,Panarin,New York,Player,Left Wing,10,28,Russia,80,95,91,93,85,98,79,0,0,0,0,0,90,0,0,0
-Mika,Zibanejad,New York,Player,Center,93,27,Sweden,91,92,88,91,84,92,81,0,0,0,0,0,88,0,0,0
-Kaapo,Kakko,New York,Player,Right Wing,24,19,Finland,85,80,83,87,82,85,75,0,0,0,0,0,82,0,0,0
-Chris,Kreider,New York,Player,Left Wing,20,29,United States,83,82,85,87,84,88,76,0,0,0,0,0,84,0,0,0
-Jesper,Fast,New York,Player,Center,17,28,Sweden,79,79,87,88,84,81,79,0,0,0,0,0,83,0,0,0
-Pavel,Buchnevich,New York,Player,Right Wing,89,25,Russia,77,81,85,84,86,83,74,0,0,0,0,0,82,0,0,0
-Dylan,Larkin,Detroit,Player,Center,71,23,United States,87,90,85,90,87,84,80,0,0,0,0,0,86,0,0,0
-Anthony,Mantha,Detroit,Player,Right Wing,39,25,Canada,74,85,87,86,91,85,79,0,0,0,0,0,86,0,0,0
-Tyler,Bertuzzi,Detroit,Player,Left Wing,59,25,Canada,68,82,79,80,90,78,76,0,0,0,0,0,81,0,0,0
-Filip,Zadina,Detroit,Player,Left Wing,11,20,Czech Republic,65,80,78,79,75,81,70,0,0,0,0,0,77,0,0,0
-Sam,Ganger,Detroit,Player,Right Wing,89,30,Canada,71,81,80,80,80,76,77,0,0,0,0,0,79,0,0,0
-Valtteri,Filppula,Detroit,Player,Center,51,36,Finland,84,78,79,76,81,77,81,0,0,0,0,0,79,0,0,0
-Brad,Marchand,Boston,Player,Left Wing,63,32,Canada,80,92,89,91,90,94,81,0,0,0,0,0,90,0,0,0
-Patrice,Bergeron,Boston,Player,Center,37,34,Canada,98,87,92,88,89,93,89,0,0,0,0,0,90,0,0,0
-David,Pastrnak,Boston,Player,Right Wing,88,24,Czech Republic,79,95,88,93,87,95,80,0,0,0,0,0,90,0,0,0
-David,Krejci ,Boston,Player,Center,46,34,Czech Republic,92,88,88,85,86,90,80,0,0,0,0,0,86,0,0,0
-Jake,DeBrusk,Boston,Player,Left Wing,74,23,Canada,69,89,84,87,83,88,78,0,0,0,0,0,85,0,0,0
-Ondrej,Kase,Boston,Player,Right Wing,28,24,Czech Republic,62,85,77,84,78,80,72,0,0,0,0,0,79,0,0,0
-Morgan,Rielly,Toronto,Player,Left Defence,44,26,Canada,42,86,90,91,88,88,88,0,0,0,0,0,89,0,0,0
-Tyson,Barrie,Toronto,Player,Right Defence,94,28,Canada,39,85,89,85,86,90,83,0,0,0,0,0,86,0,0,0
-Rasmus,Sandin,Toronto,Player,Left Defence,38,20,Sweden,34,82,79,78,76,80,79,0,0,0,0,0,79,0,0,0
-Jake,Muzzin,Toronto,Player,Right Defence,8,31,Canada,35,78,88,87,90,81,90,0,0,0,0,0,86,0,0,0
-Ben,Chiarot,Montreal,Player,Left Defence,8,29,Canada,30,74,85,80,86,73,88,0,0,0,0,0,81,0,0,0
-Shea,Weber,Montreal,Player,Right Defence,6,34,Canada,38,86,89,84,93,85,91,0,0,0,0,0,88,0,0,0
-Jeff,Petry,Montreal,Player,Right Defence,26,32,United States,35,84,86,85,84,86,84,0,0,0,0,0,85,0,0,0
-Victor,Mete,Montreal,Player,Left Defence,53,22,Canada,34,76,84,82,76,72,79,0,0,0,0,0,78,0,0,0
-Duncan,Keith,Chicago,Player,Left Defence,2,36,Canada,37,80,87,83,88,80,87,0,0,0,0,0,84,0,0,0
-Adam,Boqvist,Chicago,Player,Right Defence,27,19,Sweden,31,76,84,80,77,73,84,0,0,0,0,0,79,0,0,0
-Calvin,De Haan,Chicago,Player,Left Defence,44,29,Canada,32,78,83,82,84,70,84,0,0,0,0,0,80,0,0,0
-Olli,Maata,Chicago,Player,Right Defence,6,25,Finland,34,81,80,81,74,82,77,0,0,0,0,0,79,0,0,0
-Jacob,Trouba,New York,Player,Right Defence,8,26,United States,35,85,88,84,82,82,87,0,0,0,0,0,85,0,0,0
-Brendan,Smith,New York,Player,Left Defence,42,31,Canada,33,78,86,80,80,79,82,0,0,0,0,0,81,0,0,0
-Marc,Staal,New York,Player,Left Defence,18,33,Canada,34,77,86,78,79,78,85,0,0,0,0,0,81,0,0,0
-Adam,Fox,New York,Player,Right Defence,23,22,United States,30,75,85,79,81,77,84,0,0,0,0,0,80,0,0,0
-Trevor,Daley,Detroit,Player,Left Defence,83,36,Canada,31,82,83,81,76,80,80,0,0,0,0,0,80,0,0,0
-Filip,Hronek,Detroit,Player,Right Defence,17,22,Czech Republic,28,75,82,79,78,74,81,0,0,0,0,0,78,0,0,0
-Madison,Bowey,Detroit,Player,Right Defence,74,25,Canada,29,72,83,78,80,75,81,0,0,0,0,0,78,0,0,0
-Jonathan,Ericsson,Detroit,Player,Left Defence,52,36,Sweden,25,74,85,78,79,77,78,0,0,0,0,0,79,0,0,0
-Torey,Krug,Boston,Player,Right Defence,47,29,United States,40,90,89,87,83,88,85,0,0,0,0,0,87,0,0,0
-Zdeno,Chara,Boston,Player,Left Defence,33,43,Slovakia,37,82,81,76,94,78,87,0,0,0,0,0,83,0,0,0
-Charlie,McAvoy,Boston,Player,Right Defence,73,22,United States,35,88,87,86,86,83,87,0,0,0,0,0,86,0,0,0
-Matt,Grzelcyk,Boston,Player,Left Defence,48,26,United States,36,76,86,82,90,76,86,0,0,0,0,0,83,0,0,0
-Frederik,Andersen,Toronto,Goalie,Goaltender,31,30,Denmark,0,0,0,0,0,0,0,92,93,93,90,91,92,0,0,0
-Jack,Campbell,Toronto,Goalie,Goaltender,36,28,United States,0,0,0,0,0,0,0,88,85,87,84,82,85,0,0,0
-Carey,Price,Montreal,Goalie,Goaltender,31,32,Canada,0,0,0,0,0,0,0,96,94,92,95,92,94,0,0,0
-Charlie,Lindgren,Montreal,Goalie,Goaltender,39,26,United States,0,0,0,0,0,0,0,85,86,85,82,81,84,0,0,0
-Corey,Crawford,Chicago,Goalie,Goaltender,50,35,Canada,0,0,0,0,0,0,0,88,86,88,90,91,89,0,0,0
-Malcolm,Subban,Chicago,Goalie,Goaltender,30,26,Canada,0,0,0,0,0,0,0,87,86,88,85,84,86,0,0,0
-Henrik,Lundqvist,New York,Goalie,Goaltender,30,38,Sweden,0,0,0,0,0,0,0,89,85,88,90,91,89,0,0,0
-Alexander,Georgiev,New York,Goalie,Goaltender,40,24,Russia,0,0,0,0,0,0,0,87,84,88,90,91,88,0,0,0
-Jimmy,Howard,Detroit,Goalie,Goaltender,35,36,United States,0,0,0,0,0,0,0,86,85,83,84,82,84,0,0,0
-Jonathan,Bernier,Detroit,Goalie,Goaltender,45,31,Canada,0,0,0,0,0,0,0,85,83,87,80,82,83,0,0,0
-Tuukka,Rask,Boston,Goalie,Goaltender,40,33,Finland,0,0,0,0,0,0,0,97,94,94,96,93,95,0,0,0
-Jaroslav,Halak,Boston,Goalie,Goaltender,41,35,Slovakia,0,0,0,0,0,0,0,86,85,88,89,91,88,0,0,0
-Sheldon,Keefe,Toronto,Coach,Coach,0,39,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Foward,Off. Awareness,4
-Claude,Julien,Montreal,Coach,Coach,0,60,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Defence,Def. Awareness,4
-Jeremy,Colliton,Chicago,Coach,Coach,0,35,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Foward,Strength,3
-David,Quinn,New York,Coach,Coach,0,53,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Foward,Shooting,4
-Jeff,Blashill,Detroit,Coach,Coach,0,46,United States,0,0,0,0,0,0,0,0,0,0,0,0,0,Defence,Skating,2
-Bruce,Cassidy,Boston,Coach,Coach,0,55,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Foward,Stamina,5
+First Name,Last Name,Current Team,Player Type,Position,Number,Age,Country,Faceoff,Shooting,Stamina,Skating,Strength,Off. Awareness,Def. Awareness,Reflexes,Agility,Flexibility,Reb. Control,Puck Control,Overall,Aptitude,Specialty,Rating,Shooting Tend.
+Auston,Matthews,Toronto,Player,Center,34,22,United States,90,95,88,92,86,96,80,0,0,0,0,0,90,0,0,0,91
+Mitch,Marner,Toronto,Player,Right Wing,16,23,Canada,78,92,86,93,84,93,78,0,0,0,0,0,88,0,0,0,79
+William,Nylander,Toronto,Player,Left Wing,88,24,Sweden,80,90,87,89,84,90,77,0,0,0,0,0,86,0,0,0,86
+John,Tavares,Toronto,Player,Center,91,29,Canada,93,92,91,90,90,93,81,0,0,0,0,0,90,0,0,0,87
+Zach,Hyman,Toronto,Player,Left Wing,11,28,Canada,75,82,81,85,94,79,78,0,0,0,0,0,83,0,0,0,68
+Kasperi,Kapanen,Toronto,Player,Right Wing,24,23,Finland,72,84,80,95,81,83,73,0,0,0,0,0,83,0,0,0,73
+Max,Domi,Montreal,Player,Center,13,25,Canada,88,91,85,91,90,92,79,0,0,0,0,0,88,0,0,0,83
+Jonathan,Drouin,Montreal,Player,Left Wing,92,25,Canada,84,85,84,89,85,85,77,0,0,0,0,0,84,0,0,0,81
+Brendan,Gallagher,Montreal,Player,Right Wing,11,28,Canada,73,92,86,89,87,91,76,0,0,0,0,0,87,0,0,0,87
+Tomas,Tatar,Montreal,Player,Left Wing,90,29,Slovakia,76,92,84,86,83,92,77,0,0,0,0,0,86,0,0,0,79
+Nick,Suzuki,Montreal,Player,Center,14,20,Canada,82,82,80,82,75,79,74,0,0,0,0,0,79,0,0,0,72
+Arturri,Lehkonen,Montreal,Player,Right Wing,62,25,Finland,71,83,81,82,80,84,77,0,0,0,0,0,81,0,0,0,73
+Jonathan,Toews,Chicago,Player,Center,19,32,Canada,93,90,85,90,86,91,86,0,0,0,0,0,88,0,0,0,75
+Patrick,Kane,Chicago,Player,Right Wing,88,31,United States,80,95,89,92,86,95,80,0,0,0,0,0,90,0,0,0,89
+Brandon,Saad,Chicago,Player,Left Wing,20,27,United States,75,85,81,85,81,85,77,0,0,0,0,0,82,0,0,0,68
+Alex,DeBrincat,Chicago,Player,Right Wing,12,22,United States,78,89,84,87,88,90,78,0,0,0,0,0,86,0,0,0,81
+Dominik,Kubalik,Chicago,Player,Left Wing,8,24,Czech Republic,75,86,83,85,86,86,72,0,0,0,0,0,83,0,0,0,71
+Dylan,Strome,Chicago,Player,Center,17,23,Canada,84,86,80,88,81,89,79,0,0,0,0,0,84,0,0,0,61
+Artemi,Panarin,New York,Player,Left Wing,10,28,Russia,80,95,91,93,85,98,79,0,0,0,0,0,90,0,0,0,82
+Mika,Zibanejad,New York,Player,Center,93,27,Sweden,91,92,88,91,84,92,81,0,0,0,0,0,88,0,0,0,82
+Kaapo,Kakko,New York,Player,Right Wing,24,19,Finland,85,80,83,87,82,85,75,0,0,0,0,0,82,0,0,0,71
+Chris,Kreider,New York,Player,Left Wing,20,29,United States,83,82,85,87,84,88,76,0,0,0,0,0,84,0,0,0,77
+Jesper,Fast,New York,Player,Center,17,28,Sweden,79,79,87,88,84,81,79,0,0,0,0,0,83,0,0,0,64
+Pavel,Buchnevich,New York,Player,Right Wing,89,25,Russia,77,81,85,84,86,83,74,0,0,0,0,0,82,0,0,0,73
+Dylan,Larkin,Detroit,Player,Center,71,23,United States,87,90,85,90,87,84,80,0,0,0,0,0,86,0,0,0,86
+Anthony,Mantha,Detroit,Player,Right Wing,39,25,Canada,74,85,87,86,91,85,79,0,0,0,0,0,86,0,0,0,82
+Tyler,Bertuzzi,Detroit,Player,Left Wing,59,25,Canada,68,82,79,80,90,78,76,0,0,0,0,0,81,0,0,0,74
+Filip,Zadina,Detroit,Player,Left Wing,11,20,Czech Republic,65,80,78,79,75,81,70,0,0,0,0,0,77,0,0,0,53
+Sam,Ganger,Detroit,Player,Right Wing,89,30,Canada,71,81,80,80,80,76,77,0,0,0,0,0,79,0,0,0,62
+Valtteri,Filppula,Detroit,Player,Center,51,36,Finland,84,78,79,76,81,77,81,0,0,0,0,0,79,0,0,0,66
+Brad,Marchand,Boston,Player,Left Wing,63,32,Canada,80,92,89,91,90,94,81,0,0,0,0,0,90,0,0,0,76
+Patrice,Bergeron,Boston,Player,Center,37,34,Canada,98,87,92,88,89,93,89,0,0,0,0,0,90,0,0,0,81
+David,Pastrnak,Boston,Player,Right Wing,88,24,Czech Republic,79,95,88,93,87,95,80,0,0,0,0,0,90,0,0,0,88
+David,Krejci ,Boston,Player,Center,46,34,Czech Republic,92,88,88,85,86,90,80,0,0,0,0,0,86,0,0,0,56
+Jake,DeBrusk,Boston,Player,Left Wing,74,23,Canada,69,89,84,87,83,88,78,0,0,0,0,0,85,0,0,0,72
+Ondrej,Kase,Boston,Player,Right Wing,28,24,Czech Republic,62,85,77,84,78,80,72,0,0,0,0,0,79,0,0,0,62
+Morgan,Rielly,Toronto,Player,Left Defence,44,26,Canada,42,86,90,91,88,88,88,0,0,0,0,0,89,0,0,0,72
+Tyson,Barrie,Toronto,Player,Right Defence,94,28,Canada,39,85,89,85,86,90,83,0,0,0,0,0,86,0,0,0,82
+Rasmus,Sandin,Toronto,Player,Left Defence,38,20,Sweden,34,82,79,78,76,80,79,0,0,0,0,0,79,0,0,0,26
+Jake,Muzzin,Toronto,Player,Right Defence,8,31,Canada,35,78,88,87,90,81,90,0,0,0,0,0,86,0,0,0,58
+Ben,Chiarot,Montreal,Player,Left Defence,8,29,Canada,30,74,85,80,86,73,88,0,0,0,0,0,81,0,0,0,70
+Shea,Weber,Montreal,Player,Right Defence,6,34,Canada,38,86,89,84,93,85,91,0,0,0,0,0,88,0,0,0,84
+Jeff,Petry,Montreal,Player,Right Defence,26,32,United States,35,84,86,85,84,86,84,0,0,0,0,0,85,0,0,0,68
+Victor,Mete,Montreal,Player,Left Defence,53,22,Canada,34,76,84,82,76,72,79,0,0,0,0,0,78,0,0,0,52
+Duncan,Keith,Chicago,Player,Left Defence,2,36,Canada,37,80,87,83,88,80,87,0,0,0,0,0,84,0,0,0,69
+Adam,Boqvist,Chicago,Player,Right Defence,27,19,Sweden,31,76,84,80,77,73,84,0,0,0,0,0,79,0,0,0,46
+Calvin,De Haan,Chicago,Player,Left Defence,44,29,Canada,32,78,83,82,84,70,84,0,0,0,0,0,80,0,0,0,41
+Olli,Maata,Chicago,Player,Right Defence,6,25,Finland,34,81,80,81,74,82,77,0,0,0,0,0,79,0,0,0,67
+Jacob,Trouba,New York,Player,Right Defence,8,26,United States,35,85,88,84,82,82,87,0,0,0,0,0,85,0,0,0,78
+Brendan,Smith,New York,Player,Left Defence,42,31,Canada,33,78,86,80,80,79,82,0,0,0,0,0,81,0,0,0,45
+Marc,Staal,New York,Player,Left Defence,18,33,Canada,34,77,86,78,79,78,85,0,0,0,0,0,81,0,0,0,45
+Adam,Fox,New York,Player,Right Defence,23,22,United States,30,75,85,79,81,77,84,0,0,0,0,0,80,0,0,0,67
+Trevor,Daley,Detroit,Player,Left Defence,83,36,Canada,31,82,83,81,76,80,80,0,0,0,0,0,80,0,0,0,41
+Filip,Hronek,Detroit,Player,Right Defence,17,22,Czech Republic,28,75,82,79,78,74,81,0,0,0,0,0,78,0,0,0,32
+Madison,Bowey,Detroit,Player,Right Defence,74,25,Canada,29,72,83,78,80,75,81,0,0,0,0,0,78,0,0,0,56
+Jonathan,Ericsson,Detroit,Player,Left Defence,52,36,Sweden,25,74,85,78,79,77,78,0,0,0,0,0,79,0,0,0,27
+Torey,Krug,Boston,Player,Right Defence,47,29,United States,40,90,89,87,83,88,85,0,0,0,0,0,87,0,0,0,68
+Zdeno,Chara,Boston,Player,Left Defence,33,43,Slovakia,37,82,81,76,94,78,87,0,0,0,0,0,83,0,0,0,57
+Charlie,McAvoy,Boston,Player,Right Defence,73,22,United States,35,88,87,86,86,83,87,0,0,0,0,0,86,0,0,0,60
+Matt,Grzelcyk,Boston,Player,Left Defence,48,26,United States,36,76,86,82,90,76,86,0,0,0,0,0,83,0,0,0,63
+Frederik,Andersen,Toronto,Goalie,Goaltender,31,30,Denmark,0,0,0,0,0,0,0,92,93,93,90,91,92,0,0,0,0
+Jack,Campbell,Toronto,Goalie,Goaltender,36,28,United States,0,0,0,0,0,0,0,88,85,87,84,82,85,0,0,0,0
+Carey,Price,Montreal,Goalie,Goaltender,31,32,Canada,0,0,0,0,0,0,0,96,94,92,95,92,94,0,0,0,0
+Charlie,Lindgren,Montreal,Goalie,Goaltender,39,26,United States,0,0,0,0,0,0,0,85,86,85,82,81,84,0,0,0,0
+Corey,Crawford,Chicago,Goalie,Goaltender,50,35,Canada,0,0,0,0,0,0,0,88,86,88,90,91,89,0,0,0,0
+Malcolm,Subban,Chicago,Goalie,Goaltender,30,26,Canada,0,0,0,0,0,0,0,87,86,88,85,84,86,0,0,0,0
+Henrik,Lundqvist,New York,Goalie,Goaltender,30,38,Sweden,0,0,0,0,0,0,0,89,85,88,90,91,89,0,0,0,0
+Alexander,Georgiev,New York,Goalie,Goaltender,40,24,Russia,0,0,0,0,0,0,0,87,84,88,90,91,88,0,0,0,0
+Jimmy,Howard,Detroit,Goalie,Goaltender,35,36,United States,0,0,0,0,0,0,0,86,85,83,84,82,84,0,0,0,0
+Jonathan,Bernier,Detroit,Goalie,Goaltender,45,31,Canada,0,0,0,0,0,0,0,85,83,87,80,82,83,0,0,0,0
+Tuukka,Rask,Boston,Goalie,Goaltender,40,33,Finland,0,0,0,0,0,0,0,97,94,94,96,93,95,0,0,0,0
+Jaroslav,Halak,Boston,Goalie,Goaltender,41,35,Slovakia,0,0,0,0,0,0,0,86,85,88,89,91,88,0,0,0,0
+Sheldon,Keefe,Toronto,Coach,Coach,0,39,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Foward,Off. Awareness,4,0
+Claude,Julien,Montreal,Coach,Coach,0,60,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Defence,Def. Awareness,4,0
+Jeremy,Colliton,Chicago,Coach,Coach,0,35,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Foward,Strength,3,0
+David,Quinn,New York,Coach,Coach,0,53,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Foward,Shooting,4,0
+Jeff,Blashill,Detroit,Coach,Coach,0,46,United States,0,0,0,0,0,0,0,0,0,0,0,0,0,Defence,Skating,2,0
+Bruce,Cassidy,Boston,Coach,Coach,0,55,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Foward,Stamina,5,0

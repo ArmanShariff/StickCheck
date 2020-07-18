@@ -51,7 +51,7 @@ public class Goalie extends Person {
 
     public String toString(){
 
-        return super.getFirstName();
+        return super.getFirstName() + " " + super.getLastName();
 
     }
 
