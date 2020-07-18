@@ -85,7 +85,8 @@ public class Roster {
                 int strength = Integer.parseInt(temp2[x][12]);
                 int offensiveAwareness = Integer.parseInt(temp2[x][13]);
                 int defensiveAwareness = Integer.parseInt(temp2[x][14]);
-                Player player = new Player(faceoff, shooting, stamina, skating, strength, offensiveAwareness, defensiveAwareness, firstName, lastName, position, country, age, number, currentTeam, playerType);
+                int shotTend = Integer.parseInt(temp2[x][24])
+                Player player = new Player(faceoff, shooting, stamina, skating, strength, offensiveAwareness, defensiveAwareness, shotTend, firstName, lastName, position, country, age, number, currentTeam, playerType);
                 players.add(player); 
 
             } else if (temp2[x][3].equals("Goalie")) {
