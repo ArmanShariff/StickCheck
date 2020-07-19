@@ -341,9 +341,9 @@ class Simulation {
 
             //determining outcome of the calculation
             if(offTeamScore > defTeamScore) {
-                //goes to the shot method
+                return shotCalculation(time + 10, offensiveTeam, defensiveTeam);
             } else {
-                //goes to the matchupCalculationOne method
+                return matchupCalculationOne(time + 10, defensiveTeam, offensiveTeam);
             }
 
         }
