@@ -228,12 +228,12 @@ class Simulation {
             return false;
         }
         else if (random_int <= chance) {
-            System.out.println(shooter.getLastName() + "shoots!.. He scores!");
+            System.out.println(shooter.getLastName() + " shoots!.. He scores!");
             return true;
         }
         else {
             // no goal
-            System.out.println(shooter.getLastName() + "shoots!");
+            System.out.println(shooter.getLastName() + " shoots!");
             return false;
         }
 
