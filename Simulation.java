@@ -7,6 +7,7 @@ class Simulation {
 
     Team teamA;
     Team teamB;
+    static int currentTime = 0;
 
     // constructor
 
@@ -16,9 +17,7 @@ class Simulation {
         this.teamB = teamB;
 
         for (int i = 0; i < 3; i++) {
-
-            period(0, teamA, teamB);
-
+            period(currentTime, teamA, teamB);
         }
 
         System.out.println("GAME OVER!!!!");
@@ -29,19 +28,20 @@ class Simulation {
         teamB.reSetScore();
 
     }
+
     public static boolean period(int time, Team teamA, Team teamB) {
 
         // check if period is over
         if (time > 1200) {
 
-            System.out.println("-- Period is over --");
+            System.out.println("\n \n-- Period is over --\n \n");
             return false;
 
         }
         // otherwise move on to faceoff.
         else {
 
-            return faceoffCalculation(time, teamA, teamB);
+            return faceoffCalculation(currentTime, teamA, teamB);
 
         }
 
@@ -51,11 +51,12 @@ class Simulation {
 
         // check if period is over
         if (time > 1200) {
-            System.out.println("-- Period is over --");
+            System.out.println("\n \n-- Period is over --\n \n");
             return false;
         }
 
         else {
+            System.out.println("Current Time: " + time);
             // get each teams centers faceoff stats
             int faceoffA = teamA.getsC().getFaceoff();
             int faceoffB = teamB.getsC().getFaceoff();
@@ -84,7 +85,7 @@ class Simulation {
         // check if period is over
         if (time > 1200) {
 
-            System.out.println("-- Period is over --");
+            System.out.println("\n \n-- Period is over --\n \n");
             return false;
 
         } else {
@@ -165,7 +166,8 @@ class Simulation {
 
         if (isGoal == true) {
             offensiveTeam.setScore();
-            return true;
+            System.out.println("\n" + offensiveTeam.getTeamName() + "(" + offensiveTeam.getScore() + ")" + " - " + defensiveTeam.getTeamName() + "(" + defensiveTeam.getScore() + ")\n");
+            return faceoffCalculation(time + 2, offensiveTeam, defensiveTeam);
         }
         else {
             // calculation to see if rebound or stopage in play
@@ -190,18 +192,18 @@ class Simulation {
         // sum of all shooting tendencies stats
         int sum = 0;
         for (int i = 0; i < 5; i++) {
-            sum = offensiveTeam.getOnIce(i).getShootingTendency();
+            sum += offensiveTeam.getOnIce(i).getShootingTendency();
         }
 
         // calculates the chance that a player will take the shot
         // stores the chance in the array 'chance'
         double[] chance = new double[5];
-        double percent = 100/sum;
+        double percent = 10000/sum;
         for (int i = 0; i < 5; i++) {
-            chance[i] = percent * offensiveTeam.getOnIce(i).getShootingTendency();
+            chance[i] = (percent * offensiveTeam.getOnIce(i).getShootingTendency()/100);
         }
 
-        Player shooter = null;                                      // stores the player taking the shot
+        Player shooter = offensiveTeam.getOnIce(0);                 // stores the player taking the shot
         double random = getRandomDouble(1.0,100.0);                 // gets a random number
         double temp = 0;
 
@@ -262,7 +264,7 @@ class Simulation {
         // check if period is over
         if (time > 1200) {
 
-            System.out.println("-- Period is over --");
+            System.out.println("\n \n-- Period is over --\n \n");
             return false;
 
         } else {

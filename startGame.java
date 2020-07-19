@@ -38,12 +38,12 @@ public class startGame {
         sortTeam("Montreal", montreal, playerList, goalieList, coachList, montrealPlayers);
         sortTeam("Boston", boston, playerList, goalieList, coachList, bostonPlayers);
 
-        System.out.println("Toronto: \n" + toronto);
-        System.out.println("\nNew York: \n" + newYork);
-        System.out.println("\nDetroit: \n" + detroit);
-        System.out.println("\nChicago: \n" + chicago);
-        System.out.println("\nMontreal: \n" + montreal);
-        System.out.println("\nBoston: \n" + boston);
+        // System.out.println("Toronto: \n" + toronto);
+        // System.out.println("\nNew York: \n" + newYork);
+        // System.out.println("\nDetroit: \n" + detroit);
+        // System.out.println("\nChicago: \n" + chicago);
+        // System.out.println("\nMontreal: \n" + montreal);
+        // System.out.println("\nBoston: \n" + boston);
 
         Simulation game1 = new Simulation(toronto, montreal);
 
