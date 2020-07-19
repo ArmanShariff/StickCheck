@@ -19,6 +19,7 @@ public class Team {
 
     //Boolean to declare which team the user chose
     private boolean userTeam;
+    private String teamName;
 
     //Arraylists of the rosters
     private ArrayList<Player> playerRoster = new ArrayList<Player>();
@@ -33,13 +34,17 @@ public class Team {
     
     //Constructor
 
-    public Team(boolean userTeam) {
+    public Team(String teamName, boolean userTeam) {
+        this.teamName = teamName;
         this.userTeam = userTeam;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // get methods
+    public String getTeamName() {
+        return teamName;
+    }
 
     public Player getsC() {
         return sC;
@@ -76,18 +81,10 @@ public class Team {
         playerRoster.add(player);
     }
 
-    // public ArrayList<Player> getPlayerRoster() {
-    // return playerRoster;
-    // }
-
     //Adds goalie to the team
     public void addGoalie(Goalie goalie) {
         goalieRoster.add(goalie);
     }
-
-    // public ArrayList<Goalie> getGoalieRoster() {
-    // return goalieRoster;
-    // }
 
     //Adds coach to the team
     public void addCoach(Coach coach) {
