@@ -21,6 +21,13 @@ class Simulation {
 
         }
 
+        System.out.println("GAME OVER!!!!");
+        System.out.println(teamA.getTeamName() + ": " + teamA.getScore());
+        System.out.println(teamB.getTeamName() + ": " + teamB.getScore());
+
+        teamA.reSetScore();
+        teamB.reSetScore();
+
     }
     public static boolean period(int time, Team teamA, Team teamB) {
 
@@ -157,6 +164,7 @@ class Simulation {
         boolean isGoal = isGoal(shooter, goalie);
 
         if (isGoal == true) {
+            offensiveTeam.setScore();
             return true;
         }
         else {

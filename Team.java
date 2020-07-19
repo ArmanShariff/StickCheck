@@ -29,6 +29,9 @@ public class Team {
     //Array for players on the Ice
     Player[] onIce = new Player[4];
     Player[] onBench = new Player[4];
+
+    //To keep track of goals in a game
+    int score = 0;
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -71,6 +74,20 @@ public class Team {
 
     public Player getOnIce(int i) {
         return this.onIce[i];
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    // set methods
+    
+    public void setScore() {
+        this.score = this.score++;
+    }
+
+    public void reSetScore() {
+        this.score = 0;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
