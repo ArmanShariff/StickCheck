@@ -140,7 +140,7 @@ class Simulation {
             //If % of off. team retaining possesssion > random value between 1-100
             // >Off. team will retain possession
             int successRate = getRandom(1,100);
-            if(Math.round(chanceRetainPossession) >= successRate ) {
+            if(Math.round(chanceRetainPossession) > successRate ) {
                 System.out.println(offensiveTeam.getTeamName() + "retains possession!");
                 success = shotCalculation(time + getRandom(5, 20), offensiveTeam, defensiveTeam);
             }
