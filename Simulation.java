@@ -1,6 +1,5 @@
 import java.math.*;
 import java.lang.Math;
-import java.util.Random; 
 
 class Simulation {
 
@@ -75,8 +74,6 @@ class Simulation {
     }
 
     public static boolean matchupCalculationOne(int time, Team offensiveTeam, Team defensiveTeam) {
-        Random rand = new Random();
-
         //Refers to whether off. team retains possession
         boolean success = false;
 
@@ -142,9 +139,14 @@ class Simulation {
 
             //If % of off. team retaining possesssion > random value between 1-100
             // >Off. team will retain possession
-            int successRate = (rand.nextInt(100) + 1);
+            int successRate = getRandom(1,100);
             if(Math.round(chanceRetainPossession) > successRate ) {
-                success = true;
+                System.out.println(offensiveTeam.getTeamName() + "retains possession!");
+                success = shotCalculation(time + getRandom(5, 20), offensiveTeam, defensiveTeam);
+            }
+            else {
+                System.out.println(defensiveTeam.getTeamName() + "steals the puck away from " + offensiveTeam.getTeamName() + "!");
+                success = matchupCalculationOne(time + getRandom(5, 20), defensiveTeam, offensiveTeam);
             }
         }
         return success;
