@@ -11,12 +11,11 @@ public class Player extends Person {
     int strength;
     int offensiveAwareness;
     int defensiveAwareness;
-    int overall;
-    int shootingTendency;
     
     // constructor
 
-    public Player(int faceoff, int shooting, int stamina, int skating, int strength, int offensiveAwareness, int defensiveAwareness, int shootingTendency, String firstName, String lastName, String position, String country, int age, int playerNumber, String currentTeam, String playerType) {
+    
+    public Player(int faceoff, int shooting, int stamina, int skating, int strength, int offensiveAwareness, int defensiveAwareness, String firstName, String lastName, String position, String country, int age, int playerNumber, String currentTeam, String playerType) {
 
         super(firstName, lastName, position, country, age, playerNumber, currentTeam, playerType);
 
@@ -27,9 +26,7 @@ public class Player extends Person {
         this.strength = strength;
         this.offensiveAwareness = offensiveAwareness;
         this.defensiveAwareness = defensiveAwareness;
-        this.shootingTendency = shootingTendency;
 
-        overall = (shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness)/6;
     }
 
     // get methods
@@ -51,30 +48,20 @@ public class Player extends Person {
     }
 
     public int getOffensiveAwareness() {
-        return this.offensiveAwareness;
-    }
-
-    public int getDefensiveAwareness() {
-        return this.defensiveAwareness;
-    }
-
-    public int getStrength() {
         return this.strength;
     }
 
-    public int getShootingTendency() {
-        return this.shootingTendency;
+    public int getDefensiveAwareness() {
+        return this.strength;
     }
 
-    public int getOverall() { 
-        return this.overall;
-    }
+    
 
     // toString() method
 
     public String toString(){
 
-        return super.getFirstName() + " " + super.getLastName();
+        return super.getFirstName();
 
     }
 
