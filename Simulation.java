@@ -179,10 +179,10 @@ class Simulation {
     public static Player determineShooter(Team offensiveTeam) {
         // calculation to determine shooter
 
-        // sum of all offensive awarness stats
-        int sum;
+        // sum of all shooting tendencies stats
+        int sum = 0;
         for (int i = 0; i < 5; i++) {
-            sum = offensiveTeam.getOnIce(i).getOffensiveAwareness;    // method needs to be writen
+            sum = offensiveTeam.getOnIce(i).getShootingTendency();
         }
 
         // calculates the chance that a player will take the shot
@@ -190,12 +190,12 @@ class Simulation {
         double[] chance = new double[4];
         double percent = 100/sum;
         for (int i = 0; i < 5; i++) {
-            chance[i] = percent * offensiveTeam.getOnIce(i).getOffensiveAwareness;
+            chance[i] = percent * offensiveTeam.getOnIce(i).getShootingTendency();
         }
 
-        Player shooter;                                     // stores the player taking the shot
-        double random = getRandomDouble(1.0,100.0);         // gets a random number
-        double temp;
+        Player shooter = null;                                      // stores the player taking the shot
+        double random = getRandomDouble(1.0,100.0);                 // gets a random number
+        double temp = 0;
 
         for (int i = 0; i < 5; i++) {
             temp = temp + chance[i];
@@ -246,7 +246,6 @@ class Simulation {
             // no rebound
             return false;
         }
-
 
     }
 

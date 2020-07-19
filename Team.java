@@ -25,6 +25,10 @@ public class Team {
     private ArrayList<Player> playerRoster = new ArrayList<Player>();
     private ArrayList<Goalie> goalieRoster = new ArrayList<Goalie>();
     private ArrayList<Coach> coachRoster = new ArrayList<Coach>();
+
+    //Array for players on the Ice
+    Player[] onIce = new Player[4];
+    Player[] onBench = new Player[4];
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -65,6 +69,10 @@ public class Team {
         return sG;
     }
 
+    public Player getOnIce(int i) {
+        return this.onIce[i];
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // class methods
@@ -87,49 +95,60 @@ public class Team {
     //Sets the corresponding players into the starting lineup/bench
     //TO DO: If bench player has a higher overall than the starter, switch them
     public void setPlayerPosition(Player player, Player[] arrPlayers) {
+        
         if (player.getPosition().equals("Center")) {
             if (sC == null) {
                 sC = player;
                 arrPlayers[0] = sC;
+                this.onIce[0] = sC;
             } else {
                 bC = player;
                 arrPlayers[5] = bC;
+                this.onBench[0] = bC;
             }
         }
         else if (player.getPosition().equals("Left Wing")) {
             if (sLW == null) {
                 sLW = player;
                 arrPlayers[1] = sLW;
+                this.onIce[1] = sLW;
             } else {
                 bLW = player;
                 arrPlayers[6] = bLW;
+                this.onBench[1] = bLW;
             }
         }
         else if (player.getPosition().equals("Right Wing")) {
             if (sRW == null) {
                 sRW = player;
                 arrPlayers[2] = sRW;
+                this.onIce[2] = sRW;
             } else {
                 bRW = player;
                 arrPlayers[7] = bRW;
+                this.onBench[2] = bRW;
             }
         }
         else if (player.getPosition().equals("Right Defence")) {
             if (sRD == null) {
                 sRD = player;
                 arrPlayers[3] = sRD;
+                this.onIce[3] = sRD;
             } else {
                 bRD = player;
                 arrPlayers[8] = bRD;
+                this.onBench[3] = bRD;
             }
         }
         else if (player.getPosition().equals("Left Defence")) {
             if (sLD == null) {
                 sLD = player;
                 arrPlayers[4] = sLD;
+                this.onIce[4] = sLD;
             } else {
                 bLD = player;
                 arrPlayers[9] = bLD;
+                this.onIce[9] = bLD;
             }
         }
     }
