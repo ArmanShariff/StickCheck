@@ -9,12 +9,12 @@ public class startGame {
         
         Roster roster = new Roster("roster.csv");
 
-        Team toronto = new Team(true);
-        Team newYork = new Team(false);
-        Team detroit = new Team(false);
-        Team chicago = new Team(false);
-        Team montreal = new Team(false);
-        Team boston = new Team(false);
+        Team toronto = new Team("Toronto", true);
+        Team newYork = new Team("New York", false);
+        Team detroit = new Team("Detroit", false);
+        Team chicago = new Team("Chicago", false);
+        Team montreal = new Team("Montreal", false);
+        Team boston = new Team("Boston", false);
 
         Player[] torontoPlayers = new Player[10];
         Player[] newYorkPlayers = new Player[10];
