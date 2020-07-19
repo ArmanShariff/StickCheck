@@ -1,4 +1,6 @@
 import java.math.*;
+import java.lang.Math;
+import java.util.Random; 
 
 class Simulation {
 
@@ -73,6 +75,10 @@ class Simulation {
     }
 
     public static boolean matchupCalculationOne(int time, Team offensiveTeam, Team defensiveTeam) {
+        Random rand = new Random();
+
+        //Refers to whether off. team retains possession
+        boolean success = false;
 
         // check if period is over
         if (time > 1200) {
@@ -132,9 +138,16 @@ class Simulation {
             double randomMultiplier = Math.random() * (max - min + 0.1) + min;
 
             //probability of offensive team retaining possession of the puck
-            double chanceRetainPossession = (skatingOverall*2 + strengthOverall + awarenessOverall*1.5)*(randomMultiplier);
+            double chanceRetainPossession = 50 + (skatingOverall*2 + strengthOverall + awarenessOverall*1.5)*(randomMultiplier);
 
+            //If % of off. team retaining possesssion > random value between 1-100
+            // >Off. team will retain possession
+            int successRate = (rand.nextInt(100) + 1);
+            if(Math.round(chanceRetainPossession) > successRate ) {
+                success = true;
+            }
         }
+        return success;
 
     }
 
