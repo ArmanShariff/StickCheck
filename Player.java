@@ -1,9 +1,7 @@
-
-
 public class Player extends Person {
     
     // fields
-
+ 
     int faceoff;
     int shooting;
     int stamina;
@@ -11,14 +9,15 @@ public class Player extends Person {
     int strength;
     int offensiveAwareness;
     int defensiveAwareness;
+    int overall;
+    int shootingTendency;
     
     // constructor
-
-    
-    public Player(int faceoff, int shooting, int stamina, int skating, int strength, int offensiveAwareness, int defensiveAwareness, String firstName, String lastName, String position, String country, int age, int playerNumber, String currentTeam, String playerType) {
-
+ 
+    public Player(int faceoff, int shooting, int stamina, int skating, int strength, int offensiveAwareness, int defensiveAwareness, int shootingTendency, String firstName, String lastName, String position, String country, int age, int playerNumber, String currentTeam, String playerType) {
+ 
         super(firstName, lastName, position, country, age, playerNumber, currentTeam, playerType);
-
+ 
         this.faceoff = faceoff;
         this.shooting = shooting;
         this.stamina = stamina;
@@ -26,43 +25,57 @@ public class Player extends Person {
         this.strength = strength;
         this.offensiveAwareness = offensiveAwareness;
         this.defensiveAwareness = defensiveAwareness;
-
+        this.shootingTendency = shootingTendency;
+ 
+        overall = (shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness)/6;
     }
-
+ 
     // get methods
-
+ 
     public int getFaceoff() {
         return this.faceoff;
     }
-
+ 
     public int getShooting() {
         return this.shooting;
     }
-
+ 
     public int getStamina() {
         return this.stamina;
     }
-
+ 
     public int getSkating() {
         return this.skating;
     }
-
+ 
     public int getOffensiveAwareness() {
-        return this.strength;
+        return this.offensiveAwareness;
     }
-
+ 
     public int getDefensiveAwareness() {
+        return this.defensiveAwareness;
+    }
+ 
+    public int getStrength() {
         return this.strength;
     }
-
-    
-
-    // toString() method
-
-    public String toString(){
-
-        return super.getFirstName();
-
+ 
+    public int getShootingTendency() {
+        return this.shootingTendency;
     }
-
+ 
+    public int getOverall() { 
+        return this.overall;
+    }
+ 
+    // toString() method
+ 
+    public String toString(){
+ 
+        return super.getFirstName() + " " + super.getLastName();
+ 
+    }
+ 
 }
+ 
+

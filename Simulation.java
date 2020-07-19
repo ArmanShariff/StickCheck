@@ -74,9 +74,6 @@ class Simulation {
     }
 
     public static boolean matchupCalculationOne(int time, Team offensiveTeam, Team defensiveTeam) {
-        //Refers to whether off. team retains possession
-        boolean success = false;
-
         // check if period is over
         if (time > 1200) {
 
@@ -142,15 +139,13 @@ class Simulation {
             int successRate = getRandom(1,100);
             if(Math.round(chanceRetainPossession) >= successRate ) {
                 System.out.println(offensiveTeam.getTeamName() + "retains possession!");
-                success = shotCalculation(time + getRandom(5, 20), offensiveTeam, defensiveTeam);
+                return shotCalculation(time + getRandom(5, 20), offensiveTeam, defensiveTeam);
             }
             else {
                 System.out.println(defensiveTeam.getTeamName() + "steals the puck away from " + offensiveTeam.getTeamName() + "!");
-                success = matchupCalculationOne(time + getRandom(5, 20), defensiveTeam, offensiveTeam);
+                return matchupCalculationOne(time + getRandom(5, 20), defensiveTeam, offensiveTeam);
             }
         }
-        return success;
-
     }
 
     public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
