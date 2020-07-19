@@ -139,17 +139,17 @@ class Simulation {
             double randomMultiplier = Math.random() * (max - min + 0.1) + min;
 
             //probability of offensive team retaining possession of the puck
-            double chanceRetainPossession = 50 + (skatingOverall*2 + strengthOverall + awarenessOverall*1.5)*(randomMultiplier);
+            double chanceRetainPossession = 30 + ((skatingOverall*2 + strengthOverall + awarenessOverall*1.5)*(randomMultiplier)/3);
 
             //If % of off. team retaining possesssion > random value between 1-100
             // >Off. team will retain possession
-            int successRate = getRandom(1,100);
-            if(Math.round(chanceRetainPossession) >= successRate ) {
-                System.out.println(offensiveTeam.getTeamName() + "retains possession!");
+            int turnover = getRandom(1,100);
+            if(Math.round(chanceRetainPossession) >= turnover) {
+                System.out.println(offensiveTeam.getTeamName() + " retains possession!");
                 return shotCalculation(time + getRandom(5, 20), offensiveTeam, defensiveTeam);
             }
             else {
-                System.out.println(defensiveTeam.getTeamName() + "steals the puck away from " + offensiveTeam.getTeamName() + "!");
+                System.out.println(defensiveTeam.getTeamName() + " steals the puck away from " + offensiveTeam.getTeamName() + "!");
                 return matchupCalculationOne(time + getRandom(5, 20), defensiveTeam, offensiveTeam);
             }
         }

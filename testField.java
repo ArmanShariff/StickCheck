@@ -1,11 +1,49 @@
+import java.io.FileNotFoundException;
 import java.lang.Math;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class testField {
-    public static void main(String[] args) {
-        int time = 1200;
+    public static void main(String[] args) throws FileNotFoundException {
+        Roster roster = new Roster("roster.csv");
+
         Team toronto = new Team("Toronto", true);
+        Team newYork = new Team("New York", false);
+        Team detroit = new Team("Detroit", false);
+        Team chicago = new Team("Chicago", false);
         Team montreal = new Team("Montreal", false);
+        Team boston = new Team("Boston", false);
+
+        Player[] torontoPlayers = new Player[10];
+        Player[] newYorkPlayers = new Player[10];
+        Player[] detroitPlayers = new Player[10];
+        Player[] chicagoPlayers = new Player[10];
+        Player[] montrealPlayers = new Player[10];
+        Player[] bostonPlayers = new Player[10];
+
+        ArrayList<Player> playerList = new ArrayList<Player>();
+        ArrayList<Goalie> goalieList = new ArrayList<Goalie>();
+        ArrayList<Coach> coachList = new ArrayList<Coach>();
+
+        playerList = roster.getPlayers();
+        goalieList = roster.getGoalies();
+        coachList = roster.getCoaches();
+
+        sortTeam("Toronto", toronto, playerList, goalieList, coachList, torontoPlayers);
+        sortTeam("New York", newYork, playerList, goalieList, coachList, newYorkPlayers);
+        sortTeam("Detroit", detroit, playerList, goalieList, coachList, detroitPlayers);
+        sortTeam("Chicago", chicago, playerList, goalieList, coachList, chicagoPlayers);
+        sortTeam("Montreal", montreal, playerList, goalieList, coachList, montrealPlayers);
+        sortTeam("Boston", boston, playerList, goalieList, coachList, bostonPlayers);
+
+        System.out.println("Toronto: \n" + toronto);
+        System.out.println("\nNew York: \n" + newYork);
+        System.out.println("\nDetroit: \n" + detroit);
+        System.out.println("\nChicago: \n" + chicago);
+        System.out.println("\nMontreal: \n" + montreal);
+        System.out.println("\nBoston: \n" + boston);
+
+        int time = 0;
         matchupCalculationOne(time, toronto, montreal);
     }
 
@@ -69,17 +107,21 @@ public class testField {
             double randomMultiplier = Math.random() * (max - min + 0.1) + min;
 
             //probability of offensive team retaining possession of the puck
-            double chanceRetainPossession = 50 + (skatingOverall*2 + strengthOverall + awarenessOverall*1.5)*(randomMultiplier);
+            double chanceRetainPossession = 30 + ((skatingOverall*2 + strengthOverall + awarenessOverall*1.5)*(randomMultiplier)/3);
 
             //If % of off. team retaining possesssion > random value between 1-100
             // >Off. team will retain possession
-            int successRate = getRandom(1,100);
-            if(Math.round(chanceRetainPossession) >= successRate ) {
-                System.out.println(offensiveTeam.getTeamName() + "retains possession!");
+            int turnover = getRandom(1,100);
+            // System.out.println("% retain: " + chanceRetainPossession);;
+            // System.out.println("Turnover %: " + turnover);
+            if(Math.round(chanceRetainPossession) >= turnover) {
+                System.out.println(offensiveTeam.getTeamName() + " retains possession!");
+                System.out.println("Current time: " + time);
                 return matchupCalculationOne(time + getRandom(5, 20), offensiveTeam, defensiveTeam);
             }
             else {
-                System.out.println(defensiveTeam.getTeamName() + "steals the puck away from " + offensiveTeam.getTeamName() + "!");
+                System.out.println(defensiveTeam.getTeamName() + " steals the puck away from " + offensiveTeam.getTeamName() + "!");
+                System.out.println("Current time: " + time);
                 return matchupCalculationOne(time + getRandom(5, 20), defensiveTeam, offensiveTeam);
             }
         }
@@ -90,5 +132,28 @@ public class testField {
         int random_int = (int)(Math.random() * (max - min + 1) + min);
 
         return random_int;
+    }
+
+    public static void sortTeam(String teamName,Team team, ArrayList<Player> playerRoster, ArrayList<Goalie> goalieRoster, ArrayList<Coach> coachRoster, Player[] arrPlayers) {
+        for(int i = 0; i < playerRoster.size(); i++){
+            if(playerRoster.get(i).getCurrentTeam().equals(teamName)) {
+                team.addPlayer(playerRoster.get(i));
+                team.setPlayerPosition(playerRoster.get(i), arrPlayers);
+            }
+        }
+
+        for(int i = 0; i < goalieRoster.size(); i++){
+            if(goalieRoster.get(i).getCurrentTeam().equals(teamName)) {
+                team.addGoalie(goalieRoster.get(i));
+                team.setGoaliePosition(goalieRoster.get(i));
+            }
+        }
+
+        for(int i = 0; i < coachRoster.size(); i++){
+            if(coachRoster.get(i).getCurrentTeam().equals(teamName)) {
+                team.addCoach(coachRoster.get(i));
+                team.setCoach(coachRoster.get(i));
+            }
+        }
     }
 }
