@@ -83,7 +83,7 @@ public class Team {
     // set methods
     
     public void setScore() {
-        this.score = this.score++;
+        this.score = this.score + 1;
     }
 
     public void reSetScore() {
