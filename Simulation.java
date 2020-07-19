@@ -247,7 +247,6 @@ class Simulation {
             return false;
         }
 
-
     }
 
     public static boolean matchupCalculationTwo(int time, Team offensiveTeam, Team defensiveTeam) {

@@ -69,7 +69,7 @@ public class Team {
         return sG;
     }
 
-    public Player[] getOnIce(int i) {
+    public Player getOnIce(int i) {
         return this.onIce[i];
     }
 
@@ -115,7 +115,7 @@ public class Team {
             } else {
                 bLW = player;
                 arrPlayers[6] = bLW;
-                this.onBench[1] = sLW;
+                this.onBench[1] = bLW;
             }
         }
         else if (player.getPosition().equals("Right Wing")) {
@@ -126,7 +126,7 @@ public class Team {
             } else {
                 bRW = player;
                 arrPlayers[7] = bRW;
-                this.onBench[2] = sRW;
+                this.onBench[2] = bRW;
             }
         }
         else if (player.getPosition().equals("Right Defence")) {
@@ -137,15 +137,18 @@ public class Team {
             } else {
                 bRD = player;
                 arrPlayers[8] = bRD;
+                this.onBench[3] = bRD;
             }
         }
         else if (player.getPosition().equals("Left Defence")) {
             if (sLD == null) {
                 sLD = player;
                 arrPlayers[4] = sLD;
+                this.onIce[4] = sLD;
             } else {
                 bLD = player;
                 arrPlayers[9] = bLD;
+                this.onIce[9] = bLD;
             }
         }
     }
