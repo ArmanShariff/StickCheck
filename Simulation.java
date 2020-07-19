@@ -195,7 +195,7 @@ class Simulation {
 
         // calculates the chance that a player will take the shot
         // stores the chance in the array 'chance'
-        double[] chance = new double[4];
+        double[] chance = new double[5];
         double percent = 100/sum;
         for (int i = 0; i < 5; i++) {
             chance[i] = percent * offensiveTeam.getOnIce(i).getShootingTendency();
@@ -302,7 +302,7 @@ class Simulation {
             int defAwarenessDLD = defensiveTeam.getsLD().getDefensiveAwareness();
 
             //individual matchup result calculations
-            int[] matchupResults = new int[4];
+            int[] matchupResults = new int[5];
 
             int skatingMatchup1 = (skatingOC-skatingDC);
             int strengthMatchup1 = (strengthOC-strengthDC)*2;

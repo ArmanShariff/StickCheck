@@ -27,8 +27,8 @@ public class Team {
     private ArrayList<Coach> coachRoster = new ArrayList<Coach>();
 
     //Array for players on the Ice
-    Player[] onIce = new Player[4];
-    Player[] onBench = new Player[4];
+    Player[] onIce = new Player[5];
+    Player[] onBench = new Player[5];
 
     //To keep track of goals in a game
     int score = 0;
@@ -165,7 +165,7 @@ public class Team {
             } else {
                 bLD = player;
                 arrPlayers[9] = bLD;
-                this.onIce[9] = bLD;
+                this.onBench[4] = bLD;
             }
         }
     }
