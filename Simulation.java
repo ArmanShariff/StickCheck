@@ -1,4 +1,3 @@
-import java.math.*;
 import java.lang.Math;
 
 class Simulation {
@@ -36,9 +35,13 @@ class Simulation {
         System.out.println("GAME OVER!!!!");
         System.out.println(teamA.getTeamName() + ": " + teamA.getScore());
         System.out.println(teamB.getTeamName() + ": " + teamB.getScore());
-
+        System.out.println(teamA.getTeamName() + " shots: " + teamA.getShotCount());
+        System.out.println(teamB.getTeamName() + " shots: " + teamB.getShotCount());
+        
         teamA.reSetScore();
         teamB.reSetScore();
+        teamA.reSetShotCount();
+        teamB.reSetShotCount();
 
     }
     // get methods
@@ -52,7 +55,7 @@ class Simulation {
         // check if period is over
         if (time > periodLength) {
 
-            System.out.println("\n \n-- Period is over --\n \n");
+            System.out.println("\n \n-- Period is over --\n \n" + "Shots: ");
             return false;
 
         }
@@ -70,6 +73,7 @@ class Simulation {
         // check if period is over
         if (time > periodLength) {
             System.out.println("\n \n-- Period is over --\n \n");
+            
             return false;
         }
 
@@ -158,7 +162,7 @@ class Simulation {
             double randomMultiplier = Math.random() * (max - min + 0.1) + min;
 
             //probability of offensive team retaining possession of the puck
-            double chanceRetainPossession = 30 + ((skatingOverall*2 + strengthOverall + awarenessOverall*1.5)*(randomMultiplier)/3);
+            double chanceRetainPossession = 30 + ((skatingOverall/1.5 + strengthOverall/3 + awarenessOverall/2)*(randomMultiplier)/3);
 
             //If % of off. team retaining possesssion > random value between 1-100
             // >Off. team will retain possession
@@ -176,6 +180,7 @@ class Simulation {
 
     public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
         
+        offensiveTeam.setShotCount();
         Player shooter = determineShooter(offensiveTeam);
         Goalie goalie = defensiveTeam.getsG();
 
@@ -227,13 +232,11 @@ class Simulation {
 
         for (int i = 0; i < 5; i++) {
             temp = temp + chance[i];
-
             if (random <= temp) {
                 shooter = offensiveTeam.getOnIce(i);
                 break;
             }
         }
-
         return shooter;
     }
 
@@ -249,11 +252,13 @@ class Simulation {
         }
         else if (random_int <= chance) {
             System.out.println(shooter.getLastName() + " shoots!.. He scores!");
+            
             return true;
         }
         else {
             // no goal
             System.out.println(shooter.getLastName() + " shoots!");
+            
             return false;
         }
 
@@ -363,9 +368,9 @@ class Simulation {
 
             //determining outcome of the calculation
             if(offTeamScore > defTeamScore) {
-                return shotCalculation(time + 10, offensiveTeam, defensiveTeam);
+                return shotCalculation(time + 30, offensiveTeam, defensiveTeam);
             } else {
-                return matchupCalculationOne(time + 10, defensiveTeam, offensiveTeam);
+                return matchupCalculationOne(time + 30, defensiveTeam, offensiveTeam);
             }
 
         }
