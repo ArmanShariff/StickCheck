@@ -31,7 +31,7 @@ public class Team {
     Player[] onBench = new Player[5];
 
     //To keep track of goals in a game
-    int score = 0;
+    int score;
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -83,7 +83,7 @@ public class Team {
     // set methods
     
     public void setScore() {
-        this.score = this.score + 1;
+        this.score = score + 1;
     }
 
     public void reSetScore() {
