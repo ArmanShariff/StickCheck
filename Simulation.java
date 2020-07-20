@@ -7,17 +7,30 @@ class Simulation {
 
     Team teamA;
     Team teamB;
-    static int currentTime = 0;
+    boolean isPlayoffGame;
+    static int periodLength;
 
     // constructor
 
-    public Simulation(Team teamA, Team teamB) {
+    public Simulation(Team teamA, Team teamB, boolean isPlayoffGame) {
 
         this.teamA = teamA;
         this.teamB = teamB;
+        this.isPlayoffGame = isPlayoffGame;
+        Simulation.periodLength = 1200;
 
         for (int i = 0; i < 3; i++) {
-            period(currentTime, teamA, teamB);
+            period(0, teamA, teamB);
+        }
+
+        if (teamA.getScore() == teamB.getScore()) {
+            Simulation.periodLength = 300;
+            System.out.println("Are you ready?");
+            System.out.println("I SAID Are you READY?");
+            System.out.println("ITS OOVVVVEERRRTIIIMMEEEE!!");
+            period(0, teamA, teamB);
+            System.out.println("overtime over!");
+
         }
 
         System.out.println("GAME OVER!!!!");
@@ -28,11 +41,16 @@ class Simulation {
         teamB.reSetScore();
 
     }
+    // get methods
+
+    public static int getPeriodLength() {
+        return periodLength;
+    }
 
     public static boolean period(int time, Team teamA, Team teamB) {
 
         // check if period is over
-        if (time > 1200) {
+        if (time > periodLength) {
 
             System.out.println("\n \n-- Period is over --\n \n");
             return false;
@@ -41,7 +59,7 @@ class Simulation {
         // otherwise move on to faceoff.
         else {
 
-            return faceoffCalculation(currentTime, teamA, teamB);
+            return faceoffCalculation(0, teamA, teamB);
 
         }
 
@@ -50,7 +68,7 @@ class Simulation {
     public static boolean faceoffCalculation(int time, Team teamA, Team teamB) {
 
         // check if period is over
-        if (time > 1200) {
+        if (time > periodLength) {
             System.out.println("\n \n-- Period is over --\n \n");
             return false;
         }
@@ -83,7 +101,7 @@ class Simulation {
 
     public static boolean matchupCalculationOne(int time, Team offensiveTeam, Team defensiveTeam) {
         // check if period is over
-        if (time > 1200) {
+        if (time > periodLength) {
 
             System.out.println("\n \n-- Period is over --\n \n");
             return false;
@@ -262,7 +280,7 @@ class Simulation {
     public static boolean matchupCalculationTwo(int time, Team offensiveTeam, Team defensiveTeam) {
 
         // check if period is over
-        if (time > 1200) {
+        if (time > periodLength) {
 
             System.out.println("\n \n-- Period is over --\n \n");
             return false;
