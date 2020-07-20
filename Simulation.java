@@ -8,6 +8,7 @@ class Simulation {
     Team teamA;
     Team teamB;
     static int currentTime = 0;
+    
 
     // constructor
 
@@ -23,18 +24,22 @@ class Simulation {
         System.out.println("GAME OVER!!!!");
         System.out.println(teamA.getTeamName() + ": " + teamA.getScore());
         System.out.println(teamB.getTeamName() + ": " + teamB.getScore());
-
+        System.out.println(teamA.getTeamName() + " shots: " + teamA.getShotCount());
+        System.out.println(teamB.getTeamName() + " shots: " + teamB.getShotCount());
+        
         teamA.reSetScore();
         teamB.reSetScore();
+        teamA.reSetShotCount();
+        teamB.reSetShotCount();
 
     }
-
+    
     public static boolean period(int time, Team teamA, Team teamB) {
 
         // check if period is over
         if (time > 1200) {
 
-            System.out.println("\n \n-- Period is over --\n \n");
+            System.out.println("\n \n-- Period is over --\n \n" + "Shots: ");
             return false;
 
         }
@@ -52,6 +57,7 @@ class Simulation {
         // check if period is over
         if (time > 1200) {
             System.out.println("\n \n-- Period is over --\n \n");
+            
             return false;
         }
 
@@ -158,6 +164,7 @@ class Simulation {
 
     public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
         
+        offensiveTeam.setShotCount();
         Player shooter = determineShooter(offensiveTeam);
         Goalie goalie = defensiveTeam.getsG();
 
@@ -209,13 +216,11 @@ class Simulation {
 
         for (int i = 0; i < 5; i++) {
             temp = temp + chance[i];
-
             if (random <= temp) {
                 shooter = offensiveTeam.getOnIce(i);
                 break;
             }
         }
-
         return shooter;
     }
 
@@ -231,11 +236,13 @@ class Simulation {
         }
         else if (random_int <= chance) {
             System.out.println(shooter.getLastName() + " shoots!.. He scores!");
+            
             return true;
         }
         else {
             // no goal
             System.out.println(shooter.getLastName() + " shoots!");
+            
             return false;
         }
 

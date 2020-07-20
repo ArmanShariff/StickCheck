@@ -42,6 +42,10 @@ public class Team {
         this.userTeam = userTeam;
     }
 
+
+    //Keep track of shot count
+    int shotCount;
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // get methods
@@ -80,6 +84,11 @@ public class Team {
         return score;
     }
 
+    public int getShotCount()
+    {
+        return shotCount;
+    }
+
     // set methods
     
     public void setScore() {
@@ -88,6 +97,16 @@ public class Team {
 
     public void reSetScore() {
         this.score = 0;
+    }
+
+    public void setShotCount()
+    {
+        this.shotCount = shotCount + 1;
+    }
+
+    public void reSetShotCount()
+    {
+        this.shotCount = 0;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
