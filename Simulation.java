@@ -7,7 +7,9 @@ class Simulation {
     Team teamA;
     Team teamB;
     boolean isPlayoffGame;
+
     static int periodLength;
+    static boolean isOvertime;
 
     // constructor
 
@@ -16,19 +18,45 @@ class Simulation {
         this.teamA = teamA;
         this.teamB = teamB;
         this.isPlayoffGame = isPlayoffGame;
+
         Simulation.periodLength = 1200;
+        Simulation.isOvertime = false;
+
+        // run three periods
 
         for (int i = 0; i < 3; i++) {
             period(0, teamA, teamB);
         }
 
+        // if the game is tied start overtime
+
         if (teamA.getScore() == teamB.getScore()) {
-            Simulation.periodLength = 300;
-            System.out.println("Are you ready?");
-            System.out.println("I SAID Are you READY?");
-            System.out.println("ITS OOVVVVEERRRTIIIMMEEEE!!");
-            period(0, teamA, teamB);
-            System.out.println("overtime over!");
+
+            Simulation.isOvertime = true;
+
+            if (isPlayoffGame == true) {
+
+                while (teamA.getScore() == teamB.getScore()) {
+
+                    overtime(teamA, teamB, isPlayoffGame, 1200);
+
+                }
+
+
+            } else {
+
+                overtime(teamA, teamB, isPlayoffGame, 300);
+
+                // if its still tied go to shootout
+                if (teamA.getScore() == teamB.getScore()) {
+
+                    shootout(teamA, teamB);
+
+                }
+
+            }
+
+            
 
         }
 
@@ -48,6 +76,10 @@ class Simulation {
 
     public static int getPeriodLength() {
         return periodLength;
+    }
+
+    public static boolean getIsOvertime() {
+        return isOvertime;
     }
 
     public static boolean period(int time, Team teamA, Team teamB) {
@@ -190,7 +222,16 @@ class Simulation {
         if (isGoal == true) {
             offensiveTeam.setScore();
             System.out.println("\n" + offensiveTeam.getTeamName() + "(" + offensiveTeam.getScore() + ")" + " - " + defensiveTeam.getTeamName() + "(" + defensiveTeam.getScore() + ")\n");
-            return faceoffCalculation(time + 2, offensiveTeam, defensiveTeam);
+            
+            if (isOvertime == true) {
+                offensiveTeam.setScore();
+                return true;
+            }
+
+            else {
+                return faceoffCalculation(time + 2, offensiveTeam, defensiveTeam);
+            }
+
         }
         else {
             // calculation to see if rebound or stopage in play
@@ -248,6 +289,7 @@ class Simulation {
 
         if (chance <= 0) {
             // no chance of a goal
+            System.out.println(shooter.getLastName() + " -YOU SUCK AT HOCKEY BUD");
             return false;
         }
         else if (random_int <= chance) {
@@ -389,6 +431,32 @@ class Simulation {
         double random_double = (Math.random() * ((max - min) +1)) + min;
 
         return random_double;
+    }
+
+    public static boolean overtime(Team teamA, Team teamB, boolean isPlayoffGame, int overtimePeriodLength) {
+
+        Simulation.periodLength = overtimePeriodLength;
+        
+        System.out.println("Are you ready?");
+        System.out.println("I SAID Are you READY?");
+        System.out.println("ITS OOVVVVEERRRTIIIMMEEEE!!");
+
+        return period(0, teamA, teamB);
+
+    }
+
+    public static void shootout(Team teamA, Team teamB) {
+        System.out.println("BOYS AND GIRLS,");
+        System.out.println("LADIES AND GENTLEMEN,");
+        System.out.println("WELCOME TO THE SHOOTOUT!");
+        int random_int = getRandom(1, 2);
+        if (random_int == 1) {
+            teamA.setScore();
+        }
+        if (random_int == 0) {
+            teamB.setScore();
+        }
+
     }
 
 }
