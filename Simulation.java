@@ -78,6 +78,8 @@ class Simulation {
         }
 
         else {
+            teamDropStamina(teamA, teamB);
+            System.out.println(teamA.getsC().getFirstName() + "'s stamina: " + teamA.getsC().getCurrStamina());
             System.out.println("Current Time: " + time);
             // get each teams centers faceoff stats
             double faceoffA = teamA.getsC().getFaceoff();
@@ -168,10 +170,12 @@ class Simulation {
             // >Off. team will retain possession
             int turnover = getRandom(1,100);
             if(Math.round(chanceRetainPossession) >= turnover) {
+                teamDropStamina(offensiveTeam, defensiveTeam);
                 System.out.println(offensiveTeam.getTeamName() + " retains possession!");
                 return shotCalculation(time + getRandom(5, 20), offensiveTeam, defensiveTeam);
             }
             else {
+                teamDropStamina(offensiveTeam, defensiveTeam);
                 System.out.println(defensiveTeam.getTeamName() + " steals the puck away from " + offensiveTeam.getTeamName() + "!");
                 return matchupCalculationOne(time + getRandom(5, 20), defensiveTeam, offensiveTeam);
             }
@@ -201,6 +205,7 @@ class Simulation {
                 return faceoffCalculation(time + 2, offensiveTeam, defensiveTeam);
             }
             else {
+                teamDropStamina(offensiveTeam, defensiveTeam);
                 System.out.println("Rebound opportunity!");
                 return matchupCalculationTwo(time + 2, offensiveTeam, defensiveTeam);
             }
@@ -389,6 +394,19 @@ class Simulation {
         double random_double = (Math.random() * ((max - min) +1)) + min;
 
         return random_double;
+    }
+
+    public static void teamDropStamina(Team teamA, Team teamB) {
+        teamA.getsC().dropStamina();
+        teamA.getsLW().dropStamina();
+        teamA.getsRW().dropStamina();
+        teamA.getsLD().dropStamina();
+        teamA.getsRD().dropStamina();
+        teamB.getsC().dropStamina();
+        teamB.getsLW().dropStamina();
+        teamB.getsRW().dropStamina();
+        teamB.getsLD().dropStamina();
+        teamB.getsRD().dropStamina();
     }
 
 }

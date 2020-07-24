@@ -11,6 +11,7 @@ public class Player extends Person {
     double defensiveAwareness;
     double overall;
     double shootingTendency;
+    double currStamina;
     
     // constructor
  
@@ -26,6 +27,7 @@ public class Player extends Person {
         this.offensiveAwareness = offensiveAwareness;
         this.defensiveAwareness = defensiveAwareness;
         this.shootingTendency = shootingTendency;
+        currStamina = 1;
  
         overall = (shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness)/6;
     }
@@ -63,7 +65,20 @@ public class Player extends Person {
     public double getShootingTendency() {
         return this.shootingTendency;
     }
- 
+    
+    public double getCurrStamina() {
+        return this.currStamina;
+    }
+
+    public void setCurrStamina(double currStamina) {
+        this.currStamina = currStamina;
+    }
+
+    public void dropStamina() {
+        double droppedStamina = currStamina - (((100 - stamina)/stamina)/100);
+        setCurrStamina(droppedStamina);
+    }
+
     public double getOverall() { 
         return this.overall;
     }
