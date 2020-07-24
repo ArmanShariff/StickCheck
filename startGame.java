@@ -44,8 +44,8 @@ public class startGame {
         // System.out.println("\nChicago: \n" + chicago);
         // System.out.println("\nMontreal: \n" + montreal);
         // System.out.println("\nBoston: \n" + boston);
-
-        Simulation game1 = new Simulation(boston, toronto, false);
+        
+        Simulation game1 = new Simulation(toronto, boston, false);
 
     }
 
