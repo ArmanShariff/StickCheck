@@ -2,19 +2,19 @@ public class Player extends Person {
     
     // fields
  
-    int faceoff;
-    int shooting;
-    int stamina;
-    int skating;
-    int strength;
-    int offensiveAwareness;
-    int defensiveAwareness;
-    int overall;
-    int shootingTendency;
+    double faceoff;
+    double shooting;
+    double stamina;
+    double skating;
+    double strength;
+    double offensiveAwareness;
+    double defensiveAwareness;
+    double overall;
+    double shootingTendency;
     
     // constructor
  
-    public Player(int faceoff, int shooting, int stamina, int skating, int strength, int offensiveAwareness, int defensiveAwareness, int shootingTendency, String firstName, String lastName, String position, String country, int age, int playerNumber, String currentTeam, String playerType) {
+    public Player(double faceoff, double shooting, double stamina, double skating, double strength, double offensiveAwareness, double defensiveAwareness, double shootingTendency, String firstName, String lastName, String position, String country, int age, int playerNumber, String currentTeam, String playerType) {
  
         super(firstName, lastName, position, country, age, playerNumber, currentTeam, playerType);
  
@@ -32,39 +32,39 @@ public class Player extends Person {
  
     // get methods
  
-    public int getFaceoff() {
+    public double getFaceoff() {
         return this.faceoff;
     }
  
-    public int getShooting() {
+    public double getShooting() {
         return this.shooting;
     }
  
-    public int getStamina() {
+    public double getStamina() {
         return this.stamina;
     }
  
-    public int getSkating() {
+    public double getSkating() {
         return this.skating;
     }
  
-    public int getOffensiveAwareness() {
+    public double getOffensiveAwareness() {
         return this.offensiveAwareness;
     }
  
-    public int getDefensiveAwareness() {
+    public double getDefensiveAwareness() {
         return this.defensiveAwareness;
     }
  
-    public int getStrength() {
+    public double getStrength() {
         return this.strength;
     }
  
-    public int getShootingTendency() {
+    public double getShootingTendency() {
         return this.shootingTendency;
     }
  
-    public int getOverall() { 
+    public double getOverall() { 
         return this.overall;
     }
  
