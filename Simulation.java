@@ -10,6 +10,7 @@ class Simulation {
 
     static int periodLength;
     static boolean isOvertime;
+    static int drops = 1;
 
     // constructor
 
@@ -26,6 +27,7 @@ class Simulation {
 
         for (int i = 0; i < 3; i++) {
             period(0, teamA, teamB);
+            teamResetStamina(teamA, teamB);
         }
 
         // if the game is tied start overtime
@@ -86,7 +88,6 @@ class Simulation {
 
         // check if period is over
         if (time > periodLength) {
-
             System.out.println("\n \n-- Period is over --\n \n" + "Shots: ");
             return false;
 
@@ -439,18 +440,33 @@ class Simulation {
     }
 
     public static void teamDropStamina(Team teamA, Team teamB) {
-        teamA.getsC().dropStamina();
-        teamA.getsLW().dropStamina();
-        teamA.getsRW().dropStamina();
-        teamA.getsLD().dropStamina();
-        teamA.getsRD().dropStamina();
-        teamB.getsC().dropStamina();
-        teamB.getsLW().dropStamina();
-        teamB.getsRW().dropStamina();
-        teamB.getsLD().dropStamina();
-        teamB.getsRD().dropStamina();
+        drops = drops++;
+        teamA.getsC().dropStamina(drops);
+        teamA.getsLW().dropStamina(drops);
+        teamA.getsRW().dropStamina(drops);
+        teamA.getsLD().dropStamina(drops);
+        teamA.getsRD().dropStamina(drops);
+        teamB.getsC().dropStamina(drops);
+        teamB.getsLW().dropStamina(drops);
+        teamB.getsRW().dropStamina(drops);
+        teamB.getsLD().dropStamina(drops);
+        teamB.getsRD().dropStamina(drops);
     }
-    
+
+    public static void teamResetStamina(Team teamA, Team teamB) {
+        drops = 1;
+        teamA.getsC().setCurrStamina(100);
+        teamA.getsLW().setCurrStamina(100);
+        teamA.getsRW().setCurrStamina(100);
+        teamA.getsLD().setCurrStamina(100);
+        teamA.getsRD().setCurrStamina(100);
+        teamB.getsC().setCurrStamina(100);
+        teamB.getsLW().setCurrStamina(100);
+        teamB.getsRW().setCurrStamina(100);
+        teamB.getsLD().setCurrStamina(100);
+        teamB.getsRD().setCurrStamina(100);
+    }
+
     public static boolean overtime(Team teamA, Team teamB, boolean isPlayoffGame, int overtimePeriodLength) {
 
         Simulation.periodLength = overtimePeriodLength;

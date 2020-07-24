@@ -74,8 +74,8 @@ public class Player extends Person {
         this.currStamina = currStamina;
     }
 
-    public void dropStamina() {
-        double droppedStamina = currStamina - (((100 - stamina)/stamina)/100);
+    public void dropStamina(int drops) {
+        double droppedStamina = currStamina - (currStamina + drops*drops)/stamina;
         setCurrStamina(droppedStamina);
     }
 
