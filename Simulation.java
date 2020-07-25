@@ -439,6 +439,8 @@ class Simulation {
         return random_double;
     }
 
+    //Method that drops every player's stamina
+    // >After: Faceoffs, fights for possession, rebounds 
     public static void teamDropStamina(Team teamA, Team teamB) {
         drops = drops++;
         teamA.getsC().dropStamina(drops);
@@ -452,7 +454,8 @@ class Simulation {
         teamB.getsLD().dropStamina(drops);
         teamB.getsRD().dropStamina(drops);
     }
-
+    
+    //Resets every player's stamina after the period ends
     public static void teamResetStamina(Team teamA, Team teamB) {
         drops = 1;
         teamA.getsC().setCurrStamina(100);
