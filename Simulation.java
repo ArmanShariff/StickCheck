@@ -28,6 +28,7 @@ class Simulation {
         for (int i = 0; i < 3; i++) {
             period(0, teamA, teamB);
             teamResetStamina(teamA, teamB);
+            teamResetStats(teamA, teamB);
         }
 
         // if the game is tied start overtime
@@ -112,7 +113,9 @@ class Simulation {
 
         else {
             teamDropStamina(teamA, teamB);
-            System.out.println(teamA.getsC().getFirstName() + "'s stamina: " + teamA.getsC().getCurrStamina());
+            teamDropStats(teamA, teamB);
+            System.out.println(teamA.getsC().getFirstName() + "'s stamina: " + teamA.getsC().getStaminaBar());
+            System.out.println(teamA.getsC().getFirstName() + "'s skating: " + teamA.getsC().getSkating());
             System.out.println("Current Time: " + time);
             // get each teams centers faceoff stats
             double faceoffA = teamA.getsC().getFaceoff();
@@ -204,11 +207,13 @@ class Simulation {
             int turnover = getRandom(1,100);
             if(Math.round(chanceRetainPossession) >= turnover) {
                 teamDropStamina(offensiveTeam, defensiveTeam);
+                teamDropStats(offensiveTeam, defensiveTeam);
                 System.out.println(offensiveTeam.getTeamName() + " retains possession!");
                 return shotCalculation(time + getRandom(5, 20), offensiveTeam, defensiveTeam);
             }
             else {
                 teamDropStamina(offensiveTeam, defensiveTeam);
+                teamDropStats(offensiveTeam, defensiveTeam);
                 System.out.println(defensiveTeam.getTeamName() + " steals the puck away from " + offensiveTeam.getTeamName() + "!");
                 return matchupCalculationOne(time + getRandom(5, 20), defensiveTeam, offensiveTeam);
             }
@@ -248,6 +253,7 @@ class Simulation {
             }
             else {
                 teamDropStamina(offensiveTeam, defensiveTeam);
+                teamDropStats(offensiveTeam, defensiveTeam);
                 System.out.println("Rebound opportunity!");
                 return matchupCalculationTwo(time + 2, offensiveTeam, defensiveTeam);
             }
@@ -458,18 +464,47 @@ class Simulation {
     //Resets every player's stamina after the period ends
     public static void teamResetStamina(Team teamA, Team teamB) {
         drops = 1;
-        teamA.getsC().setCurrStamina(100);
-        teamA.getsLW().setCurrStamina(100);
-        teamA.getsRW().setCurrStamina(100);
-        teamA.getsLD().setCurrStamina(100);
-        teamA.getsRD().setCurrStamina(100);
-        teamB.getsC().setCurrStamina(100);
-        teamB.getsLW().setCurrStamina(100);
-        teamB.getsRW().setCurrStamina(100);
-        teamB.getsLD().setCurrStamina(100);
-        teamB.getsRD().setCurrStamina(100);
+        teamA.getsC().setStaminaBar(1);
+        teamA.getsLW().setStaminaBar(1);
+        teamA.getsRW().setStaminaBar(1);
+        teamA.getsLD().setStaminaBar(1);
+        teamA.getsRD().setStaminaBar(1);
+        teamB.getsC().setStaminaBar(1);
+        teamB.getsLW().setStaminaBar(1);
+        teamB.getsRW().setStaminaBar(1);
+        teamB.getsLD().setStaminaBar(1);
+        teamB.getsRD().setStaminaBar(1);
     }
 
+    //Drop stats of every player depending on their current stamina
+    // >Drops everytime stamina drops
+    public static void teamDropStats(Team teamA, Team teamB) {
+        teamA.getsC().dropStats(teamA.getsC().getStaminaBar());
+        teamA.getsLW().dropStats(teamA.getsLW().getStaminaBar());
+        teamA.getsRW().dropStats(teamA.getsRW().getStaminaBar());
+        teamA.getsLD().dropStats(teamA.getsLD().getStaminaBar());
+        teamA.getsRD().dropStats(teamA.getsRW().getStaminaBar());
+        teamB.getsC().dropStats(teamB.getsC().getStaminaBar());
+        teamB.getsLW().dropStats(teamB.getsLW().getStaminaBar());
+        teamB.getsRW().dropStats(teamB.getsRW().getStaminaBar());
+        teamB.getsLD().dropStats(teamB.getsLD().getStaminaBar());
+        teamB.getsRD().dropStats(teamB.getsRW().getStaminaBar());
+    }
+
+    //Reset stats of every player after each period
+    public static void teamResetStats(Team teamA, Team teamB) {
+        teamA.getsC().ResetStats();
+        teamA.getsLW().ResetStats();
+        teamA.getsRW().ResetStats();
+        teamA.getsLD().ResetStats();
+        teamA.getsRD().ResetStats();
+        teamB.getsC().ResetStats();
+        teamB.getsLW().ResetStats();
+        teamB.getsRW().ResetStats();
+        teamB.getsLD().ResetStats();
+        teamB.getsRD().ResetStats();
+        
+    }
     public static boolean overtime(Team teamA, Team teamB, boolean isPlayoffGame, int overtimePeriodLength) {
 
         Simulation.periodLength = overtimePeriodLength;
