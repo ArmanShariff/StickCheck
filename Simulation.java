@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.lang.management.ThreadMXBean;
 
 class Simulation {
 
@@ -523,23 +524,13 @@ class Simulation {
         System.out.println("WELCOME TO THE SHOOTOUT!");
         
         //shooting stats of Team A and Team B
-        double[] shootoutA = new double[9];
-        double[] shootoutB = new double[9];
+        double[] shootoutA = new double[10];
+        double[] shootoutB = new double[10];
 
-        for (int i = 0; i < 10; i++) {
-            
-            if (i <= 3) {
-                
-            }
-            shootoutA[i] = teamA.getOnIce(i).getShooting();
-            shootoutB[i] = teamB.getOnIce(i).getShooting();
-
+        for (int i = 1; i < 11; i++) {
+            shootoutA[i] = teamA.getRoster(i).getShooting();
+            shootoutB[i] = teamB.getRoster(i).getShooting();
         }
-        
-
-        double shootoutAC = teamA.getsC().getShooting();
-        double shootoutARW = teamA.getsRW().getShooting();
-        double shootoutALW = teamA.getsLW().getShooting();
 
         //stats of Team A goalie
         double reflexesA = teamA.getsG().getReflexes();
@@ -547,19 +538,72 @@ class Simulation {
         double flexibilityA = teamA.getsG().getFlexibility();
         double overallA = (reflexesA + agilityA + flexibilityA)/3;
 
-        //shooting stat of Team B
-        double shootoutBC = teamB.getsC().getShooting();
-        double shootoutBRW = teamB.getsRW().getShooting();
-        double shootoutBLW = teamB.getsLW().getShooting();
-
         //stats of Team B goalie
         double reflexesB = teamB.getsG().getReflexes();
         double agilityB = teamB.getsG().getAgility();
         double flexibilityB = teamB.getsG().getFlexibility();
         double overallB = (reflexesB + agilityB + flexibilityB)/3;
 
-        //calculating probability of a goal
+        //calculating the outcome of the shootout
+        int teamScoreA;
+        int teamScoreB;
+        int loopTracker;
+        double[] probabilityA = new double[9];
+        double[] probabilityB = new double[9];
 
+        for (int i = 1; i < 11; i++) {
+            probabilityA[i] = (50 + shootoutA[i] - overallB);
+            if (probabilityA[i] > getRandom(0, 100)) {
+                teamScoreA++;
+                System.out.println(teamA.getRoster(i).getLastName() + " has scored!");
+            } else {
+                System.out.println(teamA.getRoster(i).getLastName() + " missed!");
+            }
+
+            probabilityB[i] = (50 + shootoutB[i] - overallA);
+            if (probabilityB[i] > getRandom(0, 100)) {
+                teamScoreB++;
+                System.out.println(teamB.getRoster(i).getLastName() + " has scored!");
+            } else {
+                System.out.println(teamB.getRoster(i).getLastName() + " missed!");
+            }
+
+            //checking if a team has won 
+            if ((teamScoreA == 2) && (teamScoreB == 0)) {
+                endShootoutA(teamA, teamB);
+                i = 10;
+            } else if ((teamScoreA == 0) && (teamScoreB == 2)) {
+                endShootoutB(teamA, teamB);
+                i = 10;
+            } else if (((teamScoreA > teamScoreB) && (i >= 3)) || ((teamScoreA > teamScoreB) && (loopTracker > 0))) {
+                endShootoutA(teamA, teamB);
+            } else if (((teamScoreA < teamScoreB) && (i >= 3)) || ((teamScoreA < teamScoreB) && (loopTracker > 0))) {
+                endShootoutB(teamA, teamB);
+            } else if ((teamScoreA == teamScoreB) && (i == 10)) {
+                i = 0;
+                loopTracker++;
+            }
+        }   
+    }
+
+    //method called if Team A wins the shootout
+    public static void endShootoutA(Team teamA, Team teamB) {
+        System.out.println(teamA.getTeamName() + " has won the game!");
+        System.out.println("Final Score: " + (teamA.getScore() + 1) + "-" + (teamB.getScore()) + " (SO)");
+    }
+
+    //method called if Team B wins the shootout
+    public static void endShootoutB(Team teamA, Team teamB) {
+        System.out.println(teamB.getTeamName() + " has won the game!");
+        System.out.println("Final Score: " + (teamB.getScore() + 1) + "-" + (teamA.getScore()) + " (SO)");
     }
 
 }
+/*
+     __  _________________  ______  ____ _____
+   /  |/  / ____/_  __/ / / / __ \/ __ / ___/
+  / /|_/ / __/   / / / /_/ / / / / / / \__ \ 
+ / /  / / /___  / / / __  / /_/ / /_/ ___/ / 
+/_/  /_/_____/ /_/ /_/ /_/\____/_____/____/ 
+
+*/
