@@ -486,13 +486,44 @@ class Simulation {
         System.out.println("BOYS AND GIRLS,");
         System.out.println("LADIES AND GENTLEMEN,");
         System.out.println("WELCOME TO THE SHOOTOUT!");
-        int random_int = getRandom(1, 2);
-        if (random_int == 1) {
-            teamA.setScore();
+        
+        //shooting stats of Team A and Team B
+        double[] shootoutA = new double[9];
+        double[] shootoutB = new double[9];
+
+        for (int i = 0; i < 10; i++) {
+            
+            if (i <= 3) {
+                
+            }
+            shootoutA[i] = teamA.getOnIce(i).getShooting();
+            shootoutB[i] = teamB.getOnIce(i).getShooting();
+
         }
-        if (random_int == 0) {
-            teamB.setScore();
-        }
+        
+
+        double shootoutAC = teamA.getsC().getShooting();
+        double shootoutARW = teamA.getsRW().getShooting();
+        double shootoutALW = teamA.getsLW().getShooting();
+
+        //stats of Team A goalie
+        double reflexesA = teamA.getsG().getReflexes();
+        double agilityA = teamA.getsG().getAgility();
+        double flexibilityA = teamA.getsG().getFlexibility();
+        double overallA = (reflexesA + agilityA + flexibilityA)/3;
+
+        //shooting stat of Team B
+        double shootoutBC = teamB.getsC().getShooting();
+        double shootoutBRW = teamB.getsRW().getShooting();
+        double shootoutBLW = teamB.getsLW().getShooting();
+
+        //stats of Team B goalie
+        double reflexesB = teamB.getsG().getReflexes();
+        double agilityB = teamB.getsG().getAgility();
+        double flexibilityB = teamB.getsG().getFlexibility();
+        double overallB = (reflexesB + agilityB + flexibilityB)/3;
+
+        //calculating probability of a goal
 
     }
 
