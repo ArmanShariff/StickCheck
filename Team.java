@@ -2,20 +2,14 @@ import java.util.ArrayList;
 
 public class Team {
 
-    //Initialize the 13 positions 
-    private Player sRW;
-    private Player sC;
-    private Player sLW;
-    private Player sLD;
-    private Player sRD;
-    private Player bRW;
-    private Player bC;
-    private Player bLW;
-    private Player bLD;
-    private Player bRD;
+    //Initialize the goalie and coach
     private Goalie sG;
     private Goalie bG;
     private Coach coach;
+
+    //Array for players on the Ice
+    Player[] onIce = new Player[5];
+    Player[] onBench = new Player[5];
 
     //Boolean to declare which team the user chose
     private boolean userTeam;
@@ -25,10 +19,6 @@ public class Team {
     private ArrayList<Player> playerRoster = new ArrayList<Player>();
     private ArrayList<Goalie> goalieRoster = new ArrayList<Goalie>();
     private ArrayList<Coach> coachRoster = new ArrayList<Coach>();
-
-    //Array for players on the Ice
-    Player[] onIce = new Player[5];
-    Player[] onBench = new Player[5];
 
     //To keep track of goals in a game
     int score;
