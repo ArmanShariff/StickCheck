@@ -137,6 +137,7 @@ public class Team {
             
             if (forwardLines[0][0] == null) {
                 forwardLines[0][0] = player;
+                this.onIce[0] = player;
             } else {
                 forwardLines[1][0] = player;
             }
@@ -145,6 +146,7 @@ public class Team {
         else if (player.getPosition().equals("Center")) {
             if (forwardLines[0][1] == null) {
                 forwardLines[0][1] = player;
+                this.onIce[1] = player;
             } else {
                 forwardLines[1][1] = player;
             }
@@ -153,6 +155,7 @@ public class Team {
         else if (player.getPosition().equals("Right Wing")) {
             if (forwardLines[0][2] == null) {
                 forwardLines[0][2] = player;
+                this.onIce[2] = player;
             } else {
                 forwardLines[1][2] = player;
             }
@@ -161,6 +164,7 @@ public class Team {
         else if (player.getPosition().equals("Left Defence")) {
             if (defenceLines[0][0] == null) {
                 defenceLines[0][0] = player;
+                this.onIce[3] = player;
             } else {
                 defenceLines[1][0] = player;
             }
@@ -169,6 +173,7 @@ public class Team {
         else if (player.getPosition().equals("Right Defence")) {
             if (defenceLines[0][1] == null) {
                 defenceLines[0][1] = player;
+                this.onIce[4] = player;
             } else {
                 defenceLines[1][1] = player;
             }
@@ -212,5 +217,9 @@ public class Team {
         }
         return printStatement;
     }
+
+	public Player getRoster(int i) {
+		return playerRoster.get(i);
+	}
 
 }

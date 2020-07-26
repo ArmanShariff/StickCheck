@@ -1,4 +1,5 @@
 import java.lang.Math;
+import java.lang.management.ThreadMXBean;
 
 class Simulation {
 
@@ -23,8 +24,9 @@ class Simulation {
         Simulation.periodLength = 1200;
         Simulation.isOvertime = false;
 
+        
         // run three periods
-
+        // resets stamina/stats after each period
         for (int i = 0; i < 3; i++) {
             period(0, teamA, teamB);
             teamResetStamina(teamA, teamB);
@@ -34,28 +36,23 @@ class Simulation {
         // if the game is tied start overtime
 
         if (teamA.getScore() == teamB.getScore()) {
-
             Simulation.isOvertime = true;
+            teamResetStamina(teamA, teamB);
+            teamResetStats(teamA, teamB);
 
+            // shootout only occurs during the regular season
             if (isPlayoffGame == true) {
-
                 while (teamA.getScore() == teamB.getScore()) {
-
-                    overtime(teamA, teamB, isPlayoffGame, 1200);
-
+                    overtime(teamA, teamB, 1200);
                 }
-
 
             } else {
-
-                overtime(teamA, teamB, isPlayoffGame, 300);
+                overtime(teamA, teamB, 300);
 
                 // if its still tied go to shootout
-                if (teamA.getScore() == teamB.getScore()) {
-
-                    shootout(teamA, teamB);
-
-                }
+                //if (teamA.getScore() == teamB.getScore()) {
+                //    shootout(teamA, teamB);
+                //}
             }
         }
 
@@ -69,8 +66,8 @@ class Simulation {
         teamB.reSetScore();
         teamA.reSetShotCount();
         teamB.reSetShotCount();
-
     }
+
     // get methods
 
     public static int getPeriodLength() {
@@ -81,31 +78,29 @@ class Simulation {
         return isOvertime;
     }
 
+    //One period
     public static boolean period(int time, Team teamA, Team teamB) {
 
-        // check if period is over
+        // check if period is over, otherwise move on to faceoff.
         if (time > periodLength) {
             System.out.println("\n \n-- Period is over --\n \n" + "Shots: ");
+
             return false;
 
-        }
-        // otherwise move on to faceoff.
-        else {
-
+        } else {
             return faceoffCalculation(0, teamA, teamB);
         }
     }
 
+    //Faceoff Calculation
     public static boolean faceoffCalculation(int time, Team teamA, Team teamB) {
-
         // check if period is over
         if (time > periodLength) {
             System.out.println("\n \n-- Period is over --\n \n");
             
             return false;
-        }
 
-        else {
+        } else {
             teamDropStamina(teamA, teamB);
             teamDropStats(teamA, teamB);
             System.out.println(teamA.getsC().getFirstName() + "'s stamina: " + teamA.getsC().getStaminaBar());
@@ -122,12 +117,13 @@ class Simulation {
             if (random <= chance) {
                 // team A is on offence
                 System.out.println(teamA.getsC().getFirstName() + " " + teamA.getsC().getLastName() + " won the faceoff!");
+                
                 return matchupCalculationOne(time + 2, teamA, teamB);
-            }
-            
-            else {
+
+            } else {
                 // team B is on offence
                 System.out.println(teamB.getsC().getFirstName() + " " + teamB.getsC().getLastName() + " won the faceoff!");
+                
                 return matchupCalculationOne(time + 2, teamB, teamA);
             }
         }
@@ -136,12 +132,11 @@ class Simulation {
     public static boolean matchupCalculationOne(int time, Team offensiveTeam, Team defensiveTeam) {
         // check if period is over
         if (time > periodLength) {
-
             System.out.println("\n \n-- Period is over --\n \n");
+
             return false;
 
         } else {
-
             //offensive team values
             double skatingOC = offensiveTeam.getOnIce(1).getSkating();
             double skatingORW = offensiveTeam.getOnIce(2).getSkating();
@@ -201,17 +196,20 @@ class Simulation {
                 teamDropStamina(offensiveTeam, defensiveTeam);
                 teamDropStats(offensiveTeam, defensiveTeam);
                 System.out.println(offensiveTeam.getTeamName() + " retains possession!");
+
                 return shotCalculation(time + getRandom(5, 20), offensiveTeam, defensiveTeam);
-            }
-            else {
+
+            } else {
                 teamDropStamina(offensiveTeam, defensiveTeam);
                 teamDropStats(offensiveTeam, defensiveTeam);
                 System.out.println(defensiveTeam.getTeamName() + " steals the puck away from " + offensiveTeam.getTeamName() + "!");
+                
                 return matchupCalculationOne(time + getRandom(5, 20), defensiveTeam, offensiveTeam);
             }
         }
     }
 
+    //Shot calculation
     public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
         
         offensiveTeam.setShotCount();
@@ -227,10 +225,10 @@ class Simulation {
             
             if (isOvertime == true) {
                 offensiveTeam.setScore();
-                return true;
-            }
 
-            else {
+                return true;
+
+            } else {
                 return faceoffCalculation(time + 2, offensiveTeam, defensiveTeam);
             }
 
@@ -242,16 +240,14 @@ class Simulation {
             if (isRebound == false) {
                 System.out.println("What a save!");
                 return faceoffCalculation(time + 2, offensiveTeam, defensiveTeam);
-            }
-            else {
+
+            } else {
                 teamDropStamina(offensiveTeam, defensiveTeam);
                 teamDropStats(offensiveTeam, defensiveTeam);
                 System.out.println("Rebound opportunity!");
                 return matchupCalculationTwo(time + 2, offensiveTeam, defensiveTeam);
             }
-
         }
-
     }
 
     public static Player determineShooter(Team offensiveTeam) {
@@ -307,7 +303,6 @@ class Simulation {
             
             return false;
         }
-
     }
 
     public static boolean isRebound(Goalie goalie) {
@@ -325,7 +320,6 @@ class Simulation {
             // no rebound
             return false;
         }
-
     }
 
     public static boolean matchupCalculationTwo(int time, Team offensiveTeam, Team defensiveTeam) {
@@ -420,7 +414,6 @@ class Simulation {
             }
 
         }
-        
     }
 
     public static int getRandom(int min, int max) {
@@ -497,7 +490,8 @@ class Simulation {
         teamB.getsRD().ResetStats();
         
     }
-    public static boolean overtime(Team teamA, Team teamB, boolean isPlayoffGame, int overtimePeriodLength) {
+    
+    public static boolean overtime(Team teamA, Team teamB, int overtimePeriodLength) {
 
         Simulation.periodLength = overtimePeriodLength;
         
@@ -513,15 +507,88 @@ class Simulation {
         System.out.println("BOYS AND GIRLS,");
         System.out.println("LADIES AND GENTLEMEN,");
         System.out.println("WELCOME TO THE SHOOTOUT!");
-        int random_int = getRandom(1, 2);
+        
+        //shooting stats of Team A and Team B
+        double[] shootoutA = new double[10];
+        double[] shootoutB = new double[10];
 
-        if (random_int == 1) {
-            teamA.setScore();
-        }
-        if (random_int == 0) {
-            teamB.setScore();
+        for (int i = 1; i < 11; i++) {
+            shootoutA[i] = teamA.getRoster(i).getShooting();
+            shootoutB[i] = teamB.getRoster(i).getShooting();
         }
 
+        //stats of Team A goalie
+        double reflexesA = teamA.getsG().getReflexes();
+        double agilityA = teamA.getsG().getAgility();
+        double flexibilityA = teamA.getsG().getFlexibility();
+        double overallA = (reflexesA + agilityA + flexibilityA)/3;
+
+        //stats of Team B goalie
+        double reflexesB = teamB.getsG().getReflexes();
+        double agilityB = teamB.getsG().getAgility();
+        double flexibilityB = teamB.getsG().getFlexibility();
+        double overallB = (reflexesB + agilityB + flexibilityB)/3;
+
+        //calculating the outcome of the shootout
+        int teamScoreA;
+        int teamScoreB;
+        int loopTracker;
+        double[] probabilityA = new double[9];
+        double[] probabilityB = new double[9];
+
+        for (int i = 1; i < 11; i++) {
+            probabilityA[i] = (50 + shootoutA[i] - overallB);
+            if (probabilityA[i] > getRandom(0, 100)) {
+                teamScoreA++;
+                System.out.println(teamA.getRoster(i).getLastName() + " has scored!");
+            } else {
+                System.out.println(teamA.getRoster(i).getLastName() + " missed!");
+            }
+
+            probabilityB[i] = (50 + shootoutB[i] - overallA);
+            if (probabilityB[i] > getRandom(0, 100)) {
+                teamScoreB++;
+                System.out.println(teamB.getRoster(i).getLastName() + " has scored!");
+            } else {
+                System.out.println(teamB.getRoster(i).getLastName() + " missed!");
+            }
+
+            //checking if a team has won 
+            if ((teamScoreA == 2) && (teamScoreB == 0)) {
+                endShootoutA(teamA, teamB);
+                i = 10;
+            } else if ((teamScoreA == 0) && (teamScoreB == 2)) {
+                endShootoutB(teamA, teamB);
+                i = 10;
+            } else if (((teamScoreA > teamScoreB) && (i >= 3)) || ((teamScoreA > teamScoreB) && (loopTracker > 0))) {
+                endShootoutA(teamA, teamB);
+            } else if (((teamScoreA < teamScoreB) && (i >= 3)) || ((teamScoreA < teamScoreB) && (loopTracker > 0))) {
+                endShootoutB(teamA, teamB);
+            } else if ((teamScoreA == teamScoreB) && (i == 10)) {
+                i = 0;
+                loopTracker++;
+            }
+        }   
+    }
+
+    //method called if Team A wins the shootout
+    public static void endShootoutA(Team teamA, Team teamB) {
+        System.out.println(teamA.getTeamName() + " has won the game!");
+        System.out.println("Final Score: " + (teamA.getScore() + 1) + "-" + (teamB.getScore()) + " (SO)");
+    }
+
+    //method called if Team B wins the shootout
+    public static void endShootoutB(Team teamA, Team teamB) {
+        System.out.println(teamB.getTeamName() + " has won the game!");
+        System.out.println("Final Score: " + (teamB.getScore() + 1) + "-" + (teamA.getScore()) + " (SO)");
     }
 
 }
+/*
+     __  _________________  ______  ____ _____
+   /  |/  / ____/_  __/ / / / __ \/ __ / ___/
+  / /|_/ / __/   / / / /_/ / / / / / / \__ \ 
+ / /  / / /___  / / / __  / /_/ / /_/ ___/ / 
+/_/  /_/_____/ /_/ /_/ /_/\____/_____/____/ 
+
+*/
