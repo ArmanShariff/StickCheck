@@ -56,11 +56,7 @@ class Simulation {
                     shootout(teamA, teamB);
 
                 }
-
             }
-
-            
-
         }
 
         System.out.println("GAME OVER!!!!");
@@ -97,9 +93,7 @@ class Simulation {
         else {
 
             return faceoffCalculation(0, teamA, teamB);
-
         }
-
     }
 
     public static boolean faceoffCalculation(int time, Team teamA, Team teamB) {
@@ -136,9 +130,7 @@ class Simulation {
                 System.out.println(teamB.getsC().getFirstName() + " " + teamB.getsC().getLastName() + " won the faceoff!");
                 return matchupCalculationOne(time + 2, teamB, teamA);
             }
-
         }
-
     }
 
     public static boolean matchupCalculationOne(int time, Team offensiveTeam, Team defensiveTeam) {
@@ -151,24 +143,24 @@ class Simulation {
         } else {
 
             //offensive team values
-            double skatingOC = offensiveTeam.getsC().getSkating();
-            double skatingORW = offensiveTeam.getsRW().getSkating();
-            double skatingOLW = offensiveTeam.getsLW().getSkating();
-            double skatingORD = offensiveTeam.getsRD().getSkating();
-            double skatingOLD = offensiveTeam.getsLD().getSkating();
-            double strengthOC = offensiveTeam.getsC().getStrength();
-            double strengthORW = offensiveTeam.getsRW().getStrength();
-            double strengthOLW = offensiveTeam.getsLW().getStrength();
-            double strengthORD = offensiveTeam.getsRD().getStrength();
-            double strengthOLD = offensiveTeam.getsLD().getStrength();
-            double offAwarenessOC = offensiveTeam.getsC().getOffensiveAwareness();
-            double offAwarenessORW = offensiveTeam.getsRW().getOffensiveAwareness();
-            double offAwarenessOLW = offensiveTeam.getsLW().getOffensiveAwareness();
-            double offAwarenessORD = offensiveTeam.getsRD().getOffensiveAwareness();
-            double offAwarenessOLD = offensiveTeam.getsLD().getOffensiveAwareness();
+            double skatingOC = offensiveTeam.getOnIce(1).getSkating();
+            double skatingORW = offensiveTeam.getOnIce(2).getSkating();
+            double skatingOLW = offensiveTeam.getOnIce(0).getSkating();
+            double skatingORD = offensiveTeam.getOnIce(3).getSkating();
+            double skatingOLD = offensiveTeam.getOnIce(4).getSkating();
+            double strengthOC = offensiveTeam.getOnIce(1).getStrength();
+            double strengthORW = offensiveTeam.getOnIce(2).getStrength();
+            double strengthOLW = offensiveTeam.getOnIce(0).getStrength();
+            double strengthORD = offensiveTeam.getOnIce(3).getStrength();
+            double strengthOLD = offensiveTeam.getOnIce(4).getStrength();
+            double offAwarenessOC = offensiveTeam.getOnIce(0).getOffensiveAwareness();
+            double offAwarenessORW = offensiveTeam.getOnIce(1).getOffensiveAwareness();
+            double offAwarenessOLW = offensiveTeam.getOnIce(2).getOffensiveAwareness();
+            double offAwarenessORD = offensiveTeam.getOnIce(3).getOffensiveAwareness();
+            double offAwarenessOLD = offensiveTeam.getOnIce(4).getOffensiveAwareness();
 
             //defensive team values
-            double skatingDC = defensiveTeam.getsC().getSkating();
+            double skatingDC = defensiveTeam.getOnIce(1).getSkating();
             double skatingDRW = defensiveTeam.getsRW().getSkating();
             double skatingDLW = defensiveTeam.getsLW().getSkating();
             double skatingDRD = defensiveTeam.getsRD().getSkating();
@@ -445,8 +437,8 @@ class Simulation {
         return random_double;
     }
 
-    //Method that drops every player's stamina
-    // >After: Faceoffs, fights for possession, rebounds 
+    // Method that drops every player's stamina
+    // After: Faceoffs, fights for possession, rebounds 
     public static void teamDropStamina(Team teamA, Team teamB) {
         drops = drops++;
         teamA.getsC().dropStamina(drops);
@@ -514,14 +506,15 @@ class Simulation {
         System.out.println("ITS OOVVVVEERRRTIIIMMEEEE!!");
 
         return period(0, teamA, teamB);
-
     }
 
     public static void shootout(Team teamA, Team teamB) {
+
         System.out.println("BOYS AND GIRLS,");
         System.out.println("LADIES AND GENTLEMEN,");
         System.out.println("WELCOME TO THE SHOOTOUT!");
         int random_int = getRandom(1, 2);
+
         if (random_int == 1) {
             teamA.setScore();
         }

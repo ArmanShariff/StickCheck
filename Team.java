@@ -1,65 +1,56 @@
+// make all players accessable by position in an array
+// so we can make line changes possible
+
 import java.util.ArrayList;
 
 public class Team {
-
-    //Initialize the goalie and coach
-    private Goalie sG;
-    private Goalie bG;
-    private Coach coach;
-
-    //Array for players on the Ice
-    Player[] onIce = new Player[5];
-    Player[] onBench = new Player[5];
-
-    //Boolean to declare which team the user chose
-    private boolean userTeam;
+    
+    private boolean userTeam;                           // Boolean to declare which team the user chose
     private String teamName;
 
-    //Arraylists of the rosters
+    // Arraylists of the rosters
     private ArrayList<Player> playerRoster = new ArrayList<Player>();
     private ArrayList<Goalie> goalieRoster = new ArrayList<Goalie>();
     private ArrayList<Coach> coachRoster = new ArrayList<Coach>();
+    
+    // stores all the players currently on the ice
+    Player[] onIce = new Player[5];
 
-    //To keep track of goals in a game
-    int score;
+    /*
+    *  fowardLines[i][j] - i controls the line, j controls position
+    *  LeftWing([0][0]) - Center([0][1]) - RightWing([0][2])
+    *  LeftWing([1][0]) - Center([1][1]) - RightWing([1][2])
+    */ 
+    
+    Player[][] forwardLines = new Player[2][3];
+    Player[][] defenceLines = new Player[2][2];
+    
+    // initialize the goalie and coach
+    private Goalie sG;
+    private Goalie bG;
+    private Coach coach;
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     //Constructor
 
-    public Team(String teamName, boolean userTeam) {
+    public Team (String teamName, boolean userTeam) {
+
         this.teamName = teamName;
         this.userTeam = userTeam;
+
     }
 
 
-    //Keep track of shot count
+    // Keep track of shot count and score in a game
     int shotCount;
+    int score;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // get methods
     public String getTeamName() {
         return teamName;
-    }
-
-    public Player getsC() {
-        return sC;
-    }
-
-    public Player getsLW() {
-        return sLW;
-    }
-
-    public Player getsRW() {
-        return sRW;
-    }
-
-    public Player getsLD() {
-        return sLD;
-    }
-    public Player getsRD() {
-        return sRD;
     }
 
     public Goalie getsG() {
@@ -77,6 +68,26 @@ public class Team {
     public int getShotCount()
     {
         return shotCount;
+    }
+
+    public Player getsC() {
+        return getOnIce(1);
+    }
+
+    public Player getsLW() {
+        return getOnIce(0);
+    }
+
+    public Player getsRW() {
+        return getOnIce(2);
+    }
+
+    public Player getsLD() {
+        return getOnIce(3);
+    }
+
+    public Player getsRD() {
+        return getOnIce(4);
     }
 
     // set methods
@@ -120,61 +131,46 @@ public class Team {
     //Method checks whether the player is a center, wing or defense
     //Sets the corresponding players into the starting lineup/bench
     //TO DO: If bench player has a higher overall than the starter, switch them
-    public void setPlayerPosition(Player player, Player[] arrPlayers) {
+    public void setPlayerPosition(Player player) {
         
-        if (player.getPosition().equals("Center")) {
-            if (sC == null) {
-                sC = player;
-                arrPlayers[0] = sC;
-                this.onIce[0] = sC;
+        if (player.getPosition().equals("Left Wing")) {
+            
+            if (forwardLines[0][0] == null) {
+                forwardLines[0][0] = player;
             } else {
-                bC = player;
-                arrPlayers[5] = bC;
-                this.onBench[0] = bC;
+                forwardLines[1][0] = player;
             }
         }
-        else if (player.getPosition().equals("Left Wing")) {
-            if (sLW == null) {
-                sLW = player;
-                arrPlayers[1] = sLW;
-                this.onIce[1] = sLW;
+
+        else if (player.getPosition().equals("Center")) {
+            if (forwardLines[0][1] == null) {
+                forwardLines[0][1] = player;
             } else {
-                bLW = player;
-                arrPlayers[6] = bLW;
-                this.onBench[1] = bLW;
+                forwardLines[1][1] = player;
             }
         }
+
         else if (player.getPosition().equals("Right Wing")) {
-            if (sRW == null) {
-                sRW = player;
-                arrPlayers[2] = sRW;
-                this.onIce[2] = sRW;
+            if (forwardLines[0][2] == null) {
+                forwardLines[0][2] = player;
             } else {
-                bRW = player;
-                arrPlayers[7] = bRW;
-                this.onBench[2] = bRW;
+                forwardLines[1][2] = player;
             }
         }
-        else if (player.getPosition().equals("Right Defence")) {
-            if (sRD == null) {
-                sRD = player;
-                arrPlayers[3] = sRD;
-                this.onIce[3] = sRD;
-            } else {
-                bRD = player;
-                arrPlayers[8] = bRD;
-                this.onBench[3] = bRD;
-            }
-        }
+
         else if (player.getPosition().equals("Left Defence")) {
-            if (sLD == null) {
-                sLD = player;
-                arrPlayers[4] = sLD;
-                this.onIce[4] = sLD;
+            if (defenceLines[0][0] == null) {
+                defenceLines[0][0] = player;
             } else {
-                bLD = player;
-                arrPlayers[9] = bLD;
-                this.onBench[4] = bLD;
+                defenceLines[1][0] = player;
+            }
+        }
+
+        else if (player.getPosition().equals("Right Defence")) {
+            if (defenceLines[0][1] == null) {
+                defenceLines[0][1] = player;
+            } else {
+                defenceLines[1][1] = player;
             }
         }
     }
@@ -198,23 +194,22 @@ public class Team {
     }
 
     public String toString() {
-        String printStatement = "Player Roster: \n";
-        printStatement += "Starting Center: " + sC + "\n";
-        printStatement += "Starting Left Wing: " + sLW + "\n";
-        printStatement += "Starting Right Wing: " + sRW + "\n";
-        printStatement += "Starting Left Defense: " + sLD + "\n";
-        printStatement += "Starting Right Defense: " + sRD + "\n";
-        printStatement += "Bench Center: " + bC + "\n";
-        printStatement += "Bench Left Wing: " + bLW + "\n";
-        printStatement += "Bench Right Wing: " + bRW + "\n";
-        printStatement += "Bench Left Defense: " + bLD + "\n";
-        printStatement += "Bench Right Defense: " + bRD + "\n";
-        printStatement += "\nGoalie Roster: \n";
-        printStatement += "Starting Goalie: " + sG + "\n";
-        printStatement += "Bench Goalie: " + bG + "\n";
-        printStatement += "\nCoach Roster: \n";
-        printStatement += "Coach: " + coach;
 
+        String printStatement = "Lines: \n";
+
+        for (int i = 0; i < forwardLines.length; i ++) {
+            for (int j = 0; j < forwardLines[i].length; j++) {
+                printStatement += " " + forwardLines[i][j].getLastName();
+            }
+            printStatement += "\n";
+        }
+
+        for (int i = 0; i < defenceLines.length; i ++) {
+            for (int j = 0; j < defenceLines[i].length; j++) {
+                printStatement += " " + defenceLines[i][j].getLastName();
+            }
+            printStatement += "\n";
+        }
         return printStatement;
     }
 

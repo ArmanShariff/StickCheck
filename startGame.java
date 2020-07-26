@@ -16,12 +16,12 @@ public class startGame {
         Team montreal = new Team("Montreal", false);
         Team boston = new Team("Boston", false);
 
-        Player[] torontoPlayers = new Player[10];
+/*         Player[] torontoPlayers = new Player[10];
         Player[] newYorkPlayers = new Player[10];
         Player[] detroitPlayers = new Player[10];
         Player[] chicagoPlayers = new Player[10];
         Player[] montrealPlayers = new Player[10];
-        Player[] bostonPlayers = new Player[10];
+        Player[] bostonPlayers = new Player[10]; */
 
         ArrayList<Player> playerList = new ArrayList<Player>();
         ArrayList<Goalie> goalieList = new ArrayList<Goalie>();
@@ -31,43 +31,55 @@ public class startGame {
         goalieList = roster.getGoalies();
         coachList = roster.getCoaches();
 
-        sortTeam("Toronto", toronto, playerList, goalieList, coachList, torontoPlayers);
+        /* sortTeam("Toronto", toronto, playerList, goalieList, coachList, torontoPlayers);
         sortTeam("New York", newYork, playerList, goalieList, coachList, newYorkPlayers);
         sortTeam("Detroit", detroit, playerList, goalieList, coachList, detroitPlayers);
         sortTeam("Chicago", chicago, playerList, goalieList, coachList, chicagoPlayers);
         sortTeam("Montreal", montreal, playerList, goalieList, coachList, montrealPlayers);
-        sortTeam("Boston", boston, playerList, goalieList, coachList, bostonPlayers);
+        sortTeam("Boston", boston, playerList, goalieList, coachList, bostonPlayers); */
 
-        // System.out.println("Toronto: \n" + toronto);
-        // System.out.println("\nNew York: \n" + newYork);
-        // System.out.println("\nDetroit: \n" + detroit);
-        // System.out.println("\nChicago: \n" + chicago);
-        // System.out.println("\nMontreal: \n" + montreal);
-        // System.out.println("\nBoston: \n" + boston);
+        sortTeam("Toronto", toronto, playerList, goalieList, coachList);
+        sortTeam("New York", newYork, playerList, goalieList, coachList);
+        sortTeam("Detroit", detroit, playerList, goalieList, coachList);
+        sortTeam("Chicago", chicago, playerList, goalieList, coachList);
+        sortTeam("Montreal", montreal, playerList, goalieList, coachList);
+        sortTeam("Boston", boston, playerList, goalieList, coachList);
+
+        System.out.println("Toronto: \n" + toronto);
+        System.out.println("\nNew York: \n" + newYork);
+        System.out.println("\nDetroit: \n" + detroit);
+        System.out.println("\nChicago: \n" + chicago);
+        System.out.println("\nMontreal: \n" + montreal);
+        System.out.println("\nBoston: \n" + boston);
         
-        Simulation game1 = new Simulation(toronto, boston, false);
-
+        Simulation game1 = new Simulation(toronto, montreal, false);
     }
 
     //Method that sorts the players, goalies and coaches into their respected teams 
     //and sets the position of the player/goalie as a starter/bench player
-    public static void sortTeam(String teamName,Team team, ArrayList<Player> playerRoster, ArrayList<Goalie> goalieRoster, ArrayList<Coach> coachRoster, Player[] arrPlayers) {
-        for(int i = 0; i < playerRoster.size(); i++){
-            if(playerRoster.get(i).getCurrentTeam().equals(teamName)) {
+    public static void sortTeam(String teamName,Team team, ArrayList<Player> playerRoster, ArrayList<Goalie> goalieRoster, ArrayList<Coach> coachRoster) {
+        
+        // loop through an array list of all players
+        for (int i = 0; i < playerRoster.size(); i++) {
+            // if the player belongs to the team, add them to that team in the correct position.
+            if (playerRoster.get(i).getCurrentTeam().equals(teamName)) {
                 team.addPlayer(playerRoster.get(i));
-                team.setPlayerPosition(playerRoster.get(i), arrPlayers);
+                team.setPlayerPosition(playerRoster.get(i));
             }
         }
 
-        for(int i = 0; i < goalieRoster.size(); i++){
-            if(goalieRoster.get(i).getCurrentTeam().equals(teamName)) {
+        // loop through an array list of all goalies
+        for (int i = 0; i < goalieRoster.size(); i++){
+            // if the goalie belongs to the team, add them to that team in the correct position.
+            if (goalieRoster.get(i).getCurrentTeam().equals(teamName)) {
                 team.addGoalie(goalieRoster.get(i));
                 team.setGoaliePosition(goalieRoster.get(i));
             }
         }
 
-        for(int i = 0; i < coachRoster.size(); i++){
-            if(coachRoster.get(i).getCurrentTeam().equals(teamName)) {
+        // loop through an array list of all coaches, and add them to their team
+        for (int i = 0; i < coachRoster.size(); i++){
+            if (coachRoster.get(i).getCurrentTeam().equals(teamName)) {
                 team.addCoach(coachRoster.get(i));
                 team.setCoach(coachRoster.get(i));
             }
