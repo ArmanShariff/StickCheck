@@ -554,8 +554,8 @@ class Simulation {
         int teamScoreA = 0;
         int teamScoreB = 0;
         int loopTracker = 0;
-        double[] probabilityA = new double[9];
-        double[] probabilityB = new double[9];
+        double[] probabilityA = new double[10];
+        double[] probabilityB = new double[10];
 
         shootoutLoop:
         for (int i = 1; i < 11; i++) {
