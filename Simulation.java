@@ -530,9 +530,9 @@ class Simulation {
         double overallB = (reflexesB + agilityB + flexibilityB)/3;
 
         //calculating the outcome of the shootout
-        int teamScoreA;
-        int teamScoreB;
-        int loopTracker;
+        int teamScoreA = 0;
+        int teamScoreB = 0;
+        int loopTracker = 0;
         double[] probabilityA = new double[9];
         double[] probabilityB = new double[9];
 
