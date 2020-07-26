@@ -16,7 +16,7 @@ public class startGame {
         Team montreal = new Team("Montreal", false);
         Team boston = new Team("Boston", false);
 
-/*         Player[] torontoPlayers = new Player[10];
+/*      Player[] torontoPlayers = new Player[10];
         Player[] newYorkPlayers = new Player[10];
         Player[] detroitPlayers = new Player[10];
         Player[] chicagoPlayers = new Player[10];

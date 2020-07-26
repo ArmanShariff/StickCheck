@@ -8,6 +8,7 @@ class Simulation {
     Team teamA;
     Team teamB;
     boolean isPlayoffGame;
+    boolean isShootout = false;
 
     static int periodLength;
     static boolean isOvertime;
@@ -52,13 +53,18 @@ class Simulation {
                 // if its still tied go to shootout
                 if (teamA.getScore() == teamB.getScore()) {
                    shootout(teamA, teamB);
+                   isShootout = true;
                 }
             }
         }
 
-        System.out.println("GAME OVER!!!!");
-        System.out.println(teamA.getTeamName() + ": " + teamA.getScore());
-        System.out.println(teamB.getTeamName() + ": " + teamB.getScore());
+        if (isShootout == false) {
+            System.out.println("GAME OVER!!!!");
+            System.out.println(teamA.getTeamName() + ": " + teamA.getScore());
+            System.out.println(teamB.getTeamName() + ": " + teamB.getScore());
+        }
+
+        //prints team shot totals
         System.out.println(teamA.getTeamName() + " shots: " + teamA.getShotCount());
         System.out.println(teamB.getTeamName() + " shots: " + teamB.getShotCount());
         
@@ -509,10 +515,10 @@ class Simulation {
         System.out.println("WELCOME TO THE SHOOTOUT!");
         
         //shooting stats of Team A and Team B
-        double[] shootoutA = new double[10];
-        double[] shootoutB = new double[10];
+        double[] shootoutA = new double[9];
+        double[] shootoutB = new double[9];
 
-        for (int i = 1; i < 11; i++) {
+        for (int i = 0; i <= 8; i++) {
             shootoutA[i] = teamA.getRoster(i).getShooting();
             shootoutB[i] = teamB.getRoster(i).getShooting();
         }
@@ -536,34 +542,51 @@ class Simulation {
         double[] probabilityA = new double[9];
         double[] probabilityB = new double[9];
 
+        shootoutLoop:
         for (int i = 1; i < 11; i++) {
-            probabilityA[i] = (50 + shootoutA[i] - overallB);
-            if (probabilityA[i] > getRandom(0, 100)) {
+
+            System.out.println(" ");
+            System.out.println("Round " + (loopTracker*10 + i));
+
+            //shootout attempt for Team A
+            probabilityA[i-1] = (50 + shootoutA[i-1] - overallB);
+            if (probabilityA[i-1] > getRandom(0, 100)) {
                 teamScoreA++;
-                System.out.println(teamA.getRoster(i).getLastName() + " has scored!");
+                System.out.println(teamA.getRoster(i-1).getLastName() + " scored!");
             } else {
-                System.out.println(teamA.getRoster(i).getLastName() + " missed!");
+                System.out.println(teamA.getRoster(i-1).getLastName() + " missed!");
             }
 
-            probabilityB[i] = (50 + shootoutB[i] - overallA);
-            if (probabilityB[i] > getRandom(0, 100)) {
+            if ((teamScoreA < teamScoreB) && (i == 3) && (loopTracker == 0)) {
+                endShootoutB(teamA, teamB);
+                break shootoutLoop;
+            } else if ((teamScoreA - 1 > teamScoreB) && (i == 3) && (loopTracker == 0)) {
+                endShootoutA(teamA, teamB);
+                break shootoutLoop;
+            }
+
+            //shootout attempt for Team B
+            probabilityB[i-1] = (50 + shootoutB[i-1] - overallA);
+            if (probabilityB[i-1] > getRandom(0, 100)) {
                 teamScoreB++;
-                System.out.println(teamB.getRoster(i).getLastName() + " has scored!");
+                System.out.println(teamB.getRoster(i-1).getLastName() + " scored!");
             } else {
-                System.out.println(teamB.getRoster(i).getLastName() + " missed!");
+                System.out.println(teamB.getRoster(i-1).getLastName() + " missed!");
             }
 
             //checking if a team has won 
             if ((teamScoreA == 2) && (teamScoreB == 0)) {
                 endShootoutA(teamA, teamB);
-                i = 10;
+                break shootoutLoop;
             } else if ((teamScoreA == 0) && (teamScoreB == 2)) {
                 endShootoutB(teamA, teamB);
-                i = 10;
+                break shootoutLoop;
             } else if (((teamScoreA > teamScoreB) && (i >= 3)) || ((teamScoreA > teamScoreB) && (loopTracker > 0))) {
                 endShootoutA(teamA, teamB);
+                break shootoutLoop;
             } else if (((teamScoreA < teamScoreB) && (i >= 3)) || ((teamScoreA < teamScoreB) && (loopTracker > 0))) {
                 endShootoutB(teamA, teamB);
+                break shootoutLoop;
             } else if ((teamScoreA == teamScoreB) && (i == 10)) {
                 i = 0;
                 loopTracker++;
@@ -573,12 +596,14 @@ class Simulation {
 
     //method called if Team A wins the shootout
     public static void endShootoutA(Team teamA, Team teamB) {
+        System.out.println(" ");
         System.out.println(teamA.getTeamName() + " has won the game!");
         System.out.println("Final Score: " + (teamA.getScore() + 1) + "-" + (teamB.getScore()) + " (SO)");
     }
 
     //method called if Team B wins the shootout
     public static void endShootoutB(Team teamA, Team teamB) {
+        System.out.println(" ");
         System.out.println(teamB.getTeamName() + " has won the game!");
         System.out.println("Final Score: " + (teamB.getScore() + 1) + "-" + (teamA.getScore()) + " (SO)");
     }
