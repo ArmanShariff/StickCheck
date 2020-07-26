@@ -4,7 +4,14 @@ import java.lang.management.ThreadMXBean;
 class Simulation {
 
     // fields
+    /*  _______ _______ ______ __
+       /  ____/__   __/  ____/  /    /
+      /  /__    /  / /  __/ /  /    /
+     /  ___/ __/  /_/  /___/  /____/
+    /__/   /_______/______/_______/______   
 
+    
+    */
     Team teamA;
     Team teamB;
     boolean isPlayoffGame;
@@ -58,6 +65,7 @@ class Simulation {
             }
         }
 
+        //prints end-of-game message (exception: shootout)
         if (isShootout == false) {
             System.out.println("GAME OVER!!!!");
             System.out.println(teamA.getTeamName() + ": " + teamA.getScore());
@@ -74,7 +82,14 @@ class Simulation {
         teamB.reSetShotCount();
     }
 
-    // get methods
+    /*  
+        __  _________________  ______  ____ _____
+       /  |/  / ____/_  __/ / / / __ \/ __ / ___/
+      / /|_/ / __/   / / / /_/ / / / / / / \__ \ 
+     / /  / / /___  / / / __  / /_/ / /_/ /___// 
+    /_/  /_/_____/ /_/ /_/ /_/\____/_____/____/  
+    
+    */
 
     public static int getPeriodLength() {
         return periodLength;
@@ -515,10 +530,10 @@ class Simulation {
         System.out.println("WELCOME TO THE SHOOTOUT!");
         
         //shooting stats of Team A and Team B
-        double[] shootoutA = new double[9];
-        double[] shootoutB = new double[9];
+        double[] shootoutA = new double[10];
+        double[] shootoutB = new double[10];
 
-        for (int i = 0; i <= 8; i++) {
+        for (int i = 0; i < 10; i++) {
             shootoutA[i] = teamA.getRoster(i).getShooting();
             shootoutB[i] = teamB.getRoster(i).getShooting();
         }
@@ -609,11 +624,3 @@ class Simulation {
     }
 
 }
-/*
-     __  _________________  ______  ____ _____
-   /  |/  / ____/_  __/ / / / __ \/ __ / ___/
-  / /|_/ / __/   / / / /_/ / / / / / / \__ \ 
- / /  / / /___  / / / __  / /_/ / /_/ ___/ / 
-/_/  /_/_____/ /_/ /_/ /_/\____/_____/____/ 
-
-*/
