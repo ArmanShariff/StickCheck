@@ -16,13 +16,6 @@ public class startGame {
         Team montreal = new Team("Montreal", false);
         Team boston = new Team("Boston", false);
 
-/*      Player[] torontoPlayers = new Player[10];
-        Player[] newYorkPlayers = new Player[10];
-        Player[] detroitPlayers = new Player[10];
-        Player[] chicagoPlayers = new Player[10];
-        Player[] montrealPlayers = new Player[10];
-        Player[] bostonPlayers = new Player[10]; */
-
         ArrayList<Player> playerList = new ArrayList<Player>();
         ArrayList<Goalie> goalieList = new ArrayList<Goalie>();
         ArrayList<Coach> coachList = new ArrayList<Coach>();
@@ -30,13 +23,6 @@ public class startGame {
         playerList = roster.getPlayers();
         goalieList = roster.getGoalies();
         coachList = roster.getCoaches();
-
-        /* sortTeam("Toronto", toronto, playerList, goalieList, coachList, torontoPlayers);
-        sortTeam("New York", newYork, playerList, goalieList, coachList, newYorkPlayers);
-        sortTeam("Detroit", detroit, playerList, goalieList, coachList, detroitPlayers);
-        sortTeam("Chicago", chicago, playerList, goalieList, coachList, chicagoPlayers);
-        sortTeam("Montreal", montreal, playerList, goalieList, coachList, montrealPlayers);
-        sortTeam("Boston", boston, playerList, goalieList, coachList, bostonPlayers); */
 
         sortTeam("Toronto", toronto, playerList, goalieList, coachList);
         sortTeam("New York", newYork, playerList, goalieList, coachList);

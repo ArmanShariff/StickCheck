@@ -52,8 +52,12 @@ class Simulation {
 
                 // if its still tied go to shootout
                 if (teamA.getScore() == teamB.getScore()) {
-                   shootout(teamA, teamB);
-                   isShootout = true;
+                    for (int i = 0; i < 10; i++) {
+                        System.out.println(teamA.getRoster(i));
+                    }
+                    
+                    shootout(teamA, teamB);
+                    isShootout = true;
                 }
             }
         }
@@ -515,8 +519,8 @@ class Simulation {
         System.out.println("WELCOME TO THE SHOOTOUT!");
         
         //shooting stats of Team A and Team B
-        double[] shootoutA = new double[9];
-        double[] shootoutB = new double[9];
+        double[] shootoutA = new double[10];
+        double[] shootoutB = new double[10];
 
         for (int i = 0; i <= 8; i++) {
             shootoutA[i] = teamA.getRoster(i).getShooting();
@@ -550,11 +554,11 @@ class Simulation {
 
             //shootout attempt for Team A
             probabilityA[i-1] = (50 + shootoutA[i-1] - overallB);
-            if (probabilityA[i-1] > getRandom(0, 100)) {
+            if (probabilityA[i] > getRandom(100, 100)) {
                 teamScoreA++;
-                System.out.println(teamA.getRoster(i-1).getLastName() + " scored!");
+                System.out.println(teamA.getRoster(i).getLastName() + " scored!");
             } else {
-                System.out.println(teamA.getRoster(i-1).getLastName() + " missed!");
+                System.out.println(teamA.getRoster(i).getLastName() + " missed!");
             }
 
             if ((teamScoreA < teamScoreB) && (i == 3) && (loopTracker == 0)) {
@@ -567,7 +571,7 @@ class Simulation {
 
             //shootout attempt for Team B
             probabilityB[i-1] = (50 + shootoutB[i-1] - overallA);
-            if (probabilityB[i-1] > getRandom(0, 100)) {
+            if (probabilityB[i-1] > getRandom(100,100)) {
                 teamScoreB++;
                 System.out.println(teamB.getRoster(i-1).getLastName() + " scored!");
             } else {
