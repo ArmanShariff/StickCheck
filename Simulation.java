@@ -50,9 +50,9 @@ class Simulation {
                 overtime(teamA, teamB, 300);
 
                 // if its still tied go to shootout
-                //if (teamA.getScore() == teamB.getScore()) {
-                //    shootout(teamA, teamB);
-                //}
+                if (teamA.getScore() == teamB.getScore()) {
+                   shootout(teamA, teamB);
+                }
             }
         }
 
