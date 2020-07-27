@@ -51,72 +51,79 @@ public class Player extends Person {
         return this.faceoff;
     }
 
-    public void setFaceoff(double faceoff) {
-        this.faceoff = faceoff;
-    }
- 
     public double getShooting() {
         return this.shooting;
-    }
-    
-    public void setShooting(double shooting) {
-        this.shooting = shooting;
     }
 
     public double getStamina() {
         return this.stamina;
     }
 
-    public double getSkating() {
-        return this.skating;
+    public double getStaminaBar() {
+        return this.staminaBar;
     }
 
-    public void setSkating(double skating) {
-        this.skating = skating;
+    public double getSkating() {
+        return this.skating;
     }
  
     public double getOffensiveAwareness() {
         return this.offensiveAwareness;
     }
-
-    public void setOffAwareness(double offensiveAwareness) {
-        this.offensiveAwareness = offensiveAwareness;
-    }
  
     public double getDefensiveAwareness() {
         return this.defensiveAwareness;
-    }
-
-    public void setDefAwareness(double defensiveAwareness) {
-        this.defensiveAwareness = defensiveAwareness;
     }
  
     public double getStrength() {
         return this.strength;
     }
-    
-    public void setStrength(double strength) {
-        this.strength = strength;
-    }
  
     public double getShootingTendency() {
         return this.shootingTendency;
     }
-    
-    public double getStaminaBar() {
-        return this.staminaBar;
+
+    public double getOverall() { 
+        return this.overall;
+    }
+
+    // set methods
+
+    public void setFaceoff(double faceoff) {
+        this.faceoff = faceoff;
+    }
+
+    public void setShooting(double shooting) {
+        this.shooting = shooting;
+    }
+
+    public void setSkating(double skating) {
+        this.skating = skating;
+    }
+
+    public void setOffAwareness(double offensiveAwareness) {
+        this.offensiveAwareness = offensiveAwareness;
+    }
+
+    public void setDefAwareness(double defensiveAwareness) {
+        this.defensiveAwareness = defensiveAwareness;
+    }
+
+    public void setStrength(double strength) {
+        this.strength = strength;
     }
 
     public void setStaminaBar(double staminaBar) {
         this.staminaBar = staminaBar;
     }
 
-    public void dropStamina(int drops) {
-        double droppedStamina = staminaBar - (staminaBar + drops*drops)/stamina;
-        setStaminaBar(droppedStamina);
+    // stat changes methods
+
+    public void dropPlayerStamina(int drops) { 
+        setStaminaBar(staminaBar - (staminaBar + drops*drops)/stamina);
     }
 
-    public void dropStats(double staminaBar) {
+    public void dropPlayerStats(double staminaBar) {
         setFaceoff(originalFaceoff * staminaBar);
         setShooting(originalShooting * staminaBar);
         setSkating(originalSkating * staminaBar);
@@ -125,17 +132,13 @@ public class Player extends Person {
         setStrength(originalStrength * staminaBar);
     }
 
-    public void ResetStats() {
+    public void resetPlayerStats() {
         setFaceoff(originalFaceoff);
         setShooting(originalShooting);
         setSkating(originalSkating);
         setOffAwareness(originalOffensiveAwareness);
         setDefAwareness(originalDefensiveAwareness);
         setStrength(originalStrength);
-    }
-
-    public double getOverall() { 
-        return this.overall;
     }
  
     // toString() method

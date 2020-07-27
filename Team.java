@@ -57,6 +57,12 @@ public class Team {
         return sG;
     }
 
+    //Starting Left Wing: 0
+    //Starting Center: 1
+    //Starting Right Wing: 2
+    //Starting Left Defense: 3
+    //Starting Right Defense: 4
+    
     public Player getOnIce(int i) {
         return this.onIce[i];
     }
@@ -68,26 +74,6 @@ public class Team {
     public int getShotCount()
     {
         return shotCount;
-    }
-
-    public Player getsC() {
-        return getOnIce(1);
-    }
-
-    public Player getsLW() {
-        return getOnIce(0);
-    }
-
-    public Player getsRW() {
-        return getOnIce(2);
-    }
-
-    public Player getsLD() {
-        return getOnIce(3);
-    }
-
-    public Player getsRD() {
-        return getOnIce(4);
     }
 
     // set methods
