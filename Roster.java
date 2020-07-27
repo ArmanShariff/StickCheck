@@ -99,12 +99,13 @@ public class Roster {
                 int number = Integer.parseInt(temp2[x][5]);
                 int age = Integer.parseInt(temp2[x][6]);
                 String country = temp2[x][7];
+                int stamina = Integer.parseInt(temp2[x][10]);
                 int reflexes = Integer.parseInt(temp2[x][15]);
                 int agility = Integer.parseInt(temp2[x][16]);
                 int flexibility = Integer.parseInt(temp2[x][17]);
                 int reboundControl = Integer.parseInt(temp2[x][18]);
                 int puckControl = Integer.parseInt(temp2[x][19]);
-                Goalie goalie = new Goalie(reflexes, agility, flexibility, reboundControl, puckControl, firstName, lastName, position, country, age, number, currentTeam, playerType);
+                Goalie goalie = new Goalie(stamina, reflexes, agility, flexibility, reboundControl, puckControl, firstName, lastName, position, country, age, number, currentTeam, playerType);
                 goalies.add(goalie);
                 
             } else {

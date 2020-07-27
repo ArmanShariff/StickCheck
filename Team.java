@@ -44,6 +44,12 @@ public class Team {
         return sG;
     }
 
+    //Starting Left Wing: 0
+    //Starting Center: 1
+    //Starting Right Wing: 2
+    //Starting Left Defense: 3
+    //Starting Right Defense: 4
+    
     public Player getOnIce(int i) {
         return this.onIce[i];
     }
@@ -187,6 +193,7 @@ public class Team {
         String printStatement = "Lines: \n";
 
         for (int i = 0; i < forwardLines.length; i ++) {
+            printStatement += "Line " + (i+1);
             for (int j = 0; j < forwardLines[i].length; j++) {
                 printStatement += " " + forwardLines[i][j].getLastName();
             }
@@ -194,6 +201,7 @@ public class Team {
         }
 
         for (int i = 0; i < defenceLines.length; i ++) {
+            printStatement += "Line " + (i+1);
             for (int j = 0; j < defenceLines[i].length; j++) {
                 printStatement += " " + defenceLines[i][j].getLastName();
             }
