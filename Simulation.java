@@ -50,7 +50,7 @@ class Simulation {
         }
 
         // if the game is tied start overtime
-
+        // resets stamina/stats
         if (teamA.getScore() == teamB.getScore()) {
             Simulation.isOvertime = true;
             teamResetStamina(teamA, teamB);
@@ -66,11 +66,10 @@ class Simulation {
                 overtime(teamA, teamB, 300);
 
                 // if its still tied go to shootout
+                // resets stamina/stats
                 if (teamA.getScore() == teamB.getScore()) {
-                    for (int i = 0; i < 10; i++) {
-                        System.out.println(teamA.getRoster(i));
-                    }
-                    
+                    teamResetStamina(teamA, teamB);
+                    teamResetStats(teamA, teamB);
                     shootout(teamA, teamB);
                     isShootout = true;
                 }
