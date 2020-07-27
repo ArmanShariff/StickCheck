@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class Team {
     
-    private boolean userTeam;                           // Boolean to declare which team the user chose
     private String teamName;
 
     // Arraylists of the rosters
@@ -14,46 +13,34 @@ public class Team {
     private ArrayList<Coach> coachRoster = new ArrayList<Coach>();
     
     // stores all the players currently on the ice
-    Player[] onIce = new Player[5];
-
-    /*
-    *  fowardLines[i][j] - i controls the line, j controls position
-    *  LeftWing([0][0]) - Center([0][1]) - RightWing([0][2])
-    *  LeftWing([1][0]) - Center([1][1]) - RightWing([1][2])
-    */ 
+    private Player[] onIce = new Player[5]; 
     
-    Player[][] forwardLines = new Player[2][3];
-    Player[][] defenceLines = new Player[2][2];
+    // team lines
+    private Player[][] forwardLines = new Player[2][3];
+    private Player[][] defenceLines = new Player[2][2];
     
     // initialize the goalie and coach
     private Goalie sG;
     private Goalie bG;
     private Coach coach;
-    
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //Constructor
-
-    public Team (String teamName, boolean userTeam) {
-
-        this.teamName = teamName;
-        this.userTeam = userTeam;
-
-    }
-
 
     // Keep track of shot count and score in a game
     int shotCount;
     int score;
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public Team (String teamName, boolean userTeam) {
+
+        this.teamName = teamName;
+
+    }
 
     // get methods
+
     public String getTeamName() {
         return teamName;
     }
 
-    public Goalie getsG() {
+    public Goalie getGoalie() {
         return sG;
     }
 
@@ -65,30 +52,33 @@ public class Team {
         return score;
     }
 
-    public int getShotCount()
-    {
+    public int getShotCount() {
         return shotCount;
     }
 
-    public Player getsC() {
+    public Player getCenter() {
         return getOnIce(1);
     }
 
-    public Player getsLW() {
+    public Player getLeftWing() {
         return getOnIce(0);
     }
 
-    public Player getsRW() {
+    public Player getRightWing() {
         return getOnIce(2);
     }
 
-    public Player getsLD() {
+    public Player getLeftDefence() {
         return getOnIce(3);
     }
 
-    public Player getsRD() {
+    public Player getRightDefence() {
         return getOnIce(4);
     }
+
+    public Player getRoster(int i) {
+		return playerRoster.get(i);
+	}
 
     // set methods
     
@@ -100,25 +90,18 @@ public class Team {
         this.score = 0;
     }
 
-    public void setShotCount()
-    {
+    public void setShotCount() {
         this.shotCount = shotCount + 1;
     }
 
-    public void reSetShotCount()
-    {
+    public void reSetShotCount() {
         this.shotCount = 0;
     }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    // class methods
 
     public void addPlayer(Player player) {
         playerRoster.add(player);
     }
 
-    //Adds goalie to the team
     public void addGoalie(Goalie goalie) {
         goalieRoster.add(goalie);
     }
@@ -131,6 +114,7 @@ public class Team {
     //Method checks whether the player is a center, wing or defense
     //Sets the corresponding players into the starting lineup/bench
     //TO DO: If bench player has a higher overall than the starter, switch them
+    //TO DO: when we have more than two lines, make it loop through all the lines to find an empty slot
     public void setPlayerPosition(Player player) {
         
         if (player.getPosition().equals("Left Wing")) {
@@ -182,7 +166,7 @@ public class Team {
 
     //Sets the goalie into the starting lineup/bench
     public void setGoaliePosition(Goalie goalie) {
-        if(goalie.getPosition().equals("Goaltender")) {
+        if (goalie.getPosition().equals("Goaltender")) {
             if (sG == null) {
                 sG = goalie;
             } else {
@@ -193,7 +177,7 @@ public class Team {
 
     //Sets the coach onto the team
     public void setCoach(Coach coach) {
-        if(coach.getPosition().equals("Coach")) {
+        if (coach.getPosition().equals("Coach")) {
             this.coach = coach;
         }
     }
@@ -217,9 +201,5 @@ public class Team {
         }
         return printStatement;
     }
-
-	public Player getRoster(int i) {
-		return playerRoster.get(i);
-	}
 
 }

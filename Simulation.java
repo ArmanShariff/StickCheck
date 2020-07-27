@@ -128,12 +128,12 @@ class Simulation {
         } else {
             teamDropStamina(teamA, teamB);
             teamDropStats(teamA, teamB);
-            System.out.println(teamA.getsC().getFirstName() + "'s stamina: " + teamA.getsC().getStaminaBar());
-            System.out.println(teamA.getsC().getFirstName() + "'s skating: " + teamA.getsC().getSkating());
+            System.out.println(teamA.getCenter().getFirstName() + "'s stamina: " + teamA.getCenter().getStaminaBar());
+            System.out.println(teamA.getCenter().getFirstName() + "'s skating: " + teamA.getCenter().getSkating());
             System.out.println("Current Time: " + time);
             // get each teams centers faceoff stats
-            double faceoffA = teamA.getsC().getFaceoff();
-            double faceoffB = teamB.getsC().getFaceoff();
+            double faceoffA = teamA.getCenter().getFaceoff();
+            double faceoffB = teamB.getCenter().getFaceoff();
 
             // chance of team A winning the faceoff:
             double chance = 50 + (faceoffA - faceoffB);
@@ -141,13 +141,13 @@ class Simulation {
 
             if (random <= chance) {
                 // team A is on offence
-                System.out.println(teamA.getsC().getFirstName() + " " + teamA.getsC().getLastName() + " won the faceoff!");
+                System.out.println(teamA.getCenter().getFirstName() + " " + teamA.getCenter().getLastName() + " won the faceoff!");
                 
                 return matchupCalculationOne(time + 2, teamA, teamB);
 
             } else {
                 // team B is on offence
-                System.out.println(teamB.getsC().getFirstName() + " " + teamB.getsC().getLastName() + " won the faceoff!");
+                System.out.println(teamB.getCenter().getFirstName() + " " + teamB.getCenter().getLastName() + " won the faceoff!");
                 
                 return matchupCalculationOne(time + 2, teamB, teamA);
             }
@@ -181,20 +181,20 @@ class Simulation {
 
             //defensive team values
             double skatingDC = defensiveTeam.getOnIce(1).getSkating();
-            double skatingDRW = defensiveTeam.getsRW().getSkating();
-            double skatingDLW = defensiveTeam.getsLW().getSkating();
-            double skatingDRD = defensiveTeam.getsRD().getSkating();
-            double skatingDLD = defensiveTeam.getsLD().getSkating();
-            double strengthDC = defensiveTeam.getsC().getStrength();
-            double strengthDRW = defensiveTeam.getsRW().getStrength();
-            double strengthDLW = defensiveTeam.getsLW().getStrength();
-            double strengthDRD = defensiveTeam.getsRD().getStrength();
-            double strengthDLD = defensiveTeam.getsLD().getStrength();
-            double defAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness();
-            double defAwarenessDRW = defensiveTeam.getsRW().getDefensiveAwareness();
-            double defAwarenessDLW = defensiveTeam.getsLW().getDefensiveAwareness();
-            double defAwarenessDRD = defensiveTeam.getsRD().getDefensiveAwareness();
-            double defAwarenessDLD = defensiveTeam.getsLD().getDefensiveAwareness();
+            double skatingDRW = defensiveTeam.getRightWing().getSkating();
+            double skatingDLW = defensiveTeam.getLeftWing().getSkating();
+            double skatingDRD = defensiveTeam.getRightDefence().getSkating();
+            double skatingDLD = defensiveTeam.getLeftDefence().getSkating();
+            double strengthDC = defensiveTeam.getCenter().getStrength();
+            double strengthDRW = defensiveTeam.getRightWing().getStrength();
+            double strengthDLW = defensiveTeam.getLeftWing().getStrength();
+            double strengthDRD = defensiveTeam.getRightDefence().getStrength();
+            double strengthDLD = defensiveTeam.getLeftDefence().getStrength();
+            double defAwarenessDC = defensiveTeam.getCenter().getDefensiveAwareness();
+            double defAwarenessDRW = defensiveTeam.getRightWing().getDefensiveAwareness();
+            double defAwarenessDLW = defensiveTeam.getLeftWing().getDefensiveAwareness();
+            double defAwarenessDRD = defensiveTeam.getRightDefence().getDefensiveAwareness();
+            double defAwarenessDLD = defensiveTeam.getLeftDefence().getDefensiveAwareness();
 
             //matchup calculations for offensive team
             double skatingOverallO = (skatingOC-skatingDC) + (skatingORW-skatingDLD) + (skatingOLW-skatingDRD) + (skatingORD-skatingDLW) + (skatingOLD-skatingDRW);
@@ -239,7 +239,7 @@ class Simulation {
         
         offensiveTeam.setShotCount();
         Player shooter = determineShooter(offensiveTeam);
-        Goalie goalie = defensiveTeam.getsG();
+        Goalie goalie = defensiveTeam.getGoalie();
 
         // calculation to determine if its a goal
         boolean isGoal = isGoal(shooter, goalie);
@@ -358,38 +358,38 @@ class Simulation {
         } else {
 
             //offensive team values
-            double skatingOC = offensiveTeam.getsC().getSkating();
-            double skatingORW = offensiveTeam.getsRW().getSkating();
-            double skatingOLW = offensiveTeam.getsLW().getSkating();
-            double skatingORD = offensiveTeam.getsRD().getSkating();
-            double skatingOLD = offensiveTeam.getsLD().getSkating();
-            double strengthOC = offensiveTeam.getsC().getStrength();
-            double strengthORW = offensiveTeam.getsRW().getStrength();
-            double strengthOLW = offensiveTeam.getsLW().getStrength();
-            double strengthORD = offensiveTeam.getsRD().getStrength();
-            double strengthOLD = offensiveTeam.getsLD().getStrength();
-            double offAwarenessOC = offensiveTeam.getsC().getOffensiveAwareness();
-            double offAwarenessORW = offensiveTeam.getsRW().getOffensiveAwareness();
-            double offAwarenessOLW = offensiveTeam.getsLW().getOffensiveAwareness();
-            double offAwarenessORD = offensiveTeam.getsRD().getOffensiveAwareness();
-            double offAwarenessOLD = offensiveTeam.getsLD().getOffensiveAwareness();
+            double skatingOC = offensiveTeam.getCenter().getSkating();
+            double skatingORW = offensiveTeam.getRightWing().getSkating();
+            double skatingOLW = offensiveTeam.getLeftWing().getSkating();
+            double skatingORD = offensiveTeam.getRightDefence().getSkating();
+            double skatingOLD = offensiveTeam.getLeftDefence().getSkating();
+            double strengthOC = offensiveTeam.getCenter().getStrength();
+            double strengthORW = offensiveTeam.getRightWing().getStrength();
+            double strengthOLW = offensiveTeam.getLeftWing().getStrength();
+            double strengthORD = offensiveTeam.getRightDefence().getStrength();
+            double strengthOLD = offensiveTeam.getLeftDefence().getStrength();
+            double offAwarenessOC = offensiveTeam.getCenter().getOffensiveAwareness();
+            double offAwarenessORW = offensiveTeam.getRightWing().getOffensiveAwareness();
+            double offAwarenessOLW = offensiveTeam.getLeftWing().getOffensiveAwareness();
+            double offAwarenessORD = offensiveTeam.getRightDefence().getOffensiveAwareness();
+            double offAwarenessOLD = offensiveTeam.getLeftDefence().getOffensiveAwareness();
 
             //defensive team values
-            double skatingDC = defensiveTeam.getsC().getSkating();
-            double skatingDRW = defensiveTeam.getsRW().getSkating();
-            double skatingDLW = defensiveTeam.getsLW().getSkating();
-            double skatingDRD = defensiveTeam.getsRD().getSkating();
-            double skatingDLD = defensiveTeam.getsLD().getSkating();
-            double strengthDC = defensiveTeam.getsC().getStrength();
-            double strengthDRW = defensiveTeam.getsRW().getStrength();
-            double strengthDLW = defensiveTeam.getsLW().getStrength();
-            double strengthDRD = defensiveTeam.getsRD().getStrength();
-            double strengthDLD = defensiveTeam.getsLD().getStrength();
-            double defAwarenessDC = defensiveTeam.getsC().getDefensiveAwareness();
-            double defAwarenessDRW = defensiveTeam.getsRW().getDefensiveAwareness();
-            double defAwarenessDLW = defensiveTeam.getsLW().getDefensiveAwareness();
-            double defAwarenessDRD = defensiveTeam.getsRD().getDefensiveAwareness();
-            double defAwarenessDLD = defensiveTeam.getsLD().getDefensiveAwareness();
+            double skatingDC = defensiveTeam.getCenter().getSkating();
+            double skatingDRW = defensiveTeam.getRightWing().getSkating();
+            double skatingDLW = defensiveTeam.getLeftWing().getSkating();
+            double skatingDRD = defensiveTeam.getRightDefence().getSkating();
+            double skatingDLD = defensiveTeam.getLeftDefence().getSkating();
+            double strengthDC = defensiveTeam.getCenter().getStrength();
+            double strengthDRW = defensiveTeam.getRightWing().getStrength();
+            double strengthDLW = defensiveTeam.getLeftWing().getStrength();
+            double strengthDRD = defensiveTeam.getRightDefence().getStrength();
+            double strengthDLD = defensiveTeam.getLeftDefence().getStrength();
+            double defAwarenessDC = defensiveTeam.getCenter().getDefensiveAwareness();
+            double defAwarenessDRW = defensiveTeam.getRightWing().getDefensiveAwareness();
+            double defAwarenessDLW = defensiveTeam.getLeftWing().getDefensiveAwareness();
+            double defAwarenessDRD = defensiveTeam.getRightDefence().getDefensiveAwareness();
+            double defAwarenessDLD = defensiveTeam.getLeftDefence().getDefensiveAwareness();
 
             //individual matchup result calculations
             double[] matchupResults = new double[5];
@@ -459,60 +459,60 @@ class Simulation {
     // After: Faceoffs, fights for possession, rebounds 
     public static void teamDropStamina(Team teamA, Team teamB) {
         drops = drops++;
-        teamA.getsC().dropStamina(drops);
-        teamA.getsLW().dropStamina(drops);
-        teamA.getsRW().dropStamina(drops);
-        teamA.getsLD().dropStamina(drops);
-        teamA.getsRD().dropStamina(drops);
-        teamB.getsC().dropStamina(drops);
-        teamB.getsLW().dropStamina(drops);
-        teamB.getsRW().dropStamina(drops);
-        teamB.getsLD().dropStamina(drops);
-        teamB.getsRD().dropStamina(drops);
+        teamA.getCenter().dropStamina(drops);
+        teamA.getLeftWing().dropStamina(drops);
+        teamA.getRightWing().dropStamina(drops);
+        teamA.getLeftDefence().dropStamina(drops);
+        teamA.getRightDefence().dropStamina(drops);
+        teamB.getCenter().dropStamina(drops);
+        teamB.getLeftWing().dropStamina(drops);
+        teamB.getRightWing().dropStamina(drops);
+        teamB.getLeftDefence().dropStamina(drops);
+        teamB.getRightDefence().dropStamina(drops);
     }
     
     //Resets every player's stamina after the period ends
     public static void teamResetStamina(Team teamA, Team teamB) {
         drops = 1;
-        teamA.getsC().setStaminaBar(1);
-        teamA.getsLW().setStaminaBar(1);
-        teamA.getsRW().setStaminaBar(1);
-        teamA.getsLD().setStaminaBar(1);
-        teamA.getsRD().setStaminaBar(1);
-        teamB.getsC().setStaminaBar(1);
-        teamB.getsLW().setStaminaBar(1);
-        teamB.getsRW().setStaminaBar(1);
-        teamB.getsLD().setStaminaBar(1);
-        teamB.getsRD().setStaminaBar(1);
+        teamA.getCenter().setStaminaBar(1);
+        teamA.getLeftWing().setStaminaBar(1);
+        teamA.getRightWing().setStaminaBar(1);
+        teamA.getLeftDefence().setStaminaBar(1);
+        teamA.getRightDefence().setStaminaBar(1);
+        teamB.getCenter().setStaminaBar(1);
+        teamB.getLeftWing().setStaminaBar(1);
+        teamB.getRightWing().setStaminaBar(1);
+        teamB.getLeftDefence().setStaminaBar(1);
+        teamB.getRightDefence().setStaminaBar(1);
     }
 
     //Drop stats of every player depending on their current stamina
     // >Drops everytime stamina drops
     public static void teamDropStats(Team teamA, Team teamB) {
-        teamA.getsC().dropStats(teamA.getsC().getStaminaBar());
-        teamA.getsLW().dropStats(teamA.getsLW().getStaminaBar());
-        teamA.getsRW().dropStats(teamA.getsRW().getStaminaBar());
-        teamA.getsLD().dropStats(teamA.getsLD().getStaminaBar());
-        teamA.getsRD().dropStats(teamA.getsRW().getStaminaBar());
-        teamB.getsC().dropStats(teamB.getsC().getStaminaBar());
-        teamB.getsLW().dropStats(teamB.getsLW().getStaminaBar());
-        teamB.getsRW().dropStats(teamB.getsRW().getStaminaBar());
-        teamB.getsLD().dropStats(teamB.getsLD().getStaminaBar());
-        teamB.getsRD().dropStats(teamB.getsRW().getStaminaBar());
+        teamA.getCenter().dropStats(teamA.getCenter().getStaminaBar());
+        teamA.getLeftWing().dropStats(teamA.getLeftWing().getStaminaBar());
+        teamA.getRightWing().dropStats(teamA.getRightWing().getStaminaBar());
+        teamA.getLeftDefence().dropStats(teamA.getLeftDefence().getStaminaBar());
+        teamA.getRightDefence().dropStats(teamA.getRightWing().getStaminaBar());
+        teamB.getCenter().dropStats(teamB.getCenter().getStaminaBar());
+        teamB.getLeftWing().dropStats(teamB.getLeftWing().getStaminaBar());
+        teamB.getRightWing().dropStats(teamB.getRightWing().getStaminaBar());
+        teamB.getLeftDefence().dropStats(teamB.getLeftDefence().getStaminaBar());
+        teamB.getRightDefence().dropStats(teamB.getRightWing().getStaminaBar());
     }
 
     //Reset stats of every player after each period
     public static void teamResetStats(Team teamA, Team teamB) {
-        teamA.getsC().ResetStats();
-        teamA.getsLW().ResetStats();
-        teamA.getsRW().ResetStats();
-        teamA.getsLD().ResetStats();
-        teamA.getsRD().ResetStats();
-        teamB.getsC().ResetStats();
-        teamB.getsLW().ResetStats();
-        teamB.getsRW().ResetStats();
-        teamB.getsLD().ResetStats();
-        teamB.getsRD().ResetStats();
+        teamA.getCenter().ResetStats();
+        teamA.getLeftWing().ResetStats();
+        teamA.getRightWing().ResetStats();
+        teamA.getLeftDefence().ResetStats();
+        teamA.getRightDefence().ResetStats();
+        teamB.getCenter().ResetStats();
+        teamB.getLeftWing().ResetStats();
+        teamB.getRightWing().ResetStats();
+        teamB.getLeftDefence().ResetStats();
+        teamB.getRightDefence().ResetStats();
         
     }
     
@@ -543,15 +543,15 @@ class Simulation {
         }
 
         //stats of Team A goalie
-        double reflexesA = teamA.getsG().getReflexes();
-        double agilityA = teamA.getsG().getAgility();
-        double flexibilityA = teamA.getsG().getFlexibility();
+        double reflexesA = teamA.getGoalie().getReflexes();
+        double agilityA = teamA.getGoalie().getAgility();
+        double flexibilityA = teamA.getGoalie().getFlexibility();
         double overallA = (reflexesA + agilityA + flexibilityA)/3;
 
         //stats of Team B goalie
-        double reflexesB = teamB.getsG().getReflexes();
-        double agilityB = teamB.getsG().getAgility();
-        double flexibilityB = teamB.getsG().getFlexibility();
+        double reflexesB = teamB.getGoalie().getReflexes();
+        double agilityB = teamB.getGoalie().getAgility();
+        double flexibilityB = teamB.getGoalie().getFlexibility();
         double overallB = (reflexesB + agilityB + flexibilityB)/3;
 
         //calculating the outcome of the shootout
