@@ -653,7 +653,7 @@ class Simulation {
     public static void endShootoutB(Team teamA, Team teamB) {
         System.out.println(" ");
         System.out.println(teamB.getTeamName() + " has won the game!");
-        System.out.println("Final Score: " + (teamB.getScore() + 1) + "-" + (teamA.getScore()) + " (SO)");
+        System.out.println("Final Score: " + (teamA.getScore() + 1) + "-" + (teamB.getScore()) + " (SO)");
     }
 
 }
