@@ -203,6 +203,7 @@ public class Team {
         String printStatement = "Lines: \n";
 
         for (int i = 0; i < forwardLines.length; i ++) {
+            printStatement += "Line " + (i+1);
             for (int j = 0; j < forwardLines[i].length; j++) {
                 printStatement += " " + forwardLines[i][j].getLastName();
             }
@@ -210,6 +211,7 @@ public class Team {
         }
 
         for (int i = 0; i < defenceLines.length; i ++) {
+            printStatement += "Line " + (i+1);
             for (int j = 0; j < defenceLines[i].length; j++) {
                 printStatement += " " + defenceLines[i][j].getLastName();
             }
