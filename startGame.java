@@ -38,7 +38,7 @@ public class startGame {
         System.out.println("\nMontreal: \n" + montreal);
         System.out.println("\nBoston: \n" + boston);
         
-        Simulation game1 = new Simulation(toronto, montreal, false);
+        Simulation game1 = new Simulation(chicago, newYork, false);
     }
 
     //Method that sorts the players, goalies and coaches into their respected teams 

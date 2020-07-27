@@ -19,7 +19,8 @@ class Simulation {
 
     static int periodLength;
     static boolean isOvertime;
-    static int drops = 1;
+    static int playerDrops = 1;
+    static int goalieDrops = 1;
 
     /*
         ______ ______ _   __ _____ ______ _______ _   __ ______ ______ ______ ______
@@ -133,8 +134,9 @@ class Simulation {
             return false;
 
         } else {
-            teamDropStamina(teamA, teamB);
-            teamDropStats(teamA, teamB);
+            // drops players' stamina/stats (Faceoff)
+            dropPlayerStamina(teamA, teamB);
+            dropPlayerStats(teamA, teamB);
             System.out.println(teamA.getOnIce(1).getFirstName() + "'s stamina: " + teamA.getOnIce(1).getStaminaBar());
             System.out.println(teamA.getOnIce(1).getFirstName() + "'s skating: " + teamA.getOnIce(1).getSkating());
             System.out.println("Current Time: " + time);
@@ -226,15 +228,17 @@ class Simulation {
             // >Off. team will retain possession
             int turnover = getRandom(1,100);
             if(Math.round(chanceRetainPossession) >= turnover) {
-                teamDropStamina(offensiveTeam, defensiveTeam);
-                teamDropStats(offensiveTeam, defensiveTeam);
+                // drops players' stamina/stats (Maintain puck possession)
+                dropPlayerStamina(offensiveTeam, defensiveTeam);
+                dropPlayerStats(offensiveTeam, defensiveTeam);
                 System.out.println(offensiveTeam.getTeamName() + " retains possession!");
 
                 return shotCalculation(time + getRandom(5, 20), offensiveTeam, defensiveTeam);
 
             } else {
-                teamDropStamina(offensiveTeam, defensiveTeam);
-                teamDropStats(offensiveTeam, defensiveTeam);
+                // drops players' stamina/stats (Puck stolen away)
+                dropPlayerStamina(offensiveTeam, defensiveTeam);
+                dropPlayerStats(offensiveTeam, defensiveTeam);
                 System.out.println(defensiveTeam.getTeamName() + " steals the puck away from " + offensiveTeam.getTeamName() + "!");
                 
                 return matchupCalculationOne(time + getRandom(5, 20), defensiveTeam, offensiveTeam);
@@ -244,7 +248,6 @@ class Simulation {
 
     //Shot calculation
     public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
-        
         offensiveTeam.setShotCount();
         Player shooter = determineShooter(offensiveTeam);
         Goalie goalie = defensiveTeam.getsG();
@@ -252,13 +255,17 @@ class Simulation {
         // calculation to determine if its a goal
         boolean isGoal = isGoal(shooter, goalie);
 
+        // drops goalie stamina/stats (Every shot)
+        dropGoalieStamina(offensiveTeam, defensiveTeam);
+        dropGoalieStats(offensiveTeam, defensiveTeam);
+        System.out.println(offensiveTeam.getsG().getFirstName() + "'s stamina: " + offensiveTeam.getsG().getStaminaBar());
+        System.out.println(offensiveTeam.getsG().getFirstName() + "'s agility: " + offensiveTeam.getsG().getAgility());
+
         if (isGoal == true) {
             offensiveTeam.setScore();
             System.out.println("\n" + offensiveTeam.getTeamName() + "(" + offensiveTeam.getScore() + ")" + " - " + defensiveTeam.getTeamName() + "(" + defensiveTeam.getScore() + ")\n");
             
             if (isOvertime == true) {
-                offensiveTeam.setScore();
-
                 return true;
 
             } else {
@@ -275,8 +282,9 @@ class Simulation {
                 return faceoffCalculation(time + 2, offensiveTeam, defensiveTeam);
 
             } else {
-                teamDropStamina(offensiveTeam, defensiveTeam);
-                teamDropStats(offensiveTeam, defensiveTeam);
+                // drops players' stamina/stats (Rebound)
+                dropPlayerStamina(offensiveTeam, defensiveTeam);
+                dropPlayerStats(offensiveTeam, defensiveTeam);
                 System.out.println("Rebound opportunity!");
                 return matchupCalculationTwo(time + 2, offensiveTeam, defensiveTeam);
             }
@@ -463,28 +471,33 @@ class Simulation {
         return random_double;
     }
 
-    // Method that drops every player's and goalie's stamina
-    // (Players) After: Faceoffs, fights for possession, rebounds 
-    // (Goalie) After: Each shot
-    public static void teamDropStamina(Team teamA, Team teamB) {
-        drops = drops++;
+    // Method that drops every players' stamina
+    // After: Faceoffs, fights for possession, rebounds 
+    public static void dropPlayerStamina(Team teamA, Team teamB) {
+        playerDrops = playerDrops++;
 
         for(int i = 0; i < 5; i++) {
-            teamA.getOnIce(i).dropPlayerStamina(drops);
+            teamA.getOnIce(i).dropPlayerStamina(playerDrops);
         }
-
-        teamA.getsG().dropGoalieStamina(drops);
 
         for(int i = 0; i < 5; i++) {
-            teamB.getOnIce(i).dropPlayerStamina(drops);
+            teamB.getOnIce(i).dropPlayerStamina(playerDrops);
         }
+    }
 
-        teamB.getsG().dropGoalieStamina(drops);
+    // Method that drops every goalies' stamina
+    // After: Each shot
+    public static void dropGoalieStamina(Team teamA, Team teamB) {
+        goalieDrops = goalieDrops++;
+        
+        teamA.getsG().dropGoalieStamina(goalieDrops);
+        teamB.getsG().dropGoalieStamina(goalieDrops);
     }
     
-    //Resets every player's and goalie's stamina after the period ends
+    //Resets every players' and goalies' stamina after the period ends
     public static void teamResetStamina(Team teamA, Team teamB) {
-        drops = 1;
+        playerDrops = 1;
+        goalieDrops = 1;
 
         for(int i = 0; i < 5; i++) {
             teamA.getOnIce(i).setStaminaBar(1);
@@ -499,18 +512,21 @@ class Simulation {
 
     //Drop stats of every player depending on their current stamina
     // >Drops everytime stamina drops
-    public static void teamDropStats(Team teamA, Team teamB) {
+    public static void dropPlayerStats(Team teamA, Team teamB) {
 
         for(int i = 0; i < 5; i++) {
             teamA.getOnIce(i).dropPlayerStats(teamA.getOnIce(i).getStaminaBar());
         }
-        
-        teamA.getsG().dropGoalieStats(teamA.getsG().getStaminaBar());
 
         for(int i = 0; i < 5; i++) {
             teamB.getOnIce(i).dropPlayerStats(teamA.getOnIce(i).getStaminaBar());
         }
+    }
 
+    //Drop stats of every goalie depending on their stamina
+    // >Drops everytime stamina drops
+    public static void dropGoalieStats(Team teamA, Team teamB) {
+        teamA.getsG().dropGoalieStats(teamA.getsG().getStaminaBar());
         teamB.getsG().dropGoalieStats(teamB.getsG().getStaminaBar());
     }
 

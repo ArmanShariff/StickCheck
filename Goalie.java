@@ -92,7 +92,11 @@ public class Goalie extends Person {
     }
 
     public void setStaminaBar(double staminaBar) {
-        this.staminaBar = staminaBar;
+        if (staminaBar < 0.25) {
+            staminaBar = 0.25;
+        } else {
+            this.staminaBar = staminaBar;
+        }
     }
 
     // stat change methods
@@ -102,11 +106,11 @@ public class Goalie extends Person {
     }
 
     public void dropGoalieStats(double staminaBar) {
-        setReflexes(reflexes * staminaBar);
-        setAgility(agility * staminaBar);
-        setFlexibility(flexibility * staminaBar);
-        setReboundControl(reboundControl * staminaBar);
-        setPuckControl(puckControl * staminaBar);
+        setReflexes(originalReflexes * staminaBar);
+        setAgility(originalAgility * staminaBar);
+        setFlexibility(originalFlexibility * staminaBar);
+        setReboundControl(originalReboundControl * staminaBar);
+        setPuckControl(originalPuckControl * staminaBar);
     }
 
     public void resetGoalieStats() {

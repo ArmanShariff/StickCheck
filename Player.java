@@ -1,7 +1,7 @@
 public class Player extends Person {
-    
+
     // fields
- 
+
     double faceoff;
     double shooting;
     double stamina;
@@ -19,13 +19,16 @@ public class Player extends Person {
     double originalStrength;
     double originalOffensiveAwareness;
     double originalDefensiveAwareness;
-    
+
     // constructor
- 
-    public Player(double faceoff, double shooting, double stamina, double skating, double strength, double offensiveAwareness, double defensiveAwareness, double shootingTendency, String firstName, String lastName, String position, String country, int age, int playerNumber, String currentTeam, String playerType) {
- 
+
+    public Player(double faceoff, double shooting, double stamina, double skating, double strength,
+            double offensiveAwareness, double defensiveAwareness, double shootingTendency, String firstName,
+            String lastName, String position, String country, int age, int playerNumber, String currentTeam,
+            String playerType) {
+
         super(firstName, lastName, position, country, age, playerNumber, currentTeam, playerType);
- 
+
         this.faceoff = faceoff;
         originalFaceoff = faceoff;
         this.shooting = shooting;
@@ -41,12 +44,12 @@ public class Player extends Person {
         originalDefensiveAwareness = defensiveAwareness;
         this.shootingTendency = shootingTendency;
         staminaBar = 1;
- 
-        overall = (shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness)/6;
+
+        overall = (shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness) / 6;
     }
- 
+
     // get methods
- 
+
     public double getFaceoff() {
         return this.faceoff;
     }
@@ -66,24 +69,24 @@ public class Player extends Person {
     public double getSkating() {
         return this.skating;
     }
- 
+
     public double getOffensiveAwareness() {
         return this.offensiveAwareness;
     }
- 
+
     public double getDefensiveAwareness() {
         return this.defensiveAwareness;
     }
- 
+
     public double getStrength() {
         return this.strength;
     }
- 
+
     public double getShootingTendency() {
         return this.shootingTendency;
     }
 
-    public double getOverall() { 
+    public double getOverall() {
         return this.overall;
     }
 
@@ -114,13 +117,18 @@ public class Player extends Person {
     }
 
     public void setStaminaBar(double staminaBar) {
-        this.staminaBar = staminaBar;
+        if (staminaBar < 0.25) {
+            staminaBar = 0.25;
+        } else {
+            this.staminaBar = staminaBar;
+        }
     }
 
     // stat changes methods
 
-    public void dropPlayerStamina(int drops) { 
-        setStaminaBar(staminaBar - (staminaBar + drops*drops)/stamina);
+    public void dropPlayerStamina(int drops) {
+        setStaminaBar(staminaBar - (staminaBar + drops * drops) / stamina);
+
     }
 
     public void dropPlayerStats(double staminaBar) {
@@ -140,15 +148,13 @@ public class Player extends Person {
         setDefAwareness(originalDefensiveAwareness);
         setStrength(originalStrength);
     }
- 
-    // toString() method
- 
-    public String toString(){
- 
-        return super.getFirstName() + " " + super.getLastName();
- 
-    }
- 
-}
- 
 
+    // toString() method
+
+    public String toString() {
+
+        return super.getFirstName() + " " + super.getLastName();
+
+    }
+
+}
