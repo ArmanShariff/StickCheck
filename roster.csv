@@ -59,18 +59,18 @@ Torey,Krug,Boston,Player,Right Defence,47,29,United States,40,90,89,87,83,88,85,
 Zdeno,Chara,Boston,Player,Left Defence,33,43,Slovakia,37,82,81,76,94,78,87,0,0,0,0,0,83,0,0,0,57
 Charlie,McAvoy,Boston,Player,Right Defence,73,22,United States,35,88,87,86,86,83,87,0,0,0,0,0,86,0,0,0,60
 Matt,Grzelcyk,Boston,Player,Left Defence,48,26,United States,36,76,86,82,90,76,86,0,0,0,0,0,83,0,0,0,63
-Frederik,Andersen,Toronto,Goalie,Goaltender,31,30,Denmark,0,0,0,0,0,0,0,92,93,93,90,91,92,0,0,0,0
-Jack,Campbell,Toronto,Goalie,Goaltender,36,28,United States,0,0,0,0,0,0,0,88,85,87,84,82,85,0,0,0,0
-Carey,Price,Montreal,Goalie,Goaltender,31,32,Canada,0,0,0,0,0,0,0,96,94,92,95,92,94,0,0,0,0
-Charlie,Lindgren,Montreal,Goalie,Goaltender,39,26,United States,0,0,0,0,0,0,0,85,86,85,82,81,84,0,0,0,0
-Corey,Crawford,Chicago,Goalie,Goaltender,50,35,Canada,0,0,0,0,0,0,0,88,86,88,90,91,89,0,0,0,0
-Malcolm,Subban,Chicago,Goalie,Goaltender,30,26,Canada,0,0,0,0,0,0,0,87,86,88,85,84,86,0,0,0,0
-Henrik,Lundqvist,New York,Goalie,Goaltender,30,38,Sweden,0,0,0,0,0,0,0,89,85,88,90,91,89,0,0,0,0
-Alexander,Georgiev,New York,Goalie,Goaltender,40,24,Russia,0,0,0,0,0,0,0,87,84,88,90,91,88,0,0,0,0
-Jimmy,Howard,Detroit,Goalie,Goaltender,35,36,United States,0,0,0,0,0,0,0,86,85,83,84,82,84,0,0,0,0
-Jonathan,Bernier,Detroit,Goalie,Goaltender,45,31,Canada,0,0,0,0,0,0,0,85,83,87,80,82,83,0,0,0,0
-Tuukka,Rask,Boston,Goalie,Goaltender,40,33,Finland,0,0,0,0,0,0,0,97,94,94,96,93,95,0,0,0,0
-Jaroslav,Halak,Boston,Goalie,Goaltender,41,35,Slovakia,0,0,0,0,0,0,0,86,85,88,89,91,88,0,0,0,0
+Frederik,Andersen,Toronto,Goalie,Goaltender,31,30,Denmark,0,0,92,0,0,0,0,92,93,93,90,91,92,0,0,0,0
+Jack,Campbell,Toronto,Goalie,Goaltender,36,28,United States,0,0,86,0,0,0,0,88,85,87,84,82,85,0,0,0,0
+Carey,Price,Montreal,Goalie,Goaltender,31,32,Canada,0,0,93,0,0,0,0,96,94,92,95,92,94,0,0,0,0
+Charlie,Lindgren,Montreal,Goalie,Goaltender,39,26,United States,0,0,88,0,0,0,0,85,86,85,82,81,84,0,0,0,0
+Corey,Crawford,Chicago,Goalie,Goaltender,50,35,Canada,0,0,90,0,0,0,0,88,86,88,90,91,89,0,0,0,0
+Malcolm,Subban,Chicago,Goalie,Goaltender,30,26,Canada,0,0,85,0,0,0,0,87,86,88,85,84,86,0,0,0,0
+Henrik,Lundqvist,New York,Goalie,Goaltender,30,38,Sweden,0,0,90,0,0,0,0,89,85,88,90,91,89,0,0,0,0
+Alexander,Georgiev,New York,Goalie,Goaltender,40,24,Russia,0,0,83,0,0,0,0,87,84,88,90,91,88,0,0,0,0
+Jimmy,Howard,Detroit,Goalie,Goaltender,35,36,United States,0,0,89,0,0,0,0,86,85,83,84,82,84,0,0,0,0
+Jonathan,Bernier,Detroit,Goalie,Goaltender,45,31,Canada,0,0,86,0,0,0,0,85,83,87,80,82,83,0,0,0,0
+Tuukka,Rask,Boston,Goalie,Goaltender,40,33,Finland,0,0,94,0,0,0,0,97,94,94,96,93,95,0,0,0,0
+Jaroslav,Halak,Boston,Goalie,Goaltender,41,35,Slovakia,0,0,90,0,0,0,0,86,85,88,89,91,88,0,0,0,0
 Sheldon,Keefe,Toronto,Coach,Coach,0,39,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Foward,Off. Awareness,4,0
 Claude,Julien,Montreal,Coach,Coach,0,60,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Defence,Def. Awareness,4,0
 Jeremy,Colliton,Chicago,Coach,Coach,0,35,Canada,0,0,0,0,0,0,0,0,0,0,0,0,0,Foward,Strength,3,0
