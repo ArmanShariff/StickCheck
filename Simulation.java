@@ -499,13 +499,13 @@ class Simulation {
         goalieDrops = 1;
 
         for(int i = 0; i < 5; i++) {
-            teamA.getOnIce(i).setStaminaBar(1);
+            teamA.getRoster(i).setStaminaBar(1);
         }
         
         teamA.getGoalie().setStaminaBar(1);
 
         for(int i = 0; i < 5; i++) {
-            teamB.getOnIce(i).setStaminaBar(1);
+            teamB.getRoster(i).setStaminaBar(1);
         }
     }
 
@@ -533,13 +533,13 @@ class Simulation {
     public static void teamResetStats(Team teamA, Team teamB) {
 
         for(int i = 0; i < 5; i++) {
-            teamA.getOnIce(i).resetPlayerStats();
+            teamA.getRoster(i).resetPlayerStats();
         }
 
         teamA.getGoalie().resetGoalieStats();
 
         for(int i = 0; i < 5; i++) {
-            teamB.getOnIce(i).resetPlayerStats();
+            teamB.getRoster(i).resetPlayerStats();
         }
 
         teamB.getGoalie().resetGoalieStats();

@@ -188,6 +188,14 @@ public class Team {
         }
     }
 
+    public void fowardLineChange(int newLine) {
+        for (int i = 0; i < 3; i++) {
+            onIce[i] = forwardLines[newLine][i];
+
+
+        }
+    }
+
     public String toString() {
 
         String printStatement = "Lines: \n";

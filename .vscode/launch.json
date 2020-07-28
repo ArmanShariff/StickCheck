@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - StartGame",
+            "request": "launch",
+            "mainClass": "StartGame",
+            "projectName": "StickCheck_435c2b13"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - startGame",
             "request": "launch",
             "mainClass": "startGame",
