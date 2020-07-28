@@ -1,7 +1,7 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-public class startGame {
+public class StartGame {
     public static void main(String[] args) throws FileNotFoundException {
         //Initiailize roster through csv file
         //Initialize the 6 rosters
