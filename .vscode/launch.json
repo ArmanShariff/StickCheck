@@ -15,7 +15,7 @@
             "type": "java",
             "name": "CodeLens (Launch) - startGame",
             "request": "launch",
-            "mainClass": "startGame",
+            "mainClass": "StartGame",
             "projectName": "StickCheck_fcf4b0b5"
         },
         {

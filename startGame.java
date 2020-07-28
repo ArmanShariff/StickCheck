@@ -11,12 +11,12 @@ public class StartGame {
         
         Roster roster = new Roster("roster.csv");
 
-        Team toronto = new Team("Toronto", true);
-        Team newYork = new Team("New York", false);
-        Team detroit = new Team("Detroit", false);
-        Team chicago = new Team("Chicago", false);
-        Team montreal = new Team("Montreal", false);
-        Team boston = new Team("Boston", false);
+        Team toronto = new Team("Toronto", "TOR", true);
+        Team newYork = new Team("New York", "NY", false);
+        Team detroit = new Team("Detroit", "DET", false);
+        Team chicago = new Team("Chicago", "CHI", false);
+        Team montreal = new Team("Montreal", "MON", false);
+        Team boston = new Team("Boston", "BOS", false);
 
         ArrayList<Player> playerList = new ArrayList<Player>();
         ArrayList<Goalie> goalieList = new ArrayList<Goalie>();
@@ -39,7 +39,7 @@ public class StartGame {
         System.out.println("\nChicago: \n" + chicago);
         System.out.println("\nMontreal: \n" + montreal);
         System.out.println("\nBoston: \n" + boston);
-        
+
         Simulation game1 = new Simulation(toronto, montreal, false);
     }
 
