@@ -149,13 +149,13 @@ class Simulation {
 
             if (random <= chance) {
                 // team A is on offence
-                System.out.println(teamA.getOnIce(1).getFirstName() + " " + teamA.getOnIce(1).getLastName() + " won the faceoff!");
+                System.out.println(teamA.getCenter().getFirstName() + " " + teamA.getCenter().getLastName() + " won the faceoff!");
                 
                 return matchupCalculationOne(time + 2, teamA, teamB);
 
             } else {
                 // team B is on offence
-                System.out.println(teamB.getOnIce(1).getFirstName() + " " + teamB.getOnIce(1).getLastName() + " won the faceoff!");
+                System.out.println(teamB.getCenter().getFirstName() + " " + teamB.getCenter().getLastName() + " won the faceoff!");
                 
                 return matchupCalculationOne(time + 2, teamB, teamA);
             }
@@ -249,7 +249,7 @@ class Simulation {
     public static boolean shotCalculation(int time, Team offensiveTeam, Team defensiveTeam) {
         offensiveTeam.setShotCount();
         Player shooter = determineShooter(offensiveTeam);
-        Goalie goalie = defensiveTeam.getsG();
+        Goalie goalie = defensiveTeam.getGoalie();
 
         // calculation to determine if its a goal
         boolean isGoal = isGoal(shooter, goalie);
@@ -257,8 +257,8 @@ class Simulation {
         // drops goalie stamina/stats (Every shot)
         dropGoalieStamina(offensiveTeam, defensiveTeam);
         dropGoalieStats(offensiveTeam, defensiveTeam);
-        System.out.println(offensiveTeam.getsG().getFirstName() + "'s stamina: " + offensiveTeam.getsG().getStaminaBar());
-        System.out.println(offensiveTeam.getsG().getFirstName() + "'s agility: " + offensiveTeam.getsG().getAgility());
+        System.out.println(offensiveTeam.getGoalie().getFirstName() + "'s stamina: " + offensiveTeam.getGoalie().getStaminaBar());
+        System.out.println(offensiveTeam.getGoalie().getFirstName() + "'s agility: " + offensiveTeam.getGoalie().getAgility());
 
         if (isGoal == true) {
             offensiveTeam.setScore();
@@ -489,8 +489,8 @@ class Simulation {
     public static void dropGoalieStamina(Team teamA, Team teamB) {
         goalieDrops = goalieDrops++;
         
-        teamA.getsG().dropGoalieStamina(goalieDrops);
-        teamB.getsG().dropGoalieStamina(goalieDrops);
+        teamA.getGoalie().dropGoalieStamina(goalieDrops);
+        teamB.getGoalie().dropGoalieStamina(goalieDrops);
     }
     
     //Resets every players' and goalies' stamina after the period ends
@@ -502,7 +502,7 @@ class Simulation {
             teamA.getOnIce(i).setStaminaBar(1);
         }
         
-        teamA.getsG().setStaminaBar(1);
+        teamA.getGoalie().setStaminaBar(1);
 
         for(int i = 0; i < 5; i++) {
             teamB.getOnIce(i).setStaminaBar(1);
@@ -525,8 +525,8 @@ class Simulation {
     //Drop stats of every goalie depending on their stamina
     // >Drops everytime stamina drops
     public static void dropGoalieStats(Team teamA, Team teamB) {
-        teamA.getsG().dropGoalieStats(teamA.getsG().getStaminaBar());
-        teamB.getsG().dropGoalieStats(teamB.getsG().getStaminaBar());
+        teamA.getGoalie().dropGoalieStats(teamA.getGoalie().getStaminaBar());
+        teamB.getGoalie().dropGoalieStats(teamB.getGoalie().getStaminaBar());
     }
 
     //Reset stats of every player after each period
@@ -536,13 +536,13 @@ class Simulation {
             teamA.getOnIce(i).resetPlayerStats();
         }
 
-        teamA.getsG().resetGoalieStats();
+        teamA.getGoalie().resetGoalieStats();
 
         for(int i = 0; i < 5; i++) {
             teamB.getOnIce(i).resetPlayerStats();
         }
 
-        teamB.getsG().resetGoalieStats();
+        teamB.getGoalie().resetGoalieStats();
     }
     
     public static boolean overtime(Team teamA, Team teamB, int overtimePeriodLength) {
@@ -572,15 +572,15 @@ class Simulation {
         }
 
         //stats of Team A goalie
-        double reflexesA = teamA.getsG().getReflexes();
-        double agilityA = teamA.getsG().getAgility();
-        double flexibilityA = teamA.getsG().getFlexibility();
+        double reflexesA = teamA.getGoalie().getReflexes();
+        double agilityA = teamA.getGoalie().getAgility();
+        double flexibilityA = teamA.getGoalie().getFlexibility();
         double overallA = (reflexesA + agilityA + flexibilityA)/3;
 
         //stats of Team B goalie
-        double reflexesB = teamB.getsG().getReflexes();
-        double agilityB = teamB.getsG().getAgility();
-        double flexibilityB = teamB.getsG().getFlexibility();
+        double reflexesB = teamB.getGoalie().getReflexes();
+        double agilityB = teamB.getGoalie().getAgility();
+        double flexibilityB = teamB.getGoalie().getFlexibility();
         double overallB = (reflexesB + agilityB + flexibilityB)/3;
 
         //calculating the outcome of the shootout
