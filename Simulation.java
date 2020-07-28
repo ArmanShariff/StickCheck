@@ -252,7 +252,7 @@ class Simulation {
         Goalie goalie = defensiveTeam.getGoalie();
 
         // calculation to determine if its a goal
-        boolean isGoal = isGoal(shooter, goalie);
+        boolean isGoal = isGoal(time, shooter, goalie);
 
         // drops goalie stamina/stats (Every shot)
         dropGoalieStamina(offensiveTeam, defensiveTeam);
@@ -321,10 +321,17 @@ class Simulation {
         return shooter;
     }
 
-    public static boolean isGoal(Player shooter, Goalie goalie) {
+    public static boolean isGoal(int time, Player shooter, Goalie goalie) {
+        double chance = 0;
 
         // % chance of a goal = 15 + (Shooting - (Reflexes + Agility)/2)
-        double chance = 10 + (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
+        if(time < 600) {
+            chance = 10 + (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
+        }
+        else {
+            chance = 30 + (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
+        }
+
         int random_int = getRandom(1, 100);
 
         if (chance <= 0) {
