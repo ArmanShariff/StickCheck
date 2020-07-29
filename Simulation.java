@@ -1,5 +1,4 @@
 import java.lang.Math;
-import java.lang.management.ThreadMXBean;
 
 class Simulation {
 
@@ -112,16 +111,9 @@ class Simulation {
     //One period
     public static boolean period(int time, Team teamA, Team teamB) {
 
-        // check if period is over, otherwise move on to faceoff.
-        if (time > periodLength) {
-            System.out.println("\n \n-- Period is over --\n \n" + "Shots: ");
-            scoreboard(teamA, teamB);
-
-            return false;
-
-        } else {
-            return faceoffCalculation(0, teamA, teamB);
-        }
+        
+        return faceoffCalculation(0, teamA, teamB);
+        
     }
 
     //Faceoff Calculation
@@ -135,16 +127,16 @@ class Simulation {
             return false;
 
         } else {
+            // preform line change if necessary
+            teamA.lineChange();
+            teamB.lineChange();
+            
             // drops players' stamina/stats (Faceoff)
             dropPlayerStamina(teamA, teamB);
             dropPlayerStats(teamA, teamB);
             System.out.println(teamA.getOnIce(1).getFirstName() + "'s stamina: " + teamA.getOnIce(1).getStaminaBar());
             System.out.println(teamA.getOnIce(1).getFirstName() + "'s skating: " + teamA.getOnIce(1).getSkating());
             //System.out.println("Current Time: " + time);
-            
-            // preform line change if necessary
-            teamA.lineChange();
-            teamB.lineChange();
 
             // get each teams centers faceoff stats
             double faceoffA = teamA.getOnIce(1).getFaceoff();
@@ -246,7 +238,7 @@ class Simulation {
                 // drops players' stamina/stats (Puck stolen away)
                 dropPlayerStamina(offensiveTeam, defensiveTeam);
                 dropPlayerStats(offensiveTeam, defensiveTeam);
-                System.out.println(defensiveTeam.getTeamName() + " steals the puck away from " + offensiveTeam.getTeamName() + "!");
+                // System.out.println(defensiveTeam.getTeamName() + " steals the puck away from " + offensiveTeam.getTeamName() + "!");
                 
                 return matchupCalculationOne(time + getRandom(5, 20), defensiveTeam, offensiveTeam);
             }

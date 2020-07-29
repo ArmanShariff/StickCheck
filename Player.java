@@ -43,7 +43,7 @@ public class Player extends Person {
         this.defensiveAwareness = defensiveAwareness;
         originalDefensiveAwareness = defensiveAwareness;
         this.shootingTendency = shootingTendency;
-        staminaBar = 1;
+        staminaBar = 1.0;
 
         overall = (shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness) / 6;
     }
