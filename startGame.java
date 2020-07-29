@@ -10,7 +10,7 @@ public class StartGame {
         Roster roster = new Roster("roster.csv");
 
         Team toronto = new Team("Toronto", "TOR", true);
-        Team newYork = new Team("New York", "NY", false);
+        Team newYork = new Team("New York", "NYR", false);
         Team detroit = new Team("Detroit", "DET", false);
         Team chicago = new Team("Chicago", "CHI", false);
         Team montreal = new Team("Montreal", "MON", false);
