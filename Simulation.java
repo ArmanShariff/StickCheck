@@ -237,7 +237,7 @@ class Simulation {
         offensiveTeam.setShotCount();
         Player shooter = determineShooter(offensiveTeam);
         Goalie goalie = defensiveTeam.getGoalie();
-
+        shooter.addShot();
         // calculation to determine if its a goal
         boolean isGoal = isGoal(time, shooter, goalie);
 

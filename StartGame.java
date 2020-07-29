@@ -42,6 +42,8 @@ public class StartGame {
         }
         System.out.println("Toronto: \n" + toronto);
         System.out.println("\nMontreal: \n" + montreal);
+        double shootingpercent = (toronto.getOnIce(1).getGoals()/toronto.getOnIce(1).getShots());
+        System.out.println(shootingpercent);
     }
 
     //Method that sorts the players, goalies and coaches into their respected teams 
