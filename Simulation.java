@@ -249,6 +249,7 @@ class Simulation {
 
         if (isGoal == true) {
             offensiveTeam.setScore();
+            shooter.addGoal();
             scoreboard(offensiveTeam, defensiveTeam);
             
             if (isOvertime == true) {

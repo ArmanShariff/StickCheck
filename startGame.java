@@ -31,14 +31,17 @@ public class StartGame {
         sortTeam("Montreal", montreal, playerList, goalieList, coachList);
         sortTeam("Boston", boston, playerList, goalieList, coachList);
 
+        // System.out.println("Toronto: \n" + toronto);
+        // System.out.println("\nNew York: \n" + newYork);
+        // System.out.println("\nDetroit: \n" + detroit);
+        // System.out.println("\nChicago: \n" + chicago);
+        // System.out.println("\nMontreal: \n" + montreal);
+        // System.out.println("\nBoston: \n" + boston);
+        for (int i = 0; i < 82; i++) {
+            Simulation game1 = new Simulation(toronto, montreal, false);
+        }
         System.out.println("Toronto: \n" + toronto);
-        System.out.println("\nNew York: \n" + newYork);
-        System.out.println("\nDetroit: \n" + detroit);
-        System.out.println("\nChicago: \n" + chicago);
         System.out.println("\nMontreal: \n" + montreal);
-        System.out.println("\nBoston: \n" + boston);
-
-        Simulation game1 = new Simulation(toronto, montreal, false);
     }
 
     //Method that sorts the players, goalies and coaches into their respected teams 

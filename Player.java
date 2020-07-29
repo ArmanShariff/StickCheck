@@ -20,6 +20,10 @@ public class Player extends Person {
     double originalOffensiveAwareness;
     double originalDefensiveAwareness;
 
+    // statistics
+
+    int goals;
+
     // constructor
 
     public Player(double faceoff, double shooting, double stamina, double skating, double strength,
@@ -44,6 +48,7 @@ public class Player extends Person {
         originalDefensiveAwareness = defensiveAwareness;
         this.shootingTendency = shootingTendency;
         staminaBar = 1.0;
+        goals = 0;
 
         overall = (shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness) / 6;
     }
@@ -88,6 +93,14 @@ public class Player extends Person {
 
     public double getOverall() {
         return this.overall;
+    }
+
+    public int getGoals() {
+        return this.goals;
+    }
+
+    public void addGoal() {
+        this.goals++;
     }
 
     // set methods
