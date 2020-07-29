@@ -79,8 +79,7 @@ class Simulation {
         //prints end-of-game message (exception: shootout)
         if (isShootout == false) {
             System.out.println("GAME OVER!!!!");
-            System.out.println(teamA.getTeamName() + ": " + teamA.getScore());
-            System.out.println(teamB.getTeamName() + ": " + teamB.getScore());
+            scoreboard(teamA, teamB);
         }
 
         //prints team shot totals
@@ -116,6 +115,7 @@ class Simulation {
         // check if period is over, otherwise move on to faceoff.
         if (time > periodLength) {
             System.out.println("\n \n-- Period is over --\n \n" + "Shots: ");
+            scoreboard(teamA, teamB);
 
             return false;
 
@@ -129,7 +129,8 @@ class Simulation {
 
         // check if period is over
         if (time > periodLength) {
-            System.out.println("\n \n-- Period is over --\n \n");
+            System.out.println("\n \n-- Period is over --\n");
+            scoreboard(teamA, teamB);
             
             return false;
 
@@ -139,7 +140,7 @@ class Simulation {
             dropPlayerStats(teamA, teamB);
             System.out.println(teamA.getOnIce(1).getFirstName() + "'s stamina: " + teamA.getOnIce(1).getStaminaBar());
             System.out.println(teamA.getOnIce(1).getFirstName() + "'s skating: " + teamA.getOnIce(1).getSkating());
-            System.out.println("Current Time: " + time);
+            //System.out.println("Current Time: " + time);
             
             // preform line change if necessary
             teamA.lineChange();
@@ -171,7 +172,8 @@ class Simulation {
     public static boolean matchupCalculationOne(int time, Team offensiveTeam, Team defensiveTeam) {
         // check if period is over
         if (time > periodLength) {
-            System.out.println("\n \n-- Period is over --\n \n");
+            System.out.println("\n \n-- Period is over --\n");
+            scoreboard(offensiveTeam, defensiveTeam);
 
             return false;
 
@@ -258,17 +260,17 @@ class Simulation {
         Goalie goalie = defensiveTeam.getGoalie();
 
         // calculation to determine if its a goal
-        boolean isGoal = isGoal(shooter, goalie);
+        boolean isGoal = isGoal(time, shooter, goalie);
 
         // drops goalie stamina/stats (Every shot)
         dropGoalieStamina(offensiveTeam, defensiveTeam);
         dropGoalieStats(offensiveTeam, defensiveTeam);
-        System.out.println(offensiveTeam.getGoalie().getFirstName() + "'s stamina: " + offensiveTeam.getGoalie().getStaminaBar());
-        System.out.println(offensiveTeam.getGoalie().getFirstName() + "'s agility: " + offensiveTeam.getGoalie().getAgility());
+        System.out.println(defensiveTeam.getGoalie().getFirstName() + "'s stamina: " + defensiveTeam.getGoalie().getStaminaBar());
+        System.out.println(defensiveTeam.getGoalie().getFirstName() + "'s agility: " + defensiveTeam.getGoalie().getAgility());
 
         if (isGoal == true) {
             offensiveTeam.setScore();
-            System.out.println("\n" + offensiveTeam.getTeamName() + "(" + offensiveTeam.getScore() + ")" + " - " + defensiveTeam.getTeamName() + "(" + defensiveTeam.getScore() + ")\n");
+            scoreboard(offensiveTeam, defensiveTeam);
             
             if (isOvertime == true) {
                 return true;
@@ -327,10 +329,17 @@ class Simulation {
         return shooter;
     }
 
-    public static boolean isGoal(Player shooter, Goalie goalie) {
+    public static boolean isGoal(int time, Player shooter, Goalie goalie) {
+        double chance = 0;
 
         // % chance of a goal = 15 + (Shooting - (Reflexes + Agility)/2)
-        double chance = 10 + (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
+        if(time < 600) {
+            chance = 10 + (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
+        }
+        else {
+            chance = 30 + (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
+        }
+
         int random_int = getRandom(1, 100);
 
         if (chance <= 0) {
@@ -340,6 +349,9 @@ class Simulation {
         }
         else if (random_int <= chance) {
             System.out.println(shooter.getLastName() + " shoots!.. He scores!");
+            System.out.println("Chance: " + chance);
+            System.out.println("Random: " + random_int);
+            System.out.println("Current time: " + time);
             
             return true;
         }
@@ -373,7 +385,8 @@ class Simulation {
         // check if period is over
         if (time > periodLength) {
 
-            System.out.println("\n \n-- Period is over --\n \n");
+            System.out.println("\n \n-- Period is over --\n");
+            scoreboard(offensiveTeam, defensiveTeam);
             return false;
 
         } else {
@@ -513,6 +526,8 @@ class Simulation {
         for(int i = 0; i < 5; i++) {
             teamB.getRoster(i).setStaminaBar(1);
         }
+
+        teamB.getGoalie().setStaminaBar(1);
     }
 
     //Drop stats of every player depending on their current stamina
@@ -652,14 +667,18 @@ class Simulation {
     public static void endShootoutA(Team teamA, Team teamB) {
         System.out.println(" ");
         System.out.println(teamA.getTeamName() + " has won the game!");
-        System.out.println("Final Score: " + (teamA.getScore() + 1) + "-" + (teamB.getScore()) + " (SO)");
+        System.out.println("Final Score: \n" + (teamA.getScore() + 1) + "-" + (teamB.getScore()) + " (SO)");
     }
 
     //method called if Team B wins the shootout
     public static void endShootoutB(Team teamA, Team teamB) {
         System.out.println(" ");
         System.out.println(teamB.getTeamName() + " has won the game!");
-        System.out.println("Final Score: " + (teamA.getScore() + 1) + "-" + (teamB.getScore()) + " (SO)");
+        System.out.println("Final Score: \n" + (teamA.getScore() + 1) + "-" + (teamB.getScore()) + " (SO)");
+    }
+
+    public static void scoreboard(Team teamA, Team teamB) {
+        System.out.println("\nCurrent score: \n" + teamA.getAbbreviation() + "(" + teamA.getScore() + ") - " + teamB.getAbbreviation() +"(" + teamB.getScore() + ")\n"); 
     }
 
 }

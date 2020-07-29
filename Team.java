@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Team {
     
     private String teamName;
+    private String abbreviation;
 
     // Arraylists of the rosters
     private ArrayList<Player> playerRoster = new ArrayList<Player>();
@@ -28,16 +29,20 @@ public class Team {
     int shotCount;
     int score;
 
-    public Team (String teamName, boolean userTeam) {
+    public Team (String teamName, String abbreviation, boolean userTeam) {
 
         this.teamName = teamName;
-
+        this.abbreviation = abbreviation;
     }
 
     // get methods
 
     public String getTeamName() {
         return teamName;
+    }
+
+    public String getAbbreviation() {
+        return abbreviation;
     }
 
     public Goalie getGoalie() {
