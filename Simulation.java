@@ -313,10 +313,10 @@ class Simulation {
 
         // % chance of a goal = 15 + (Shooting - (Reflexes + Agility)/2)
         if(time < 600) {
-            chance = 10 + (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
+            chance = (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
         }
         else {
-            chance = 30 + (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
+            chance = (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
         }
 
         int random_int = getRandom(1, 100);

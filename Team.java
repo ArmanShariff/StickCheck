@@ -207,10 +207,13 @@ public class Team {
             averageStamina = averageStamina/5;
 
             // if their average stamina is bellow a certain point preform a line change
-            if (averageStamina < 1.0) {
+            if (averageStamina < 0.75) {
                 System.out.println(teamName + " line change--Average Stamina (" + averageStamina + ")");
-                if (j == 2) {
+                if (j == 1) {
                     
+                    sG.setStaminaBar(1);
+                    sG.resetGoalieStats();
+
                     // regenerate current lines stats before they switch
                     // so that they are reset next time they are on the ice
                     for (int k = 0; k < 5; k++) {
@@ -218,7 +221,7 @@ public class Team {
                         onIce[k].resetPlayerStats();
                     }
                     
-                    fowardLineChange(0);
+                    forwardLineChange(0);
                     defenceLineChange(0);
                     
                 }
@@ -231,7 +234,7 @@ public class Team {
                         onIce[k].resetPlayerStats();
                     }
 
-                    fowardLineChange(1);
+                    forwardLineChange(1);
                     defenceLineChange(1);
                 }
 
@@ -240,7 +243,7 @@ public class Team {
 
     }
 
-    public void fowardLineChange(int newLine) {
+    public void forwardLineChange(int newLine) {
         for (int i = 0; i < 3; i++) {
             onIce[i] = forwardLines[newLine][i];
         }
