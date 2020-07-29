@@ -208,7 +208,7 @@ class Simulation {
             double randomMultiplier = Math.random() * (max - min + 0.1) + min;
 
             //probability of offensive team retaining possession of the puck
-            double chanceRetainPossession = 20 + ((skatingOverallO*1.2 + strengthOverallO + awarenessOverallO)*(randomMultiplier)/3);
+            double chanceRetainPossession = 30 + ((skatingOverallO*1.2 + strengthOverallO + awarenessOverallO)*(randomMultiplier)/3);
 
             //If % of off. team retaining possesssion > random value between 1-100
             // >Off. team will retain possession
