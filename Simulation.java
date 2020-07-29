@@ -126,6 +126,7 @@ class Simulation {
 
     //Faceoff Calculation
     public static boolean faceoffCalculation(int time, Team teamA, Team teamB) {
+
         // check if period is over
         if (time > periodLength) {
             System.out.println("\n \n-- Period is over --\n \n");
@@ -139,6 +140,11 @@ class Simulation {
             System.out.println(teamA.getOnIce(1).getFirstName() + "'s stamina: " + teamA.getOnIce(1).getStaminaBar());
             System.out.println(teamA.getOnIce(1).getFirstName() + "'s skating: " + teamA.getOnIce(1).getSkating());
             System.out.println("Current Time: " + time);
+            
+            // preform line change if necessary
+            teamA.lineChange();
+            teamB.lineChange();
+
             // get each teams centers faceoff stats
             double faceoffA = teamA.getOnIce(1).getFaceoff();
             double faceoffB = teamB.getOnIce(1).getFaceoff();

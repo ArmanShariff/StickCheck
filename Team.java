@@ -187,12 +187,46 @@ public class Team {
             this.coach = coach;
         }
     }
+    
+    public void lineChange() {
+        
+        // check if a line change is required
+        for (int j = 0; j < 2; j ++) {
+            
+            double averageStamina = 0;
+            
+            // check the lines average stamina
+            for (int i = 0; i < 5; i++) {
+                averageStamina += onIce[i].getStaminaBar();
+            }
+            averageStamina = averageStamina/3;
+
+            // if their average stamina is bellow a certain point preform a line change
+            if (averageStamina < 1.0) {
+                System.out.println(teamName + " line change--Average Stamina (" + averageStamina + ")");
+                if (j == 2) {
+                    fowardLineChange(0);
+                    defenceLineChange(0);
+                }
+                else {
+                    fowardLineChange(1);
+                    defenceLineChange(1);
+                }
+
+            }
+        }
+
+    }
 
     public void fowardLineChange(int newLine) {
         for (int i = 0; i < 3; i++) {
             onIce[i] = forwardLines[newLine][i];
+        }
+    }
 
-
+    public void defenceLineChange(int newLine) {
+        for (int i = 3; i < 5; i++) {
+            onIce[i] = defenceLines[newLine][i-3];
         }
     }
 
