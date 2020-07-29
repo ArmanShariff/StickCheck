@@ -309,15 +309,9 @@ class Simulation {
     }
 
     public static boolean isGoal(int time, Player shooter, Goalie goalie) {
-        double chance = 0;
-
         // % chance of a goal = 15 + (Shooting - (Reflexes + Agility)/2)
-        if(time < 600) {
-            chance = 10 + (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
-        }
-        else {
-            chance = 30 + (shooter.getShooting() - (goalie.getReflexes() + goalie.getAgility())/2);
-        }
+        double goalieAVG = (goalie.getAgility() + goalie.getReflexes() + goalie.getFlexibility()) / 3;
+        double chance = 10 * (shooter.getShooting()/goalieAVG);
 
         int random_int = getRandom(1, 100);
 
