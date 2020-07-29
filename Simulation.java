@@ -114,11 +114,6 @@ class Simulation {
     //One period
     public static boolean period(int time, Team teamA, Team teamB) {
 
-<<<<<<< HEAD
-        
-        return faceoffCalculation(0, teamA, teamB);
-        
-=======
         // check if period is over, otherwise move on to faceoff.
         if (time > periodLength) {
             System.out.println("\n \n-- Period is over --\n \n" + "Shots: ");
@@ -128,7 +123,6 @@ class Simulation {
         } else {
             return faceoffCalculation(0, teamA, teamB);
         }
->>>>>>> 1e89190f4c1ad90bc975ba02aa274c8d03ae64a5
     }
 
     //Faceoff Calculation
