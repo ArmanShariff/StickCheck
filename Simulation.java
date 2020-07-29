@@ -45,6 +45,9 @@ class Simulation {
         // resets stamina/stats after each period
         for (int i = 0; i < 3; i++) {
             period(0, teamA, teamB);
+            if(i < 2) {
+                scoreboard(teamA, teamB);
+            }
             teamResetStamina(teamA, teamB);
             teamResetStats(teamA, teamB);
         }
@@ -79,7 +82,7 @@ class Simulation {
         //prints end-of-game message (exception: shootout)
         if (isShootout == false) {
             System.out.println("GAME OVER!!!!");
-            scoreboard(teamA, teamB);
+            System.out.println("\nFinal score: \n" + teamA.getAbbreviation() + "(" + teamA.getScore() + ") - " + teamB.getAbbreviation() +"(" + teamB.getScore() + ")\n");
         }
 
         //prints team shot totals
@@ -115,7 +118,6 @@ class Simulation {
         // check if period is over, otherwise move on to faceoff.
         if (time > periodLength) {
             System.out.println("\n \n-- Period is over --\n \n" + "Shots: ");
-            scoreboard(teamA, teamB);
 
             return false;
 
@@ -130,7 +132,6 @@ class Simulation {
         // check if period is over
         if (time > periodLength) {
             System.out.println("\n \n-- Period is over --\n");
-            scoreboard(teamA, teamB);
             
             return false;
 
@@ -173,7 +174,6 @@ class Simulation {
         // check if period is over
         if (time > periodLength) {
             System.out.println("\n \n-- Period is over --\n");
-            scoreboard(offensiveTeam, defensiveTeam);
 
             return false;
 
@@ -386,7 +386,6 @@ class Simulation {
         if (time > periodLength) {
 
             System.out.println("\n \n-- Period is over --\n");
-            scoreboard(offensiveTeam, defensiveTeam);
             return false;
 
         } else {
