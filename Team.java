@@ -201,8 +201,11 @@ public class Team {
             double averageStamina = 0;
             
             // check the lines average stamina
-            for (int i = 0; i < 5; i++) {
-                averageStamina += onIce[i].getStaminaBar();
+            for (int i = 0; i < 3; i++) {
+                averageStamina += forwardLines[j][i].getStaminaBar();
+            }
+            for (int i = 0; i < 2; i++) {
+                averageStamina += defenceLines[j][i].getStaminaBar();
             }
             averageStamina = averageStamina/5;
 
@@ -237,10 +240,8 @@ public class Team {
                     forwardLineChange(1);
                     defenceLineChange(1);
                 }
-
             }
         }
-
     }
 
     public void forwardLineChange(int newLine) {
