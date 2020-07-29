@@ -9,6 +9,13 @@
             "name": "CodeLens (Launch) - StartGame",
             "request": "launch",
             "mainClass": "StartGame",
+            "projectName": "StickCheck_986df530"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - StartGame",
+            "request": "launch",
+            "mainClass": "StartGame",
             "projectName": "StickCheck_435c2b13"
         },
         {
