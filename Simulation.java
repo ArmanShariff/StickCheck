@@ -198,17 +198,17 @@ class Simulation {
             }
 
             //matchup calculations for offensive team
-            double skatingOverallO = (skatingOff[1]-skatingDef[1]) + (skatingOff[2]-skatingDef[3]) + (skatingOff[0]-skatingDef[4]) + (skatingOff[4]-skatingDef[0]) + (skatingOff[3]-skatingDef[2]);
-            double strengthOverallO = (strengthOff[1]-strengthDef[1]) + (strengthOff[2]-strengthDef[3]) + (strengthOff[0]-strengthDef[4]) + (strengthOff[4]-strengthDef[0]) + (strengthOff[3]-strengthDef[2]);
-            double awarenessOverallO = (offAwareness[1]-defAwareness[1]) + (offAwareness[2]-defAwareness[3]) + (offAwareness[0]-defAwareness[4]) + (offAwareness[4]-defAwareness[0]) + (offAwareness[3]-defAwareness[2]);
+            double skatingOverallO = (((skatingOff[1]-skatingDef[1]) + (skatingOff[2]-skatingDef[3]) + (skatingOff[0]-skatingDef[4]) + (skatingOff[4]-skatingDef[0]) + (skatingOff[3]-skatingDef[2]))/5);
+            double strengthOverallO = (((strengthOff[1]-strengthDef[1]) + (strengthOff[2]-strengthDef[3]) + (strengthOff[0]-strengthDef[4]) + (strengthOff[4]-strengthDef[0]) + (strengthOff[3]-strengthDef[2]))/5);
+            double awarenessOverallO = (((offAwareness[1]-defAwareness[1]) + (offAwareness[2]-defAwareness[3]) + (offAwareness[0]-defAwareness[4]) + (offAwareness[4]-defAwareness[0]) + (offAwareness[3]-defAwareness[2]))/5);
             
             //generate random multiplier for probability of retaining possession
-            double max = 1.3;
+            double max = 1.2;
             double min = 0.8;
             double randomMultiplier = Math.random() * (max - min + 0.1) + min;
 
             //probability of offensive team retaining possession of the puck
-            double chanceRetainPossession = 30 + ((skatingOverallO/1.5 + strengthOverallO/3 + awarenessOverallO/2)*(randomMultiplier)/3);
+            double chanceRetainPossession = 20 + ((skatingOverallO*1.2 + strengthOverallO + awarenessOverallO)*(randomMultiplier)/3);
 
             //If % of off. team retaining possesssion > random value between 1-100
             // >Off. team will retain possession
@@ -388,42 +388,37 @@ class Simulation {
             double skatingMatchup1 = (skatingOff[1]-skatingDef[1]);
             double strengthMatchup1 = (strengthOff[1]-strengthDef[1])*2;
             double awarenessMatchup1 = (offAwareness[1]-defAwareness[1]);
-            matchupResults[0] = skatingMatchup1 + strengthMatchup1 + awarenessMatchup1;
+            matchupResults[0] = (skatingMatchup1 + strengthMatchup1 + awarenessMatchup1)/3;
 
             double skatingMatchup2 = (skatingOff[2]-skatingDef[3]);
             double strengthMatchup2 = (strengthOff[2]-strengthDef[3])*2;
             double awarenessMatchup2 = (offAwareness[2]-defAwareness[3]);
-            matchupResults[1] = skatingMatchup2 + strengthMatchup2 + awarenessMatchup2;
+            matchupResults[1] = (skatingMatchup2 + strengthMatchup2 + awarenessMatchup2)/3;
 
             double skatingMatchup3 = (skatingOff[0]-skatingDef[4]);
             double strengthMatchup3 = (strengthOff[0]-strengthDef[4])*2;
             double awarenessMatchup3 = (offAwareness[0]-defAwareness[4]);
-            matchupResults[2] = skatingMatchup3 + strengthMatchup3 + awarenessMatchup3;
+            matchupResults[2] = (skatingMatchup3 + strengthMatchup3 + awarenessMatchup3)/3;
 
             double skatingMatchup4 = (skatingOff[4]-skatingDef[0]);
             double strengthMatchup4 = (strengthOff[4]-strengthDef[0])*2;
             double awarenessMatchup4 = (offAwareness[4]-defAwareness[0]);
-            matchupResults[3] = skatingMatchup4 + strengthMatchup4 + awarenessMatchup4;
+            matchupResults[3] = (skatingMatchup4 + strengthMatchup4 + awarenessMatchup4)/3;
 
             double skatingMatchup5 = (skatingOff[3]-skatingDef[2]);
             double strengthMatchup5 = (strengthOff[3]-strengthDef[2])*2;
             double awarenessMatchup5 = (offAwareness[3]-defAwareness[2]);
-            matchupResults[4] = skatingMatchup5 + strengthMatchup5 + awarenessMatchup5;
-
-            //determining overall team results
-            int offTeamScore = 0;
-            int defTeamScore = 0;
+            matchupResults[4] = (skatingMatchup5 + strengthMatchup5 + awarenessMatchup5)/3;
             
+            //determining the probability of the offensive team winning the rebound
+            double chanceWinReb = 0;
             for (int i = 0; i < 5; i++) {
-                if (matchupResults[i] > 1) {
-                    offTeamScore++;
-                } else if (matchupResults[i] < 1) {
-                    defTeamScore++;
-                }
+                chanceWinReb = matchupResults[i] + chanceWinReb;
             }
+            chanceWinReb = chanceWinReb + 30.0;
 
             //determining outcome of the calculation
-            if(offTeamScore > defTeamScore) {
+            if(chanceWinReb > getRandom(1,100)) {
                 return shotCalculation(time + 30, offensiveTeam, defensiveTeam);
             } else {
                 return matchupCalculationOne(time + 30, defensiveTeam, offensiveTeam);
