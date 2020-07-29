@@ -642,7 +642,9 @@ class Simulation {
     }
 
     public static void scoreboard(Team teamA, Team teamB) {
-        System.out.println("\nCurrent score: \n" + teamA.getAbbreviation() + "(" + teamA.getScore() + ") - " + teamB.getAbbreviation() +"(" + teamB.getScore() + ")\n"); 
+        System.out.println("==================");
+        System.out.println("| " + teamA.getAbbreviation() + "(" + teamA.getScore() + ") - " + teamB.getAbbreviation() + "(" + teamB.getScore() + ")|");
+        System.out.println("==================");
     }
 
 }
