@@ -1,5 +1,15 @@
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.*;
+import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.geometry.*;
+import javafx.stage.*;
+import javafx.scene.text.*;
+import javafx.scene.paint.*;
 
 public class StartGame {
     public static void main(String[] args) throws FileNotFoundException {
