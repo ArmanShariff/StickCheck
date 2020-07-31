@@ -153,6 +153,13 @@ public class Player extends Person {
         }
     }
 
+    public void regenerateStaminaBar(int time) {
+        setStaminaBar(this.staminaBar + (time * 0.002));
+        if (staminaBar > 1) {
+            setStaminaBar(1.0);
+        }
+    }
+
     // stat changes methods
 
     public void dropPlayerStamina(int drops) {

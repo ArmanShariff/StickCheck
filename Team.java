@@ -11,23 +11,21 @@ public class Team {
     // Arraylists of the rosters
     private ArrayList<Player> playerRoster = new ArrayList<Player>();
     private ArrayList<Goalie> goalieRoster = new ArrayList<Goalie>();
-    private ArrayList<Coach> coachRoster = new ArrayList<Coach>();
-    
-    // stores all the players currently on the ice
-    private Player[] onIce = new Player[5]; 
-    
-    // team lines
-    private Player[][] forwardLines = new Player[2][3];
-    private Player[][] defenceLines = new Player[2][2];
+    private ArrayList<Coach> coachRoster = new ArrayList<Coach>(); 
+
+    Lines teamLines;
+    OnIce teamOnIce;
     
     // initialize the goalie and coach
     private Goalie sG;
     private Goalie bG;
     private Coach coach;
 
-    // Keep track of shot count and score in a game
+    // Keep track of statistics
     int shotCount;
     int score;
+    int wins;           // (TO-DO) wins and losses don't currently do anything
+    int losses;
 
     public Team (String teamName, String abbreviation, boolean userTeam) {
 
@@ -35,8 +33,20 @@ public class Team {
         this.abbreviation = abbreviation;
     }
 
-    // get methods
+    public void lineChange(int time) {
+        this.teamOnIce.lineChange(time);
+    }
+    
+    public Lines getTeamLines(){
+        return this.teamLines;
+    }
 
+    public void createLines() {
+        
+        Lines newLines = new Lines(playerRoster);
+        this.teamLines = newLines;
+
+    }
     public String getTeamName() {
         return teamName;
     }
@@ -49,42 +59,12 @@ public class Team {
         return sG;
     }
 
-    //Starting Left Wing: 0
-    //Starting Center: 1
-    //Starting Right Wing: 2
-    //Starting Left Defense: 3
-    //Starting Right Defense: 4
-    
-    public Player getOnIce(int i) {
-        return this.onIce[i];
-    }
-
     public int getScore() {
         return score;
     }
 
     public int getShotCount() {
         return shotCount;
-    }
-
-    public Player getCenter() {
-        return getOnIce(1);
-    }
-
-    public Player getLeftWing() {
-        return getOnIce(0);
-    }
-
-    public Player getRightWing() {
-        return getOnIce(2);
-    }
-
-    public Player getLeftDefence() {
-        return getOnIce(3);
-    }
-
-    public Player getRightDefence() {
-        return getOnIce(4);
     }
 
     public Player getRoster(int i) {
@@ -122,57 +102,8 @@ public class Team {
         coachRoster.add(coach);
     }
 
-    //Method checks whether the player is a center, wing or defense
-    //Sets the corresponding players into the starting lineup/bench
-    //TO DO: If bench player has a higher overall than the starter, switch them
-    //TO DO: when we have more than two lines, make it loop through all the lines to find an empty slot
-    public void setPlayerPosition(Player player) {
-        
-        if (player.getPosition().equals("Left Wing")) {
-            
-            if (forwardLines[0][0] == null) {
-                forwardLines[0][0] = player;
-                this.onIce[0] = player;
-            } else {
-                forwardLines[1][0] = player;
-            }
-        }
-
-        else if (player.getPosition().equals("Center")) {
-            if (forwardLines[0][1] == null) {
-                forwardLines[0][1] = player;
-                this.onIce[1] = player;
-            } else {
-                forwardLines[1][1] = player;
-            }
-        }
-
-        else if (player.getPosition().equals("Right Wing")) {
-            if (forwardLines[0][2] == null) {
-                forwardLines[0][2] = player;
-                this.onIce[2] = player;
-            } else {
-                forwardLines[1][2] = player;
-            }
-        }
-
-        else if (player.getPosition().equals("Left Defence")) {
-            if (defenceLines[0][0] == null) {
-                defenceLines[0][0] = player;
-                this.onIce[3] = player;
-            } else {
-                defenceLines[1][0] = player;
-            }
-        }
-
-        else if (player.getPosition().equals("Right Defence")) {
-            if (defenceLines[0][1] == null) {
-                defenceLines[0][1] = player;
-                this.onIce[4] = player;
-            } else {
-                defenceLines[1][1] = player;
-            }
-        }
+    public ArrayList<Player> getPlayerRoster() {
+        return playerRoster;
     }
 
     //Sets the goalie into the starting lineup/bench
@@ -192,90 +123,39 @@ public class Team {
             this.coach = coach;
         }
     }
-    
-    public void lineChange() {
-        // TO-DO: make this propper
-        // check if a line change is required
-        for (int j = 0; j < 2; j ++) {
-            
-            double averageStamina = 0;
-            
-            // check the lines average stamina
-            for (int i = 0; i < 3; i++) {
-                averageStamina += forwardLines[j][i].getStaminaBar();
-            }
-            for (int i = 0; i < 2; i++) {
-                averageStamina += defenceLines[j][i].getStaminaBar();
-            }
-            averageStamina = averageStamina/5;
 
-            // if their average stamina is bellow a certain point preform a line change
-            if (averageStamina < 0.75) {
-                System.out.println(teamName + " line change--Average Stamina (" + averageStamina + ")");
-                if (j == 1) {
-                    
-                    sG.setStaminaBar(1);
-                    sG.resetGoalieStats();
-
-                    // regenerate current lines stats before they switch
-                    // so that they are reset next time they are on the ice
-                    for (int k = 0; k < 5; k++) {
-                        onIce[k].setStaminaBar(1);
-                        onIce[k].resetPlayerStats();
-                    }
-                    
-                    forwardLineChange(0);
-                    defenceLineChange(0);
-                    
-                }
-                else {
-                    
-                    // regenerate current lines stats before they switch
-                    // so that they are reset next time they are on the ice
-                    for (int k = 0; k < 5; k++) {
-                        onIce[k].setStaminaBar(1);
-                        onIce[k].resetPlayerStats();
-                    }
-
-                    forwardLineChange(1);
-                    defenceLineChange(1);
-                }
-            }
-        }
+    public void setOnIce(OnIce teamOnIce) {
+        this.teamOnIce = teamOnIce;
     }
 
-    public void forwardLineChange(int newLine) {
-        for (int i = 0; i < 3; i++) {
-            onIce[i] = forwardLines[newLine][i];
-        }
+    public Player getCenter(){
+        return teamOnIce.getCenter();
     }
 
-    public void defenceLineChange(int newLine) {
-        for (int i = 3; i < 5; i++) {
-            onIce[i] = defenceLines[newLine][i-3];
-        }
+    public Player getLeftWing() {
+        return teamOnIce.getLeftWing();
+    }
+
+    public Player getRightWing() {
+        return teamOnIce.getRightWing();
+    }
+
+    public Player getLeftDefence() {
+        return teamOnIce.getLeftDefence();
+    }
+
+    public Player getRightDefence() {
+        return teamOnIce.getRightDefence();
+    }
+
+    public Player getOnIce(int i) {
+        return teamOnIce.getOnIce(i);
     }
 
     public String toString() {
 
-        String printStatement = "Lines: \n";
+        return teamLines.toString();
 
-        for (int i = 0; i < forwardLines.length; i ++) {
-            printStatement += "Line " + (i+1);
-            for (int j = 0; j < forwardLines[i].length; j++) {
-                printStatement += " " + forwardLines[i][j].getLastName() +  "(" + forwardLines[i][j].getGoals() + " / " + forwardLines[i][j].shootingPercentage() + ")";
-            }
-            printStatement += "\n";
-        }
-
-        for (int i = 0; i < defenceLines.length; i ++) {
-            printStatement += "Line " + (i+1);
-            for (int j = 0; j < defenceLines[i].length; j++) {
-                printStatement += " " + defenceLines[i][j].getLastName() +  "(" + defenceLines[i][j].getGoals() + " / " + defenceLines[i][j].shootingPercentage() + ")";
-            }
-            printStatement += "\n";
-        }
-        return printStatement;
-    }
+     }
 
 }
