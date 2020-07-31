@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - guiTest",
+            "request": "launch",
+            "mainClass": "guiTest",
+            "projectName": "StickCheck_986df530"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - gui",
+            "request": "launch",
+            "mainClass": "gui",
+            "projectName": "StickCheck_986df530"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - LoginPage",
+            "request": "launch",
+            "mainClass": "LoginPage",
+            "projectName": "StickCheck_986df530"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - StartGame",
             "request": "launch",
             "mainClass": "StartGame",
