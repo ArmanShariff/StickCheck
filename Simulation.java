@@ -38,11 +38,19 @@ class Simulation {
 
         Simulation.periodLength = 1200;
         Simulation.isOvertime = false;
-
         
+        //onIce is used to track what players are curently playing in the game.
+        OnIce teamAOnIce = new OnIce(teamA, 0, 0);
+        OnIce teamBOnIce = new OnIce(teamB, 0, 0);
+
+        teamA.setOnIce(teamAOnIce);
+        teamB.setOnIce(teamBOnIce);
+
         // run three periods
         // resets stamina/stats after each period
         for (int i = 0; i < 3; i++) {
+            teamA.getTeamLines().setLastTime(0);
+            teamB.getTeamLines().setLastTime(0);
             period(0, teamA, teamB);
             if(i < 2) {
                 scoreboard(teamA, teamB);
@@ -135,10 +143,10 @@ class Simulation {
             return false;
 
         } else {
-            // preform line change if necessary
-            teamA.lineChange();
-            teamB.lineChange();
             
+            teamA.lineChange(time);
+            teamB.lineChange(time);
+
             // drops players' stamina/stats (Faceoff)
             dropPlayerStamina(teamA, teamB);
             dropPlayerStats(teamA, teamB);
@@ -237,7 +245,7 @@ class Simulation {
         offensiveTeam.setShotCount();
         Player shooter = determineShooter(offensiveTeam);
         Goalie goalie = defensiveTeam.getGoalie();
-
+        shooter.addShot();
         // calculation to determine if its a goal
         boolean isGoal = isGoal(time, shooter, goalie);
 

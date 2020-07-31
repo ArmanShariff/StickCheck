@@ -24,6 +24,7 @@ public class StartGame {
         goalieList = roster.getGoalies();
         coachList = roster.getCoaches();
 
+        // adds players to their teams
         sortTeam("Toronto", toronto, playerList, goalieList, coachList);
         sortTeam("New York", newYork, playerList, goalieList, coachList);
         sortTeam("Detroit", detroit, playerList, goalieList, coachList);
@@ -31,17 +32,22 @@ public class StartGame {
         sortTeam("Montreal", montreal, playerList, goalieList, coachList);
         sortTeam("Boston", boston, playerList, goalieList, coachList);
 
-        // System.out.println("Toronto: \n" + toronto);
-        // System.out.println("\nNew York: \n" + newYork);
-        // System.out.println("\nDetroit: \n" + detroit);
-        // System.out.println("\nChicago: \n" + chicago);
-        // System.out.println("\nMontreal: \n" + montreal);
-        // System.out.println("\nBoston: \n" + boston);
-        
-        Simulation game1 = new Simulation(toronto, montreal, false);
+        // organizes players within their teams
+        toronto.createLines();
+        newYork.createLines();
+        detroit.createLines();
+        chicago.createLines();
+        montreal.createLines();
+        boston.createLines();
+
+        for (int i = 0; i < 1; i++) {
+            Simulation game1 = new Simulation(toronto, montreal, false);
+        }
         
         System.out.println("Toronto: \n" + toronto);
-        System.out.println("\nMontreal: \n" + montreal); 
+        System.out.println("\nMontreal: \n" + montreal);
+
+        
     }
 
     //Method that sorts the players, goalies and coaches into their respected teams 
@@ -53,7 +59,6 @@ public class StartGame {
             // if the player belongs to the team, add them to that team in the correct position.
             if (playerRoster.get(i).getCurrentTeam().equals(teamName)) {
                 team.addPlayer(playerRoster.get(i));
-                team.setPlayerPosition(playerRoster.get(i));
             }
         }
 
@@ -73,6 +78,7 @@ public class StartGame {
                 team.setCoach(coachRoster.get(i));
             }
         }
+    
     }
 
 }

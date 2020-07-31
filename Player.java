@@ -22,7 +22,9 @@ public class Player extends Person {
 
     // statistics
 
-    int goals;
+    double goals;
+    double shots;
+    double shootingPercentage;
 
     // constructor
 
@@ -49,6 +51,7 @@ public class Player extends Person {
         this.shootingTendency = shootingTendency;
         staminaBar = 1.0;
         goals = 0;
+        shots = 0;
 
         overall = (shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness) / 6;
     }
@@ -95,12 +98,25 @@ public class Player extends Person {
         return this.overall;
     }
 
-    public int getGoals() {
+    public double getGoals() {
         return this.goals;
     }
 
     public void addGoal() {
         this.goals++;
+    }
+
+    public double getShots() {
+        return this.shots;
+    }
+
+    public void addShot() {
+        this.shots++;
+        this.shootingPercentage = ((double) goals)/shots;
+    }
+
+    public double shootingPercentage() {
+        return (this.goals/this.shots);
     }
 
     // set methods
@@ -134,6 +150,13 @@ public class Player extends Person {
             staminaBar = 0.25;
         } else {
             this.staminaBar = staminaBar;
+        }
+    }
+
+    public void regenerateStaminaBar(int time) {
+        setStaminaBar(this.staminaBar + (time * 0.002));
+        if (staminaBar > 1) {
+            setStaminaBar(1.0);
         }
     }
 
