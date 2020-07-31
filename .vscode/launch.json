@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - GUI",
+            "request": "launch",
+            "mainClass": "GUI",
+            "projectName": "StickCheck_986df530"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - guiTest",
             "request": "launch",
             "mainClass": "guiTest",
