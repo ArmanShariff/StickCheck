@@ -4,7 +4,7 @@ import javax.swing.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 class GUI{
-    public static void main(String args[]){
+    public static void main(String args[]) throws Exception{
        music(); 
        JFrame frame = new JFrame("My First GUI");
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -14,8 +14,9 @@ class GUI{
        frame.setVisible(true);
        }
 
-       MediaPlayer mediaPlayer;
-       public void music() {
+       static MediaPlayer mediaPlayer;
+
+       public static void music() {
            String s = "action.mp3";
            Media h = new Media(Paths.get(s).toUri().toString());
            mediaPlayer = new MediaPlayer(h);
