@@ -46,10 +46,11 @@ public class GUI {
     JButton calendarButton, statisticsButton, editLinesButton;
     JPanel startSimPanel;
     JButton startSimButton;
-
-    public static void main(String[] args) {
-        new GUI();
-    }
+    String optionSelected;
+    optionsButtonHandler oBH = new optionsButtonHandler();
+    //calendar screen components
+    //statistics screen components
+    //edit lines screen components
 
     public GUI() {
 
@@ -263,6 +264,8 @@ public class GUI {
         calendarButton.setForeground(Color.white);
         calendarButton.setFont(normalFont);
         calendarButton.setFocusPainted(false);
+        calendarButton.addActionListener(oBH);
+        calendarButton.setActionCommand("Calendar");
         optionsPanel.add(calendarButton);
 
         statisticsButton = new JButton("Statistics");
@@ -270,6 +273,8 @@ public class GUI {
         statisticsButton.setForeground(Color.white);
         statisticsButton.setFont(normalFont);
         statisticsButton.setFocusPainted(false);
+        statisticsButton.addActionListener(oBH);
+        statisticsButton.setActionCommand("Statistics");
         optionsPanel.add(statisticsButton);
 
         editLinesButton = new JButton("Edit Lines");
@@ -277,6 +282,8 @@ public class GUI {
         editLinesButton.setForeground(Color.white);
         editLinesButton.setFont(normalFont);
         editLinesButton.setFocusPainted(false);
+        editLinesButton.addActionListener(oBH);
+        editLinesButton.setActionCommand("Edit Lines");
         optionsPanel.add(editLinesButton);
 
         //creating the button to start the simulation
@@ -294,6 +301,33 @@ public class GUI {
         //adding components to the frame
         frame.add(optionsPanel);
         frame.add(startSimPanel);
+    }
+
+    public void calendarScreen() {
+
+        progress = "Calendar Screen";
+        //disabling previous panels
+        optionsPanel.setVisible(false);
+        startSimPanel.setVisible(false);
+
+    }
+
+    public void statisticsScreen() {
+
+        progress = "Statistics Screen";
+        //disabling previous panels
+        optionsPanel.setVisible(false);
+        startSimPanel.setVisible(false);
+
+    }
+
+    public void editLinesScreen() {
+
+        progress = "Edit Lines Screen";
+        //disabling previous panels
+        optionsPanel.setVisible(false);
+        startSimPanel.setVisible(false);
+
     }
 
     public class startButtonHandler implements ActionListener { //dictates the action that happens when start button is pressed
@@ -318,6 +352,15 @@ public class GUI {
                 optionsPanel.setVisible(false);
                 startSimPanel.setVisible(false);
                 teamSummaryScreen();
+            } else if (progress.equals("Calendar Screen")) {
+
+                optionSelectScreen();
+            } else if (progress.equals("Statistics Screen")) {
+
+                optionSelectScreen();
+            } else if (progress.equals("Edit Lines Screen")) {
+
+                optionSelectScreen();
             }
         }
     }
@@ -325,18 +368,18 @@ public class GUI {
     public class teamSelectHandler implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             teamSelected = e.getActionCommand(); //will place the selected action command into the teamSelected string 
-            System.out.println(teamSelected);
-            if(teamSelected.equals("Toronto")) {
+            if (teamSelected.equals("Toronto")) {
                 teamOverall = "Overall: 89";
                 teamSalaryCap = "Salary Cap: $95,178,332";
                 teamMarketSize = "Market Size: Large";
                 teamStatus = "Status: Contender";
-            } else if(teamSelected.equals("Montreal")) {
+                toronto = true;
+            } else if (teamSelected.equals("Montreal")) {
                 teamOverall = "Overall: 87";
                 teamSalaryCap = "Salary Cap: $76,960,206";
                 teamMarketSize = "Market Size: Large";
                 teamStatus = "Status: Hopeful";
-            } else if(teamSelected.equals("Boston")) {
+            } else if (teamSelected.equals("Boston")) {
                 teamOverall = "Overall: 89";
                 teamSalaryCap = "Salary Cap: $81,653,080";
                 teamMarketSize = "Market Size: Medium";
@@ -346,7 +389,7 @@ public class GUI {
                 teamSalaryCap = "Salary Cap: $77,613,415";
                 teamMarketSize = "Market Size: Large";
                 teamStatus = "Status: Hopeful";
-            } else if(teamSelected.equals("Detroit")) {
+            } else if (teamSelected.equals("Detroit")) {
                 teamOverall = "Overall: 82";
                 teamSalaryCap = "Salary Cap: $79,968,736";
                 teamMarketSize = "Market Size: Medium";
@@ -367,10 +410,19 @@ public class GUI {
         }
     }
 
-    public void selectedTeam() {
-        //textArea.setText("whatever text you want it to say");
-        //torSelect.setText("whatever label you want to give the button");
+    public class optionsButtonHandler implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            optionSelected = e.getActionCommand();
+            if (optionSelected.equals("Calendar")) {
+                calendarScreen();
+            } else if (optionSelected.equals("Statistics")) {
+                statisticsScreen();
+            } else {
+                editLinesScreen();
+            }
+        }
     }
+
 
 }
 

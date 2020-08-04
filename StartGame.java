@@ -9,7 +9,7 @@ public class StartGame {
         
         Roster roster = new Roster("roster.csv");
 
-        Team toronto = new Team("Toronto", "TOR", true);
+        Team toronto = new Team("Toronto", "TOR", false);
         Team newYork = new Team("New York", "NYR", false);
         Team detroit = new Team("Detroit", "DET", false);
         Team chicago = new Team("Chicago", "CHI", false);
@@ -42,6 +42,7 @@ public class StartGame {
 
         for (int i = 0; i < 1; i++) {
             Simulation game1 = new Simulation(toronto, montreal, false);
+            GUI gui = new GUI();
         }
         
         System.out.println("Toronto: \n" + toronto);
