@@ -373,7 +373,6 @@ public class GUI {
                 teamSalaryCap = "Salary Cap: $95,178,332";
                 teamMarketSize = "Market Size: Large";
                 teamStatus = "Status: Contender";
-                toronto = true;
             } else if (teamSelected.equals("Montreal")) {
                 teamOverall = "Overall: 87";
                 teamSalaryCap = "Salary Cap: $76,960,206";
