@@ -95,7 +95,7 @@ class Simulation {
         //prints team shot totals
         System.out.println(teamA.getTeamName() + " shots: " + teamA.getShotCount());
         System.out.println(teamB.getTeamName() + " shots: " + teamB.getShotCount());
-        
+
         teamA.reSetScore();
         teamB.reSetScore();
         teamA.reSetShotCount();
