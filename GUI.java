@@ -1,4 +1,5 @@
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.awt.event.*;
 import java.awt.*;
@@ -50,7 +51,7 @@ public class GUI {
     //statistics screen components
     //edit lines screen components
 
-    public GUI() {
+    public GUI(ArrayList<Team> teamList) {
 
         //creating frame
         frame = new JFrame();
