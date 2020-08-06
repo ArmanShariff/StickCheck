@@ -19,6 +19,7 @@ public class StartGame {
         ArrayList<Player> playerList = new ArrayList<Player>();
         ArrayList<Goalie> goalieList = new ArrayList<Goalie>();
         ArrayList<Coach> coachList = new ArrayList<Coach>();
+        ArrayList<Team> teamList = new ArrayList<Team>();
 
         playerList = roster.getPlayers();
         goalieList = roster.getGoalies();
@@ -32,17 +33,22 @@ public class StartGame {
         sortTeam("Montreal", montreal, playerList, goalieList, coachList);
         sortTeam("Boston", boston, playerList, goalieList, coachList);
 
+        // add teams to team list
+        teamList.add(toronto);
+        teamList.add(newYork);
+        teamList.add(detroit);
+        teamList.add(chicago);
+        teamList.add(montreal);
+        teamList.add(boston);
+
         // organizes players within their teams
-        toronto.createLines();
-        newYork.createLines();
-        detroit.createLines();
-        chicago.createLines();
-        montreal.createLines();
-        boston.createLines();
+        for (int i = 0; i < teamList.size(); i++) {
+            teamList.get(i).createLines();
+        }
 
         for (int i = 0; i < 1; i++) {
             Simulation game1 = new Simulation(toronto, montreal, false);
-            GUI gui = new GUI();
+            GUI gui = new GUI(teamList);
         }
         
         System.out.println("Toronto: \n" + toronto);
