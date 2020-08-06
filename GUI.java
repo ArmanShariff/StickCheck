@@ -12,12 +12,10 @@ public class GUI {
     JFrame frame;
     //keeping track of which screen the player is on
     String progress;
-    //title name components
-    JPanel titleNamePanel;
+    //title screen components
+    JPanel titleNamePanel, startButtonPanel;
     JLabel titleNameLabel;
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 78);
-    //start button components
-    JPanel startButtonPanel;
     JButton startButton;
     startButtonHandler sBH = new startButtonHandler();
     Font normalFont = new Font("Calibri", Font.PLAIN, 30);
@@ -26,30 +24,26 @@ public class GUI {
     JButton undoButton;
     undoButtonHandler uBH = new undoButtonHandler();
     //team selection screen components
-    JPanel textAreaPanel;
+    JPanel textAreaPanel, teamSelectionPanel;
     JTextArea textArea;
-    JPanel teamSelectionPanel;
     JButton torSelect, monSelect, bosSelect, nyrSelect, detSelect, chiSelect;
     String teamSelected;
     teamSelectHandler tSH = new teamSelectHandler();
     //team summary screen components
-    JPanel cityNamePanel;
-    JTextArea cityName;
-    JPanel proceedButtonPanel;
+    JPanel cityNamePanel, proceedButtonPanel, teamStatsPanel;
+    JTextArea cityName, teamStats;
     JButton proceedButton;
-    JPanel teamStatsPanel;
-    JTextArea teamStats;
     String teamName, teamOverall, teamSalaryCap, teamMarketSize, teamStatus;
     proceedButtonHandler pBH = new proceedButtonHandler();
     //option selection screen components
-    JPanel optionsPanel;
-    JButton calendarButton, statisticsButton, editLinesButton;
-    JPanel startSimPanel;
-    JButton startSimButton;
+    JPanel optionsPanel,startSimPanel;
+    JButton calendarButton, statisticsButton, editLinesButton, startSimButton;
     String optionSelected;
     optionsButtonHandler oBH = new optionsButtonHandler();
     //calendar screen components
     //statistics screen components
+    JPanel teamRosterPanel, goalsScoredPanel, plusMinusPanel, shotsPanel, shootingPercentPanel, savePercentPanel;
+    JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent;
     //edit lines screen components
 
     public GUI() {
