@@ -46,6 +46,9 @@ public class StartGame {
             teamList.get(i).createLines();
         }
 
+        // swaps tavares and matthews
+        toronto.getTeamLines().changeForwardLines(0, 1, 1, 1);
+
         for (int i = 0; i < 1; i++) {
             Simulation game1 = new Simulation(toronto, montreal, false);
             GUI gui = new GUI(teamList);

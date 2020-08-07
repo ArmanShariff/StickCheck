@@ -165,6 +165,24 @@ public class Lines {
         }
     }
 
+    public void changeForwardLines(int line, int player, int newLine, int newPlayer) {
+        Player selection1 = forwardLines[line][player];
+        Player selection2 = forwardLines[newLine][newPlayer];
+
+        //swap players
+        forwardLines[line][player] = selection2;
+        forwardLines[newLine][newPlayer] = selection1;
+    }
+
+    public void changeDefenceLines(int line, int player, int newLine, int newPlayer) {
+        Player selection1 = defenceLines[line][player];
+        Player selection2 = defenceLines[newLine][newPlayer];
+
+        //swap players
+        defenceLines[line][player] = selection2;
+        defenceLines[newLine][newPlayer] = selection1;
+    }
+
     public String toString() {
 
         String printStatement = "Lines: \n";

@@ -7,18 +7,17 @@ import javax.swing.*;
 
 public class GUI {
     
-    //arraylist of teams
-    ArrayList<Team> teamList;
     //frame
     JFrame frame;
     //keeping track of which screen the player is on
     String progress;
-    //title name components
-    JPanel titleNamePanel;
+    //keeping track of what team the player selects
+    ArrayList<Team> teamList;
+    Team teamPlayer;
+    //title screen components
+    JPanel titleNamePanel, startButtonPanel;
     JLabel titleNameLabel;
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 78);
-    //start button components
-    JPanel startButtonPanel;
     JButton startButton;
     startButtonHandler sBH = new startButtonHandler();
     Font normalFont = new Font("Calibri", Font.PLAIN, 30);
@@ -27,34 +26,32 @@ public class GUI {
     JButton undoButton;
     undoButtonHandler uBH = new undoButtonHandler();
     //team selection screen components
-    JPanel textAreaPanel;
+    JPanel textAreaPanel, teamSelectionPanel;
     JTextArea textArea;
-    JPanel teamSelectionPanel;
     JButton torSelect, monSelect, bosSelect, nyrSelect, detSelect, chiSelect;
     String teamSelected;
     teamSelectHandler tSH = new teamSelectHandler();
     //team summary screen components
-    JPanel cityNamePanel;
-    JTextArea cityName;
-    JPanel proceedButtonPanel;
+    JPanel cityNamePanel, proceedButtonPanel, teamStatsPanel;
+    JTextArea cityName, teamStats;
     JButton proceedButton;
-    JPanel teamStatsPanel;
-    JTextArea teamStats;
     String teamName, teamOverall, teamSalaryCap, teamMarketSize, teamStatus;
     proceedButtonHandler pBH = new proceedButtonHandler();
     //option selection screen components
-    JPanel optionsPanel;
-    JButton calendarButton, statisticsButton, editLinesButton;
-    JPanel startSimPanel;
-    JButton startSimButton;
+    JPanel optionsPanel,startSimPanel;
+    JButton calendarButton, statisticsButton, editLinesButton, startSimButton;
     String optionSelected;
     optionsButtonHandler oBH = new optionsButtonHandler();
     //calendar screen components
     //statistics screen components
+    JPanel teamRosterPanel, goalsScoredPanel, plusMinusPanel, shotsPanel, shootingPercentPanel, savePercentPanel;
+    JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent;
+    String teamRosterString = "";
     //edit lines screen components
 
     public GUI(ArrayList<Team> teamList) {
-        this.teamList = teamList;
+
+        this.teamList = teamList; 
         //creating frame
         frame = new JFrame();
         frame.setSize(1275, 685);
@@ -320,6 +317,29 @@ public class GUI {
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
 
+        //creating team roster display
+        teamRosterPanel = new JPanel();
+        teamRosterPanel.setBounds(100, 200, 400, 400);
+        teamRosterPanel.setBackground(Color.blue);
+
+        for (int i = 0; i < 10; i++) {
+            if (i == 0) {
+                teamRosterString += (teamPlayer.getRoster(i).getFirstName()+" "+teamPlayer.getRoster(i).getLastName());
+            } else {
+            teamRosterString += ("\n"+teamPlayer.getRoster(i).getFirstName()+" "+teamPlayer.getRoster(i).getLastName());
+            }
+        }
+
+        teamRoster = new JTextArea(teamRosterString);
+        teamRoster.setBounds(100, 200, 400, 400);
+        teamRoster.setBackground(Color.blue);
+        teamRoster.setForeground(Color.white);
+        teamRoster.setFont(normalFont);
+        teamRosterPanel.add(teamRoster);
+
+        //adding components to the frame
+        frame.add(teamRosterPanel);
+
     }
 
     public void editLinesScreen() {
@@ -374,31 +394,37 @@ public class GUI {
                 teamSalaryCap = "Salary Cap: $95,178,332";
                 teamMarketSize = "Market Size: Large";
                 teamStatus = "Status: Contender";
+                teamPlayer = teamList.get(0);
             } else if (teamSelected.equals("Montreal")) {
                 teamOverall = "Overall: 87";
                 teamSalaryCap = "Salary Cap: $76,960,206";
                 teamMarketSize = "Market Size: Large";
                 teamStatus = "Status: Hopeful";
+                teamPlayer = teamList.get(4);
             } else if (teamSelected.equals("Boston")) {
                 teamOverall = "Overall: 89";
                 teamSalaryCap = "Salary Cap: $81,653,080";
                 teamMarketSize = "Market Size: Medium";
                 teamStatus = "Status: Contender";
+                teamPlayer = teamList.get(5);
             } else if(teamSelected.equals("New York")) {
                 teamOverall = "Overall: 86";
                 teamSalaryCap = "Salary Cap: $77,613,415";
                 teamMarketSize = "Market Size: Large";
                 teamStatus = "Status: Hopeful";
+                teamPlayer = teamList.get(1);
             } else if (teamSelected.equals("Detroit")) {
                 teamOverall = "Overall: 82";
                 teamSalaryCap = "Salary Cap: $79,968,736";
                 teamMarketSize = "Market Size: Medium";
                 teamStatus = "Status: Rebuilder";
+                teamPlayer = teamList.get(2);
             } else {
                 teamOverall = "Overall: 85";
                 teamSalaryCap = "Salary Cap: $82,524,710";
                 teamMarketSize = "Market Size: Medium";
                 teamStatus = "Status: Hopeful";
+                teamPlayer = teamList.get(3);
             }
             teamSummaryScreen();
         }
