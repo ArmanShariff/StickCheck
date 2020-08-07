@@ -47,7 +47,7 @@ public class StartGame {
         }
 
         // swaps tavares and matthews
-        toronto.getTeamLines().changeForwardLines(0, 1, 1, 1);
+        toronto.getTeamLines().editForwardLines(0, 1, 1, 1);
 
         for (int i = 0; i < 1; i++) {
             Simulation game1 = new Simulation(toronto, montreal, false);

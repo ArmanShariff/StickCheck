@@ -119,53 +119,59 @@ public class Lines {
         }
     }
 
-    //TO-DO: Change chain of if statements into a for loop
     //TO-DO: Make sure that the highest overall player is in the top line (can be done by sorting playerRoster by overall before settingPlayerPosition)
     public void setPlayerPosition(Player player) {
 
         if (player.getPosition().equals("Left Wing")) {
 
-            if (forwardLines[0][0] == null) {
-                forwardLines[0][0] = player;
-            } else {
-                forwardLines[1][0] = player;
+            for (int i = 0; i < 2; i++) {
+                if (forwardLines[i][0] == null) {
+                    forwardLines[i][0] = player;
+                    break;
+                }
             }
         }
 
         else if (player.getPosition().equals("Center")) {
-            if (forwardLines[0][1] == null) {
-                forwardLines[0][1] = player;
-            } else {
-                forwardLines[1][1] = player;
+            for (int i = 0; i < 2; i++) {
+                if (forwardLines[i][1] == null) {
+                    forwardLines[i][1] = player;
+                    break;
+                }
             }
         }
 
         else if (player.getPosition().equals("Right Wing")) {
-            if (forwardLines[0][2] == null) {
-                forwardLines[0][2] = player;
-            } else {
-                forwardLines[1][2] = player;
+            for (int i = 0; i < 2; i++) {
+                if (forwardLines[i][2] == null) {
+                    forwardLines[i][2] = player;
+                    break;
+                }
             }
         }
 
         else if (player.getPosition().equals("Left Defence")) {
-            if (defenceLines[0][0] == null) {
-                defenceLines[0][0] = player;
-            } else {
-                defenceLines[1][0] = player;
+            for (int i = 0; i < 2; i++) {
+                if (defenceLines[i][0] == null) {
+                    defenceLines[i][0] = player;
+                    break;
+                }
             }
         }
 
         else if (player.getPosition().equals("Right Defence")) {
-            if (defenceLines[0][1] == null) {
-                defenceLines[0][1] = player;
-            } else {
-                defenceLines[1][1] = player;
+            for (int i = 0; i < 2; i++) {
+                if (defenceLines[i][1] == null) {
+                    defenceLines[i][1] = player;
+                    break;
+                }
             }
         }
     }
 
-    public void changeForwardLines(int line, int player, int newLine, int newPlayer) {
+    //these methods are used to edit lines
+
+    public void editForwardLines(int line, int player, int newLine, int newPlayer) {
         Player selection1 = forwardLines[line][player];
         Player selection2 = forwardLines[newLine][newPlayer];
 
@@ -174,7 +180,7 @@ public class Lines {
         forwardLines[newLine][newPlayer] = selection1;
     }
 
-    public void changeDefenceLines(int line, int player, int newLine, int newPlayer) {
+    public void editDefenceLines(int line, int player, int newLine, int newPlayer) {
         Player selection1 = defenceLines[line][player];
         Player selection2 = defenceLines[newLine][newPlayer];
 
