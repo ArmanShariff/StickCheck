@@ -6,7 +6,9 @@ import java.awt.*;
 import javax.swing.*;
 
 public class GUI {
-
+    
+    //arraylist of teams
+    ArrayList<Team> teamList;
     //frame
     JFrame frame;
     //keeping track of which screen the player is on
@@ -52,7 +54,7 @@ public class GUI {
     //edit lines screen components
 
     public GUI(ArrayList<Team> teamList) {
-
+        this.teamList = teamList;
         //creating frame
         frame = new JFrame();
         frame.setSize(1275, 685);
