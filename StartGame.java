@@ -51,7 +51,7 @@ public class StartGame {
 
         for (int i = 0; i < 1; i++) {
             Simulation game1 = new Simulation(toronto, montreal, false);
-            GUI gui = new GUI(teamList);
+            //GUI gui = new GUI(teamList);
         }
         
         System.out.println("Toronto: \n" + toronto);
