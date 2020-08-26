@@ -1,8 +1,9 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class StartGame {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         //Initiailize roster through csv file
         //Initialize the 6 rosters
         //Initialize the list of players, goalies and coaches
@@ -51,7 +52,7 @@ public class StartGame {
 
         for (int i = 0; i < 1; i++) {
             Simulation game1 = new Simulation(toronto, montreal, false);
-            //GUI gui = new GUI(teamList);
+            GUI gui = new GUI(teamList);
         }
         
         System.out.println("Toronto: \n" + toronto);
