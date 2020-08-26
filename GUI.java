@@ -78,7 +78,7 @@ public class GUI {
         titleNamePanel.setBounds(200, 50, 900, 500);
         titleNamePanel.setBackground(Color.black);
 
-        BufferedImage myPicture = ImageIO.read(new File("StickCheckLogo.png"));
+        BufferedImage myPicture = ImageIO.read(new File("StickCheckLogoFinal.png"));
         JLabel picLabel = new JLabel(new ImageIcon(myPicture));
         titleNamePanel.add(picLabel);
 
