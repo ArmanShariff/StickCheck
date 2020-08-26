@@ -75,13 +75,8 @@ public class GUI {
         progress = "Title Screen";
         // creating title name
         titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(200, 50, 900, 100);
-        titleNamePanel.setBackground(Color.blue);
-
-        titleNameLabel = new JLabel("Stick Check");
-        titleNameLabel.setForeground(Color.white);
-        titleNameLabel.setFont(titleFont);
-        titleNamePanel.add(titleNameLabel);
+        titleNamePanel.setBounds(200, 50, 900, 500);
+        titleNamePanel.setBackground(Color.black);
 
         BufferedImage myPicture = ImageIO.read(new File("StickCheckLogo.png"));
         JLabel picLabel = new JLabel(new ImageIcon(myPicture));
@@ -89,12 +84,12 @@ public class GUI {
 
         // creating start button
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(490, 450, 300, 75);
-        startButtonPanel.setBackground(Color.gray);
+        startButtonPanel.setBounds(490, 570, 300, 75);
+        startButtonPanel.setBackground(Color.black);
 
         startButton = new JButton("Start Game");
-        startButton.setBackground(Color.black); // sets the colour of the button itself
-        startButton.setForeground(Color.white); // sets the colour of the button's text
+        startButton.setBackground(Color.white); // sets the colour of the button itself
+        startButton.setForeground(Color.black); // sets the colour of the button's text
         startButton.setFont(normalFont); // sets the font of the button's text to match normalFont
         startButton.addActionListener(sBH); // adds an action listener to the start button
         startButton.setFocusPainted(false); // removes additional "box" around the text (so only the outline of the
