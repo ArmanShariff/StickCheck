@@ -61,9 +61,9 @@ public class GUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setSize(screenSize.width, screenSize.height);
-        // frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+        // frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         // frame.setUndecorated(true);
-        //frame.setState(JFrame.MAXIMIZED_BOTH);
+        // frame.setState(JFrame.MAXIMIZED_BOTH);
         frame.getContentPane().setBackground(Color.black);
         frame.setLayout(null);
         // adding background image to frame
@@ -101,7 +101,7 @@ public class GUI {
         frame.setVisible(true);
     }
 
-    public void teamSelectScreen() { // creates team selection screen
+    public void teamSelectScreen() throws IOException { // creates team selection screen
 
         progress = "Team Selection Screen";
         // disabling previous screen panels
@@ -112,7 +112,10 @@ public class GUI {
         undoButtonPanel = new JPanel();
         undoButtonPanel.setBounds(0, 0, 75, 75);
         undoButtonPanel.setBackground(Color.black);
-        undoButton = new JButton(" <--- "); // change arrow into an image of an arrow
+        BufferedImage myPicture = ImageIO.read(new File("StickCheckLogoFinal.png"));
+        JLabel undoPic = new JLabel(new ImageIcon(myPicture));
+        undoButtonPanel.add(undoPic);
+        undoButton = new JButton(); // change arrow into an image of an arrow
         undoButton.setBackground(Color.black);
         undoButton.setForeground(Color.white);
         undoButton.addActionListener(uBH);
@@ -356,7 +359,12 @@ public class GUI {
     public class startButtonHandler implements ActionListener { // dictates the action that happens when start button is
                                                                 // pressed
         public void actionPerformed(ActionEvent e) {
-            teamSelectScreen();
+            try {
+                teamSelectScreen();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
         }
     }
 
@@ -376,7 +384,12 @@ public class GUI {
                 proceedButtonPanel.setVisible(false);
                 cityNamePanel.setVisible(false);
                 teamStatsPanel.setVisible(false);
-                teamSelectScreen();
+                try {
+                    teamSelectScreen();
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
             } else if (progress.equals("Options Select Screen")) {
                 optionsPanel.setVisible(false);
                 startSimPanel.setVisible(false);
