@@ -430,10 +430,12 @@ public class GUI {
                 startSimPanel.setVisible(false);
                 teamSummaryScreen();
             } else if (progress.equals("Calendar Screen")) {
- 
+                
                 optionSelectScreen();
             } else if (progress.equals("Statistics Screen")) {
- 
+                teamRosterPanel.setVisible(false);
+                goalsScoredPanel.setVisible(false);
+                plusMinusPanel.setVisible(false);
                 optionSelectScreen();
             } else if (progress.equals("Edit Lines Screen")) {
  
