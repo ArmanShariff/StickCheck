@@ -51,7 +51,8 @@ public class GUI {
     JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent;
     String teamRosterString = "";
     // edit lines screen components
-
+    JPanel editLinesPanel;
+    
     public GUI(ArrayList<Team> teamList) throws IOException {
 
         this.teamList = teamList;
@@ -353,6 +354,33 @@ public class GUI {
 
     }
 
+    public void editLinesScreen() { // creates title screen
+
+        progress = "Edit Lines";
+        // creating title name
+        editLinesPanel = new JPanel();
+        editLinesPanel.setBounds(200, 50, 900, 500);
+        editLinesPanel.setBackground(Color.black);
+
+        // creating start button
+        startButtonPanel = new JPanel();
+        startButtonPanel.setBounds(490, 570, 300, 75);
+        startButtonPanel.setBackground(Color.black);
+
+        startButton = new JButton("Start Game");
+        startButton.setBackground(Color.white); // sets the colour of the button itself
+        startButton.setForeground(Color.black); // sets the colour of the button's text
+        startButton.setFont(normalFont); // sets the font of the button's text to match normalFont
+        startButton.addActionListener(sBH); // adds an action listener to the start button
+        startButton.setFocusPainted(false); // removes additional "box" around the text (so only the outline of the
+                                            // button itself shows)
+        startButtonPanel.add(startButton);
+        // adding components to the frame
+        frame.add(titleNamePanel);
+        frame.add(startButtonPanel);
+        frame.setVisible(true);
+    }
+
     public class startButtonHandler implements ActionListener { // dictates the action that happens when start button is
                                                                 // pressed
         public void actionPerformed(ActionEvent e) {
@@ -452,7 +480,7 @@ public class GUI {
             } else if (optionSelected.equals("Statistics")) {
                 statisticsScreen();
             } else {
-                //editLinesScreen();
+                editLinesScreen();
             }
         }
     }
