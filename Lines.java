@@ -196,7 +196,7 @@ public class Lines {
         for (int i = 0; i < forwardLines.length; i ++) {
             printStatement += "Line " + (i+1);
             for (int j = 0; j < forwardLines[i].length; j++) {
-                printStatement += " " + forwardLines[i][j].getLastName() +  "(" + forwardLines[i][j].getGoals() + " / " + forwardLines[i][j].shootingPercentage() + " / " + forwardLines[i][j].getPlusMinus() +")";
+                printStatement += " " + forwardLines[i][j].getLastName() +  "(" + forwardLines[i][j].getGoals() + " / " + forwardLines[i][j].shootingPercentage() + " / " + forwardLines[i][j].getPlusMinus() + ")";
             }
             printStatement += "\n";
         }
@@ -204,7 +204,7 @@ public class Lines {
         for (int i = 0; i < defenceLines.length; i ++) {
             printStatement += "Line " + (i+1);
             for (int j = 0; j < defenceLines[i].length; j++) {
-                printStatement += " " + defenceLines[i][j].getLastName() +  "(" + defenceLines[i][j].getGoals() + " / " + defenceLines[i][j].shootingPercentage() + ")";
+                printStatement += " " + defenceLines[i][j].getLastName() +  "(" + defenceLines[i][j].getGoals() + " / " + defenceLines[i][j].shootingPercentage() + " / " + defenceLines[i][j].getPlusMinus() +")";
             }
             printStatement += "\n";
         }

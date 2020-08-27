@@ -100,7 +100,7 @@ public class Player extends Person {
         return this.overall;
     }
 
-    public double getGoals() {
+    public int getGoals() {
         return this.goals;
     }
 
@@ -108,7 +108,7 @@ public class Player extends Person {
         this.goals++;
     }
 
-    public double getShots() {
+    public int getShots() {
         return this.shots;
     }
 
