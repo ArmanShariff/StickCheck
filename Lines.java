@@ -196,7 +196,7 @@ public class Lines {
         for (int i = 0; i < forwardLines.length; i ++) {
             printStatement += "Line " + (i+1);
             for (int j = 0; j < forwardLines[i].length; j++) {
-                printStatement += " " + forwardLines[i][j].getLastName() +  "(" + forwardLines[i][j].getGoals() + " / " + forwardLines[i][j].shootingPercentage() + ")";
+                printStatement += " " + forwardLines[i][j].getLastName() +  "(" + forwardLines[i][j].getGoals() + " / " + forwardLines[i][j].shootingPercentage() + " / " + forwardLines[i][j].getPlusMinus() +")";
             }
             printStatement += "\n";
         }

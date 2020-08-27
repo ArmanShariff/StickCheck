@@ -118,7 +118,17 @@ public class Player extends Person {
     }
 
     public double shootingPercentage() {
-        return (this.goals/this.shots);
+        Double doubleGoals = Double.valueOf(this.goals);
+        Double doubleShots = Double.valueOf(this.shots);
+        return (doubleGoals/doubleShots);
+    }
+
+    public void updatePlusMinus(int plusOrMinus) {
+        this.plusMinus = this.plusMinus + plusOrMinus;
+    }
+
+    public int getPlusMinus() {
+        return this.plusMinus;
     }
 
     // set methods
