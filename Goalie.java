@@ -18,6 +18,11 @@ public class Goalie extends Person {
     double originalReboundControl;
     double originalPuckControl;
 
+    int totalShotsFaced;
+    int totalShotsSaved;
+    int totalGoalsAgainst;
+    int gamesPlayed;
+
     //constructor
 
     public Goalie (double stamina, double reflexes, double agility, double flexibility, double reboundControl, double puckControl, String firstName, String lastName, String position, String country, int age, int playerNumber, String currentTeam, String playerType) {

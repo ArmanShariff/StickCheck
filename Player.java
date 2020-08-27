@@ -22,8 +22,9 @@ public class Player extends Person {
 
     // statistics
 
-    double goals;
-    double shots;
+    int goals;
+    int shots;
+    int plusMinus;
     double shootingPercentage;
 
     // constructor
@@ -52,6 +53,7 @@ public class Player extends Person {
         staminaBar = 1.0;
         goals = 0;
         shots = 0;
+        plusMinus = 0;
 
         overall = (shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness) / 6;
     }
