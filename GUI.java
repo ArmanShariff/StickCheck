@@ -112,10 +112,8 @@ public class GUI {
         undoButtonPanel = new JPanel();
         undoButtonPanel.setBounds(0, 0, 75, 75);
         undoButtonPanel.setBackground(Color.black);
-        BufferedImage myPicture = ImageIO.read(new File("StickCheckLogoFinal.png"));
-        JLabel undoPic = new JLabel(new ImageIcon(myPicture));
-        undoButtonPanel.add(undoPic);
-        undoButton = new JButton(); // change arrow into an image of an arrow
+        Icon undoIcon = new ImageIcon("ArrowLeft.png");
+        undoButton = new JButton(undoIcon);
         undoButton.setBackground(Color.black);
         undoButton.setForeground(Color.white);
         undoButton.addActionListener(uBH);
@@ -142,7 +140,8 @@ public class GUI {
         teamSelectionPanel.setBackground(Color.red);
         teamSelectionPanel.setLayout(new GridLayout(2, 3));
 
-        torSelect = new JButton("Toronto"); // creating Toronto button
+        Icon torIcon = new ImageIcon("LeafsLogo.png");
+        torSelect = new JButton(torIcon); // creating Toronto button
         torSelect.setBackground(Color.blue);
         torSelect.setForeground(Color.white);
         torSelect.setFont(normalFont);
@@ -151,7 +150,8 @@ public class GUI {
         torSelect.setActionCommand("Toronto"); // indicates which team has been selected
         teamSelectionPanel.add(torSelect);
 
-        monSelect = new JButton("Montreal"); // creating Montreal button
+        Icon monIcon = new ImageIcon("CanadiensLogo.png");
+        monSelect = new JButton(monIcon); // creating Montreal button
         monSelect.setBackground(Color.red);
         monSelect.setForeground(Color.white);
         monSelect.setFont(normalFont);
@@ -160,7 +160,8 @@ public class GUI {
         monSelect.setActionCommand("Montreal");
         teamSelectionPanel.add(monSelect);
 
-        bosSelect = new JButton("Boston"); // creating Boston button
+        Icon bosIcon = new ImageIcon("BruinsLogo.png");
+        bosSelect = new JButton(bosIcon); // creating Boston button
         bosSelect.setBackground(Color.yellow);
         bosSelect.setForeground(Color.black);
         bosSelect.setFont(normalFont);
@@ -169,7 +170,8 @@ public class GUI {
         bosSelect.setActionCommand("Boston");
         teamSelectionPanel.add(bosSelect);
 
-        nyrSelect = new JButton("New York"); // creating New York button
+        Icon nyrIcon = new ImageIcon("RangersLogo.png");
+        nyrSelect = new JButton(nyrIcon); // creating New York button
         nyrSelect.setBackground(Color.white);
         nyrSelect.setForeground(Color.blue);
         nyrSelect.setFont(normalFont);
@@ -178,7 +180,8 @@ public class GUI {
         nyrSelect.setActionCommand("New York");
         teamSelectionPanel.add(nyrSelect);
 
-        detSelect = new JButton("Detroit"); // creating Detroit button
+        Icon detIcon = new ImageIcon("WingsLogo.png");
+        detSelect = new JButton(detIcon); // creating Detroit button
         detSelect.setBackground(Color.white);
         detSelect.setForeground(Color.red);
         detSelect.setFont(normalFont);
@@ -187,7 +190,8 @@ public class GUI {
         detSelect.setActionCommand("Detroit");
         teamSelectionPanel.add(detSelect);
 
-        chiSelect = new JButton("Chicago"); // creating Chicago button
+        Icon chiIcon = new ImageIcon("BlackHawksLogo.png");
+        chiSelect = new JButton(chiIcon); // creating Chicago button
         chiSelect.setBackground(Color.red);
         chiSelect.setForeground(Color.yellow);
         chiSelect.setFont(normalFont);
