@@ -281,13 +281,11 @@ class Simulation {
             boolean isRebound = isRebound(goalie);
 
             if (isRebound == false) {
-                goalie.addShot();
                 goalie.addShotSaved();
                 System.out.println("What a save!");
                 return faceoffCalculation(time + 2, offensiveTeam, defensiveTeam);
 
             } else {
-                goalie.addShot();
                 goalie.addShotSaved();
                 // drops players' stamina/stats (Rebound)
                 dropPlayerStamina(offensiveTeam, defensiveTeam);
