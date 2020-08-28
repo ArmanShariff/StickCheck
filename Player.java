@@ -22,8 +22,9 @@ public class Player extends Person {
 
     // statistics
 
-    double goals;
-    double shots;
+    int goals;
+    int shots;
+    int plusMinus;
     double shootingPercentage;
 
     // constructor
@@ -52,6 +53,7 @@ public class Player extends Person {
         staminaBar = 1.0;
         goals = 0;
         shots = 0;
+        plusMinus = 0;
 
         overall = (shooting + stamina + skating + strength + offensiveAwareness + defensiveAwareness) / 6;
     }
@@ -98,7 +100,7 @@ public class Player extends Person {
         return this.overall;
     }
 
-    public double getGoals() {
+    public int getGoals() {
         return this.goals;
     }
 
@@ -106,7 +108,7 @@ public class Player extends Person {
         this.goals++;
     }
 
-    public double getShots() {
+    public int getShots() {
         return this.shots;
     }
 
@@ -116,7 +118,17 @@ public class Player extends Person {
     }
 
     public double shootingPercentage() {
-        return (this.goals/this.shots);
+        Double doubleGoals = Double.valueOf(this.goals);
+        Double doubleShots = Double.valueOf(this.shots);
+        return (doubleGoals/doubleShots);
+    }
+
+    public void updatePlusMinus(int plusOrMinus) {
+        this.plusMinus = this.plusMinus + plusOrMinus;
+    }
+
+    public int getPlusMinus() {
+        return this.plusMinus;
     }
 
     // set methods
