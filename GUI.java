@@ -47,9 +47,9 @@ public class GUI {
     optionsButtonHandler oBH = new optionsButtonHandler();
     // calendar screen components
     // statistics screen components
-    JPanel teamRosterPanel, goalsScoredPanel, plusMinusPanel, shotsPanel, shootingPercentPanel, savePercentPanel;
-    JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent;
-    String teamRosterString = "Player\n", goalsScoredString = "Goals\n", plusMinusString = "Plus-Minus\n", shotsString = "Shots\n", shootingPercentString = "Shooting Percentage\n", savePercentString = "Save Percentage\n";
+    JPanel teamRosterPanel, goalsScoredPanel, plusMinusPanel, shotsPanel, shootingPercentPanel, savePercentPanel, goaliePanel, shotsAgainstPanel, savesPanel;
+    JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent, goalie, shotsAgainst, saves;
+    String teamRosterString = "Player\n", goalsScoredString = "Goals\n", plusMinusString = "Plus-Minus\n", shotsString = "Shots\n", shootingPercentString = "Shooting Percentage\n", savePercentString = "Save Percentage\n", goalieString = "\n", shotsAgainstString = "Shots Against\n", savesString = "Saves\n";
     // edit lines screen components
 
     public GUI(ArrayList<Team> teamList) throws IOException {
@@ -340,7 +340,13 @@ public class GUI {
             plusMinusString += ("\n" + teamPlayer.getRoster(i).getPlusMinus());
             shotsString += ("\n" + teamPlayer.getRoster(i).getShots());
             shootingPercentString += ("\n" + teamPlayer.getRoster(i).getShootingPercentage());
-        }
+            if (i < 2) {
+                goalieString += ("\n" + teamPlayer.getGoalieRoster(i).getFirstName() + " " + teamPlayer.getGoalieRoster(i).getLastName());
+                shotsAgainstString += ("\n" + teamPlayer.getGoalieRoster(i).getShotsAgainst());
+                savesString += ("\n" + teamPlayer.getGoalieRoster(i).getSaves());
+                savePercentString += ("\n" + teamPlayer.getGoalieRoster(i).getSavePercentage());
+            }
+        }   
 
         // creating team roster display
         teamRosterPanel = new JPanel();
@@ -394,8 +400,42 @@ public class GUI {
         shootingPercent.setFont(normalFont);
         shootingPercentPanel.add(shootingPercent);
 
+        //creating goalie name column
+        goaliePanel = new JPanel();
+        goaliePanel.setBounds(100, 490, 300, 150);
+
+        goalie = new JTextArea(goalieString);
+        goalie.setBounds(100, 490, 300, 150);
+        goalie.setForeground(Color.black);
+        goalie.setFont(normalFont);
+        goaliePanel.add(goalie);
+
+        //creating shots against column
+        shotsAgainstPanel = new JPanel();
+        shotsAgainstPanel.setBounds(400, 490, 200, 150);
+
+        shotsAgainst = new JTextArea(shotsAgainstString);
+        shotsAgainst.setForeground(Color.black);
+        shotsAgainst.setFont(normalFont);
+        shotsAgainstPanel.add(shotsAgainst);
+
+        //creating saves column
+        savesPanel = new JPanel();
+        savesPanel.setBounds(600, 490, 100, 150);
+
+        saves = new JTextArea(savesString);
+        saves.setForeground(Color.black);
+        saves.setFont(normalFont);
+        savesPanel.add(saves);
+
         //creating save % column
         savePercentPanel = new JPanel();
+        savePercentPanel.setBounds(700, 490, 300, 150);
+
+        savePercent = new JTextArea(savePercentString);
+        savePercent.setForeground(Color.black);
+        savePercent.setFont(normalFont);
+        savePercentPanel.add(savePercent);
 
         // adding components to the frame
         frame.add(teamRosterPanel);
@@ -403,7 +443,10 @@ public class GUI {
         frame.add(plusMinusPanel);
         frame.add(shotsPanel);
         frame.add(shootingPercentPanel);
-
+        frame.add(goaliePanel);
+        frame.add(shotsAgainstPanel);
+        frame.add(savesPanel);
+        frame.add(savePercentPanel);
     }
 
     public class startButtonHandler implements ActionListener { // dictates the action that happens when start button is

@@ -50,7 +50,7 @@ public class StartGame {
         // swaps tavares and matthews
         toronto.getTeamLines().editForwardLines(0, 1, 1, 1);
 
-        //for (int i = 0; i < 1; i++) {
+        //for (int i = 0; i < 82; i++) {
             Simulation game1 = new Simulation(toronto, montreal, false);
             GUI gui = new GUI(teamList);
         //}
@@ -59,7 +59,7 @@ public class StartGame {
         System.out.println("\nMontreal: \n" + montreal);
 
         
-    }
+        }
 
     //Method that sorts the players, goalies and coaches into their respected teams 
     //and sets the position of the player/goalie as a starter/bench player
