@@ -57,7 +57,6 @@ public class StartGame {
         
         System.out.println("Toronto: \n" + toronto);
         System.out.println("\nMontreal: \n" + montreal);
-
         
         }
 

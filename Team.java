@@ -58,6 +58,10 @@ public class Team {
     public Goalie getGoalie() {
         return sG;
     }
+    
+    public Goalie getBackupGoalie() {
+        return bG;
+    }
 
     public int getScore() {
         return score;
@@ -115,10 +119,8 @@ public class Team {
         if (goalie.getPosition().equals("Goaltender")) {
             if (sG == null) {
                 sG = goalie;
-                addGoalie(goalie);
             } else {
                 bG = goalie;
-                addGoalie(goalie);
             }
         }
     }
