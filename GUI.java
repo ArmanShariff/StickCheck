@@ -474,7 +474,7 @@ public class GUI {
 
         JButton[] buttonArray = new JButton[10];
 
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 10; i++) {
             buttonArray[i] = new JButton(teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
         }
 
@@ -485,16 +485,12 @@ public class GUI {
 
         for(int i = 0; i < 2; i++) {
             setButtonSizeDefense(constraints, 2, i+1);
-            line1Panel.add(buttonArray[i+3]);
-        }
-        
-        for(int i = 5; i < 10; i++) {
-            buttonArray[i] = new JButton(teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
+            line1Panel.add(buttonArray[i+6]);
         }
 
         for(int i = 0; i < 3; i++) {
             setButtonSizeForward(constraints, 0, i+1);
-            line2Panel.add(buttonArray[i+5]);
+            line2Panel.add(buttonArray[i+3]);
         }
 
         for(int i = 0; i < 2; i++) {
@@ -567,6 +563,10 @@ public class GUI {
                 plusMinusPanel.setVisible(false);
                 shotsPanel.setVisible(false);
                 shootingPercentPanel.setVisible(false);
+                goaliePanel.setVisible(false);
+                savesPanel.setVisible(false);
+                savePercentPanel.setVisible(false);
+                shotsAgainstPanel.setVisible(false);
                 optionSelectScreen();
             } else if (progress.equals("Edit Lines Screen")) {
                 line1Panel.setVisible(false);
