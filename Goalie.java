@@ -53,6 +53,14 @@ public class Goalie extends Person {
         return doubleTotalShotsSaved/doubleTotalShotsFaced;
     }
 
+    public int getSaves() {
+        return totalShotsSaved;
+    }
+
+    public int getShotsAgainst() {
+        return totalShotsFaced;
+    }
+
     public double getStamina() {
         return this.stamina;
     }
