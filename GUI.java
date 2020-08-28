@@ -49,7 +49,7 @@ public class GUI {
     // statistics screen components
     JPanel teamRosterPanel, goalsScoredPanel, plusMinusPanel, shotsPanel, shootingPercentPanel, savePercentPanel;
     JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent;
-    String teamRosterString = "Player\n", goalsScoredString = "Goals\n";
+    String teamRosterString = "Player\n", goalsScoredString = "Goals\n", plusMinusString = "Plus-Minus\n", shotsString = "Shots\n", shootingPercentString = "Shooting Percentage\n", savePercentString = "Save Percentage\n";
     // edit lines screen components
 
     public GUI(ArrayList<Team> teamList) throws IOException {
@@ -365,7 +365,6 @@ public class GUI {
 
         //creating +/- column
         plusMinusPanel = new JPanel();
-        plusMinusPanel = new JPanel();
         plusMinusPanel.setBounds(500, 160, 150, 470);
 
         plusMinus = new JTextArea(goalsScoredString);
@@ -377,9 +376,25 @@ public class GUI {
 
         //creating shots column
         shotsPanel = new JPanel();
+        shotsPanel.setBounds(650, 160, 100, 470);
+
+        shots = new JTextArea(goalsScoredString);
+        shots.setBounds(650, 160, 100, 470);
+        shots.setBackground(Color.red);
+        shots.setForeground(Color.white);
+        shots.setFont(normalFont);
+        shotsPanel.add(shots);
 
         //creating shooting % column
         shootingPercentPanel = new JPanel();
+        shootingPercentPanel.setBounds(750, 160, 200, 470);
+
+        shootingPercent = new JTextArea(goalsScoredString);
+        shootingPercent.setBounds(750, 160, 200, 470);
+        shootingPercent.setBackground(Color.red);
+        shootingPercent.setForeground(Color.white);
+        shootingPercent.setFont(normalFont);
+        shootingPercentPanel.add(shootingPercent);
 
         //creating save % column
         savePercentPanel = new JPanel();
@@ -388,6 +403,8 @@ public class GUI {
         frame.add(teamRosterPanel);
         frame.add(goalsScoredPanel);
         frame.add(plusMinusPanel);
+        frame.add(shotsPanel);
+        frame.add(shootingPercentPanel);
 
     }
 
