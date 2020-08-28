@@ -75,7 +75,7 @@ public class GUI {
         progress = "Title Screen";
         // creating title name
         titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(200, 50, 900, 500);
+        titleNamePanel.setBounds(180, 50, 900, 500);
         titleNamePanel.setBackground(Color.black);
 
         BufferedImage myPicture = ImageIO.read(new File("StickCheckLogoFinal.png"));
@@ -335,18 +335,20 @@ public class GUI {
 
         //gathering team stats from simulation
         for (int i = 0; i < 10; i++) {
-                teamRosterString += ("\n" + teamPlayer.getRoster(i).getFirstName() + " "
-                        + teamPlayer.getRoster(i).getLastName());
-                goalsScoredString += ("\n" + teamPlayer.getRoster(i).getGoals());
+            teamRosterString += ("\n" + teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
+            goalsScoredString += ("\n" + teamPlayer.getRoster(i).getGoals());
+            plusMinusString += ("\n" + teamPlayer.getRoster(i).getPlusMinus());
+            shotsString += ("\n" + teamPlayer.getRoster(i).getShots());
+            shootingPercentString += ("\n" + teamPlayer.getRoster(i).getShootingPercentage());
         }
 
         // creating team roster display
         teamRosterPanel = new JPanel();
-        teamRosterPanel.setBounds(100, 160, 300, 470);
+        teamRosterPanel.setBounds(100, 20, 300, 470);
         teamRosterPanel.setBackground(Color.blue);
 
         teamRoster = new JTextArea(teamRosterString);
-        teamRoster.setBounds(100, 160, 300, 470);
+        teamRoster.setBounds(100, 20, 300, 470);
         teamRoster.setBackground(Color.blue);
         teamRoster.setForeground(Color.white);
         teamRoster.setFont(normalFont);
@@ -354,45 +356,41 @@ public class GUI {
 
         //creating goals scored column
         goalsScoredPanel = new JPanel();
-        goalsScoredPanel.setBounds(400, 160, 100, 470);
+        goalsScoredPanel.setBounds(400, 20, 100, 470);
 
         goalsScored = new JTextArea(goalsScoredString);
-        goalsScored.setBounds(400, 160, 100, 470);
-        goalsScored.setBackground(Color.red);
-        goalsScored.setForeground(Color.white);
+        goalsScored.setBounds(400, 20, 100, 470);
+        goalsScored.setForeground(Color.black);
         goalsScored.setFont(normalFont);
         goalsScoredPanel.add(goalsScored);
 
         //creating +/- column
         plusMinusPanel = new JPanel();
-        plusMinusPanel.setBounds(500, 160, 150, 470);
+        plusMinusPanel.setBounds(500, 20, 150, 470);
 
-        plusMinus = new JTextArea(goalsScoredString);
-        plusMinus.setBounds(500, 160, 150, 470);
-        plusMinus.setBackground(Color.red);
-        plusMinus.setForeground(Color.white);
+        plusMinus = new JTextArea(plusMinusString);
+        plusMinus.setBounds(500, 20, 150, 470);
+        plusMinus.setForeground(Color.black);
         plusMinus.setFont(normalFont);
         plusMinusPanel.add(plusMinus);
 
         //creating shots column
         shotsPanel = new JPanel();
-        shotsPanel.setBounds(650, 160, 100, 470);
+        shotsPanel.setBounds(650, 20, 100, 470);
 
-        shots = new JTextArea(goalsScoredString);
-        shots.setBounds(650, 160, 100, 470);
-        shots.setBackground(Color.red);
-        shots.setForeground(Color.white);
+        shots = new JTextArea(shotsString);
+        shots.setBounds(650, 20, 100, 470);
+        shots.setForeground(Color.black);
         shots.setFont(normalFont);
         shotsPanel.add(shots);
 
         //creating shooting % column
         shootingPercentPanel = new JPanel();
-        shootingPercentPanel.setBounds(750, 160, 200, 470);
+        shootingPercentPanel.setBounds(750, 20, 300, 470);
 
-        shootingPercent = new JTextArea(goalsScoredString);
-        shootingPercent.setBounds(750, 160, 200, 470);
-        shootingPercent.setBackground(Color.red);
-        shootingPercent.setForeground(Color.white);
+        shootingPercent = new JTextArea(shootingPercentString);
+        shootingPercent.setBounds(750, 20, 300, 470);
+        shootingPercent.setForeground(Color.black);
         shootingPercent.setFont(normalFont);
         shootingPercentPanel.add(shootingPercent);
 
@@ -453,6 +451,8 @@ public class GUI {
                 teamRosterPanel.setVisible(false);
                 goalsScoredPanel.setVisible(false);
                 plusMinusPanel.setVisible(false);
+                shotsPanel.setVisible(false);
+                shootingPercentPanel.setVisible(false);
                 optionSelectScreen();
             } else if (progress.equals("Edit Lines Screen")) {
  

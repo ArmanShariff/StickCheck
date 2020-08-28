@@ -50,10 +50,10 @@ public class StartGame {
         // swaps tavares and matthews
         toronto.getTeamLines().editForwardLines(0, 1, 1, 1);
 
-        for (int i = 0; i < 82; i++) {
+        //for (int i = 0; i < 82; i++) {
             Simulation game1 = new Simulation(toronto, montreal, false);
-            //GUI gui = new GUI(teamList);
-        }
+            GUI gui = new GUI(teamList);
+        //}
         
         System.out.println("Toronto: \n" + toronto);
         System.out.println("\nMontreal: \n" + montreal);

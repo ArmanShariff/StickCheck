@@ -117,7 +117,7 @@ public class Player extends Person {
         this.shootingPercentage = ((double) goals)/shots;
     }
 
-    public double shootingPercentage() {
+    public double getShootingPercentage() {
         Double doubleGoals = Double.valueOf(this.goals);
         Double doubleShots = Double.valueOf(this.shots);
         return (doubleGoals/doubleShots);
