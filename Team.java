@@ -69,6 +69,10 @@ public class Team {
 
     public Player getRoster(int i) {
 		return playerRoster.get(i);
+    }
+    
+    public Goalie getGoalieRoster(int i) {
+		return goalieRoster.get(i);
 	}
 
     // set methods
@@ -111,8 +115,10 @@ public class Team {
         if (goalie.getPosition().equals("Goaltender")) {
             if (sG == null) {
                 sG = goalie;
+                addGoalie(goalie);
             } else {
                 bG = goalie;
+                addGoalie(goalie);
             }
         }
     }
