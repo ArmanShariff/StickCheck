@@ -45,6 +45,11 @@ public class Goalie extends Person {
     }
 
     // get methods
+    public double getSavePercentage() {
+        Double doubleTotalShotsFaced = Double.valueOf(this.totalShotsFaced);
+        Double doubleTotalShotsSaved = Double.valueOf(this.totalShotsSaved);
+        return doubleTotalShotsSaved/doubleTotalShotsFaced;
+    }
 
     public double getStamina() {
         return this.stamina;
