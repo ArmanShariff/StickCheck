@@ -20,6 +20,8 @@ public class Goalie extends Person {
 
     int totalShotsFaced;
     int totalShotsSaved;
+
+    // TODO: GAA & track games played
     int totalGoalsAgainst;
     int gamesPlayed;
 
@@ -129,6 +131,20 @@ public class Goalie extends Person {
         setFlexibility(originalFlexibility);
         setReboundControl(originalReboundControl);
         setPuckControl(originalPuckControl);
+    }
+
+    // update shots against and goals against
+
+    public void addShot() {
+        this.totalShotsFaced = this.totalShotsFaced + 1;
+    }
+    
+    public void addShotSaved() {
+        this.totalShotsSaved = this.totalShotsSaved + 1;
+    }
+
+    public void addGoalsAgainst() {
+        this.totalGoalsAgainst = this.totalGoalsAgainst + 1;
     }
 
     // toString() method
