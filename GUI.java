@@ -47,9 +47,9 @@ public class GUI {
     optionsButtonHandler oBH = new optionsButtonHandler();
     // calendar screen components
     // statistics screen components
-    JPanel teamRosterPanel, goalsScoredPanel, plusMinusPanel, shotsPanel, shootingPercentPanel, savePercentPanel;
-    JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent;
-    String teamRosterString = "Player\n", goalsScoredString = "Goals\n";
+    JPanel teamRosterPanel, goalsScoredPanel, plusMinusPanel, shotsPanel, shootingPercentPanel, savePercentPanel, goaliePanel, shotsAgainstPanel, savesPanel;
+    JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent, goalie, shotsAgainst, saves;
+    String teamRosterString = "Player\n", goalsScoredString = "Goals\n", plusMinusString = "Plus-Minus\n", shotsString = "Shots\n", shootingPercentString = "Shooting Percentage\n", savePercentString = "Save Percentage\n", goalieString = "\n", shotsAgainstString = "Shots Against\n", savesString = "Saves\n";
     // edit lines screen components
     JPanel line1Panel, line2Panel;
     JButton p1Button, p2Button, p3Button, p4Button, p5Button, p6Button, p7Button, p8Button, p9Button, p10Button;
@@ -79,7 +79,7 @@ public class GUI {
         progress = "Title Screen";
         // creating title name
         titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(200, 50, 900, 500);
+        titleNamePanel.setBounds(180, 50, 900, 500);
         titleNamePanel.setBackground(Color.black);
 
         BufferedImage myPicture = ImageIO.read(new File("StickCheckLogoFinal.png"));
@@ -339,18 +339,26 @@ public class GUI {
 
         //gathering team stats from simulation
         for (int i = 0; i < 10; i++) {
-                teamRosterString += ("\n" + teamPlayer.getRoster(i).getFirstName() + " "
-                        + teamPlayer.getRoster(i).getLastName());
-                goalsScoredString += ("\n" + teamPlayer.getRoster(i).getGoals());
-        }
+            teamRosterString += ("\n" + teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
+            goalsScoredString += ("\n" + teamPlayer.getRoster(i).getGoals());
+            plusMinusString += ("\n" + teamPlayer.getRoster(i).getPlusMinus());
+            shotsString += ("\n" + teamPlayer.getRoster(i).getShots());
+            shootingPercentString += ("\n" + teamPlayer.getRoster(i).getShootingPercentage());
+            if (i < 2) {
+                goalieString += ("\n" + teamPlayer.getGoalieRoster(i).getFirstName() + " " + teamPlayer.getGoalieRoster(i).getLastName());
+                shotsAgainstString += ("\n" + teamPlayer.getGoalieRoster(i).getShotsAgainst());
+                savesString += ("\n" + teamPlayer.getGoalieRoster(i).getSaves());
+                savePercentString += ("\n" + teamPlayer.getGoalieRoster(i).getSavePercentage());
+            }
+        }   
 
         // creating team roster display
         teamRosterPanel = new JPanel();
-        teamRosterPanel.setBounds(100, 160, 300, 470);
+        teamRosterPanel.setBounds(100, 20, 300, 470);
         teamRosterPanel.setBackground(Color.blue);
 
         teamRoster = new JTextArea(teamRosterString);
-        teamRoster.setBounds(100, 160, 300, 470);
+        teamRoster.setBounds(100, 20, 300, 470);
         teamRoster.setBackground(Color.blue);
         teamRoster.setForeground(Color.white);
         teamRoster.setFont(normalFont);
@@ -358,41 +366,91 @@ public class GUI {
 
         //creating goals scored column
         goalsScoredPanel = new JPanel();
-        goalsScoredPanel.setBounds(400, 160, 100, 470);
+        goalsScoredPanel.setBounds(400, 20, 100, 470);
 
         goalsScored = new JTextArea(goalsScoredString);
-        goalsScored.setBounds(400, 160, 100, 470);
-        goalsScored.setBackground(Color.red);
-        goalsScored.setForeground(Color.white);
+        goalsScored.setBounds(400, 20, 100, 470);
+        goalsScored.setForeground(Color.black);
         goalsScored.setFont(normalFont);
         goalsScoredPanel.add(goalsScored);
 
         //creating +/- column
         plusMinusPanel = new JPanel();
-        plusMinusPanel = new JPanel();
-        plusMinusPanel.setBounds(500, 160, 150, 470);
+        plusMinusPanel.setBounds(500, 20, 150, 470);
 
-        plusMinus = new JTextArea(goalsScoredString);
-        plusMinus.setBounds(500, 160, 150, 470);
-        plusMinus.setBackground(Color.red);
-        plusMinus.setForeground(Color.white);
+        plusMinus = new JTextArea(plusMinusString);
+        plusMinus.setBounds(500, 20, 150, 470);
+        plusMinus.setForeground(Color.black);
         plusMinus.setFont(normalFont);
         plusMinusPanel.add(plusMinus);
 
         //creating shots column
         shotsPanel = new JPanel();
+        shotsPanel.setBounds(650, 20, 100, 470);
+
+        shots = new JTextArea(shotsString);
+        shots.setBounds(650, 20, 100, 470);
+        shots.setForeground(Color.black);
+        shots.setFont(normalFont);
+        shotsPanel.add(shots);
 
         //creating shooting % column
         shootingPercentPanel = new JPanel();
+        shootingPercentPanel.setBounds(750, 20, 300, 470);
+
+        shootingPercent = new JTextArea(shootingPercentString);
+        shootingPercent.setBounds(750, 20, 300, 470);
+        shootingPercent.setForeground(Color.black);
+        shootingPercent.setFont(normalFont);
+        shootingPercentPanel.add(shootingPercent);
+
+        //creating goalie name column
+        goaliePanel = new JPanel();
+        goaliePanel.setBounds(100, 490, 300, 150);
+
+        goalie = new JTextArea(goalieString);
+        goalie.setBounds(100, 490, 300, 150);
+        goalie.setForeground(Color.black);
+        goalie.setFont(normalFont);
+        goaliePanel.add(goalie);
+
+        //creating shots against column
+        shotsAgainstPanel = new JPanel();
+        shotsAgainstPanel.setBounds(400, 490, 200, 150);
+
+        shotsAgainst = new JTextArea(shotsAgainstString);
+        shotsAgainst.setForeground(Color.black);
+        shotsAgainst.setFont(normalFont);
+        shotsAgainstPanel.add(shotsAgainst);
+
+        //creating saves column
+        savesPanel = new JPanel();
+        savesPanel.setBounds(600, 490, 100, 150);
+
+        saves = new JTextArea(savesString);
+        saves.setForeground(Color.black);
+        saves.setFont(normalFont);
+        savesPanel.add(saves);
 
         //creating save % column
         savePercentPanel = new JPanel();
+        savePercentPanel.setBounds(700, 490, 300, 150);
+
+        savePercent = new JTextArea(savePercentString);
+        savePercent.setForeground(Color.black);
+        savePercent.setFont(normalFont);
+        savePercentPanel.add(savePercent);
 
         // adding components to the frame
         frame.add(teamRosterPanel);
         frame.add(goalsScoredPanel);
         frame.add(plusMinusPanel);
-
+        frame.add(shotsPanel);
+        frame.add(shootingPercentPanel);
+        frame.add(goaliePanel);
+        frame.add(shotsAgainstPanel);
+        frame.add(savesPanel);
+        frame.add(savePercentPanel);
     }
 
     public void editLinesScreen() {
@@ -507,6 +565,8 @@ public class GUI {
                 teamRosterPanel.setVisible(false);
                 goalsScoredPanel.setVisible(false);
                 plusMinusPanel.setVisible(false);
+                shotsPanel.setVisible(false);
+                shootingPercentPanel.setVisible(false);
                 optionSelectScreen();
             } else if (progress.equals("Edit Lines Screen")) {
                 line1Panel.setVisible(false);

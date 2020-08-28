@@ -100,7 +100,7 @@ public class Player extends Person {
         return this.overall;
     }
 
-    public double getGoals() {
+    public int getGoals() {
         return this.goals;
     }
 
@@ -108,7 +108,7 @@ public class Player extends Person {
         this.goals++;
     }
 
-    public double getShots() {
+    public int getShots() {
         return this.shots;
     }
 
@@ -117,8 +117,18 @@ public class Player extends Person {
         this.shootingPercentage = ((double) goals)/shots;
     }
 
-    public double shootingPercentage() {
-        return (this.goals/this.shots);
+    public double getShootingPercentage() {
+        Double doubleGoals = Double.valueOf(this.goals);
+        Double doubleShots = Double.valueOf(this.shots);
+        return (doubleGoals/doubleShots);
+    }
+
+    public void updatePlusMinus(int plusOrMinus) {
+        this.plusMinus = this.plusMinus + plusOrMinus;
+    }
+
+    public int getPlusMinus() {
+        return this.plusMinus;
     }
 
     // set methods

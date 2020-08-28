@@ -246,6 +246,7 @@ class Simulation {
         Player shooter = determineShooter(offensiveTeam);
         Goalie goalie = defensiveTeam.getGoalie();
         shooter.addShot();
+        goalie.addShot();
         // calculation to determine if its a goal
         boolean isGoal = isGoal(time, shooter, goalie);
 
@@ -258,6 +259,13 @@ class Simulation {
         if (isGoal == true) {
             offensiveTeam.setScore();
             shooter.addGoal();
+            goalie.addGoalsAgainst();
+            
+            for (int i = 0; i < 5; i++) {
+                offensiveTeam.getOnIce(i).updatePlusMinus(1);
+                defensiveTeam.getOnIce(i).updatePlusMinus(-1);
+            }
+            
             scoreboard(offensiveTeam, defensiveTeam);
             
             if (isOvertime == true) {
@@ -273,10 +281,14 @@ class Simulation {
             boolean isRebound = isRebound(goalie);
 
             if (isRebound == false) {
+                goalie.addShot();
+                goalie.addShotSaved();
                 System.out.println("What a save!");
                 return faceoffCalculation(time + 2, offensiveTeam, defensiveTeam);
 
             } else {
+                goalie.addShot();
+                goalie.addShotSaved();
                 // drops players' stamina/stats (Rebound)
                 dropPlayerStamina(offensiveTeam, defensiveTeam);
                 dropPlayerStats(offensiveTeam, defensiveTeam);
