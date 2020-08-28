@@ -51,6 +51,10 @@ public class GUI {
     JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent;
     String teamRosterString = "Player\n", goalsScoredString = "Goals\n";
     // edit lines screen components
+    JPanel line1Panel, line2Panel;
+    JButton p1Button, p2Button, p3Button, p4Button, p5Button, p6Button, p7Button, p8Button, p9Button, p10Button;
+    JTextArea line1, line2;
+    String line1String = "Line 1", line2String = "Line 2";
 
     public GUI(ArrayList<Team> teamList) throws IOException {
 
@@ -391,6 +395,73 @@ public class GUI {
 
     }
 
+    public void editLinesScreen() {
+        progress = "Edit Lines Screen";
+        // disabling previous panels
+        optionsPanel.setVisible(false);
+        startSimPanel.setVisible(false);
+
+        line1Panel = new JPanel();
+        line1Panel.setBounds(100, 80, 600, 470);
+        line1Panel.setBackground(Color.blue);
+        line1Panel.setLayout(new GridBagLayout());
+
+        line2Panel = new JPanel();
+        line2Panel.setBounds(100, 360, 600, 470);
+        line2Panel.setBackground(Color.blue);
+        line2Panel.setLayout(new GridBagLayout());
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.insets = new Insets(2, 2, 2, 2);
+
+        JButton[] buttonArray = new JButton[10];
+
+        for(int i = 0; i < 5; i++) {
+            buttonArray[i] = new JButton(teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
+        }
+
+        for(int i = 0; i < 3; i++) {
+            setButtonSizeForward(constraints, 0, i+1);
+            line1Panel.add(buttonArray[i]);
+        }
+
+        for(int i = 0; i < 2; i++) {
+            setButtonSizeDefense(constraints, 2, i+1);
+            line1Panel.add(buttonArray[i+3]);
+        }
+        
+        for(int i = 5; i < 10; i++) {
+            buttonArray[i] = new JButton(teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
+        }
+
+        for(int i = 0; i < 3; i++) {
+            setButtonSizeForward(constraints, 0, i+1);
+            line2Panel.add(buttonArray[i+5]);
+        }
+
+        for(int i = 0; i < 2; i++) {
+            setButtonSizeDefense(constraints, 2, i+1);
+            line2Panel.add(buttonArray[i+8]);
+        }
+
+        frame.add(line1Panel);
+        frame.add(line2Panel);
+    }
+
+    public void setButtonSizeForward(GridBagConstraints constraints, int gridx, int gridy) {
+        constraints.gridx = gridx;
+        constraints.gridy = gridy;
+        constraints.ipadx = 30;
+        constraints.ipady = 10;
+    }
+
+    public void setButtonSizeDefense(GridBagConstraints constraints, int gridx, int gridy) {
+        constraints.gridx = gridx;
+        constraints.gridy = gridy;
+        constraints.ipadx = 10;
+        constraints.ipady = 10;
+    }
+
     public class startButtonHandler implements ActionListener { // dictates the action that happens when start button is
                                                                 // pressed
         public void actionPerformed(ActionEvent e) {
@@ -438,7 +509,8 @@ public class GUI {
                 plusMinusPanel.setVisible(false);
                 optionSelectScreen();
             } else if (progress.equals("Edit Lines Screen")) {
- 
+                line1Panel.setVisible(false);
+                line2Panel.setVisible(false);
                 optionSelectScreen();
             }
         }
@@ -502,7 +574,7 @@ public class GUI {
             } else if (optionSelected.equals("Statistics")) {
                 statisticsScreen();
             } else {
-                //editLinesScreen();
+                editLinesScreen();
             }
         }
     }
