@@ -47,10 +47,18 @@ public class Goalie extends Person {
     }
 
     // get methods
-    public double getSavePercentage() {
+    public String getSavePercentage() {
         Double doubleTotalShotsFaced = Double.valueOf(this.totalShotsFaced);
         Double doubleTotalShotsSaved = Double.valueOf(this.totalShotsSaved);
-        return doubleTotalShotsSaved/doubleTotalShotsFaced;
+        Double doubleUnrounded = doubleTotalShotsSaved/doubleTotalShotsFaced;
+        Double doubleRounded = (double)Math.round(doubleUnrounded * 1000d)/1000d;
+        String rounded = (String.valueOf(doubleRounded) + "%");
+        
+        if (doubleTotalShotsFaced > 0) {
+            return rounded;
+        } else {
+            return "N/A";
+        }
     }
 
     public int getSaves() {
