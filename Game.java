@@ -13,12 +13,12 @@ public class Game {
 
     }
 
-    public Team getHomeTeam() {
-        return playingTeams.get(0);
+    public String getHomeTeamName() {
+        return playingTeams.get(0).getTeamName();
     }
 
-    public Team getAwayTeam() {
-        return playingTeams.get(1);
+    public String getAwayTeamName() {
+        return playingTeams.get(1).getTeamName();
     }
 
     public Team findTeam(String teamName) {

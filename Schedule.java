@@ -76,7 +76,7 @@ public class Schedule {
         for (int i = 0; i < weekList.size(); i++) {
             printStatement += "Week " + i + ": ";
             for (int j = 0; j < 3; j++) {
-                printStatement += weekList.get(i).gameList.get(j).getHomeTeam() + " VS " + weekList.get(i).gameList.get(j).getHomeTeam() + "  ";
+                printStatement += weekList.get(i).gameList.get(j).getHomeTeamName() + " VS " + weekList.get(i).gameList.get(j).getAwayTeamName() + "  ";
             }
             printStatement += "\n";
         }
