@@ -1,6 +1,6 @@
 Week,Game1(Home),Game1(Away),Game2(Home),Game2(Away),Game3(Home),Game3(Away)
-1,toronto,montreal,chicago,boston,detroit,newYork
-2,detroit,toronto,chicago,montreal,newYork,boston
+1,Toronto,Montreal,Chicago,Boston,Detroit,New York
+2,Detroit,Toronto,Chicago,Montreal,New York,Boston
 3,toronto,boston,newYork,chicago,montreal,detroit
 4,toronto,chicago,montreal,newYork,boston,detroit
 5,newYork,toronto,boston,montreal,detroit,chicago

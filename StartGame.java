@@ -57,6 +57,9 @@ public class StartGame {
         
         System.out.println("Toronto: \n" + toronto);
         System.out.println("\nMontreal: \n" + montreal);
+
+        Schedule schedule = new Schedule("Schedule.csv", teamList);
+        System.out.println(schedule);
         
         }
 
