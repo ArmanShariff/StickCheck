@@ -69,7 +69,7 @@ public class GUI {
         // frame.setUndecorated(true);
         // frame.setState(JFrame.MAXIMIZED_BOTH);
         frame.getContentPane().setBackground(Color.black);
-        frame.setLayout(null);
+        frame.setLayout(new GridBagLayout());
         // adding background image to frame
         titleScreen();
     }
