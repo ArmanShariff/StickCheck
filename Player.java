@@ -117,10 +117,18 @@ public class Player extends Person {
         this.shootingPercentage = ((double) goals)/shots;
     }
 
-    public double getShootingPercentage() {
+    public String getShootingPercentage() {
         Double doubleGoals = Double.valueOf(this.goals);
         Double doubleShots = Double.valueOf(this.shots);
-        return (doubleGoals/doubleShots);
+        Double doubleUnrounded = (doubleGoals/doubleShots);
+        Double doubleRounded = (double)Math.round(doubleUnrounded * 1000d)/1000d;
+        String rounded = (String.valueOf(doubleRounded) + "%");
+
+        if (doubleShots > 0) {
+            return rounded;
+        } else {
+            return "N/A";
+        }
     }
 
     public void updatePlusMinus(int plusOrMinus) {
