@@ -73,7 +73,7 @@ public class Schedule {
     public String toString() {
         String printStatement = "";
         
-        for (int i = 0; i < weekList.size(); i++) {
+        for (int i = 1; i < weekList.size(); i++) {
             printStatement += "Week " + i + ": ";
             for (int j = 0; j < 3; j++) {
                 printStatement += weekList.get(i).gameList.get(j).getHomeTeamName() + " VS " + weekList.get(i).gameList.get(j).getAwayTeamName() + "  ";

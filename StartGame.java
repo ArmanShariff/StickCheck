@@ -42,6 +42,10 @@ public class StartGame {
         teamList.add(montreal);
         teamList.add(boston);
 
+        System.out.println(teamList.get(1).getTeamName());
+        System.out.println(teamList.get(2).getTeamName());
+        System.out.println(teamList.get(3).getTeamName());
+
         // organizes players within their teams
         for (int i = 0; i < teamList.size(); i++) {
             teamList.get(i).createLines();
@@ -52,13 +56,13 @@ public class StartGame {
 
         //for (int i = 0; i < 82; i++) {
             Simulation game1 = new Simulation(toronto, montreal, false);
-            GUI gui = new GUI(teamList);
+            //GUI gui = new GUI(teamList);
         //}
         
         System.out.println("Toronto: \n" + toronto);
         System.out.println("\nMontreal: \n" + montreal);
 
-        Schedule schedule = new Schedule("Schedule.csv", teamList);
+        Schedule schedule = new Schedule("schedule.csv", teamList);
         System.out.println(schedule);
         
         }

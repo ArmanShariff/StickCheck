@@ -6,6 +6,11 @@ public class Week {
     ArrayList<Game> gameList = new ArrayList<Game>();
 
     public Week(String[] gamesInWeek, ArrayList<Team> teamList) {
+
+        for (int i = 1; i < gamesInWeek.length; i++) {
+            System.out.println(gamesInWeek[i]);
+
+        }
         createWeek(gamesInWeek, teamList);
     }
 

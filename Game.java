@@ -22,9 +22,11 @@ public class Game {
     }
 
     public Team findTeam(String teamName) {
+        Team temp;
         for (int i = 0; i < teamList.size(); i++) {
             if (teamList.get(i).getTeamName().equals(teamName)) {
-                return teamList.get(i);
+                temp = teamList.get(i);
+                return temp;
             }
         }
         return null;
