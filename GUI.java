@@ -474,10 +474,10 @@ public class GUI {
         line1DefPanel.setBackground(Color.blue);
         line1DefPanel.setLayout(new FlowLayout());
 
-        goalie1Panel = new JPanel();
-        goalie1Panel.setBounds(300, 200, 600, 470);
-        goalie1Panel.setBackground(Color.blue);
-        goalie1Panel.setLayout(new FlowLayout());
+        line2DefPanel = new JPanel();
+        line2DefPanel.setBounds(300, 200, 600, 470);
+        line2DefPanel.setBackground(Color.blue);
+        line2DefPanel.setLayout(new FlowLayout());
 
         goalie1Panel = new JPanel();
         goalie1Panel.setBounds(500, 80, 600, 470);
