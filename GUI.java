@@ -460,53 +460,56 @@ public class GUI {
         startSimPanel.setVisible(false);
 
         line1OffPanel = new JPanel();
-        line1OffPanel.setBounds(100, 80, 600, 470);
+        line1OffPanel.setBounds(140, 80, 1000, 70);
         line1OffPanel.setBackground(Color.blue);
         line1OffPanel.setLayout(new FlowLayout());
 
         line2OffPanel = new JPanel();
-        line2OffPanel.setBounds(100, 200, 600, 470);
+        line2OffPanel.setBounds(140, 150, 1000, 70);
         line2OffPanel.setBackground(Color.blue);
         line2OffPanel.setLayout(new FlowLayout());
 
         line1DefPanel = new JPanel();
-        line1DefPanel.setBounds(300, 80, 600, 470);
+        line1DefPanel.setBounds(250, 220, 755, 70);
         line1DefPanel.setBackground(Color.blue);
         line1DefPanel.setLayout(new FlowLayout());
 
         line2DefPanel = new JPanel();
-        line2DefPanel.setBounds(300, 200, 600, 470);
+        line2DefPanel.setBounds(250, 290, 755, 70);
         line2DefPanel.setBackground(Color.blue);
         line2DefPanel.setLayout(new FlowLayout());
 
         goalie1Panel = new JPanel();
-        goalie1Panel.setBounds(500, 80, 600, 470);
+        goalie1Panel.setBounds(300, 360, 600, 70);
         goalie1Panel.setBackground(Color.blue);
         goalie1Panel.setLayout(new FlowLayout());
 
         goalie2Panel = new JPanel();
-        goalie2Panel.setBounds(500, 200, 600, 470);
+        goalie2Panel.setBounds(300, 430, 600, 70);
         goalie2Panel.setBackground(Color.blue);
         goalie2Panel.setLayout(new FlowLayout());
 
         JButton[] buttonArray = new JButton[10];
         JButton goalie1 = new JButton(teamPlayer.getGoalieRoster(0).getFirstName() + " " + teamPlayer.getGoalieRoster(0).getLastName());
+        goalie1.setPreferredSize(new Dimension (200, 70));
         JButton goalie2 = new JButton(teamPlayer.getGoalieRoster(1).getFirstName() + " " + teamPlayer.getGoalieRoster(1).getLastName());
+        goalie2.setPreferredSize(new Dimension (200, 70));
 
         for(int i = 0; i < 10; i++) {
             buttonArray[i] = new JButton(teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
+            buttonArray[i].setPreferredSize(new Dimension (200, 70));
         }
 
         line1OffPanel.add(buttonArray[0]);
         line1OffPanel.add(buttonArray[1]);
         line1OffPanel.add(buttonArray[2]);
 
+        line2OffPanel.add(buttonArray[3]);
+        line2OffPanel.add(buttonArray[4]);
         line2OffPanel.add(buttonArray[5]);
-        line2OffPanel.add(buttonArray[6]);
-        line2OffPanel.add(buttonArray[7]);
 
-        line1DefPanel.add(buttonArray[3]);
-        line1DefPanel.add(buttonArray[4]);
+        line1DefPanel.add(buttonArray[6]);
+        line1DefPanel.add(buttonArray[7]);
 
         line2DefPanel.add(buttonArray[8]);
         line2DefPanel.add(buttonArray[9]);
