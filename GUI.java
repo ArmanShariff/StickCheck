@@ -495,13 +495,13 @@ public class GUI {
         JButton goalie2 = new JButton(teamPlayer.getGoalieRoster(1).getFirstName() + " " + teamPlayer.getGoalieRoster(1).getLastName());
         goalie2.setPreferredSize(new Dimension (200, 70));
         
-        for (int x = 0; x < 10; x ++) {
-
+        int x = 0;
             // add fowards to the array of buttons
             for (int i = 0; i < 2; i++) {
                 for (int j = 0; j < 3; j++) {
                     buttonArray[x] = new JButton(teamPlayer.getTeamLines().getForwardLine(i, j).getFirstName() + " " + teamPlayer.getTeamLines().getForwardLine(i, j).getLastName());
                     buttonArray[x].setPreferredSize(new Dimension (200, 70));
+                    x ++;
                 }
             }
 
@@ -510,9 +510,9 @@ public class GUI {
                 for (int j = 0; j < 2; j++) {
                     buttonArray[x] = new JButton(teamPlayer.getTeamLines().getDefenceLine(i, j).getFirstName() + " " + teamPlayer.getTeamLines().getDefenceLine(i, j).getLastName());
                     buttonArray[x].setPreferredSize(new Dimension (200, 70));
+                    x ++;
                 }
             }
-        }
         // for(int i = 0; i < 10; i++) {
         //     buttonArray[i] = new JButton(teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
         //     buttonArray[i].setPreferredSize(new Dimension (200, 70));
