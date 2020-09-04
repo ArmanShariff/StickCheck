@@ -9,19 +9,28 @@ public class Schedule {
     ArrayList<Team> teamList = new ArrayList<Team>();
     // File that needs to be read to get data for the season schedule
     String fileName;
+    // Keeps track of current week of the season
+    int currentWeek;
     
     // constructor
 
     public Schedule (String fileName, ArrayList<Team> teamList) throws FileNotFoundException {
-        
         this.fileName = fileName;
         this.teamList = teamList;
+        this.currentWeek = 1;
         readFile(fileName, teamList);
-
     }
 
     // methods
 
+    public int getCurrentWeek() {
+        return this.currentWeek;
+    }
+
+    public Week getWeek(int i) {
+        return this.weekList.get(i);
+    }
+    
     public void readFile(String fileName, ArrayList<Team> teamList)
             throws FileNotFoundException {
 
