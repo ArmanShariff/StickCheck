@@ -13,6 +13,10 @@ public class Team {
     private ArrayList<Goalie> goalieRoster = new ArrayList<Goalie>();
     private ArrayList<Coach> coachRoster = new ArrayList<Coach>(); 
 
+    // stores the games this team plays 
+    private ArrayList<Game> season = new ArrayList<Game>();
+    private static Schedule seasonSchedule;
+
     Lines teamLines;
     OnIce teamOnIce;
     
@@ -158,6 +162,27 @@ public class Team {
 
     public Player getOnIce(int i) {
         return teamOnIce.getOnIce(i);
+    }
+
+    public static void setSeasonSchedule(Schedule newSeasonSchedule) {
+        seasonSchedule = newSeasonSchedule;
+    }
+
+    public void makeSchedule() {
+        for (int i = 1; i < 11; i++) {
+            for (int j = 0; j < 3; j++) {
+                Game temp = seasonSchedule.getWeek(i).getGame(j);
+                if (temp.getAwayTeamName().equals(this.teamName) || temp.getHomeTeamName().equals(this.teamName)) {
+                    this.season.add(temp);
+                }
+            }
+        }
+    }
+
+    public Game getTeamSchedule(int i) {
+
+        return this.season.get(i);
+
     }
 
     public String toString() {
