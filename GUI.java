@@ -68,7 +68,7 @@ public class GUI {
         // frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         // frame.setUndecorated(true);
         // frame.setState(JFrame.MAXIMIZED_BOTH);
-        frame.getContentPane().setBackground(Color.black);
+        frame.getContentPane().setBackground(Color.white);
         frame.setLayout(null);
         // adding background image to frame
         titleScreen();
@@ -460,32 +460,32 @@ public class GUI {
         startSimPanel.setVisible(false);
 
         line1OffPanel = new JPanel();
-        line1OffPanel.setBounds(140, 80, 1000, 70);
+        line1OffPanel.setBounds(130, 80, 1000, 70);
         line1OffPanel.setBackground(Color.blue);
         line1OffPanel.setLayout(new FlowLayout());
 
         line2OffPanel = new JPanel();
-        line2OffPanel.setBounds(140, 150, 1000, 70);
+        line2OffPanel.setBounds(130, 150, 1000, 70);
         line2OffPanel.setBackground(Color.blue);
         line2OffPanel.setLayout(new FlowLayout());
 
         line1DefPanel = new JPanel();
-        line1DefPanel.setBounds(250, 220, 755, 70);
+        line1DefPanel.setBounds(250, 250, 755, 70);
         line1DefPanel.setBackground(Color.blue);
         line1DefPanel.setLayout(new FlowLayout());
 
         line2DefPanel = new JPanel();
-        line2DefPanel.setBounds(250, 290, 755, 70);
+        line2DefPanel.setBounds(250, 320, 755, 70);
         line2DefPanel.setBackground(Color.blue);
         line2DefPanel.setLayout(new FlowLayout());
 
         goalie1Panel = new JPanel();
-        goalie1Panel.setBounds(300, 360, 600, 70);
+        goalie1Panel.setBounds(330, 420, 600, 70);
         goalie1Panel.setBackground(Color.blue);
         goalie1Panel.setLayout(new FlowLayout());
 
         goalie2Panel = new JPanel();
-        goalie2Panel.setBounds(300, 430, 600, 70);
+        goalie2Panel.setBounds(330, 490, 600, 70);
         goalie2Panel.setBackground(Color.blue);
         goalie2Panel.setLayout(new FlowLayout());
 
