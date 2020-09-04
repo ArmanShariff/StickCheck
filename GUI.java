@@ -80,7 +80,7 @@ public class GUI {
         // creating title name
         titleNamePanel = new JPanel();
         titleNamePanel.setBounds(180, 50, 900, 500);
-        titleNamePanel.setBackground(Color.white);
+        titleNamePanel.setBackground(Color.black);
 
         BufferedImage myPicture = ImageIO.read(new File("StickCheckLogoFinal.png"));
         JLabel picLabel = new JLabel(new ImageIcon(myPicture));
@@ -322,10 +322,6 @@ public class GUI {
     }
 
     public void calendarScreen() {
-        JTextArea textArea = new JTextArea(500, 300);
-        PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
-        System.setOut(printStream);
-        System.setErr(printStream);
 
         progress = "Calendar Screen";
         // disabling previous panels
@@ -478,17 +474,10 @@ public class GUI {
         line1DefPanel.setBackground(Color.blue);
         line1DefPanel.setLayout(new FlowLayout());
 
-<<<<<<< HEAD
-        goalie1Panel = new JPanel();
-        goalie1Panel.setBounds(300, 200, 600, 470);
-        goalie1Panel.setBackground(Color.blue);
-        goalie1Panel.setLayout(new FlowLayout());
-=======
         line2DefPanel = new JPanel();
         line2DefPanel.setBounds(250, 290, 755, 70);
         line2DefPanel.setBackground(Color.blue);
         line2DefPanel.setLayout(new FlowLayout());
->>>>>>> 184c33d015a61098babe97fd7686b7305e410e3b
 
         goalie1Panel = new JPanel();
         goalie1Panel.setBounds(300, 360, 600, 70);
@@ -545,6 +534,26 @@ public class GUI {
         
         goalie1Panel.add(goalie1);
         goalie2Panel.add(goalie2);
+
+        // for(int i = 0; i < 3; i++) {
+        //     setButtonSizeForward(constraints, 0, i+1);
+        //     line1Panel.add(buttonArray[i]);
+        // }
+
+        // for(int i = 0; i < 2; i++) {
+        //     setButtonSizeDefense(constraints, 2, i+1);
+        //     line1Panel.add(buttonArray[i+6]);
+        // }
+
+        // for(int i = 0; i < 3; i++) {
+        //     setButtonSizeForward(constraints, 0, i+1);
+        //     line2Panel.add(buttonArray[i+3]);
+        // }
+
+        // for(int i = 0; i < 2; i++) {
+        //     setButtonSizeDefense(constraints, 2, i+1);
+        //     line2Panel.add(buttonArray[i+8]);
+        // }
 
         frame.add(line1OffPanel);
         frame.add(line2OffPanel);
