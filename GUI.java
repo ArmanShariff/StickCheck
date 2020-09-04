@@ -51,7 +51,7 @@ public class GUI {
     JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent, goalie, shotsAgainst, saves;
     String teamRosterString = "Player\n", goalsScoredString = "Goals\n", plusMinusString = "Plus-Minus\n", shotsString = "Shots\n", shootingPercentString = "Shooting Percentage\n", savePercentString = "Save Percentage\n", goalieString = "\n", shotsAgainstString = "Shots Against\n", savesString = "Saves\n";
     // edit lines screen components
-    JPanel line1Panel, line2Panel;
+    JPanel line1OffPanel, line2OffPanel, line1DefPanel, line2DefPanel, goalie1Panel, goalie2Panel;
     JButton p1Button, p2Button, p3Button, p4Button, p5Button, p6Button, p7Button, p8Button, p9Button, p10Button;
     JTextArea line1, line2;
     String line1String = "Line 1", line2String = "Line 2";
@@ -459,47 +459,87 @@ public class GUI {
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
 
-        line1Panel = new JPanel();
-        line1Panel.setBounds(100, 80, 600, 470);
-        line1Panel.setBackground(Color.blue);
-        line1Panel.setLayout(new GridBagLayout());
+        line1OffPanel = new JPanel();
+        line1OffPanel.setBounds(100, 80, 600, 470);
+        line1OffPanel.setBackground(Color.blue);
+        line1OffPanel.setLayout(new FlowLayout());
 
-        line2Panel = new JPanel();
-        line2Panel.setBounds(100, 360, 600, 470);
-        line2Panel.setBackground(Color.blue);
-        line2Panel.setLayout(new GridBagLayout());
+        line2OffPanel = new JPanel();
+        line2OffPanel.setBounds(100, 200, 600, 470);
+        line2OffPanel.setBackground(Color.blue);
+        line2OffPanel.setLayout(new FlowLayout());
 
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.insets = new Insets(2, 2, 2, 2);
+        line1DefPanel = new JPanel();
+        line1DefPanel.setBounds(300, 80, 600, 470);
+        line1DefPanel.setBackground(Color.blue);
+        line1DefPanel.setLayout(new FlowLayout());
+
+        goalie1Panel = new JPanel();
+        goalie1Panel.setBounds(300, 200, 600, 470);
+        goalie1Panel.setBackground(Color.blue);
+        goalie1Panel.setLayout(new FlowLayout());
+
+        goalie1Panel = new JPanel();
+        goalie1Panel.setBounds(500, 80, 600, 470);
+        goalie1Panel.setBackground(Color.blue);
+        goalie1Panel.setLayout(new FlowLayout());
+
+        goalie2Panel = new JPanel();
+        goalie2Panel.setBounds(500, 200, 600, 470);
+        goalie2Panel.setBackground(Color.blue);
+        goalie2Panel.setLayout(new FlowLayout());
 
         JButton[] buttonArray = new JButton[10];
+        JButton goalie1 = new JButton(teamPlayer.getGoalieRoster(0).getFirstName() + " " + teamPlayer.getGoalieRoster(0).getLastName());
+        JButton goalie2 = new JButton(teamPlayer.getGoalieRoster(1).getFirstName() + " " + teamPlayer.getGoalieRoster(1).getLastName());
 
         for(int i = 0; i < 10; i++) {
             buttonArray[i] = new JButton(teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
         }
 
-        for(int i = 0; i < 3; i++) {
-            setButtonSizeForward(constraints, 0, i+1);
-            line1Panel.add(buttonArray[i]);
-        }
+        line1OffPanel.add(buttonArray[0]);
+        line1OffPanel.add(buttonArray[1]);
+        line1OffPanel.add(buttonArray[2]);
 
-        for(int i = 0; i < 2; i++) {
-            setButtonSizeDefense(constraints, 2, i+1);
-            line1Panel.add(buttonArray[i+6]);
-        }
+        line2OffPanel.add(buttonArray[5]);
+        line2OffPanel.add(buttonArray[6]);
+        line2OffPanel.add(buttonArray[7]);
 
-        for(int i = 0; i < 3; i++) {
-            setButtonSizeForward(constraints, 0, i+1);
-            line2Panel.add(buttonArray[i+3]);
-        }
+        line1DefPanel.add(buttonArray[3]);
+        line1DefPanel.add(buttonArray[4]);
 
-        for(int i = 0; i < 2; i++) {
-            setButtonSizeDefense(constraints, 2, i+1);
-            line2Panel.add(buttonArray[i+8]);
-        }
+        line2DefPanel.add(buttonArray[8]);
+        line2DefPanel.add(buttonArray[9]);
+        
+        goalie1Panel.add(goalie1);
+        goalie2Panel.add(goalie2);
 
-        frame.add(line1Panel);
-        frame.add(line2Panel);
+        // for(int i = 0; i < 3; i++) {
+        //     setButtonSizeForward(constraints, 0, i+1);
+        //     line1Panel.add(buttonArray[i]);
+        // }
+
+        // for(int i = 0; i < 2; i++) {
+        //     setButtonSizeDefense(constraints, 2, i+1);
+        //     line1Panel.add(buttonArray[i+6]);
+        // }
+
+        // for(int i = 0; i < 3; i++) {
+        //     setButtonSizeForward(constraints, 0, i+1);
+        //     line2Panel.add(buttonArray[i+3]);
+        // }
+
+        // for(int i = 0; i < 2; i++) {
+        //     setButtonSizeDefense(constraints, 2, i+1);
+        //     line2Panel.add(buttonArray[i+8]);
+        // }
+
+        frame.add(line1OffPanel);
+        frame.add(line2OffPanel);
+        frame.add(line1DefPanel);
+        frame.add(line2DefPanel);
+        frame.add(goalie1Panel);
+        frame.add(goalie2Panel);
     }
 
     public void setButtonSizeForward(GridBagConstraints constraints, int gridx, int gridy) {
@@ -569,8 +609,12 @@ public class GUI {
                 shotsAgainstPanel.setVisible(false);
                 optionSelectScreen();
             } else if (progress.equals("Edit Lines Screen")) {
-                line1Panel.setVisible(false);
-                line2Panel.setVisible(false);
+                line1OffPanel.setVisible(false);
+                line2OffPanel.setVisible(false);
+                line1DefPanel.setVisible(false);
+                line2DefPanel.setVisible(false);
+                goalie1Panel.setVisible(false);
+                goalie2Panel.setVisible(false);
                 optionSelectScreen();
             }
         }
