@@ -10,6 +10,7 @@ public class StartGame {
         
         Roster roster = new Roster("roster.csv");
 
+        // create team objects
         Team toronto = new Team("Toronto", "TOR", false);
         Team newYork = new Team("New York", "NYR", false);
         Team detroit = new Team("Detroit", "DET", false);
@@ -17,10 +18,27 @@ public class StartGame {
         Team montreal = new Team("Montreal", "MON", false);
         Team boston = new Team("Boston", "BOS", false);
 
+        // list to store team objects
+        ArrayList<Team> teamList = new ArrayList<Team>();
+
+        // add teams to team list
+        teamList.add(toronto);
+        teamList.add(newYork);
+        teamList.add(detroit);
+        teamList.add(chicago);
+        teamList.add(montreal);
+        teamList.add(boston);
+
+        Schedule schedule = new Schedule("schedule.csv", teamList);
+        Team.setSeasonSchedule(schedule);
+
+        for (int i = 0; i < teamList.size(); i++) {
+            teamList.get(i).makeSchedule();
+        }
+
         ArrayList<Player> playerList = new ArrayList<Player>();
         ArrayList<Goalie> goalieList = new ArrayList<Goalie>();
         ArrayList<Coach> coachList = new ArrayList<Coach>();
-        ArrayList<Team> teamList = new ArrayList<Team>();
 
         playerList = roster.getPlayers();
         goalieList = roster.getGoalies();
@@ -33,14 +51,6 @@ public class StartGame {
         sortTeam("Chicago", chicago, playerList, goalieList, coachList);
         sortTeam("Montreal", montreal, playerList, goalieList, coachList);
         sortTeam("Boston", boston, playerList, goalieList, coachList);
-
-        // add teams to team list
-        teamList.add(toronto);
-        teamList.add(newYork);
-        teamList.add(detroit);
-        teamList.add(chicago);
-        teamList.add(montreal);
-        teamList.add(boston);
 
         System.out.println(teamList.get(1).getTeamName());
         System.out.println(teamList.get(2).getTeamName());
@@ -62,10 +72,11 @@ public class StartGame {
         System.out.println("Toronto: \n" + toronto);
         System.out.println("\nMontreal: \n" + montreal);
 
-        Schedule schedule = new Schedule("schedule.csv", teamList);
-        System.out.println(schedule);
-        
+        for (int i = 0; i < 10; i ++) {
+            System.out.println(toronto.getTeamSchedule(i).getHomeTeamName() + " VS " + toronto.getTeamSchedule(i).getAwayTeamName());
         }
+
+    }
 
     //Method that sorts the players, goalies and coaches into their respected teams 
     //and sets the position of the player/goalie as a starter/bench player
