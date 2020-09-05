@@ -21,12 +21,6 @@ public class GUI {
 
 
     Font normalFont;
-
-    public void font() throws Exception {
-    String fName = "FugazOne-Regular.ttf";
-    InputStream is = GUI.class.getResourceAsStream(fName);
-    normalFont = Font.createFont(Font.TRUETYPE_FONT, is);
-    }
   
     // frame
     JFrame frame;
@@ -98,6 +92,12 @@ public class GUI {
         // adding background image to frame
         titleScreen();
     }
+
+    public void font() throws Exception {
+        String fName = "FugazOne-Regular.ttf";
+        InputStream is = GUI.class.getResourceAsStream(fName);
+        normalFont = Font.createFont(Font.TRUETYPE_FONT, is);
+        }
 
     public void titleScreen() throws IOException, LineUnavailableException, UnsupportedAudioFileException { // creates
                                                                                                             // title
