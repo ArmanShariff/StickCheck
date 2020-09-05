@@ -751,12 +751,15 @@ public class GUI {
             System.out.println(player2Line);
             String player2Position = player2.substring(1);
             System.out.println(player2Position);
+            
 
             //int indexPlayer1Line = Integer.parseInt(player1Line);
             //int indexPlayer1Position = Integer.parseInt(player1Position);
             //int indexPlayer2Line = Integer.parseInt(player2Line);
 
             teamPlayer.getTeamLines().editForwardLines(Integer.parseInt(player1Line), Integer.parseInt(player1Position), Integer.parseInt(player2Line), Integer.parseInt(player2Position));
+            player1 = null;
+            player2 = null;
         }
 
     }
