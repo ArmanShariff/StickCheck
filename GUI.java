@@ -5,6 +5,9 @@ import java.net.URL;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
+
+import org.graalvm.compiler.replacements.nodes.arithmetic.IntegerAddExactSplitNode;
+
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -67,7 +70,7 @@ public class GUI {
     JPanel line1OffPanel, line2OffPanel, line1DefPanel, line2DefPanel, goalie1Panel, goalie2Panel;
     JButton p1Button, p2Button, p3Button, p4Button, p5Button, p6Button, p7Button, p8Button, p9Button, p10Button;
     JTextArea line1, line2;
-    String line1String = "Line 1", line2String = "Line 2", pTracker, playerSelected, player1, player2, player1Line, player1Position, player2Line, player2Position;
+    String line1String = "Line 1", line2String = "Line 2", pTracker, playerSelected, player1, player2, player1Line, player1Position, player1Real, player2Line, player2Position, player2Real;
     playerButtonHandler psBH = new playerButtonHandler();
     // confirm screen components
     JPanel confirmPanel, textPanel;
@@ -551,7 +554,7 @@ public class GUI {
                     buttonArray[x] = new JButton(teamPlayer.getTeamLines().getForwardLine(i, j).getFirstName() + " " + teamPlayer.getTeamLines().getForwardLine(i, j).getLastName());
                     buttonArray[x].setPreferredSize(new Dimension (200, 70));
                     buttonArray[x].addActionListener(psBH);
-                    pTracker = String.valueOf(i) + String.valueOf(j);
+                    pTracker = String.valueOf(i) + String.valueOf(j) + String.valueOf(x);
                     buttonArray[x].setActionCommand(pTracker);
                     x ++;
                 }
@@ -563,7 +566,7 @@ public class GUI {
                     buttonArray[x] = new JButton(teamPlayer.getTeamLines().getDefenceLine(i, j).getFirstName() + " " + teamPlayer.getTeamLines().getDefenceLine(i, j).getLastName());
                     buttonArray[x].setPreferredSize(new Dimension (200, 70));
                     buttonArray[x].addActionListener(psBH);
-                    pTracker = String.valueOf(i) + String.valueOf(j);
+                    pTracker = String.valueOf(i) + String.valueOf(j) + String.valueOf(x);
                     buttonArray[x].setActionCommand(pTracker);
                     x ++;
                 }
@@ -797,9 +800,11 @@ public class GUI {
             System.out.println(player2);
             
             player1Line = player1.substring(0,1);
-            player1Position = player1.substring(1);
+            player1Position = player1.substring(1,2);
+            player1Real = player1.substring(2);
             player2Line = player2.substring(0,1);
-            player2Position = player2.substring(1);
+            player2Position = player2.substring(1,2);
+            player2Position = player2.substring(2);
 
             confirmScreen();
             
@@ -817,7 +822,13 @@ public class GUI {
 
     public class confirmButtonHandler implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            teamPlayer.getTeamLines().editForwardLines(Integer.parseInt(player1Line), Integer.parseInt(player1Position), Integer.parseInt(player2Line), Integer.parseInt(player2Position));
+            if (Integer.parseInt(player1Real) < 6 && Integer.parseInt(player2Real) < 6) {
+                teamPlayer.getTeamLines().editForwardLines(Integer.parseInt(player1Line), Integer.parseInt(player1Position), Integer.parseInt(player2Line), Integer.parseInt(player2Position));
+            } else if (Integer.parseInt(player1Real) >= 6 && Integer.parseInt(player2Real) >= 6) {
+                teamPlayer.getTeamLines().editDefenceLines(Integer.parseInt(player1Line), Integer.parseInt(player1Position), Integer.parseInt(player2Line), Integer.parseInt(player2Position));
+            } else {
+                //swap goalie 
+            }
             player1 = null;
             player2 = null;
             confirmPanel.setVisible(false);
