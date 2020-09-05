@@ -94,7 +94,7 @@ public class GUI {
                                                                                                             // screen
 
         URL url = new URL(
-                          "https://file-examples-com.github.io/uploads/2017/11/file_example_WAV_1MG.wav");
+                          "https://www.ee.columbia.edu/~dpwe/sounds/music/africa-toto.wav");
         Clip clip = AudioSystem.getClip();
         // getAudioInputStream() also accepts a File or InputStream
         AudioInputStream ais = AudioSystem.getAudioInputStream( url );
