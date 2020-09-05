@@ -1,12 +1,18 @@
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.io.*;
+import java.net.URL;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class GUI {
 
@@ -48,16 +54,23 @@ public class GUI {
     optionsButtonHandler oBH = new optionsButtonHandler();
     // calendar screen components
     // statistics screen components
-    JPanel teamRosterPanel, goalsScoredPanel, plusMinusPanel, shotsPanel, shootingPercentPanel, savePercentPanel, goaliePanel, shotsAgainstPanel, savesPanel;
+    JPanel teamRosterPanel, goalsScoredPanel, plusMinusPanel, shotsPanel, shootingPercentPanel, savePercentPanel,
+            goaliePanel, shotsAgainstPanel, savesPanel;
     JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent, goalie, shotsAgainst, saves;
-    String teamRosterString = "Player\n", goalsScoredString = "Goals\n", plusMinusString = "Plus-Minus\n", shotsString = "Shots\n", shootingPercentString = "Shooting Percentage\n", savePercentString = "Save Percentage\n", goalieString = "\n", shotsAgainstString = "Shots Against\n", savesString = "Saves\n";
+    String teamRosterString = "Player\n", goalsScoredString = "Goals\n", plusMinusString = "Plus-Minus\n",
+            shotsString = "Shots\n", shootingPercentString = "Shooting Percentage\n",
+            savePercentString = "Save Percentage\n", goalieString = "\n", shotsAgainstString = "Shots Against\n",
+            savesString = "Saves\n";
     // edit lines screen components
     JPanel line1OffPanel, line2OffPanel, line1DefPanel, line2DefPanel, goalie1Panel, goalie2Panel;
     JButton p1Button, p2Button, p3Button, p4Button, p5Button, p6Button, p7Button, p8Button, p9Button, p10Button;
     JTextArea line1, line2;
     String line1String = "Line 1", line2String = "Line 2";
+    // begin simulation screen components
 
-    public GUI(ArrayList<Team> teamList, Team team1, Team team2) throws IOException {
+    public GUI(ArrayList<Team> teamList, Team team1, Team team2) throws IOException, LineUnavailableException,
+            UnsupportedAudioFileException {
+
         this.team1 = team1;
         this.team2 = team2;
         this.teamList = teamList;
@@ -75,8 +88,25 @@ public class GUI {
         // adding background image to frame
         titleScreen();
     }
-    
-    public void titleScreen() throws IOException { // creates title screen
+
+    public void titleScreen() throws IOException, LineUnavailableException, UnsupportedAudioFileException { // creates
+                                                                                                            // title
+                                                                                                            // screen
+
+        URL url = new URL(
+                          "https://file-examples-com.github.io/uploads/2017/11/file_example_WAV_1MG.wav");
+        Clip clip = AudioSystem.getClip();
+        // getAudioInputStream() also accepts a File or InputStream
+        AudioInputStream ais = AudioSystem.getAudioInputStream( url );
+        clip.open(ais);
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                // A GUI element to prevent the Clip's daemon Thread 
+                // from terminating at the end of the main()
+                JOptionPane.showMessageDialog(null, "Close to exit!");
+            }
+        });
 
         progress = "Title Screen";
         // creating title name
@@ -324,8 +354,7 @@ public class GUI {
         frame.add(startSimPanel);
     }
 
-    public void calendarScreen() {
-
+    public void calendarScreen(Team team1, Team team2) {
         progress = "Calendar Screen";
         // disabling previous panels
         optionsPanel.setVisible(false);
@@ -518,10 +547,6 @@ public class GUI {
                     x ++;
                 }
             }
-        // for(int i = 0; i < 10; i++) {
-        //     buttonArray[i] = new JButton(teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
-        //     buttonArray[i].setPreferredSize(new Dimension (200, 70));
-        // }
 
         line1OffPanel.add(buttonArray[0]);
         line1OffPanel.add(buttonArray[1]);
@@ -540,46 +565,12 @@ public class GUI {
         goalie1Panel.add(goalie1);
         goalie2Panel.add(goalie2);
 
-        // for(int i = 0; i < 3; i++) {
-        //     setButtonSizeForward(constraints, 0, i+1);
-        //     line1Panel.add(buttonArray[i]);
-        // }
-
-        // for(int i = 0; i < 2; i++) {
-        //     setButtonSizeDefense(constraints, 2, i+1);
-        //     line1Panel.add(buttonArray[i+6]);
-        // }
-
-        // for(int i = 0; i < 3; i++) {
-        //     setButtonSizeForward(constraints, 0, i+1);
-        //     line2Panel.add(buttonArray[i+3]);
-        // }
-
-        // for(int i = 0; i < 2; i++) {
-        //     setButtonSizeDefense(constraints, 2, i+1);
-        //     line2Panel.add(buttonArray[i+8]);
-        // }
-
         frame.add(line1OffPanel);
         frame.add(line2OffPanel);
         frame.add(line1DefPanel);
         frame.add(line2DefPanel);
         frame.add(goalie1Panel);
         frame.add(goalie2Panel);
-    }
-
-    public void setButtonSizeForward(GridBagConstraints constraints, int gridx, int gridy) {
-        constraints.gridx = gridx;
-        constraints.gridy = gridy;
-        constraints.ipadx = 30;
-        constraints.ipady = 10;
-    }
-
-    public void setButtonSizeDefense(GridBagConstraints constraints, int gridx, int gridy) {
-        constraints.gridx = gridx;
-        constraints.gridy = gridy;
-        constraints.ipadx = 10;
-        constraints.ipady = 10;
     }
 
     public class startButtonHandler implements ActionListener { // dictates the action that happens when start button is
@@ -603,6 +594,12 @@ public class GUI {
                 try {
                     titleScreen();
                 } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                } catch (LineUnavailableException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                } catch (UnsupportedAudioFileException e1) {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
@@ -708,6 +705,8 @@ public class GUI {
             }
         }
     }
+
+    
  
  
 }
