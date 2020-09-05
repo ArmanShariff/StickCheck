@@ -20,7 +20,7 @@ import java.io.InputStream;
 public class GUI {
 
 
-    Font normalFont;
+    Font normalFont = font();
   
     // frame
     JFrame frame;
@@ -93,10 +93,21 @@ public class GUI {
         titleScreen();
     }
 
-    public void font() throws Exception {
-        String fName = "FugazOne-Regular.ttf";
-        InputStream is = GUI.class.getResourceAsStream(fName);
-        normalFont = Font.createFont(Font.TRUETYPE_FONT, is);
+    public Font font() {
+        try {
+            //Returned font is of pt size 1
+            normalFont = Font.createFont(Font.TRUETYPE_FONT, new File("FugazOne-Regular.ttf"));
+       
+            //Derive and return a 12 pt version:
+            //Need to use float otherwise
+            //it would be interpreted as style
+       
+            return normalFont.deriveFont(48f);
+       
+       } catch (IOException|FontFormatException e) {
+            // Handle exception
+       }
+       return normalFont;
         }
 
     public void titleScreen() throws IOException, LineUnavailableException, UnsupportedAudioFileException { // creates
