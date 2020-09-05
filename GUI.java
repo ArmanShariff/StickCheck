@@ -815,7 +815,7 @@ public class GUI {
             player1Real = player1.substring(2);
             player2Line = player2.substring(0,1);
             player2Position = player2.substring(1,2);
-            player2Position = player2.substring(2);
+            player2Real = player2.substring(2);
 
             confirmScreen();
             
