@@ -73,7 +73,7 @@ public class GUI {
     JPanel line1OffPanel, line2OffPanel, line1DefPanel, line2DefPanel, goalie1Panel, goalie2Panel;
     JButton p1Button, p2Button, p3Button, p4Button, p5Button, p6Button, p7Button, p8Button, p9Button, p10Button;
     JTextArea line1, line2;
-    String line1String = "Line 1", line2String = "Line 2", pTrackerLine, pTrackerPosition, playerSelected, player1, player2;
+    String line1String = "Line 1", line2String = "Line 2", pTracker, playerSelected, player1, player2;
     playerButtonHandler psBH = new playerButtonHandler();
     // begin simulation screen components
     JPanel simPanel;
@@ -546,10 +546,8 @@ public class GUI {
                     buttonArray[x] = new JButton(teamPlayer.getTeamLines().getForwardLine(i, j).getFirstName() + " " + teamPlayer.getTeamLines().getForwardLine(i, j).getLastName());
                     buttonArray[x].setPreferredSize(new Dimension (200, 70));
                     buttonArray[x].addActionListener(psBH);
-                    pTrackerLine = String.valueOf(i);
-                    pTrackerPosition= String.valueOf(j);
-                    buttonArray[x].setActionCommand(pTrackerLine);
-                    buttonArray[x].setActionCommand(pTrackerPosition);
+                    pTracker = String.valueOf(i) + String.valueOf(j);
+                    buttonArray[x].setActionCommand(pTracker);
                     x ++;
                 }
             }
@@ -560,10 +558,8 @@ public class GUI {
                     buttonArray[x] = new JButton(teamPlayer.getTeamLines().getDefenceLine(i, j).getFirstName() + " " + teamPlayer.getTeamLines().getDefenceLine(i, j).getLastName());
                     buttonArray[x].setPreferredSize(new Dimension (200, 70));
                     buttonArray[x].addActionListener(psBH);
-                    pTrackerLine = String.valueOf(i);
-                    pTrackerPosition= String.valueOf(j);
-                    buttonArray[x].setActionCommand(pTrackerLine);
-                    buttonArray[x].setActionCommand(pTrackerPosition);
+                    pTracker = String.valueOf(i) + String.valueOf(j);
+                    buttonArray[x].setActionCommand(pTracker);
                     x ++;
                 }
             }
@@ -745,20 +741,37 @@ public class GUI {
 
     public class playerButtonHandler implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            pTrackerLine = e.getActionCommand();
-            pTrackerPosition = e.getActionCommand();
-            playerSelected = pTrackerLine;
-            teamPlayer.getTeamLines().editForwardLines(Integer.parseInt(pTrackerLine), Integer.parseInt(pTrackerPosition), 1, 1);
+            pTracker = e.getActionCommand();
+            playerSelected = pTracker;
+            swapMethod();
         }
     }
 
     public void swapMethod() {
-        if (player1==null) {
+        if (player1 == null) {
             player1 = playerSelected;
         } else {
             player2 = playerSelected;
             System.out.println(player1);
             System.out.println(player2);
+            
+            String player1Line = player1.substring(0,1);
+            System.out.println(player1Line);
+            String player1Position = player1.substring(1);
+            System.out.println(player1Position);
+            String player2Line = player2.substring(0,1);
+            System.out.println(player2Line);
+            String player2Position = player2.substring(1);
+            System.out.println(player2Position);
+            
+
+            //int indexPlayer1Line = Integer.parseInt(player1Line);
+            //int indexPlayer1Position = Integer.parseInt(player1Position);
+            //int indexPlayer2Line = Integer.parseInt(player2Line);
+
+            teamPlayer.getTeamLines().editForwardLines(Integer.parseInt(player1Line), Integer.parseInt(player1Position), Integer.parseInt(player2Line), Integer.parseInt(player2Position));
+            player1 = null;
+            player2 = null;
         }
 
     }
