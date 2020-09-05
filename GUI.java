@@ -744,13 +744,9 @@ public class GUI {
             System.out.println(player2);
             
             String player1Line = player1.substring(0,1);
-            System.out.println(player1Line);
             String player1Position = player1.substring(1);
-            System.out.println(player1Position);
             String player2Line = player2.substring(0,1);
-            System.out.println(player2Line);
             String player2Position = player2.substring(1);
-            System.out.println(player2Position);
             
 
             //int indexPlayer1Line = Integer.parseInt(player1Line);
