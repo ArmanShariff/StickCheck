@@ -85,7 +85,7 @@ public class GUI {
         titleNamePanel.setBackground(Color.black);
         
         // add a picture (stick check logo)
-        BufferedImage myPicture = ImageIO.read(new File("stickcheckmock.jpg"));
+        BufferedImage myPicture = ImageIO.read(new File("StickCheckLogoFinal.png"));
         JLabel picLabel = new JLabel(new ImageIcon(myPicture));
         titleNamePanel.add(picLabel);
 
@@ -324,12 +324,8 @@ public class GUI {
         frame.add(startSimPanel);
     }
 
-<<<<<<< HEAD
-    public void calendarScreen(Team team1, Team team2) {
-=======
     public void calendarScreen() {
 
->>>>>>> 72297bc927952da9b916abbebc14c39af5a91f2a
         progress = "Calendar Screen";
         // disabling previous panels
         optionsPanel.setVisible(false);
