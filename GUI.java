@@ -57,6 +57,7 @@ public class GUI {
     JTextArea line1, line2;
     String line1String = "Line 1", line2String = "Line 2";
     // begin simulation screen components
+    beginSimulationButtonHandler bSBH = new beginSimulationButtonHandler();
 
     public GUI(ArrayList<Team> teamList, Team team1, Team team2) throws IOException {
         this.team1 = team1;
@@ -317,6 +318,7 @@ public class GUI {
         startSimButton.setForeground(Color.white);
         startSimButton.setFont(normalFont);
         startSimButton.setFocusPainted(false);
+        startSimButton.addActionListener(bSBH);
         startSimPanel.add(startSimButton);
 
         // adding components to the frame
@@ -330,8 +332,6 @@ public class GUI {
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
 
-        new TextAreaLogProgram(team1, team2).setVisible(true);
-        //TextAreaLogProgram printGame = new TextAreaLogProgram(team1, team2);
     }
 
     public void statisticsScreen() {
@@ -543,6 +543,16 @@ public class GUI {
         frame.add(goalie2Panel);
     }
 
+    public void beginSimulationScreen() {
+        progress = "Begin Simulation";
+
+        // disabling previous panels
+        optionsPanel.setVisible(false);
+        startSimPanel.setVisible(false);
+
+        new TextAreaLogProgram(team1, team2).setVisible(true);
+    }
+
     public class startButtonHandler implements ActionListener { // dictates the action that happens when start button is
                                                                 // pressed
         public void actionPerformed(ActionEvent e) {
@@ -603,6 +613,10 @@ public class GUI {
                 goalie1Panel.setVisible(false);
                 goalie2Panel.setVisible(false);
                 optionSelectScreen();
+            } else if (progress.equals("Begin Simulation")) {
+              optionSelectScreen();
+              frame.add(optionsPanel);
+              frame.add(startSimPanel);
             }
         }
     }
@@ -669,7 +683,12 @@ public class GUI {
             }
         }
     }
- 
+    
+    public class beginSimulationButtonHandler implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            beginSimulationScreen();
+        }
+    }
  
 }
  
