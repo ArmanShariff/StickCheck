@@ -81,8 +81,9 @@ public class GUI {
         titleNamePanel = new JPanel();
         titleNamePanel.setBounds(180, 50, 900, 500);
         titleNamePanel.setBackground(Color.black);
-
-        BufferedImage myPicture = ImageIO.read(new File("StickCheckLogoFinal.png"));
+        
+        // add a picture (stick check logo)
+        BufferedImage myPicture = ImageIO.read(new File("stickcheckmock.jpg"));
         JLabel picLabel = new JLabel(new ImageIcon(myPicture));
         titleNamePanel.add(picLabel);
 
@@ -94,10 +95,10 @@ public class GUI {
         startButton = new JButton("Start Game");
         startButton.setBackground(Color.white); // sets the colour of the button itself
         startButton.setForeground(Color.black); // sets the colour of the button's text
-        startButton.setFont(normalFont); // sets the font of the button's text to match normalFont
-        startButton.addActionListener(sBH); // adds an action listener to the start button
-        startButton.setFocusPainted(false); // removes additional "box" around the text (so only the outline of the
-                                            // button itself shows)
+        startButton.setFont(normalFont);        // sets the font of the button's text to match normalFont
+        startButton.addActionListener(sBH);     // adds an action listener to the start button
+        startButton.setFocusPainted(false);     // removes additional "box" around the text (so only the outline of the
+                                                // button itself shows)
         startButtonPanel.add(startButton);
         // adding components to the frame
         frame.add(titleNamePanel);
