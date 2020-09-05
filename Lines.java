@@ -19,6 +19,14 @@ public class Lines {
      * if you want to get the player currently on the ice, use the methods in OnIce
      */ 
 
+    public Player getForwardLine(int i, int j) {
+        return forwardLines[i][j];
+    }
+
+    public Player getDefenceLine(int i, int j) {
+        return defenceLines[i][j];
+    }
+
     public Player getCenter(int line) {
         return forwardLines[line][1];
     }

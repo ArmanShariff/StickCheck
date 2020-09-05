@@ -70,7 +70,7 @@ public class GUI {
         // frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         // frame.setUndecorated(true);
         // frame.setState(JFrame.MAXIMIZED_BOTH);
-        frame.getContentPane().setBackground(Color.white);
+        frame.getContentPane().setBackground(Color.black);
         frame.setLayout(null);
         // adding background image to frame
         titleScreen();
@@ -82,7 +82,7 @@ public class GUI {
         // creating title name
         titleNamePanel = new JPanel();
         titleNamePanel.setBounds(180, 50, 900, 500);
-        titleNamePanel.setBackground(Color.white);
+        titleNamePanel.setBackground(Color.black);
 
         BufferedImage myPicture = ImageIO.read(new File("StickCheckLogoFinal.png"));
         JLabel picLabel = new JLabel(new ImageIcon(myPicture));
@@ -323,7 +323,12 @@ public class GUI {
         frame.add(startSimPanel);
     }
 
+<<<<<<< HEAD
     public void calendarScreen(Team team1, Team team2) {
+=======
+    public void calendarScreen() {
+
+>>>>>>> 72297bc927952da9b916abbebc14c39af5a91f2a
         progress = "Calendar Screen";
         // disabling previous panels
         optionsPanel.setVisible(false);
@@ -463,32 +468,32 @@ public class GUI {
         startSimPanel.setVisible(false);
 
         line1OffPanel = new JPanel();
-        line1OffPanel.setBounds(130, 80, 1000, 70);
+        line1OffPanel.setBounds(140, 80, 1000, 70);
         line1OffPanel.setBackground(Color.blue);
         line1OffPanel.setLayout(new FlowLayout());
 
         line2OffPanel = new JPanel();
-        line2OffPanel.setBounds(130, 150, 1000, 70);
+        line2OffPanel.setBounds(140, 150, 1000, 70);
         line2OffPanel.setBackground(Color.blue);
         line2OffPanel.setLayout(new FlowLayout());
 
         line1DefPanel = new JPanel();
-        line1DefPanel.setBounds(250, 250, 755, 70);
+        line1DefPanel.setBounds(250, 220, 755, 70);
         line1DefPanel.setBackground(Color.blue);
         line1DefPanel.setLayout(new FlowLayout());
 
         line2DefPanel = new JPanel();
-        line2DefPanel.setBounds(250, 320, 755, 70);
+        line2DefPanel.setBounds(250, 290, 755, 70);
         line2DefPanel.setBackground(Color.blue);
         line2DefPanel.setLayout(new FlowLayout());
 
         goalie1Panel = new JPanel();
-        goalie1Panel.setBounds(330, 420, 600, 70);
+        goalie1Panel.setBounds(300, 360, 600, 70);
         goalie1Panel.setBackground(Color.blue);
         goalie1Panel.setLayout(new FlowLayout());
 
         goalie2Panel = new JPanel();
-        goalie2Panel.setBounds(330, 490, 600, 70);
+        goalie2Panel.setBounds(300, 430, 600, 70);
         goalie2Panel.setBackground(Color.blue);
         goalie2Panel.setLayout(new FlowLayout());
 
@@ -497,11 +502,29 @@ public class GUI {
         goalie1.setPreferredSize(new Dimension (200, 70));
         JButton goalie2 = new JButton(teamPlayer.getGoalieRoster(1).getFirstName() + " " + teamPlayer.getGoalieRoster(1).getLastName());
         goalie2.setPreferredSize(new Dimension (200, 70));
+        
+        int x = 0;
+            // add fowards to the array of buttons
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 3; j++) {
+                    buttonArray[x] = new JButton(teamPlayer.getTeamLines().getForwardLine(i, j).getFirstName() + " " + teamPlayer.getTeamLines().getForwardLine(i, j).getLastName());
+                    buttonArray[x].setPreferredSize(new Dimension (200, 70));
+                    x ++;
+                }
+            }
 
-        for(int i = 0; i < 10; i++) {
-            buttonArray[i] = new JButton(teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
-            buttonArray[i].setPreferredSize(new Dimension (200, 70));
-        }
+            // add defence to the array
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 2; j++) {
+                    buttonArray[x] = new JButton(teamPlayer.getTeamLines().getDefenceLine(i, j).getFirstName() + " " + teamPlayer.getTeamLines().getDefenceLine(i, j).getLastName());
+                    buttonArray[x].setPreferredSize(new Dimension (200, 70));
+                    x ++;
+                }
+            }
+        // for(int i = 0; i < 10; i++) {
+        //     buttonArray[i] = new JButton(teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
+        //     buttonArray[i].setPreferredSize(new Dimension (200, 70));
+        // }
 
         line1OffPanel.add(buttonArray[0]);
         line1OffPanel.add(buttonArray[1]);
@@ -519,6 +542,26 @@ public class GUI {
         
         goalie1Panel.add(goalie1);
         goalie2Panel.add(goalie2);
+
+        // for(int i = 0; i < 3; i++) {
+        //     setButtonSizeForward(constraints, 0, i+1);
+        //     line1Panel.add(buttonArray[i]);
+        // }
+
+        // for(int i = 0; i < 2; i++) {
+        //     setButtonSizeDefense(constraints, 2, i+1);
+        //     line1Panel.add(buttonArray[i+6]);
+        // }
+
+        // for(int i = 0; i < 3; i++) {
+        //     setButtonSizeForward(constraints, 0, i+1);
+        //     line2Panel.add(buttonArray[i+3]);
+        // }
+
+        // for(int i = 0; i < 2; i++) {
+        //     setButtonSizeDefense(constraints, 2, i+1);
+        //     line2Panel.add(buttonArray[i+8]);
+        // }
 
         frame.add(line1OffPanel);
         frame.add(line2OffPanel);
