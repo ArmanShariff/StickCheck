@@ -17,6 +17,7 @@ public class GUI {
     // keeping track of what team the player selects
     ArrayList<Team> teamList;
     Team teamPlayer;
+    Team team1, team2;
     // title screen components
     JPanel titleNamePanel, startButtonPanel;
     JLabel titleNameLabel;
@@ -56,8 +57,9 @@ public class GUI {
     JTextArea line1, line2;
     String line1String = "Line 1", line2String = "Line 2";
 
-    public GUI(ArrayList<Team> teamList) throws IOException {
-
+    public GUI(ArrayList<Team> teamList, Team team1, Team team2) throws IOException {
+        this.team1 = team1;
+        this.team2 = team2;
         this.teamList = teamList;
         // creating frame
         frame = new JFrame();
@@ -73,7 +75,7 @@ public class GUI {
         // adding background image to frame
         titleScreen();
     }
-
+    
     public void titleScreen() throws IOException { // creates title screen
 
         progress = "Title Screen";
@@ -321,17 +323,14 @@ public class GUI {
         frame.add(startSimPanel);
     }
 
-    public void calendarScreen() {
-        JTextArea textArea = new JTextArea(500, 300);
-        PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
-        System.setOut(printStream);
-        System.setErr(printStream);
-
+    public void calendarScreen(Team team1, Team team2) {
         progress = "Calendar Screen";
         // disabling previous panels
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
 
+        new TextAreaLogProgram(team1, team2).setVisible(true);
+        //TextAreaLogProgram printGame = new TextAreaLogProgram(team1, team2);
     }
 
     public void statisticsScreen() {
@@ -478,17 +477,10 @@ public class GUI {
         line1DefPanel.setBackground(Color.blue);
         line1DefPanel.setLayout(new FlowLayout());
 
-<<<<<<< HEAD
-        goalie1Panel = new JPanel();
-        goalie1Panel.setBounds(300, 200, 600, 470);
-        goalie1Panel.setBackground(Color.blue);
-        goalie1Panel.setLayout(new FlowLayout());
-=======
         line2DefPanel = new JPanel();
         line2DefPanel.setBounds(250, 320, 755, 70);
         line2DefPanel.setBackground(Color.blue);
         line2DefPanel.setLayout(new FlowLayout());
->>>>>>> 184c33d015a61098babe97fd7686b7305e410e3b
 
         goalie1Panel = new JPanel();
         goalie1Panel.setBounds(330, 420, 600, 70);
@@ -668,7 +660,7 @@ public class GUI {
         public void actionPerformed(ActionEvent e) {
             optionSelected = e.getActionCommand();
             if (optionSelected.equals("Calendar")) {
-                calendarScreen();
+                calendarScreen(team1, team2);
             } else if (optionSelected.equals("Statistics")) {
                 statisticsScreen();
             } else {
