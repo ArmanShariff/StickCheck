@@ -90,7 +90,6 @@ public class GUI {
     public void titleScreen() throws IOException, LineUnavailableException, UnsupportedAudioFileException { // creates
                                                                                                             // title
                                                                                                             // screen
-
         URL url = new URL(
                           "https://www.ee.columbia.edu/~dpwe/sounds/music/africa-toto.wav");
         Clip clip = AudioSystem.getClip();
@@ -102,7 +101,6 @@ public class GUI {
             public void run() {
                 // A GUI element to prevent the Clip's daemon Thread 
                 // from terminating at the end of the main()
-                JOptionPane.showMessageDialog(null, "Close to exit!");
             }
         });
 
