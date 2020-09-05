@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class StartGame {
     public static void main(String[] args) throws IOException {
-        //Initiailize roster through csv file
-        //Initialize the 6 rosters
-        //Initialize the list of players, goalies and coaches
-        
+        // Initiailize roster through csv file
+        // Initialize the 6 rosters
+        // Initialize the list of players, goalies and coaches
+
         Roster roster = new Roster("roster.csv");
 
         // create team objects
@@ -64,35 +64,36 @@ public class StartGame {
         // swaps tavares and matthews
         toronto.getTeamLines().editForwardLines(0, 1, 1, 1);
 
-        //for (int i = 0; i < 82; i++) {
-            Simulation game1 = new Simulation(toronto, montreal, false);
-            GUI gui = new GUI(teamList);
-        //}
-        
+        // for (int i = 0; i < 82; i++) {
+        GUI gui = new GUI(teamList, toronto, montreal);
+        // }
+
         System.out.println("Toronto: \n" + toronto);
         System.out.println("\nMontreal: \n" + montreal);
 
-        for (int i = 0; i < 10; i ++) {
-            System.out.println(toronto.getTeamSchedule(i).getHomeTeamName() + " VS " + toronto.getTeamSchedule(i).getAwayTeamName());
+        for (int i = 0; i < 10; i++) {
+            System.out.println(toronto.getTeamSchedule(i).getHomeTeamName() + " VS "
+                    + toronto.getTeamSchedule(i).getAwayTeamName());
         }
 
     }
 
-    //Method that sorts the players, goalies and coaches into their respected teams 
-    //and sets the position of the player/goalie as a starter/bench player
-    public static void sortTeam(String teamName,Team team, ArrayList<Player> playerRoster, ArrayList<Goalie> goalieRoster, ArrayList<Coach> coachRoster) {
-        
+    // Method that sorts the players, goalies and coaches into their respected teams
+    // and sets the position of the player/goalie as a starter/bench player
+    public static void sortTeam(String teamName, Team team, ArrayList<Player> playerRoster, ArrayList<Goalie> goalieRoster, ArrayList<Coach> coachRoster) {
         // loop through an array list of all players
         for (int i = 0; i < playerRoster.size(); i++) {
-            // if the player belongs to the team, add them to that team in the correct position.
+            // if the player belongs to the team, add them to that team in the correct
+            // position.
             if (playerRoster.get(i).getCurrentTeam().equals(teamName)) {
                 team.addPlayer(playerRoster.get(i));
             }
         }
 
         // loop through an array list of all goalies
-        for (int i = 0; i < goalieRoster.size(); i++){
-            // if the goalie belongs to the team, add them to that team in the correct position.
+        for (int i = 0; i < goalieRoster.size(); i++) {
+            // if the goalie belongs to the team, add them to that team in the correct
+            // position.
             if (goalieRoster.get(i).getCurrentTeam().equals(teamName)) {
                 team.addGoalie(goalieRoster.get(i));
                 team.setGoaliePosition(goalieRoster.get(i));
@@ -100,13 +101,13 @@ public class StartGame {
         }
 
         // loop through an array list of all coaches, and add them to their team
-        for (int i = 0; i < coachRoster.size(); i++){
+        for (int i = 0; i < coachRoster.size(); i++) {
             if (coachRoster.get(i).getCurrentTeam().equals(teamName)) {
                 team.addCoach(coachRoster.get(i));
                 team.setCoach(coachRoster.get(i));
             }
         }
-    
+
     }
 
 }
