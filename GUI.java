@@ -61,7 +61,8 @@ public class GUI {
     JPanel line1OffPanel, line2OffPanel, line1DefPanel, line2DefPanel, goalie1Panel, goalie2Panel;
     JButton p1Button, p2Button, p3Button, p4Button, p5Button, p6Button, p7Button, p8Button, p9Button, p10Button;
     JTextArea line1, line2;
-    String line1String = "Line 1", line2String = "Line 2";
+    String line1String = "Line 1", line2String = "Line 2", pTracker, playerSelected, player1, player2;
+    playerButtonHandler psBH = new playerButtonHandler();
     // begin simulation screen components
     JPanel simPanel;
     beginSimulationButtonHandler bSBH = new beginSimulationButtonHandler();
@@ -521,8 +522,12 @@ public class GUI {
         JButton[] buttonArray = new JButton[10];
         JButton goalie1 = new JButton(teamPlayer.getGoalieRoster(0).getFirstName() + " " + teamPlayer.getGoalieRoster(0).getLastName());
         goalie1.setPreferredSize(new Dimension (200, 70));
+        goalie1.addActionListener(psBH);
+        goalie1.setActionCommand("g1");
         JButton goalie2 = new JButton(teamPlayer.getGoalieRoster(1).getFirstName() + " " + teamPlayer.getGoalieRoster(1).getLastName());
         goalie2.setPreferredSize(new Dimension (200, 70));
+        goalie2.addActionListener(psBH);
+        goalie2.setActionCommand("g2");
         
         int x = 0;
             // add fowards to the array of buttons
@@ -530,6 +535,9 @@ public class GUI {
                 for (int j = 0; j < 3; j++) {
                     buttonArray[x] = new JButton(teamPlayer.getTeamLines().getForwardLine(i, j).getFirstName() + " " + teamPlayer.getTeamLines().getForwardLine(i, j).getLastName());
                     buttonArray[x].setPreferredSize(new Dimension (200, 70));
+                    buttonArray[x].addActionListener(psBH);
+                    pTracker = String.valueOf(x);
+                    buttonArray[x].setActionCommand(pTracker);
                     x ++;
                 }
             }
@@ -539,6 +547,9 @@ public class GUI {
                 for (int j = 0; j < 2; j++) {
                     buttonArray[x] = new JButton(teamPlayer.getTeamLines().getDefenceLine(i, j).getFirstName() + " " + teamPlayer.getTeamLines().getDefenceLine(i, j).getLastName());
                     buttonArray[x].setPreferredSize(new Dimension (200, 70));
+                    buttonArray[x].addActionListener(psBH);
+                    pTracker = String.valueOf(x);
+                    buttonArray[x].setActionCommand(pTracker);
                     x ++;
                 }
             }
@@ -717,12 +728,35 @@ public class GUI {
             }
         }
     }
+<<<<<<< HEAD
+
+    public class playerButtonHandler implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            pTracker = e.getActionCommand();
+            playerSelected = pTracker;
+            swapMethod();
+        }
+    }
+
+    public void swapMethod() {
+        if (player1==null) {
+            player1 = playerSelected;
+        } else {
+            player2 = playerSelected;
+            System.out.println(player1);
+            System.out.println(player2);
+        }
+
+    }
+ 
+=======
     
     public class beginSimulationButtonHandler implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             beginSimulationScreen();
         }
     }
+>>>>>>> 3d7de640758a5fc6662699af6177341ba5662fc0
  
 }
  
