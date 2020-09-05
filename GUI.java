@@ -57,6 +57,8 @@ public class GUI {
     JTextArea line1, line2;
     String line1String = "Line 1", line2String = "Line 2";
     // begin simulation screen components
+    //JPanel simPanel;
+    JLabel fansCheeringGif;
     beginSimulationButtonHandler bSBH = new beginSimulationButtonHandler();
 
     public GUI(ArrayList<Team> teamList, Team team1, Team team2) throws IOException {
@@ -550,6 +552,11 @@ public class GUI {
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
 
+        Icon fansCheering = new ImageIcon(this.getClass().getResource("fans cheering.gif"));
+        fansCheeringGif = new JLabel(fansCheering);
+        fansCheeringGif.setBounds(668, 43, 46, 14); // You can use your own values
+        frame.getContentPane().add(fansCheeringGif);
+
         new TextAreaLogProgram(team1, team2).setVisible(true);
     }
 
@@ -615,8 +622,6 @@ public class GUI {
                 optionSelectScreen();
             } else if (progress.equals("Begin Simulation")) {
               optionSelectScreen();
-              frame.add(optionsPanel);
-              frame.add(startSimPanel);
             }
         }
     }
