@@ -107,7 +107,7 @@ public class GUI {
             //Need to use float otherwise
             //it would be interpreted as style
        
-            return normalFont.deriveFont(48f);
+            return normalFont.deriveFont(36f);
        
        } catch (IOException|FontFormatException e) {
             // Handle exception
