@@ -67,8 +67,13 @@ public class GUI {
     JPanel line1OffPanel, line2OffPanel, line1DefPanel, line2DefPanel, goalie1Panel, goalie2Panel;
     JButton p1Button, p2Button, p3Button, p4Button, p5Button, p6Button, p7Button, p8Button, p9Button, p10Button;
     JTextArea line1, line2;
-    String line1String = "Line 1", line2String = "Line 2", pTracker, playerSelected, player1, player2;
+    String line1String = "Line 1", line2String = "Line 2", pTracker, playerSelected, player1, player2, player1Line, player1Position, player2Line, player2Position;
     playerButtonHandler psBH = new playerButtonHandler();
+    // confirm screen components
+    JPanel confirmPanel, textPanel;
+    JButton confirmButton;
+    JTextArea playerSwap;
+    confirmButtonHandler cBH = new confirmButtonHandler();
     // begin simulation screen components
     JPanel simPanel;
     beginSimulationButtonHandler bSBH = new beginSimulationButtonHandler();
@@ -600,6 +605,42 @@ public class GUI {
         frame.add(goalie2Panel);
     }
 
+    public void confirmScreen() {
+        progress = "Confirm Screen";
+        //disabling previous panels
+        line1OffPanel.setVisible(false);
+        line2OffPanel.setVisible(false);
+        line1DefPanel.setVisible(false);
+        line2DefPanel.setVisible(false);
+        goalie1Panel.setVisible(false);
+        goalie2Panel.setVisible(false);
+
+        textPanel = new JPanel();
+        textPanel.setBounds(140, 80, 1000, 70);
+        textPanel.setBackground(Color.blue);
+
+        playerSwap = new JTextArea("Would you like to swap " /*+ playerA */ + " with " + /* playerB + */ "?");
+        playerSwap.setForeground(Color.black);
+        playerSwap.setFont(normalFont);
+        textPanel.add(playerSwap);
+
+        confirmPanel = new JPanel();
+        confirmPanel.setBounds(140, 200, 1000, 70);
+        confirmPanel.setBackground(Color.blue);
+
+        confirmButton = new JButton("Confirm");
+        confirmButton.setBackground(Color.blue);
+        confirmButton.setForeground(Color.white);
+        confirmButton.setFont(normalFont);
+        confirmButton.setFocusPainted(false);
+        confirmButton.addActionListener(cBH);
+        confirmPanel.add(confirmButton);
+
+        frame.add(textPanel);
+        frame.add(confirmPanel);
+
+    }
+
     public void beginSimulationScreen() {
         progress = "Begin Simulation";
 
@@ -766,25 +807,34 @@ public class GUI {
             System.out.println(player1);
             System.out.println(player2);
             
-            String player1Line = player1.substring(0,1);
-            System.out.println(player1Line);
-            String player1Position = player1.substring(1);
-            System.out.println(player1Position);
-            String player2Line = player2.substring(0,1);
-            System.out.println(player2Line);
-            String player2Position = player2.substring(1);
-            System.out.println(player2Position);
+            player1Line = player1.substring(0,1);
+            player1Position = player1.substring(1);
+            player2Line = player2.substring(0,1);
+            player2Position = player2.substring(1);
+
+            confirmScreen();
             
 
             //int indexPlayer1Line = Integer.parseInt(player1Line);
             //int indexPlayer1Position = Integer.parseInt(player1Position);
             //int indexPlayer2Line = Integer.parseInt(player2Line);
 
+            //teamPlayer.getTeamLines().editForwardLines(Integer.parseInt(player1Line), Integer.parseInt(player1Position), Integer.parseInt(player2Line), Integer.parseInt(player2Position));
+            //player1 = null;
+            //player2 = null;
+        }
+
+    }
+
+    public class confirmButtonHandler implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
             teamPlayer.getTeamLines().editForwardLines(Integer.parseInt(player1Line), Integer.parseInt(player1Position), Integer.parseInt(player2Line), Integer.parseInt(player2Position));
             player1 = null;
             player2 = null;
+            confirmPanel.setVisible(false);
+            textPanel.setVisible(false);
+            editLinesScreen();
         }
-
     }
  
     
