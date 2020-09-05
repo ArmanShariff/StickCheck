@@ -92,7 +92,7 @@ public class GUI {
                                                                                                             // screen
 
         URL url = new URL(
-                          "https://www.ee.columbia.edu/~dpwe/sounds/music/africa-toto.wav");
+                          "https://www.ee.columbia.edu/~dpwe/sounds/music/dont_speak-no_doubt.wav");
         Clip clip = AudioSystem.getClip();
         // getAudioInputStream() also accepts a File or InputStream
         AudioInputStream ais = AudioSystem.getAudioInputStream( url );
