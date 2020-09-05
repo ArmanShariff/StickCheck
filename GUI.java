@@ -1,12 +1,18 @@
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.io.*;
+import java.net.URL;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class GUI {
 
@@ -57,11 +63,11 @@ public class GUI {
     JTextArea line1, line2;
     String line1String = "Line 1", line2String = "Line 2";
     // begin simulation screen components
-    //JPanel simPanel;
-    JLabel fansCheeringGif;
+    JPanel simPanel;
     beginSimulationButtonHandler bSBH = new beginSimulationButtonHandler();
 
-    public GUI(ArrayList<Team> teamList, Team team1, Team team2) throws IOException {
+    public GUI(ArrayList<Team> teamList, Team team1, Team team2) throws IOException, LineUnavailableException,
+            UnsupportedAudioFileException {
         this.team1 = team1;
         this.team2 = team2;
         this.teamList = teamList;
@@ -79,8 +85,25 @@ public class GUI {
         // adding background image to frame
         titleScreen();
     }
-    
-    public void titleScreen() throws IOException { // creates title screen
+
+    public void titleScreen() throws IOException, LineUnavailableException, UnsupportedAudioFileException { // creates
+                                                                                                            // title
+                                                                                                            // screen
+
+        URL url = new URL(
+                          "https://www.ee.columbia.edu/~dpwe/sounds/music/africa-toto.wav");
+        Clip clip = AudioSystem.getClip();
+        // getAudioInputStream() also accepts a File or InputStream
+        AudioInputStream ais = AudioSystem.getAudioInputStream( url );
+        clip.open(ais);
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                // A GUI element to prevent the Clip's daemon Thread 
+                // from terminating at the end of the main()
+                JOptionPane.showMessageDialog(null, "Close to exit!");
+            }
+        });
 
         progress = "Title Screen";
         // creating title name
@@ -552,11 +575,6 @@ public class GUI {
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
 
-        Icon fansCheering = new ImageIcon(this.getClass().getResource("fans cheering.gif"));
-        fansCheeringGif = new JLabel(fansCheering);
-        fansCheeringGif.setBounds(668, 43, 46, 14); // You can use your own values
-        frame.getContentPane().add(fansCheeringGif);
-
         new TextAreaLogProgram(team1, team2).setVisible(true);
     }
 
@@ -581,6 +599,12 @@ public class GUI {
                 try {
                     titleScreen();
                 } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                } catch (LineUnavailableException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                } catch (UnsupportedAudioFileException e1) {
                     // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
