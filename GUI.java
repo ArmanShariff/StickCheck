@@ -590,7 +590,11 @@ public class GUI {
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
 
+        simPanel = new JPanel();
+        simPanel.setBounds(0, 0, 0, 0);
+        
         new TextAreaLogProgram(team1, team2).setVisible(true);
+        frame.add(simPanel);
     }
 
     public class startButtonHandler implements ActionListener { // dictates the action that happens when start button is
@@ -660,6 +664,7 @@ public class GUI {
                 goalie2Panel.setVisible(false);
                 optionSelectScreen();
             } else if (progress.equals("Begin Simulation")) {
+                simPanel.setVisible(false);
               optionSelectScreen();
             }
         }
