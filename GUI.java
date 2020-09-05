@@ -14,8 +14,14 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import java.awt.Font;
+import java.io.InputStream;
+
 public class GUI {
 
+
+    Font normalFont;
+  
     // frame
     JFrame frame;
     // keeping track of which screen the player is on
@@ -30,7 +36,7 @@ public class GUI {
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 78);
     JButton startButton;
     startButtonHandler sBH = new startButtonHandler();
-    Font normalFont = new Font("Calibri", Font.PLAIN, 30);
+    //Font normalFont = new Font("Calibri", Font.PLAIN, 30");
     // header components
     JPanel undoButtonPanel;
     JButton undoButton;
@@ -86,6 +92,12 @@ public class GUI {
         // adding background image to frame
         titleScreen();
     }
+
+    public void font() throws Exception {
+        String fName = "FugazOne-Regular.ttf";
+        InputStream is = GUI.class.getResourceAsStream(fName);
+        normalFont = Font.createFont(Font.TRUETYPE_FONT, is);
+        }
 
     public void titleScreen() throws IOException, LineUnavailableException, UnsupportedAudioFileException { // creates
                                                                                                             // title
