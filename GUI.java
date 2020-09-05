@@ -56,6 +56,7 @@ public class GUI {
     JButton p1Button, p2Button, p3Button, p4Button, p5Button, p6Button, p7Button, p8Button, p9Button, p10Button;
     JTextArea line1, line2;
     String line1String = "Line 1", line2String = "Line 2";
+    // begin simulation screen components
 
     public GUI(ArrayList<Team> teamList, Team team1, Team team2) throws IOException {
         this.team1 = team1;
@@ -323,12 +324,7 @@ public class GUI {
         frame.add(startSimPanel);
     }
 
-<<<<<<< HEAD
     public void calendarScreen(Team team1, Team team2) {
-=======
-    public void calendarScreen() {
-
->>>>>>> 72297bc927952da9b916abbebc14c39af5a91f2a
         progress = "Calendar Screen";
         // disabling previous panels
         optionsPanel.setVisible(false);
@@ -521,10 +517,6 @@ public class GUI {
                     x ++;
                 }
             }
-        // for(int i = 0; i < 10; i++) {
-        //     buttonArray[i] = new JButton(teamPlayer.getRoster(i).getFirstName() + " " + teamPlayer.getRoster(i).getLastName());
-        //     buttonArray[i].setPreferredSize(new Dimension (200, 70));
-        // }
 
         line1OffPanel.add(buttonArray[0]);
         line1OffPanel.add(buttonArray[1]);
@@ -543,46 +535,12 @@ public class GUI {
         goalie1Panel.add(goalie1);
         goalie2Panel.add(goalie2);
 
-        // for(int i = 0; i < 3; i++) {
-        //     setButtonSizeForward(constraints, 0, i+1);
-        //     line1Panel.add(buttonArray[i]);
-        // }
-
-        // for(int i = 0; i < 2; i++) {
-        //     setButtonSizeDefense(constraints, 2, i+1);
-        //     line1Panel.add(buttonArray[i+6]);
-        // }
-
-        // for(int i = 0; i < 3; i++) {
-        //     setButtonSizeForward(constraints, 0, i+1);
-        //     line2Panel.add(buttonArray[i+3]);
-        // }
-
-        // for(int i = 0; i < 2; i++) {
-        //     setButtonSizeDefense(constraints, 2, i+1);
-        //     line2Panel.add(buttonArray[i+8]);
-        // }
-
         frame.add(line1OffPanel);
         frame.add(line2OffPanel);
         frame.add(line1DefPanel);
         frame.add(line2DefPanel);
         frame.add(goalie1Panel);
         frame.add(goalie2Panel);
-    }
-
-    public void setButtonSizeForward(GridBagConstraints constraints, int gridx, int gridy) {
-        constraints.gridx = gridx;
-        constraints.gridy = gridy;
-        constraints.ipadx = 30;
-        constraints.ipady = 10;
-    }
-
-    public void setButtonSizeDefense(GridBagConstraints constraints, int gridx, int gridy) {
-        constraints.gridx = gridx;
-        constraints.gridy = gridy;
-        constraints.ipadx = 10;
-        constraints.ipady = 10;
     }
 
     public class startButtonHandler implements ActionListener { // dictates the action that happens when start button is
