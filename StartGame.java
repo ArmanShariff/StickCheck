@@ -110,7 +110,5 @@ public class StartGame {
                 team.setCoach(coachRoster.get(i));
             }
         }
-
     }
-
 }

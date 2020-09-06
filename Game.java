@@ -21,6 +21,14 @@ public class Game {
         return playingTeams.get(1).getTeamName();
     }
 
+    public Team getHomeTeam() {
+        return playingTeams.get(0);
+    }
+
+    public Team getAwayTeam() {
+        return playingTeams.get(1);
+    }
+
     public Team findTeam(String teamName) {
         Team temp;
         for (int i = 0; i < teamList.size(); i++) {

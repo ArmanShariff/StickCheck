@@ -11,6 +11,8 @@ public class Schedule {
     String fileName;
     // Keeps track of current week of the season
     int currentWeek;
+    // Tracks user team
+    Team userTeam;
     
     // constructor
 
@@ -64,9 +66,7 @@ public class Schedule {
 
             // close the Scanner object attached to the file
             inFile.close();
-
         }
-
     }
     
     public void createSchedule(ArrayList<String[]> temp, ArrayList<Team> teamList) {
@@ -77,6 +77,29 @@ public class Schedule {
 
         }
 
+    }
+
+    public void advanceWeek() {
+        this.currentWeek = this.currentWeek + 1;
+    }
+
+    public void simulateGame(int game) {
+        Simulation simulation = new Simulation(this.weekList.get(this.currentWeek).getGame(game).getHomeTeam(), this.weekList.get(this.currentWeek).getGame(game).getAwayTeam(), false);
+    }
+
+    public void simulateWeek() {
+        
+        for (int i = 0; i < 3; i++) {
+            if (userTeam.getTeamName().equals(this.weekList.get(this.currentWeek).getGame(i).getAwayTeamName())) {
+                TextAreaLogProgram newTextAreaLogProgram = new TextAreaLogProgram(this.weekList.get(this.currentWeek).getGame(i).getHomeTeam(), userTeam);
+            }
+            else if (userTeam.getTeamName().equals(this.weekList.get(this.currentWeek).getGame(i).getHomeTeamName())) {
+                TextAreaLogProgram newTextAreaLogProgram = new TextAreaLogProgram(userTeam, this.weekList.get(this.currentWeek).getGame(i).getAwayTeam());
+            }
+            else {
+                simulateGame(i);
+            }
+        }
     }
 
     public String toString() {
