@@ -328,6 +328,7 @@ public class GUI {
         proceedButtonPanel.setVisible(false);
         cityNamePanel.setVisible(false);
         teamStatsPanel.setVisible(false);
+        undoButtonPanel.setVisible(false);
 
         // creating panel for the options
         optionsPanel = new JPanel();
@@ -386,6 +387,7 @@ public class GUI {
         // disabling previous panels
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
+        undoButtonPanel.setVisible(true);
 
     }
 
@@ -395,6 +397,7 @@ public class GUI {
         // disabling previous panels
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
+        undoButtonPanel.setVisible(true);
 
         //gathering team stats from simulation
         for (int i = 0; i < 10; i++) {
@@ -517,6 +520,7 @@ public class GUI {
         // disabling previous panels
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
+        undoButtonPanel.setVisible(true);
 
         line1OffPanel = new JPanel();
         line1OffPanel.setBounds(140, 80, 1000, 70);
@@ -650,6 +654,7 @@ public class GUI {
         // disabling previous panels
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
+        undoButtonPanel.setVisible(true);
 
         simPanel = new JPanel();
         simPanel.setBounds(0, 0, 0, 0);
