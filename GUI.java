@@ -1,24 +1,27 @@
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.io.*;
-import java.net.URL;
-import java.awt.event.*;
-import java.awt.*;
-import javax.swing.*;
-
-import org.graalvm.compiler.replacements.nodes.arithmetic.IntegerAddExactSplitNode;
-
-import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
-import java.awt.Font;
-import java.io.InputStream;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class GUI {
 
@@ -161,6 +164,7 @@ public class GUI {
         // adding components to the frame
         frame.add(titleNamePanel);
         frame.add(startButtonPanel);
+        undoButtonPanel.setVisible(false);
         frame.setVisible(true);
     }
 
