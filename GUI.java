@@ -119,7 +119,23 @@ public class GUI {
             // Handle exception
        }
        return normalFont;
-        }
+    }
+
+    public void makeUndoButtonPanel() {
+
+        // creating header
+        undoButtonPanel = new JPanel();
+        undoButtonPanel.setBounds(0, 0, 75, 75);
+        undoButtonPanel.setBackground(Color.black);
+        Icon undoIcon = new ImageIcon("ArrowLeft.png");
+        undoButton = new JButton(undoIcon);
+        undoButton.setBackground(Color.black);
+        undoButton.setForeground(Color.white);
+        undoButton.addActionListener(uBH);
+        undoButton.setFocusPainted(false);
+        undoButtonPanel.add(undoButton);
+
+    }
 
     public void titleScreen() throws IOException, LineUnavailableException, UnsupportedAudioFileException { // creates
                                                                                                             // title
@@ -139,6 +155,8 @@ public class GUI {
         // });
 
         progress = "Title Screen";
+        makeUndoButtonPanel();
+        undoButtonPanel.setVisible(false);
         // creating title name
         titleNamePanel = new JPanel();
         titleNamePanel.setBounds(180, 50, 900, 500);
@@ -174,18 +192,7 @@ public class GUI {
         // disabling previous screen panels
         titleNamePanel.setVisible(false);
         startButtonPanel.setVisible(false);
-
-        // creating header
-        undoButtonPanel = new JPanel();
-        undoButtonPanel.setBounds(0, 0, 75, 75);
-        undoButtonPanel.setBackground(Color.black);
-        Icon undoIcon = new ImageIcon("ArrowLeft.png");
-        undoButton = new JButton(undoIcon);
-        undoButton.setBackground(Color.black);
-        undoButton.setForeground(Color.white);
-        undoButton.addActionListener(uBH);
-        undoButton.setFocusPainted(false);
-        undoButtonPanel.add(undoButton);
+        undoButtonPanel.setVisible(true);
 
         // creating text area
         textAreaPanel = new JPanel();
