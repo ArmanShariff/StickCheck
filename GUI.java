@@ -1,24 +1,27 @@
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.io.*;
-import java.net.URL;
-import java.awt.event.*;
-import java.awt.*;
-import javax.swing.*;
-
-import org.graalvm.compiler.replacements.nodes.arithmetic.IntegerAddExactSplitNode;
-
-import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
-import java.awt.Font;
-import java.io.InputStream;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class GUI {
 
@@ -116,7 +119,23 @@ public class GUI {
             // Handle exception
        }
        return normalFont;
-        }
+    }
+
+    public void makeUndoButtonPanel() {
+
+        // creating header
+        undoButtonPanel = new JPanel();
+        undoButtonPanel.setBounds(0, 0, 75, 75);
+        undoButtonPanel.setBackground(Color.black);
+        Icon undoIcon = new ImageIcon("ArrowLeft.png");
+        undoButton = new JButton(undoIcon);
+        undoButton.setBackground(Color.black);
+        undoButton.setForeground(Color.white);
+        undoButton.addActionListener(uBH);
+        undoButton.setFocusPainted(false);
+        undoButtonPanel.add(undoButton);
+
+    }
 
     public void titleScreen() throws IOException, LineUnavailableException, UnsupportedAudioFileException { // creates
                                                                                                             // title
@@ -136,6 +155,8 @@ public class GUI {
         // });
 
         progress = "Title Screen";
+        makeUndoButtonPanel();
+        undoButtonPanel.setVisible(false);
         // creating title name
         titleNamePanel = new JPanel();
         titleNamePanel.setBounds(180, 50, 900, 500);
@@ -161,6 +182,7 @@ public class GUI {
         // adding components to the frame
         frame.add(titleNamePanel);
         frame.add(startButtonPanel);
+        undoButtonPanel.setVisible(false);
         frame.setVisible(true);
     }
 
@@ -170,18 +192,7 @@ public class GUI {
         // disabling previous screen panels
         titleNamePanel.setVisible(false);
         startButtonPanel.setVisible(false);
-
-        // creating header
-        undoButtonPanel = new JPanel();
-        undoButtonPanel.setBounds(0, 0, 75, 75);
-        undoButtonPanel.setBackground(Color.black);
-        Icon undoIcon = new ImageIcon("ArrowLeft.png");
-        undoButton = new JButton(undoIcon);
-        undoButton.setBackground(Color.black);
-        undoButton.setForeground(Color.white);
-        undoButton.addActionListener(uBH);
-        undoButton.setFocusPainted(false);
-        undoButtonPanel.add(undoButton);
+        undoButtonPanel.setVisible(true);
 
         // creating text area
         textAreaPanel = new JPanel();
@@ -328,6 +339,7 @@ public class GUI {
         proceedButtonPanel.setVisible(false);
         cityNamePanel.setVisible(false);
         teamStatsPanel.setVisible(false);
+        undoButtonPanel.setVisible(false);
 
         // creating panel for the options
         optionsPanel = new JPanel();
@@ -386,6 +398,7 @@ public class GUI {
         // disabling previous panels
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
+        undoButtonPanel.setVisible(true);
 
     }
 
@@ -395,6 +408,7 @@ public class GUI {
         // disabling previous panels
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
+        undoButtonPanel.setVisible(true);
 
         //gathering team stats from simulation
         for (int i = 0; i < 10; i++) {
@@ -517,6 +531,7 @@ public class GUI {
         // disabling previous panels
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
+        undoButtonPanel.setVisible(true);
 
         line1OffPanel = new JPanel();
         line1OffPanel.setBounds(140, 80, 1000, 70);
@@ -650,6 +665,7 @@ public class GUI {
         // disabling previous panels
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
+        undoButtonPanel.setVisible(true);
 
         simPanel = new JPanel();
         simPanel.setBounds(0, 0, 0, 0);
