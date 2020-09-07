@@ -26,7 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.JLabel;
 import javax.swing.JViewport;
 
 public class GUI {
@@ -55,13 +55,13 @@ public class GUI {
     undoButtonHandler uBH = new undoButtonHandler();
     // team selection screen components
     JPanel textAreaPanel, teamSelectionPanel;
-    JTextArea textArea;
+    JLabel textArea;
     JButton torSelect, monSelect, bosSelect, nyrSelect, detSelect, chiSelect;
     String teamSelected;
     teamSelectHandler tSH = new teamSelectHandler();
     // team summary screen components
     JPanel cityNamePanel, proceedButtonPanel, teamStatsPanel;
-    JTextArea cityName, teamStats;
+    JLabel cityName, teamStats;
     JButton proceedButton;
     String teamName, teamOverall, teamSalaryCap, teamMarketSize, teamStatus;
     proceedButtonHandler pBH = new proceedButtonHandler();
@@ -73,23 +73,23 @@ public class GUI {
     // calendar screen components
     // statistics screen components
     JPanel teamRosterPanel, goalsScoredPanel, plusMinusPanel, shotsPanel, shootingPercentPanel, savePercentPanel, goaliePanel, shotsAgainstPanel, savesPanel;
-    JTextArea teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent, goalie, shotsAgainst, saves;
+    JLabel teamRoster, goalsScored, plusMinus, shots, shootingPercent, savePercent, goalie, shotsAgainst, saves;
     String teamRosterString = "Player\n", goalsScoredString = "Goals\n", plusMinusString = "Plus-Minus\n", shotsString = "Shots\n", shootingPercentString = "Shooting Percentage\n", savePercentString = "Save Percentage\n", goalieString = "\n", shotsAgainstString = "Shots Against\n", savesString = "Saves\n";
     // edit lines screen components
     JPanel line1OffPanel, line2OffPanel, line1DefPanel, line2DefPanel, goalie1Panel, goalie2Panel;
     JButton p1Button, p2Button, p3Button, p4Button, p5Button, p6Button, p7Button, p8Button, p9Button, p10Button;
-    JTextArea line1, line2;
+    JLabel line1, line2;
     String line1String = "Line 1", line2String = "Line 2", pTracker, playerSelected, player1, player2, player1Line, player1Position, player1Real, player2Line, player2Position, player2Real;
     playerButtonHandler psBH = new playerButtonHandler();
     // confirm screen components
     JPanel confirmPanel, textPanel;
     JButton confirmButton;
-    JTextArea playerSwap;
+    JLabel playerSwap;
     confirmButtonHandler cBH = new confirmButtonHandler();
     // begin simulation screen components
     JPanel simPanel;
     beginSimulationButtonHandler bSBH = new beginSimulationButtonHandler();
-    JTextArea teamSchedule;
+    JLabel teamSchedule;
     JPanel schedulePanel;
 
     public GUI(ArrayList<Team> teamList, Team team1, Team team2) throws IOException, LineUnavailableException,
@@ -206,11 +206,11 @@ public class GUI {
         textAreaPanel = new JPanel();
         textAreaPanel.setBounds(525, 40, 250, 50);
 
-        textArea = new JTextArea("Team Select");
+        textArea = new JLabel("Team Select");
         textArea.setBounds(525, 40, 250, 50);
         textArea.setForeground(Color.black); // sets the colour of the text area's text
         textArea.setFont(normalFont); // sets the font of the text area's text to match normalFont
-        textArea.setLineWrap(true); // if the text is too long for one line, it will automatically continue on a new
+        //((Object) textArea).setLineWrap(true); // if the text is too long for one line, it will automatically continue on a new
                                     // line
         textAreaPanel.add(textArea);
 
@@ -300,7 +300,7 @@ public class GUI {
         cityNamePanel.setBounds(150, 200, 1000, 100);
         cityNamePanel.setBackground(Color.blue);
 
-        cityName = new JTextArea(teamSelected);
+        cityName = new JLabel(teamSelected);
         cityName.setBounds(150, 100, 1000, 100);
         cityName.setBackground(Color.blue); // sets the colour of the text area itself
         cityName.setForeground(Color.white); // sets the colour of the text area's text
@@ -312,7 +312,7 @@ public class GUI {
         teamStatsPanel.setBounds(150, 450, 1000, 200);
         teamStatsPanel.setBackground(Color.blue);
 
-        teamStats = new JTextArea(teamOverall + "\n" + teamSalaryCap + "\n" + teamMarketSize + "\n" + teamStatus);
+        teamStats = new JLabel(teamOverall + "\n" + teamSalaryCap + "\n" + teamMarketSize + "\n" + teamStatus);
         teamStats.setBounds(150, 250, 1000, 100);
         teamStats.setBackground(Color.blue);
         teamStats.setForeground(Color.white);
@@ -402,7 +402,7 @@ public class GUI {
             }
         }
 
-        teamSchedule = new JTextArea(schedule);
+        teamSchedule = new JLabel(schedule);
         teamSchedule.setBackground(Color.blue);
         teamSchedule.setForeground(Color.white);
 
@@ -442,7 +442,7 @@ public class GUI {
         teamRosterPanel.setBounds(100, 20, 300, 470);
         teamRosterPanel.setBackground(Color.blue);
 
-        teamRoster = new JTextArea(teamRosterString);
+        teamRoster = new JLabel(teamRosterString);
         teamRoster.setBounds(100, 20, 300, 470);
         teamRoster.setBackground(Color.blue);
         teamRoster.setForeground(Color.white);
@@ -453,7 +453,7 @@ public class GUI {
         goalsScoredPanel = new JPanel();
         goalsScoredPanel.setBounds(400, 20, 100, 470);
 
-        goalsScored = new JTextArea(goalsScoredString);
+        goalsScored = new JLabel(goalsScoredString);
         goalsScored.setBounds(400, 20, 100, 470);
         goalsScored.setForeground(Color.black);
         goalsScored.setFont(normalFont);
@@ -463,7 +463,7 @@ public class GUI {
         plusMinusPanel = new JPanel();
         plusMinusPanel.setBounds(500, 20, 150, 470);
 
-        plusMinus = new JTextArea(plusMinusString);
+        plusMinus = new JLabel(plusMinusString);
         plusMinus.setBounds(500, 20, 150, 470);
         plusMinus.setForeground(Color.black);
         plusMinus.setFont(normalFont);
@@ -473,7 +473,7 @@ public class GUI {
         shotsPanel = new JPanel();
         shotsPanel.setBounds(650, 20, 100, 470);
 
-        shots = new JTextArea(shotsString);
+        shots = new JLabel(shotsString);
         shots.setBounds(650, 20, 100, 470);
         shots.setForeground(Color.black);
         shots.setFont(normalFont);
@@ -483,7 +483,7 @@ public class GUI {
         shootingPercentPanel = new JPanel();
         shootingPercentPanel.setBounds(750, 20, 300, 470);
 
-        shootingPercent = new JTextArea(shootingPercentString);
+        shootingPercent = new JLabel(shootingPercentString);
         shootingPercent.setBounds(750, 20, 300, 470);
         shootingPercent.setForeground(Color.black);
         shootingPercent.setFont(normalFont);
@@ -493,7 +493,7 @@ public class GUI {
         goaliePanel = new JPanel();
         goaliePanel.setBounds(100, 490, 300, 150);
 
-        goalie = new JTextArea(goalieString);
+        goalie = new JLabel(goalieString);
         goalie.setBounds(100, 490, 300, 150);
         goalie.setForeground(Color.black);
         goalie.setFont(normalFont);
@@ -503,7 +503,7 @@ public class GUI {
         shotsAgainstPanel = new JPanel();
         shotsAgainstPanel.setBounds(400, 490, 200, 150);
 
-        shotsAgainst = new JTextArea(shotsAgainstString);
+        shotsAgainst = new JLabel(shotsAgainstString);
         shotsAgainst.setForeground(Color.black);
         shotsAgainst.setFont(normalFont);
         shotsAgainstPanel.add(shotsAgainst);
@@ -512,7 +512,7 @@ public class GUI {
         savesPanel = new JPanel();
         savesPanel.setBounds(600, 490, 100, 150);
 
-        saves = new JTextArea(savesString);
+        saves = new JLabel(savesString);
         saves.setForeground(Color.black);
         saves.setFont(normalFont);
         savesPanel.add(saves);
@@ -521,7 +521,7 @@ public class GUI {
         savePercentPanel = new JPanel();
         savePercentPanel.setBounds(700, 490, 300, 150);
 
-        savePercent = new JTextArea(savePercentString);
+        savePercent = new JLabel(savePercentString);
         savePercent.setForeground(Color.black);
         savePercent.setFont(normalFont);
         savePercentPanel.add(savePercent);
@@ -649,7 +649,7 @@ public class GUI {
         textPanel.setBounds(140, 80, 1000, 70);
         textPanel.setBackground(Color.blue);
 
-        playerSwap = new JTextArea("Would you like to swap " /*+ playerA */ + " with " + /* playerB + */ "?");
+        playerSwap = new JLabel("Would you like to swap " /*+ playerA */ + " with " + /* playerB + */ "?");
         playerSwap.setForeground(Color.black);
         playerSwap.setFont(normalFont);
         textPanel.add(playerSwap);
