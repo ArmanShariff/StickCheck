@@ -1,6 +1,9 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GridLayout;
@@ -196,13 +199,11 @@ public class GUI {
 
         // creating text area
         textAreaPanel = new JPanel();
-        textAreaPanel.setBounds(150, 40, 1000, 100);
-        textAreaPanel.setBackground(Color.blue);
+        textAreaPanel.setBounds(525, 40, 250, 50);
 
         textArea = new JTextArea("Team Select");
-        textArea.setBounds(150, 40, 1000, 100);
-        textArea.setBackground(Color.blue); // sets the colour of the text area itself
-        textArea.setForeground(Color.white); // sets the colour of the text area's text
+        textArea.setBounds(525, 40, 250, 50);
+        textArea.setForeground(Color.black); // sets the colour of the text area's text
         textArea.setFont(normalFont); // sets the font of the text area's text to match normalFont
         textArea.setLineWrap(true); // if the text is too long for one line, it will automatically continue on a new
                                     // line
@@ -216,9 +217,7 @@ public class GUI {
 
         Icon torIcon = new ImageIcon("LeafsLogo.png");
         torSelect = new JButton(torIcon); // creating Toronto button
-        torSelect.setBackground(Color.blue);
-        torSelect.setForeground(Color.white);
-        torSelect.setFont(normalFont);
+        torSelect.setBackground(Color.white);
         torSelect.setFocusPainted(false);
         torSelect.addActionListener(tSH); // adds an action listener to the team select button (in this case, Toronto)
         torSelect.setActionCommand("Toronto"); // indicates which team has been selected
@@ -226,9 +225,7 @@ public class GUI {
 
         Icon monIcon = new ImageIcon("CanadiensLogo.png");
         monSelect = new JButton(monIcon); // creating Montreal button
-        monSelect.setBackground(Color.red);
-        monSelect.setForeground(Color.white);
-        monSelect.setFont(normalFont);
+        monSelect.setBackground(Color.white);
         monSelect.setFocusPainted(false);
         monSelect.addActionListener(tSH);
         monSelect.setActionCommand("Montreal");
@@ -236,9 +233,7 @@ public class GUI {
 
         Icon bosIcon = new ImageIcon("BruinsLogo.png");
         bosSelect = new JButton(bosIcon); // creating Boston button
-        bosSelect.setBackground(Color.yellow);
-        bosSelect.setForeground(Color.black);
-        bosSelect.setFont(normalFont);
+        bosSelect.setBackground(Color.white);
         bosSelect.setFocusPainted(false);
         bosSelect.addActionListener(tSH);
         bosSelect.setActionCommand("Boston");
@@ -247,8 +242,6 @@ public class GUI {
         Icon nyrIcon = new ImageIcon("RangersLogo.png");
         nyrSelect = new JButton(nyrIcon); // creating New York button
         nyrSelect.setBackground(Color.white);
-        nyrSelect.setForeground(Color.blue);
-        nyrSelect.setFont(normalFont);
         nyrSelect.setFocusPainted(false);
         nyrSelect.addActionListener(tSH);
         nyrSelect.setActionCommand("New York");
@@ -257,8 +250,6 @@ public class GUI {
         Icon detIcon = new ImageIcon("WingsLogo.png");
         detSelect = new JButton(detIcon); // creating Detroit button
         detSelect.setBackground(Color.white);
-        detSelect.setForeground(Color.red);
-        detSelect.setFont(normalFont);
         detSelect.setFocusPainted(false);
         detSelect.addActionListener(tSH);
         detSelect.setActionCommand("Detroit");
@@ -266,9 +257,7 @@ public class GUI {
 
         Icon chiIcon = new ImageIcon("BlackHawksLogo.png");
         chiSelect = new JButton(chiIcon); // creating Chicago button
-        chiSelect.setBackground(Color.red);
-        chiSelect.setForeground(Color.yellow);
-        chiSelect.setFont(normalFont);
+        chiSelect.setBackground(Color.white);
         chiSelect.setFocusPainted(false);
         chiSelect.addActionListener(tSH);
         chiSelect.setActionCommand("Chicago");
