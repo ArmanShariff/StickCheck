@@ -83,6 +83,8 @@ public class GUI {
     // begin simulation screen components
     JPanel simPanel;
     beginSimulationButtonHandler bSBH = new beginSimulationButtonHandler();
+    JTextArea teamSchedule;
+    JPanel schedulePanel;
 
     public GUI(ArrayList<Team> teamList, Team team1, Team team2) throws IOException, LineUnavailableException,
             UnsupportedAudioFileException {
@@ -399,7 +401,27 @@ public class GUI {
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
         undoButtonPanel.setVisible(true);
+        
+        String schedule = "";
+        for (int i = 0; i < 10; i++) {
+            schedule += "WEEK " + (i + 1) + ": " + teamPlayer.getTeamSchedule(i).getHomeTeamName() + "  VS  " + teamPlayer.getTeamSchedule(i).getAwayTeamName();
+            if (i < 9) {
+                schedule += "\n";
+            }
+        }
 
+        teamSchedule = new JTextArea(schedule);
+        teamSchedule.setBackground(Color.blue);
+        teamSchedule.setForeground(Color.white);
+
+        schedulePanel = new JPanel();
+        schedulePanel.add(teamSchedule);
+        schedulePanel.setBounds(150, 100, 1000, 200);
+
+        frame.add(schedulePanel);
+
+
+        
     }
 
     public void statisticsScreen() {
@@ -742,8 +764,12 @@ public class GUI {
                 optionSelectScreen();
             } else if (progress.equals("Begin Simulation")) {
                 simPanel.setVisible(false);
-              optionSelectScreen();
+                optionSelectScreen();
+            } else if (progress.equals("Calendar Screen")) {
+                schedulePanel.setVisible(false);
+                optionSelectScreen();
             }
+            
         }
     }
  
