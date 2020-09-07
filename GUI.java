@@ -419,8 +419,6 @@ public class GUI {
         schedulePanel.setBounds(150, 100, 1000, 200);
 
         frame.add(schedulePanel);
-
-
         
     }
 
