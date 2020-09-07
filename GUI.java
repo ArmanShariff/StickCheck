@@ -21,10 +21,13 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JViewport;
 
 public class GUI {
 
@@ -86,6 +89,8 @@ public class GUI {
     // begin simulation screen components
     JPanel simPanel;
     beginSimulationButtonHandler bSBH = new beginSimulationButtonHandler();
+    JTextArea teamSchedule;
+    JPanel schedulePanel;
 
     public GUI(ArrayList<Team> teamList, Team team1, Team team2) throws IOException, LineUnavailableException,
             UnsupportedAudioFileException {
@@ -388,7 +393,25 @@ public class GUI {
         optionsPanel.setVisible(false);
         startSimPanel.setVisible(false);
         undoButtonPanel.setVisible(true);
+        
+        String schedule = "";
+        for (int i = 0; i < 10; i++) {
+            schedule += "WEEK " + (i + 1) + ": " + teamPlayer.getTeamSchedule(i).getHomeTeamName() + "  VS  " + teamPlayer.getTeamSchedule(i).getAwayTeamName();
+            if (i < 9) {
+                schedule += "\n";
+            }
+        }
 
+        teamSchedule = new JTextArea(schedule);
+        teamSchedule.setBackground(Color.blue);
+        teamSchedule.setForeground(Color.white);
+
+        schedulePanel = new JPanel();
+        schedulePanel.setBounds(150, 100, 1000, 200);
+        schedulePanel.add(teamSchedule);
+
+        frame.add(schedulePanel);
+        
     }
 
     public void statisticsScreen() {
@@ -708,7 +731,7 @@ public class GUI {
                 startSimPanel.setVisible(false);
                 teamSummaryScreen();
             } else if (progress.equals("Calendar Screen")) {
-                
+                schedulePanel.setVisible(false);
                 optionSelectScreen();
             } else if (progress.equals("Statistics Screen")) {
                 teamRosterPanel.setVisible(false);
@@ -731,8 +754,12 @@ public class GUI {
                 optionSelectScreen();
             } else if (progress.equals("Begin Simulation")) {
                 simPanel.setVisible(false);
-              optionSelectScreen();
+                optionSelectScreen();
+            } else if (progress.equals("Calendar Screen")) {
+                schedulePanel.setVisible(false);
+                optionSelectScreen();
             }
+            
         }
     }
  

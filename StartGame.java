@@ -79,6 +79,8 @@ public class StartGame {
                     + toronto.getTeamSchedule(i).getAwayTeamName());
         }
 
+        System.out.print("hi brian");
+
     }
 
     // Method that sorts the players, goalies and coaches into their respected teams

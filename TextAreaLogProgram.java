@@ -1,11 +1,16 @@
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Date;
 
+import javax.annotation.processing.FilerException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -24,10 +29,14 @@ public class TextAreaLogProgram extends JFrame {
 
     private PrintStream standardOut;
 
+    Font normalFont = font();
+
     public TextAreaLogProgram(Team team1, Team team2) {
         textArea = new JTextArea(50, 10);
         textArea.setEditable(false);
         PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+
+        textArea.setFont(normalFont);
 
         // keeps reference of standard output stream
         standardOut = System.out;
@@ -80,8 +89,25 @@ public class TextAreaLogProgram extends JFrame {
             }
         });
 
-        setSize(480, 320);
+        setSize(600, 500);
         setLocationRelativeTo(null); // centers on screen
+    }
+
+    public Font font() {
+        try {
+            // Returned font is of pt size 1
+            normalFont = Font.createFont(Font.TRUETYPE_FONT, new File("FugazOne-Regular.ttf"));
+
+            // Derive and return a 12 pt version:
+            // Need to use float otherwise
+            // it would be interpreted as style
+
+            return normalFont.deriveFont(12f);
+
+        } catch (IOException|FontFormatException e) {
+            // Handle exception
+       }
+       return normalFont;
     }
 
     /**
