@@ -18,10 +18,13 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JViewport;
 
 public class GUI {
 
@@ -415,8 +418,8 @@ public class GUI {
         teamSchedule.setForeground(Color.white);
 
         schedulePanel = new JPanel();
-        schedulePanel.add(teamSchedule);
         schedulePanel.setBounds(150, 100, 1000, 200);
+        schedulePanel.add(teamSchedule);
 
         frame.add(schedulePanel);
         
@@ -739,7 +742,7 @@ public class GUI {
                 startSimPanel.setVisible(false);
                 teamSummaryScreen();
             } else if (progress.equals("Calendar Screen")) {
-                
+                schedulePanel.setVisible(false);
                 optionSelectScreen();
             } else if (progress.equals("Statistics Screen")) {
                 teamRosterPanel.setVisible(false);
